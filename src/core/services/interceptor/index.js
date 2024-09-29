@@ -22,4 +22,4 @@ const onError = (err) => {
 
 instance.interceptors.response.use(onSuccess, onError)
 
-export default axios;
+export default instance;

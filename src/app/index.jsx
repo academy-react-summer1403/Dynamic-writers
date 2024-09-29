@@ -4,12 +4,13 @@ import axios from 'axios';
 import {getCourserList} from '../core/services/api/cours';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
+import Login from '../screens/Login/Login';
 
 function App() {
 
   const getList = async() => {
     const result = await getCourserList(5);
-    console.log(result);
+    // console.log(result);
   }
 
   useEffect(()=>{
@@ -19,6 +20,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/'
+    },
+    {
+      path: '/login',
+      element: <Login />
     }
   ])
 
