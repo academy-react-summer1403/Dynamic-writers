@@ -3,8 +3,11 @@ import { Field, Form } from 'formik'
 import React from 'react'
 import { MailLock02Icon, SecurityCheckIcon } from 'hugeicons-react'
 import BahrLogo from '../../assets/Bahr.png'
+import { useNavigate } from 'react-router-dom'
 
 const FormGenerate = () => {
+  const navigate = useNavigate()
+
   return (
     <Form className='w-4/6 mt-20 relative' style={{direction: 'rtl'}}>
 
@@ -30,7 +33,7 @@ const FormGenerate = () => {
 
       </div>
 
-      <Button type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3 min-w-80'>
+      <Button onClick={() => {setTimeout(() => {navigate('/verify')}, 2000)}} type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3 min-w-80'>
         ورود به حساب کاربری
       </Button>
 

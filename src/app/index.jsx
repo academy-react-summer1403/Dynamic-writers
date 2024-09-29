@@ -5,6 +5,7 @@ import {getCourserList} from '../core/services/api/cours';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import Login from '../screens/Login/Login';
+import Verify from '../screens/Login/verify';
 
 function App() {
 
@@ -24,6 +25,10 @@ function App() {
     {
       path: '/login',
       element: <Login />
+    },
+    {
+      path: '/verify',
+      element: <Verify />
     }
   ])
 

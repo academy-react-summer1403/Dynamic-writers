@@ -1,20 +1,26 @@
 import React from 'react'
 import { Formik } from 'formik';
 import FormGenerate from '../../FormGenerate';
-import { postLogin } from '../../../../core/services/api/login';
+import { postLogin } from '../../../../core/services/api/auth';
 import BahrLogo from '../../../../assets/Bahr.png'
 import { MailEdit02Icon, PasswordValidationIcon,  } from 'hugeicons-react'
 import { Link } from 'react-router-dom';
+import { setItem } from '../../../../core/services/common/storage';
+import { sendVerifyCode } from '../../../../core/services/api/veryfy';
 
 const LeftLogin = () => {
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
 
     const userObj = {
         phoneOrGmail: values.phoneOrGmail, password: values.password, rememberMe: values.rememberMe
     }
 
-    postLogin(userObj) 
+    const user = await postLogin(userObj);
+
+    sendVerifyCode(userObj.phoneOrGmail)
+
+    setItem('token', user.token)
 
   }
 

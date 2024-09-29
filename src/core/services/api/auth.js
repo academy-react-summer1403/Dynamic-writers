@@ -6,7 +6,7 @@ export const postLogin = async (user) => {
 
   alert(result.message)
 
-  return result;
+  return result
   
   } catch (error) {
   console.log(error);
