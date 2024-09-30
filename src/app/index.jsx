@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import Login from '../screens/Login/Login';
 import Verify from '../screens/Login/verify';
+import Register from '../screens/Register/Register';
+import VerifyRegister from '../screens/Register/VerifyRegister';
 
 function App() {
 
@@ -29,7 +31,16 @@ function App() {
     {
       path: '/verify',
       element: <Verify />
+    },
+    {
+      path: '/register',
+      element: <Register />
+    },
+    {
+      path: '/verifyRegister',
+      element: <VerifyRegister />
     }
+
   ])
 
   return <NextUIProvider>

@@ -26,3 +26,10 @@
 .iranSansBold {
     font-family: iranSansBold;
 }
+
+.er {
+    color: rgb(255, 119, 119);
+    font-family: iranSans;
+    font-size: 13px;
+    font-weight: 700;
+}

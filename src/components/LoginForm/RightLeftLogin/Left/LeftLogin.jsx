@@ -1,14 +1,17 @@
-import React from 'react'
-import { Formik } from 'formik';
+import React, { useState } from 'react'
+import { Formik, Form } from 'formik';
 import FormGenerate from '../../FormGenerate';
 import { postLogin } from '../../../../core/services/api/auth';
 import BahrLogo from '../../../../assets/Bahr.png'
 import { MailEdit02Icon, PasswordValidationIcon,  } from 'hugeicons-react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setItem } from '../../../../core/services/common/storage';
-import { sendVerifyCode } from '../../../../core/services/api/veryfy';
+import { toast, ToastContainer } from 'react-toastify'
+import { Button } from '@nextui-org/react';
 
 const LeftLogin = () => {
+    
+  const navigate = useNavigate()
 
   const onSubmit = async (values) => {
 
@@ -18,9 +21,26 @@ const LeftLogin = () => {
 
     const user = await postLogin(userObj);
 
-    sendVerifyCode(userObj.phoneOrGmail)
-
     setItem('token', user.token)
+
+    console.log(user)
+
+    const notify = () => {
+        toast.error(user.message + '*', {
+          autoClose: 5000,
+          className: 'text-red-500 my-5',
+          icon: false,
+        })
+      }
+
+    if(user.success === true){
+        navigate('/')
+    }
+    else if(user.success === false){
+        if(user.message != null){
+           notify() 
+        }
+    }
 
   }
 
@@ -40,8 +60,17 @@ const LeftLogin = () => {
             initialValues={{phoneOrGmail: '', password: '', rememberMe: false}}
             onSubmit={(values) => {onSubmit(values)}}
         >
+            <Form className='w-4/6 mt-20 relative' style={{direction: 'rtl'}}>
 
-            <FormGenerate />
+                <FormGenerate />
+
+                <Button type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3 min-w-80'>
+                    ورود به حساب کاربری
+                </Button>
+
+                <ToastContainer />
+
+            </Form>
 
         </Formik>
 
