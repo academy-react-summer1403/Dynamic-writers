@@ -6,7 +6,10 @@ import VerificationInput from 'react-verification-input';
 import { Button, Link } from '@nextui-org/react';
 import Timer from '../../VerifyCode/RightLeftVerify/Left/Timer';
 import { useNavigate } from 'react-router-dom';
-import { getItem } from '../../../core/services/common/storage';
+import { getItem, setItem } from '../../../core/services/common/storage';
+import { VerifyMessage } from '../../../core/services/api/register/verifyMessage';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LeftVerifyRegister = () => {
 
@@ -19,11 +22,34 @@ const LeftVerifyRegister = () => {
     };
 
     const handleSubmit = () => {
-        console.log('Verification Code:', verificationCode);
+        setItem('verifyMessage', verificationCode)
     };
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         handleSubmit()
+    
+        const userVerify = await VerifyMessage()
+
+        const notify = () => {
+            toast.error("کد تایید صحیح نیست یا از زمان کد گذشته", {
+            })
+        }
+
+        const notifySuccess = () => {
+            toast.success(user.message, {
+            autoClose: 5000,
+            })
+        }
+
+        console.log('user', userVerify)
+
+        if(userVerify.success === true) {
+            navigate('/registerAccount')
+            notifySuccess()
+        }
+        else{
+            notify()
+        }
     }
 
     const verifyAgain = () => {
@@ -43,7 +69,7 @@ const LeftVerifyRegister = () => {
                 <img src={BahrLogo} className='w-10 inline' /> 
             </div>
             <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold'>  😍!به آکادمی بحر خوش اومدی  </h2>
-            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}>   لطفا کد ارسال شده به شماره  <span className='text-blue-500'> {getItem("phoneNumber")} </span>  را وارد کنید  </span>
+            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}>   لطفا کد ارسال شده به شماره  <span className='text-blue-500 font-medium'> {JSON.parse(getItem("phoneNumber"))} </span>  را وارد کنید  </span>
 
         </div>
 
@@ -56,7 +82,7 @@ const LeftVerifyRegister = () => {
 
                 <div className='w-full flex flex-col gap-4'>
                     <span className='iranSansBold'> کد تایید </span>
-                    <VerificationInput name='verifyCode' onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
+                    <VerificationInput name='verifyCode' length={5} onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
                             container: "flex flex-row-reverse gap-5 iranSans w-4/6 min-w-72",
                             character: "rounded-xl border-none outline-none  bg-gray-100 text-sm p-1 size-12",
                             characterInactive: "bg-gray-100 text-2xl outline-none border-none text-sm",
@@ -66,6 +92,8 @@ const LeftVerifyRegister = () => {
                 </div>
 
                 <Button type='submit' className='bg-blue-600 w-4/6 my-5 text-white rounded-full min-w-72'> تایید </Button>
+
+                <ToastContainer />
 
                 <div className='w-full flex flex-row-reverse gap-5 items-center justify-end'>
                     <div onClick={() => navigate('/register')} className='bg-blue-100 flex rounded-full flex-row-reverse p-1 cursor-pointer gap-2 items-center'>

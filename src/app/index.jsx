@@ -8,6 +8,7 @@ import Login from '../screens/Login/Login';
 import Verify from '../screens/Login/verify';
 import Register from '../screens/Register/Register';
 import VerifyRegister from '../screens/Register/VerifyRegister';
+import RegisterStep3 from '../screens/Register/RegisterStep3';
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
     {
       path: '/verifyRegister',
       element: <VerifyRegister />
+    },
+    {
+      path: '/registerAccount',
+      element: <RegisterStep3 />
     }
 
   ])

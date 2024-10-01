@@ -1,6 +1,6 @@
 import React from 'react'
-import RightRegister from './RightLeftRegister/RightRegister'
-import LeftRegister from './RightLeftRegister/LeftRegister'
+import RightRegister from './RightRegister'
+import LeftRegister from './LeftRegister'
 
 const RegisterForm = () => {
   return (

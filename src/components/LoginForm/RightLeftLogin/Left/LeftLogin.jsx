@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { setItem } from '../../../../core/services/common/storage';
 import { toast, ToastContainer } from 'react-toastify'
 import { Button } from '@nextui-org/react';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LeftLogin = () => {
     
@@ -26,21 +27,47 @@ const LeftLogin = () => {
     console.log(user)
 
     const notify = () => {
-        toast.error(user.message + '*', {
+        toast.error(user.message, {
           autoClose: 5000,
-          className: 'text-red-500 my-5',
-          icon: false,
         })
       }
 
+    const notifySuccess = () => {
+        toast.success(user.message, {
+            autoClose: 3000,
+            })
+    }
+
+    const notifyGmail = () => {
+
+    toast.error(" ایمیل یا شماره همراه خود را وارد کنید ", {
+        autoClose: 5000,
+        })
+    }
+    
+    const notifyPassword = () => {
+
+    toast.error(" رمزعبور خود را وارد کنید ", {
+        autoClose: 5000,
+        })
+    }
+
     if(user.success === true){
         navigate('/')
+        notifySuccess()
     }
     else if(user.success === false){
         if(user.message != null){
            notify() 
         }
     }
+    else if(values.phoneOrGmail === ""){
+        notifyGmail()
+    }
+    else if(values.password === ""){
+        notifyPassword()
+    }
+
 
   }
 

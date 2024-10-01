@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import BahrLogo from '../../../assets/Bahr.png'
 import { MailEdit02Icon, PasswordValidationIcon, SmartPhone01Icon,  } from 'hugeicons-react'
@@ -9,33 +9,55 @@ import '../../../index.css'
 import { SendVerifyMessage } from '../../../core/services/api/register/sendVerifyMessage';
 import { toast, ToastContainer,  } from 'react-toastify';
 import { setItem } from '../../../core/services/common/storage';
+import 'react-toastify/dist/ReactToastify.css'
 
 const LeftRegister = () => {
 
   const navigate = useNavigate()
 
+  const [phone, setPhone] = useState("");
+
+  const formatPhone = (value) => {
+    const cleaned = value.replace(/\D/g, '');
+
+    const match = cleaned.match(/^(\d{0,4})(\d{0,3})(\d{0,4})$/);
+
+    if (match) {
+      const part1 = match[1];
+      const part2 = match[2] ? `-${match[2]}` : '';
+      const part3 = match[3] ? `-${match[3]}` : '';
+
+      return `${part1}${part2}${part3}`;
+    }
+
+    return value;
+  };
+
+  const handleChange = (e) => {
+    const formattedPhone = formatPhone(e.target.value);
+    setPhone(formattedPhone);
+  };
+
   const onSubmit = async (values) => {
 
-    const notifyEmpty = () => {
-        toast.error(" موارد خواسته شده را وارد کنید " + '*', {
+    const notify = () => {
+        toast.error(" موارد خواسته شده را وارد کنید ", {
           autoClose: 3000,
-          className: 'text-red-500 my-5',
-          icon: false,
         })
     }
+
+    const phoneNumber = (JSON.stringify(phone)).replace(/-/g, "")
+
     
-    if (values.phoneNumber === ''){
-        notifyEmpty()
+    if (phoneNumber === ''){
+        notify()
     }
     else {
-        setItem('phoneNumber', values.phoneNumber)
+        setItem('phoneNumber', JSON.parse(phoneNumber))
         SendVerifyMessage()
         navigate('/verifyRegister')
     }
     
-
-
-
   }
 
   return (
@@ -51,7 +73,7 @@ const LeftRegister = () => {
         </div>
 
         <Formik
-            initialValues={{phoneNumber: ''}}
+            initialValues={{phone: ''}}
             onSubmit={(values) => {onSubmit(values)}}
         >
 
@@ -59,7 +81,7 @@ const LeftRegister = () => {
           
                 <h2 className='mb-2 font-bold'> شماره همراه </h2>
                 <div className='w-full'>
-                    <Field name="phoneNumber" type="phone" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                    <Field name="phoneNumber" onChange={(e) => handleChange(e)} value={phone} type="phone" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12 relative' placeholder=" شماره همراه یا ایمیل خود را وارد کنید" />
                     <SmartPhone01Icon className='absolute right-3 top-14 text-gray-500 focus:hidden' />
                 </div>
