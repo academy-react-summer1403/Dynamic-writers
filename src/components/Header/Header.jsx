@@ -10,7 +10,7 @@ const Header = () => {
     const navigate = useNavigate()
 
   return (
-    <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-around items-center border border-red-500'>
+    <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-around items-center'>
       <div onClick={navigate('')} className='flex gap-3 h-6 w-13'>
         <img src={Bahr2} className='w-full h-full inline' />
         <img src={Bahr} className='size-6 inline' />
