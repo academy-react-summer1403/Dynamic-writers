@@ -1,13 +1,18 @@
 import { Button, Checkbox, Input } from '@nextui-org/react'
 import { ErrorMessage, Field, Form } from 'formik'
 import React from 'react'
-import { LockPasswordIcon, MailLock02Icon, MailOpen01Icon, SecurityCheckIcon } from 'hugeicons-react'
+import { EnergyEllipseIcon, EyeIcon, LockPasswordIcon, MailLock02Icon, MailOpen01Icon, SecurityCheckIcon, ViewIcon } from 'hugeicons-react'
 import BahrLogo from '../../assets/Bahr.png'
 import { useNavigate } from 'react-router-dom'
 import '../../index.css'
 
 const FormGenerate = () => {
 
+  const navigate = useNavigate()
+
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
     <>
@@ -20,8 +25,18 @@ const FormGenerate = () => {
 
       <h2 className='mb-2 mt-5 font-bold'> رمز عبور </h2>
       <div className='w-full relative'>
-        <Field name="password" type="password" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
-        focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور خود را وارد کنید" />
+        <Field name="password" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+        focus:border-2 font-semibold relative pr-12' placeholder="رمزعبور خود را وارد کنید"
+                type={isVisible ? "password" : "text"} />
+
+
+        <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
+          {isVisible ? (
+            <EyeIcon className="text-2xl text-default-400 pointer-events-none" />
+          ) : (
+            <ViewIcon className="text-2xl text-default-400 pointer-events-none" />
+          )}
+        </button>
         <LockPasswordIcon className='absolute right-3 top-2 text-gray-500 focus:hidden' />
       </div>
 
@@ -34,7 +49,7 @@ const FormGenerate = () => {
         </div>
 
 
-        <Button color="primary" className='bg-blue-100 text-blue-400 rounded-full font-semibold h-7 min-w-40'>
+        <Button color="primary" onClick={() => navigate('/forgetPassword')} className='bg-blue-100 text-blue-400 rounded-full font-semibold h-7 min-w-40'>
         <SecurityCheckIcon /> فراموشی رمز عبور 
         </Button>
 

@@ -9,6 +9,8 @@ import Verify from '../screens/Login/verify';
 import Register from '../screens/Register/Register';
 import VerifyRegister from '../screens/Register/VerifyRegister';
 import RegisterStep3 from '../screens/Register/RegisterStep3';
+import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
+import ResetPassword from '../screens/ResetPassword/ResetPassword';
 
 function App() {
 
@@ -44,7 +46,15 @@ function App() {
     {
       path: '/registerAccount',
       element: <RegisterStep3 />
-    }
+    },
+    {
+      path: '/forgetPassword',
+      element: <ForgetPassword />
+    },
+    {
+      path: '/resetPassword/:configValue',
+      element: <ResetPassword />
+    },
 
   ])
 

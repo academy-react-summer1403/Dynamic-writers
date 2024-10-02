@@ -60,12 +60,12 @@ const LeftLogin = () => {
         if(user.message != null){
            notify() 
         }
-    }
-    else if(values.phoneOrGmail === ""){
-        notifyGmail()
-    }
-    else if(values.password === ""){
-        notifyPassword()
+        else if(values.phoneOrGmail == ""){
+            notifyGmail()
+        }
+        else if(values.password == ""){
+            notifyPassword()
+        }
     }
 
 

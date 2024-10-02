@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Formik } from 'formik';
-import { postLogin } from '../../../../core/services/api/auth';
 import BahrLogo from '../../../../assets/Bahr.png'
 import { MailEdit02Icon, PasswordValidationIcon, TimeQuarterPassIcon,  } from 'hugeicons-react'
 import VerificationInput from 'react-verification-input';
 import { Button, Link } from '@nextui-org/react';
 import Timer from './Timer';
 import { useNavigate } from 'react-router-dom';
+import { setItem } from '../../../../core/services/common/storage';
 
 const LeftVerify = () => {
 
   const navigate = useNavigate()
+
+  const [verificationCode, setVerificationCode] = useState()
+
+  const handleInputChange = (value) => {
+      setVerificationCode(value); 
+  };
+
+  const handleSubmit = () => {
+      setItem('verifyMessage', verificationCode)
+  };
 
   const verifyAgain = () => {
     
@@ -39,8 +49,8 @@ const LeftVerify = () => {
 
                 <div className='w-full flex flex-col gap-4'>
                     <span className='iranSansBold'> کد تایید </span>
-                    <VerificationInput name='verifyCode' classNames={{
-                            container: "flex flex-row-reverse gap-5 iranSans w-4/6 min-w-72",
+                    <VerificationInput name='verifyCode' length={5} onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
+                            container: "flex flex-row-reverse gap-5 iranSans w-4/6 min-w-80",
                             character: "rounded-xl border-none outline-none  bg-gray-100 text-sm p-1 size-12",
                             characterInactive: "bg-gray-100 text-2xl outline-none border-none text-sm",
                             characterSelected: "border-none outline-blue-500 text-black",

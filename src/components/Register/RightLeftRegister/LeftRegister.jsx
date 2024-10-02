@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import BahrLogo from '../../../assets/Bahr.png'
-import { MailEdit02Icon, PasswordValidationIcon, SmartPhone01Icon,  } from 'hugeicons-react'
+import { MailEdit02Icon, PasswordValidationIcon, SmartPhone01Icon, UserAccountIcon,  } from 'hugeicons-react'
 import VerificationInput from 'react-verification-input';
 import { Button, Link } from '@nextui-org/react';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -67,7 +67,7 @@ const LeftRegister = () => {
             <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </div>
-            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold' style={{direction: 'rtl'}}> 😍!به آکادمی بحر خوش اومدی </h2>
+            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap' style={{direction: 'rtl'}}> 😍!به آکادمی بحر خوش اومدی </h2>
             <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> لطفا برای ثبت نام شماره همراه خود را وارد کنید تا برای شما کد تایید ارسال شود </span>
 
         </div>
@@ -102,13 +102,17 @@ const LeftRegister = () => {
 
 
         <div className='w-4/6 flex flex-col items-end md:hidden mt-10'>
-        <div className='w-full h-16 my-8 flex items-center' style={{direction : 'rtl'}}> 
-            <div className='block w-14 h-12 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
-            <span className='inline iranSansBold mr-5 whitespace-nowrap w-full'> وارد کردن شماره همراه یا ایمیل </span>
+        <div className='w-5/6 h-16 my-8 flex items-center' style={{direction : 'rtl'}}> 
+            <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
+            <span className='inline text-xl font-semibold mr-5 whitespace-nowrap'> وارد کردن شماره همراه   </span>
         </div>
-        <div className='flex items-center w-full h-14' style={{direction : 'rtl'}} >
-            <div className='block size-12 bg-blue-600 rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-white'/> </div>
-            <span className='inline text-xl font-semibold mr-5 w-52 iranSansBold' style={{direction: 'rtl'}} >  تایید کد ارسال شده  </span>
+        <div className='flex items-center w-4/6 h-14' style={{direction : 'rtl'}} >
+            <div className='block size-12 min-w-14 min-h-14 bg-gray-200 rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-gray-700'/> </div>
+            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-52' style={{direction: 'rtl'}} >  تایید کد ارسال شده به شماره هماره </span>
+        </div>
+        <div className='flex items-center w-4/6 h-14 my-6' style={{direction : 'rtl'}} >
+            <div className='block size-12 min-w-14 min-h-14 bg-gray-200 rounded-full flex items-center'> <UserAccountIcon className='m-auto text-gray-700'/> </div>
+            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-52' style={{direction: 'rtl'}} >  وارد کردن اطلاعات حساب کاربری </span>
         </div>
         </div>
 
