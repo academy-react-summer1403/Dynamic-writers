@@ -8,14 +8,14 @@ import Root from '../screens/Root/Root';
 
 function App() {
 
-  const getList = async() => {
-    const result = await getCourserList(5);
-    console.log(result);
-  }
+  // const getList = async() => {
+  //   const result = await getCourserList(5);
+  //   console.log(result);
+  // }
 
-  useEffect(()=>{
-    getList();
-  },[])
+  // useEffect(()=>{
+  //   getList();
+  // },[])
 
   const router = createBrowserRouter([
     {
