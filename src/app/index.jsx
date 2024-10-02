@@ -5,6 +5,7 @@ import {getCourserList} from '../core/services/api/cours';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import Root from '../screens/Root/Root';
+import Landing from '../screens/Landing/Landing';
 
 function App() {
 
@@ -21,9 +22,12 @@ function App() {
     {
       path: '/',
       element: <Root />,
-      children: [{
-        
-      }]
+      children: [
+        {
+          path: '/landing',
+          element: <Landing />
+        },
+      ]
     }
   ])
 

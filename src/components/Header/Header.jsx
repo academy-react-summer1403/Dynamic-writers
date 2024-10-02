@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-around items-center'>
-      <div onClick={navigate('')} className='flex gap-3 h-6 w-13'>
+      <div onClick={() => navigate('')} className='flex gap-3 h-6 w-13'>
         <img src={Bahr2} className='w-full h-full inline' />
         <img src={Bahr} className='size-6 inline' />
       </div>
@@ -26,7 +26,7 @@ const Header = () => {
 
       <div className='flex flex-row-reverse items-center gap-2'>
         <div className='border border-slate-300 rounded-full p-2 cursor-pointer'> <Moon02Icon className='text-black size-4' /> </div>
-        <div onClick={navigate('')} className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold cursor-pointer'> ورود یا ثبت نام </div>
+        <div onClick={() => navigate('')} className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold cursor-pointer'> ورود یا ثبت نام </div>
 
       </div>
     </div>
