@@ -5,6 +5,8 @@ import BoxFirst from './Boxes/BoxFirst'
 import { Button } from '@nextui-org/react'
 import BoxSecond from './Boxes/BoxSecond'
 import BoxThird from './Boxes/BoxThird'
+import BoxFourth from './Boxes/BoxFourth'
+import BoxFifth from './Boxes/BoxFifth'
 
 function LandingCom() {
 
@@ -19,7 +21,7 @@ function LandingCom() {
       </div>
 
       <div className='flex text-3xl iranSansBold flex-row-reverse justify-center gap-2 mt-3'>
-        <span> از </span> <span className='text-blue-500'> مبتدی </span> <span> تا </span> <spam className='text-red-500'> !حرفه ای </spam>
+        <span> از </span> <span className='text-blue-500'> مبتدی </span> <span> تا </span> <span className='text-red-500'> !حرفه ای </span>
       </div>
 
       <div className='items-center gap-5 flex flex-col my-6'>
@@ -51,6 +53,21 @@ function LandingCom() {
       </div>
 
       <BoxThird />
+
+      <div className='mx-auto text-center'> 
+        <h2 className='text-2xl iranSansBold'> برترین اساتید هفته </h2>
+        <span className='text-gray-400 iranSansBold text-base'> اساتیدی که با نظرسنجی در دوره ها به انها بیشترین رای مثبت را دادند </span>
+      </div>
+
+      <BoxFourth />
+
+      <div className='mx-auto text-center'> 
+        <h2 className='text-2xl iranSansBold'> اخبار و مقالات هفته </h2>
+        <span className='text-gray-400 iranSansBold text-base'> خبر ها و مقاله هایی که در این هفته منتشر شدند </span>
+      </div>
+
+      <BoxFifth />
+
     </div>
   )
 }
