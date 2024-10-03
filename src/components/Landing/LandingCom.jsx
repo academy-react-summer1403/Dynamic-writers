@@ -54,14 +54,14 @@ function LandingCom() {
 
       <BoxThird />
 
-      <div className='mx-auto text-center'> 
+      <div className='mx-auto text-center my-5'> 
         <h2 className='text-2xl iranSansBold'> برترین اساتید هفته </h2>
         <span className='text-gray-400 iranSansBold text-base'> اساتیدی که با نظرسنجی در دوره ها به انها بیشترین رای مثبت را دادند </span>
       </div>
 
       <BoxFourth />
 
-      <div className='mx-auto text-center'> 
+      <div className='mx-auto text-center my-5'> 
         <h2 className='text-2xl iranSansBold'> اخبار و مقالات هفته </h2>
         <span className='text-gray-400 iranSansBold text-base'> خبر ها و مقاله هایی که در این هفته منتشر شدند </span>
       </div>
