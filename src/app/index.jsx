@@ -24,7 +24,7 @@ function App() {
       element: <Root />,
       children: [
         {
-          path: '/landing',
+          path: '/',
           element: <Landing />
         },
       ]
