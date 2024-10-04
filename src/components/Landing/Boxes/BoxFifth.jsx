@@ -25,7 +25,7 @@ const BoxFifth = () => {
     }, [])
 
     return (
-       <div className=' my-10 w-5/6 mx-auto flex gap-5 justify-between' style={{height: '450px'}}>
+       <div className=' my-10 w-5/6 mx-auto flex flex-col gap-5 justify-center md:flex-row border'>
             {newsTop.map((item, index) => {
                 return (
                     <NewsTop 

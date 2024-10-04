@@ -5,7 +5,7 @@ import { Calendar02Icon, EyeIcon, QuillWrite01Icon, QuillWrite02Icon, StudentIco
 const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, addUserFullName, currentView, newsCatregoryName, id, image}) => {
 
   return (
-    <div className='rounded-2xl w-96 bg-gray-200 relative overflow-hidden h-full'>
+    <div className='rounded-2xl min-w-80 max-w-96 bg-gray-200 relative overflow-hidden'>
         <img src={image} className='w-full rounded-xl h-40 bg-red-300 border-none' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
             <div className='bg-blue-500 text-white rounded-xl px-2'> {newsCatregoryName} </div>

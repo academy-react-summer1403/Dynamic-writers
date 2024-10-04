@@ -22,7 +22,7 @@ const BoxFourth = () => {
   }, [])
 
   return (
-    <div className='my-20 flex w-5/6 mx-auto gap-40'>
+    <div className='my-20 flex w-5/6 mx-auto gap-20 md:gap-40 md:flex-row flex-col'>
       <div className='border-3 rounded-xl grow h-64 relative flex flex-col items-center'>
         <div className='bg-gray-500 rounded-full p-7 size-10 absolute -top-7 '>
           <img />
@@ -41,7 +41,7 @@ const BoxFourth = () => {
 
         <Button href='' className='bg-blue-500 text-white text-sm iranSansBold w-5/6 rounded-full'> صفحه استاد </Button>
       </div>
-      <div className='border-2 rounded-xl grow scale-125 relative border-blue-500 h-64 flex flex-col items-center'>
+      <div className='border-2 rounded-xl grow md:scale-125 relative border-blue-500 h-64 flex flex-col items-center'>
         <div className='bg-gray-500 border-2 border-blue-500 rounded-full p-6 size-10 absolute -top-7 '>
           <img />
         </div>

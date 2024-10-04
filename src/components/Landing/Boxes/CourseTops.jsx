@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 const CourseTops = ({ title, describe, cost, date, likeCount, dissLikeCount, levelName, teacherName, courseRate, id, }) => {
 
   return (
-      <div className='rounded-2xl w-96 bg-gray-200 relative h-fit'>
+      <div className='rounded-2xl max-w-96 min-w-80 bg-gray-200 relative h-fit'>
           <img src="" className='w-full rounded-xl h-40 bg-red-300 border-none' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
               <div className='bg-blue-500 text-white rounded-xl px-2'> طراحی سایت </div>
