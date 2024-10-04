@@ -21,13 +21,21 @@ const BoxThird = () => {
 
     const [viewBetter, setViewBetter] = useState(false);
 
+    console.log(viewBetter)
+
     useEffect(() => { 
       getCourse()
+
+      if(window.innerWidth > 768){
+        setViewBetter(true)
+      }
+
     }, [])
+
 
   return (
     <>
-    <div className={`my-20 w-5/6 mx-auto flex flex-col gap-5 justify-center md:flex-row md:h-fit overflow-hidden`} style={{height: '800px'}}>
+    <div className={` my-20 w-5/6 mx-auto flex flex-col gap-5 justify-center md:flex-row md:h-fit overflow-hidden md:overflow-visible`} style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
       {course.map((item, index) => {
 
         return <CourseTops 
@@ -46,7 +54,11 @@ const BoxThird = () => {
 
         })}
     </div>
-    <Button onClick={() => {setViewBetter(true)}} className='text-white bg-blue-500 w-32 rounded-full mx-auto mb-20'> نمایش بیشتر </Button>
+    <Button onClick={() => {viewBetter ? setViewBetter(false) : setViewBetter(true)}} className='md:hidden text-white bg-blue-500 w-32 rounded-full mx-auto mb-20'>
+
+        {viewBetter ? "نمایش کمتر" : "نمایش بیشتر"}
+
+    </Button>
     </>
   )
 }

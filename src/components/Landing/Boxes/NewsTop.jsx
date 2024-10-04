@@ -5,7 +5,7 @@ import { Calendar02Icon, EyeIcon, QuillWrite01Icon, QuillWrite02Icon, StudentIco
 const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, addUserFullName, currentView, newsCatregoryName, id, image}) => {
 
   return (
-    <div className='rounded-2xl min-w-80 max-w-96 bg-gray-200 relative overflow-hidden'>
+    <div className='rounded-2xl min-w-80 max-w-96 bg-gray-200 relative h-fit' style={{height: '410px'}}>
         <img src={image} className='w-full rounded-xl h-40 bg-red-300 border-none' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
             <div className='bg-blue-500 text-white rounded-xl px-2'> {newsCatregoryName} </div>
@@ -18,7 +18,7 @@ const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, 
             <div className='flex flex-row-reverse gap-3 my-2'> <QuillWrite02Icon className='text-slate-700'/> <span className='text-base font-semibold'> {(addUserFullName).replace('-', ' ')} </span> </div>
             <div className='flex flex-row-reverse gap-3 my-2'> <EyeIcon className='text-slate-700'/> <span className='text-base font-semibold'> {currentView} </span> </div>
         </div>
-        <div className='w-full flex px-3 gap-10 items-center my-3'>
+        <div className='w-full flex px-3 gap-10 items-center my-0'>
             <Button className='bg-blue-500 text-white rounded-full'> بیشتر بخوانید </Button>
             <div className='flex gap-2'> {currentDissLikeCount} <ThumbsDownIcon /> </div>
             <div className='flex gap-2'> {currentLikeCount} <ThumbsUpIcon /> </div>

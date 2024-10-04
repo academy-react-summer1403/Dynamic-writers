@@ -903,6 +903,11 @@ video {
   margin-bottom: auto;
 }
 
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .-mr-2 {
   margin-right: -0.5rem;
 }
@@ -921,6 +926,10 @@ video {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .mb-5 {
@@ -973,14 +982,6 @@ video {
 
 .mt-9 {
   margin-top: 2.25rem;
-}
-
-.ml-5 {
-  margin-left: 1.25rem;
-}
-
-.mb-20 {
-  margin-bottom: 5rem;
 }
 
 .box-border {
@@ -1214,8 +1215,12 @@ video {
   height: 33.333333%;
 }
 
-.h-96 {
-  height: 24rem;
+.h-1\/6 {
+  height: 16.666667%;
+}
+
+.h-60 {
+  height: 15rem;
 }
 
 .max-h-64 {
@@ -1331,6 +1336,10 @@ video {
   width: 50%;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -1365,6 +1374,10 @@ video {
 
 .w-8 {
   width: 2rem;
+}
+
+.w-80 {
+  width: 20rem;
 }
 
 .w-9 {
@@ -1421,12 +1434,8 @@ video {
   width: 100vw;
 }
 
-.w-80 {
-  width: 20rem;
-}
-
-.w-32 {
-  width: 8rem;
+.w-4\/6 {
+  width: 66.666667%;
 }
 
 .min-w-10 {
@@ -1964,6 +1973,10 @@ video {
   gap: 2.5rem;
 }
 
+.gap-14 {
+  gap: 3.5rem;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
@@ -1994,10 +2007,6 @@ video {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-14 {
-  gap: 3.5rem;
 }
 
 .gap-x-0\.5 {
@@ -2348,9 +2357,9 @@ video {
   border-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-border-opacity)));
 }
 
-.border-red-500 {
+.border-black {
   --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-x-transparent {
@@ -2674,6 +2683,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
+
 .bg-stripe-gradient {
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent);
 }
@@ -2708,10 +2722,6 @@ video {
   padding: 0.25rem;
 }
 
-.p-10 {
-  padding: 2.5rem;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
@@ -2728,16 +2738,16 @@ video {
   padding: 1rem;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
 
 .p-7 {
   padding: 1.75rem;
-}
-
-.p-5 {
-  padding: 1.25rem;
 }
 
 .\!px-1 {
@@ -2901,10 +2911,6 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pl-5 {
-  padding-left: 1.25rem;
 }
 
 .text-left {
@@ -8205,10 +8211,6 @@ video {
     height: fit-content;
   }
 
-  .md\:w-80 {
-    width: 20rem;
-  }
-
   .md\:w-5\/6 {
     width: 83.333333%;
   }
@@ -8237,6 +8239,10 @@ video {
 
   .md\:gap-40 {
     gap: 10rem;
+  }
+
+  .md\:overflow-visible {
+    overflow: visible;
   }
 
   .md\:text-3xl {
