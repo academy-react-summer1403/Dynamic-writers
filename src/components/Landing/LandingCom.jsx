@@ -7,10 +7,18 @@ import BoxSecond from './Boxes/BoxSecond'
 import BoxThird from './Boxes/BoxThird'
 import BoxFourth from './Boxes/BoxFourth'
 import BoxFifth from './Boxes/BoxFifth'
+import { GetTeachersList } from '../../core/services/api/teachersTop'
 
 function LandingCom() {
 
     const navigate = useNavigate()
+
+    const getTeachers = async () => {
+
+      const response = await GetTeachersList()
+
+      console.log(response)
+    }
 
   return (
     <div className='iranSans my-10 flex flex-col w-dvw'>
@@ -54,14 +62,14 @@ function LandingCom() {
 
       <BoxThird />
 
-      <div className='mx-auto text-center my-5'> 
+      <div className='mx-auto text-center'> 
         <h2 className='text-2xl iranSansBold'> برترین اساتید هفته </h2>
         <span className='text-gray-400 iranSansBold text-base'> اساتیدی که با نظرسنجی در دوره ها به انها بیشترین رای مثبت را دادند </span>
       </div>
 
       <BoxFourth />
 
-      <div className='mx-auto text-center my-5'> 
+      <div className='mx-auto text-center mt-10'> 
         <h2 className='text-2xl iranSansBold'> اخبار و مقالات هفته </h2>
         <span className='text-gray-400 iranSansBold text-base'> خبر ها و مقاله هایی که در این هفته منتشر شدند </span>
       </div>
