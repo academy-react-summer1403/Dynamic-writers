@@ -2,6 +2,7 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import Root from '../screens/Root';
+import CourseListRout from '../screens/CourseListRout';
 
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
       children: [
 
         {
-
+          path: '/courseList',
+          element: <CourseListRout />
         }
 
       ]
