@@ -14,10 +14,10 @@ const SortView1 = () => {
             <div className='flex gap-5 flex-row-reverse'>
                 <input type='radio' name='sort' id='sort1' className='hidden'/>
                 <label htmlFor='sort1' className='cursor-pointer font-bold bg-blue-500 text-white text-sm border-2 p-2 px-3 rounded-full'>  پرطرفدار تین  </label>
-                <input type='radio' name='sort' id='sort1' className='hidden'/>
-                <label htmlFor='sort1' className='cursor-pointer font-bold text-sm border-2 p-2 px-3 rounded-full'>  محبوب تین  </label>
-                <input type='radio' name='sort' id='sort1' className='hidden'/>
-                <label htmlFor='sort1' className='cursor-pointer font-bold text-sm border-2 p-2 px-3 rounded-full'>  پرامتیاز تین  </label>
+                <input type='radio' name='sort' id='sort2' className='hidden'/>
+                <label htmlFor='sort2' className='cursor-pointer font-bold text-sm border-2 p-2 px-3 rounded-full'>  محبوب تین  </label>
+                <input type='radio' name='sort' id='sort3' className='hidden'/>
+                <label htmlFor='sort3' className='cursor-pointer font-bold text-sm border-2 p-2 px-3 rounded-full'>  پرامتیاز تین  </label>
             </div>
             <span className='border h-6 border-gray-400'> </span>
             <Button className='border border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse'>
