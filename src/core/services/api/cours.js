@@ -1,9 +1,9 @@
 import http from '../interceptor'
 // import { baseUrl } from "../../../config";
 
-export const getCourserList = async(count) => {
+export const getCourseList = async() => {
   try {
-  const result = await http.get(`/Home/GetCoursesTop?Count=${count}`);
+  const result = await http.get(`/Home/GetCoursesTop/`);
 
   return result;
   
