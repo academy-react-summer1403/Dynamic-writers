@@ -40,6 +40,7 @@ const CourseList = () => {
         </div>
 
         <CourseView1 />
+
     </div>
   )
 }

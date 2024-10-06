@@ -7,12 +7,17 @@ import { getItem, setItem } from '../../../core/services/common/storage'
 import { Pagination } from '@nextui-org/react'
 import { getCourseCount } from '../../../core/services/api/courseCount'
 import FilterCourse from '../FilterCourse/FilterCourse'
+import { getTeacherList } from '../../../core/services/api/teachers'
+import { useNavigate } from 'react-router-dom'
 
 const CourseView1 = () => {
 
   const [courses, setCourses] = useState([])
   const [searchData, setSearchData] = useState()
   const [totalCount, setTotalCount] = useState()
+  const [teachers, setTeachers] = useState()
+
+  const navigate = useNavigate()
 
   const getCourses = async () => {
 
@@ -26,8 +31,18 @@ const CourseView1 = () => {
 
   }
 
+  const getTeachers = async () => {
+
+    const resT = await getTeacherList()
+
+    setTeachers(resT)
+
+  }
+  
+
   useEffect(() => {
     getCourses()
+    getTeachers()
   }, [])
 
   return (
@@ -38,7 +53,9 @@ const CourseView1 = () => {
 
         <div className='flex'>
 
-          <FilterCourse />
+          <FilterCourse 
+            teachers={teachers}
+          />
 
           <div className='w-9/12 h-fit flex flex-wrap gap-6 flex-row-reverse py-5'>
 
@@ -68,7 +85,7 @@ const CourseView1 = () => {
         </div>
 
         <div className='w-full flex justify-end px-8 py-10'>
-          <Pagination isCompact showControls total={totalCount} initialPage={1} />
+          <Pagination onChange={(PageNumber) => navigate(`?PageNumber=${PageNumber}`)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
