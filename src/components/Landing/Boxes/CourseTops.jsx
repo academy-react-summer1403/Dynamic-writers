@@ -31,7 +31,7 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
               <div className='flex gap-2 items-center text-gray-700'> {dissLikeCount} <ThumbsDownIcon /> </div>
               <div className='flex gap-2 items-center text-gray-700'> {likeCount} <ThumbsUpIcon /> </div>
             </div>
-            <div className='text-blue-500 flex flex-row gap-2 items-end my-4 text-xl'> تومان  <span className='font-semibold text-black'> {cost} </span> </div>
+            <div className='text-blue-500 flex flex-row gap-2 items-end my-4 text-sm'> تومان  <span className='text-xl font-semibold text-black'> {cost} </span> </div>
         </div>
     </div>
   )
