@@ -42,14 +42,17 @@ const BoxThird = () => {
           key={index}
           id={item.courseId}
           title={item.title}
-          description={item.describe}
-          date={(moment(item.lastUpdate).format('jYYYY/jM/jD'))}
+          describe={item.describe}
+          date={(moment(item.lastUpdate).format('jYYYY / jM / jD'))}
           levelName={item.levelName}
           dissLikeCount={item.dissLikeCount}
           likeCount={item.likeCount}
           teacherName={item.teacherName}
-          courseRate={item.courseRate}
+          currentUserRateNumber={item.currentUserRateNumber}
           cost={(parseInt(item.cost).toLocaleString('en-US'))}
+          tumbImageAddress={item.tumbImageAddress}
+          statusName={item.statusName}
+          typeName={item.typeName}
         />
 
         })}
