@@ -39,17 +39,7 @@
   border: none;
 }
 
-.inputPages {
-  display: none;
-}
-
-.labelPages{
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.inputPages:checked + .labelPages{
+.inputSort:checked + .labelSort{
   background-color: rgb(74, 74, 255);
   color: white;
 }

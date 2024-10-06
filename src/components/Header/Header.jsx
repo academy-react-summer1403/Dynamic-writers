@@ -11,7 +11,7 @@ const Header = () => {
     const navigate = useNavigate()
 
   return (
-    <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-between px-2 items-center md:justify-around'>
+    <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-around items-center md:justify-between px-14 font-semibold'>
       <div onClick={() => navigate('')} className='flex gap-3 h-6 w-13'>
         <img src={Bahr2} className='w-full h-full hidden md:inline' />
         <img src={Bahr} className='size-6 inline' />
