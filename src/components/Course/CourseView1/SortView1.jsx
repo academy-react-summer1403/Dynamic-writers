@@ -2,15 +2,20 @@ import React, { useState } from 'react'
 import { Button, Input, Select } from '@nextui-org/react'
 import { Cancel01Icon, CellsIcon, GridViewIcon, Layers01Icon, Layout3RowIcon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
 import { useNavigate } from 'react-router-dom'
+import { setItem } from '../../../core/services/common/storage'
 
-const SortView1 = () => {
+const SortView1 = ({ changeView }) => {
+
+  const navigate = useNavigate()
 
   return (
-    <div className='flex gap-5 items-center flex-row-reverse px-3 py-2 iranSans'>
+    <div className='hidden gap-5 items-center flex-row-reverse px-3 py-2 iranSans md:flex'>
         <div className='flex gap-2 flex-row-reverse'>
-            <GridViewIcon className='size-5 text-blue-500' />
-            <Layout3RowIcon className='size-5' />
-            </div>
+          <input type='radio' name='view' id='view1' checked className='hidden inputView'/>
+          <label htmlFor='view1' className='labelView' onClick={() => {changeView('view1')}} > <GridViewIcon className='size-5' /> </label>
+          <input type='radio' name='view' id='view2' className='hidden inputView'/>
+          <label onClick={() => {changeView('view2')}} htmlFor='view2' className='labelView'> <Layout3RowIcon className='size-5' /> </label>
+        </div>
             <span className='border h-5 border-gray-400'> </span>
             <span className='text-gray-600'> ترتیب </span>
             <div className='flex gap-4 flex-row-reverse items-center'>

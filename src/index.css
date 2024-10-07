@@ -43,3 +43,7 @@
   background-color: rgb(74, 74, 255);
   color: white;
 }
+
+.inputView:checked + .labelView{
+  color: rgb(74, 74, 255);
+}

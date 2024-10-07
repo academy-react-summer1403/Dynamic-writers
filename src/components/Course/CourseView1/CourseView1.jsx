@@ -9,6 +9,7 @@ import { getCourseCount } from '../../../core/services/api/courseCount'
 import FilterCourse from '../FilterCourse/FilterCourse'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import { useNavigate } from 'react-router-dom'
+import CoursesView2 from './CoursesView2'
 
 const CourseView1 = () => {
 
@@ -16,6 +17,9 @@ const CourseView1 = () => {
   const [searchData, setSearchData] = useState()
   const [totalCount, setTotalCount] = useState()
   const [teachers, setTeachers] = useState()
+  
+  const initialView = localStorage.getItem('view') || "view1"
+  const [view, setView] = useState(initialView)
 
   const navigate = useNavigate()
 
@@ -38,18 +42,29 @@ const CourseView1 = () => {
     setTeachers(resT)
 
   }
-  
 
   useEffect(() => {
     getCourses()
     getTeachers()
+
+    console.log(view)
   }, [])
+
+  useEffect(() => {
+    setItem('view', view)
+  }, [view])
+
+  const changeView = (viewO) => {
+    setView(viewO)
+  }
 
   return (
     <div className='my-20 h-fit w-dvw iranSans font-semibold'>
       <div className='rounded-3xl mx-auto border-3 px-3 h-fit' style={{width: '94%'}}>
 
-        <SortView1 />
+        <SortView1 
+          changeView={changeView}
+        />
 
         <div className='flex'>
 
@@ -59,8 +74,8 @@ const CourseView1 = () => {
 
           <div className='w-9/12 h-fit flex flex-wrap gap-6 flex-row-reverse py-5'>
 
-            {courses.map((item, index) => {
-
+            {view === 'view1' && courses.map((item,index) => {
+            
               return <CoursesView1
                 key={index}
                 id={item.courseId}
@@ -77,8 +92,29 @@ const CourseView1 = () => {
                 cost={(parseInt(item.cost).toLocaleString('en-US'))}
                 statusName={item.statusName}
               />
-
+              
             })}
+
+            {view === 'view2' && courses.map((item,index) => {
+            
+            return <CoursesView2
+              key={index}
+              id={item.courseId}
+              title={item.title}
+              describe={item.describe}
+              date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+              levelName={item.levelName}
+              dissLikeCount={item.dissLikeCount}
+              likeCount={item.likeCount}
+              teacherName={item.teacherName}
+              currentRegistrants={item.currentRegistrants}
+              technologyList={(item.technologyList)}
+              tumbImageAddress={item.tumbImageAddress}
+              cost={(parseInt(item.cost).toLocaleString('en-US'))}
+              statusName={item.statusName}
+            />
+            
+          })}
 
           </div>
 
