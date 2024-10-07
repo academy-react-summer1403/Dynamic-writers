@@ -72,7 +72,7 @@ const CourseView1 = () => {
             teachers={teachers}
           />
 
-          <div className='w-9/12 h-fit flex flex-wrap gap-6 flex-row-reverse py-5'>
+          <div className='md:w-9/12 w-full h-1/6 overflow-hidden md:h-fit flex flex-wrap gap-6 flex-row-reverse py-5'>
 
             {view === 'view1' && courses.map((item,index) => {
             

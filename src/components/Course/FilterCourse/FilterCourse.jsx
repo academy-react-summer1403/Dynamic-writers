@@ -19,7 +19,7 @@ const FilterCourse = ({ teachers }) => {
     }
 
   return (
-    <div className='bg-gray-100 rounded-3xl w-80 p-5 flex flex-col gap-5 font-semibold' style={{height: '620px'}}>
+    <div className='bg-gray-100 rounded-3xl w-80 p-5 md:flex flex-col gap-5 font-semibold hidden' style={{height: '620px'}}>
 
     <div className='flex flex-col gap-6'>
     <div className='flex items-center flex-row-reverse gap-2'>
