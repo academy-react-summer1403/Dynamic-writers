@@ -30,7 +30,7 @@ const FilterCourse = ({ teachers }) => {
 
     <Formik
         initialValues={{search: ''}}
-        onSubmit={(value) => navigate(`?Query=${value.search}`)}
+        onSubmit={(value) => navigate(`?PageNumber=${pageNumber}&Query=${value.search}`)}
     >
            
         <Form>

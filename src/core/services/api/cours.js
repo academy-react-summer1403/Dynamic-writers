@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 
 export const getCourseList = async (pageNumber, Query, RowsOfPage) => {
   try {
-  const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${Number(pageNumber)}&RowsOfPage=9`)
+  const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${Number(pageNumber)}&RowsOfPage=9&Query=${Query}`)
 
   return result;
   

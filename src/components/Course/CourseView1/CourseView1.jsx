@@ -117,6 +117,7 @@ const CourseView1 = () => {
 
           <FilterCourse 
             teachers={teachers}
+            pageNumber={pageNumber}
           />
 
           <div className='md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
@@ -168,7 +169,7 @@ const CourseView1 = () => {
         </div>
 
         <div className='w-full flex justify-center md:justify-end md:px-3 py-10'>
-          <Pagination className='min-w-80 w-fit' onChange={(PageNumber) => navigate(`PageNumber=${PageNumber}`)} isCompact showControls total={totalCount} initialPage={1} />
+          <Pagination className='min-w-80 w-fit' onChange={(PageNumber) => navigate(`?PageNumber=${PageNumber}`)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
