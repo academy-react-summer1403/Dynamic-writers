@@ -7,8 +7,8 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
   const navigate = useNavigate()
   
   return (
-    <div onClick={() => navigate('')} className='rounded-3xl bg-gray-200 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
-        <div className='relative w-full rounded-xl h-56 bg-red-300 border-none'>
+    <div onClick={() => navigate('')} className='rounded-3xl bg-gray-100 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
+        <div className='relative w-full rounded-xl h-56 bg-red-300 border'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
               <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {technologyList} </div>

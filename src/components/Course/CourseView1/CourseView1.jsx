@@ -4,12 +4,15 @@ import CoursesView1 from './CoursesView1'
 import { getCourseList } from '../../../core/services/api/cours'
 import jMoment from 'moment-jalaali'
 import { getItem, setItem } from '../../../core/services/common/storage'
-import { Pagination } from '@nextui-org/react'
+import { Button, Pagination } from '@nextui-org/react'
 import { getCourseCount } from '../../../core/services/api/courseCount'
 import FilterCourse from '../FilterCourse/FilterCourse'
 import { getTeacherList } from '../../../core/services/api/teachers'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import CoursesView2 from './CoursesView2'
+import FilterCourseRes from '../FilterCourse/FilterCourseRes'
+import { Search01Icon } from 'hugeicons-react'
+import SearchRes from '../FilterCourse/SearchRes'
 
 const CourseView1 = () => {
 
@@ -17,20 +20,50 @@ const CourseView1 = () => {
   const [searchData, setSearchData] = useState()
   const [totalCount, setTotalCount] = useState()
   const [teachers, setTeachers] = useState()
+
+  const [filterRes, setFilterRes] = useState(false)
+  const [searchDiv, setSearchDiv] = useState(false)
   
-  const initialView = localStorage.getItem('view') || "view1"
+  const initialView = getItem('view') || "view1"
   const [view, setView] = useState(initialView)
+
+  const [windowWidth , setWindowWidth] = useState(window.innerWidth)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+  const pageNumber = searchParams.get('PageNumber') || 1
+  const Query = searchParams.get('Query') || null
+  const RowsOfPage = searchParams.get('RowsOfPage')
+
+  useEffect(() => {
+    if(pageNumber || Query || RowsOfPage) {
+      getCourses()
+    }
+  }, [pageNumber, Query, RowsOfPage])
+
+  const handleResize = () => {
+    setWindowWidth(windowWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+
+    window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if(windowWidth < 768) {
+      navigate('?RowsOfPage=3')
+    }
+  }, [windowWidth])
 
   const navigate = useNavigate()
 
   const getCourses = async () => {
 
-    const response = await getCourseList()
-    // console.log(response.courseFilterDtos)
+    const response = await getCourseList(pageNumber, Query, RowsOfPage)
     const res = await getCourseCount()
 
-    setItem('totalCount', res)
-    setTotalCount(parseInt(getItem('totalCount') / 9));
+    setTotalCount(parseInt(res / 9));
     setCourses(response.courseFilterDtos)
 
   }
@@ -43,11 +76,16 @@ const CourseView1 = () => {
 
   }
 
+  const closeFilter = () => {
+
+    setFilterRes(false)
+  }
+
   useEffect(() => {
     getCourses()
     getTeachers()
 
-    console.log(view)
+    setView('view1')
   }, [])
 
   useEffect(() => {
@@ -57,14 +95,23 @@ const CourseView1 = () => {
   const changeView = (viewO) => {
     setView(viewO)
   }
+  
 
   return (
+    <>
+    {filterRes === true && <FilterCourseRes closeFilter={closeFilter} />}
     <div className='my-20 h-fit w-dvw iranSans font-semibold'>
-      <div className='rounded-3xl mx-auto border-3 px-3 h-fit' style={{width: '94%'}}>
+      <div className='rounded-3xl mx-auto border-3 pl-3 h-fit' style={{width: '94%'}}>
 
         <SortView1 
           changeView={changeView}
         />
+
+        <div className='flex justify-between w-full items-center'>
+          {windowWidth < 768 && <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>}
+          {windowWidth < 768 && searchDiv === false && <Search01Icon className='size- cursor-pointer mx-3' onClick={() => {setSearchDiv(true)}} />}
+          {searchDiv === true && <SearchRes />}
+        </div>
 
         <div className='flex'>
 
@@ -72,7 +119,7 @@ const CourseView1 = () => {
             teachers={teachers}
           />
 
-          <div className='md:w-9/12 w-full h-1/6 overflow-hidden md:h-fit flex flex-wrap gap-6 flex-row-reverse py-5'>
+          <div className='md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
 
             {view === 'view1' && courses.map((item,index) => {
             
@@ -120,12 +167,13 @@ const CourseView1 = () => {
 
         </div>
 
-        <div className='w-full flex justify-end px-8 py-10'>
-          <Pagination onChange={(PageNumber) => navigate(`?PageNumber=${PageNumber}`)} isCompact showControls total={totalCount} initialPage={1} />
+        <div className='w-full flex justify-center md:justify-end md:px-3 py-10'>
+          <Pagination className='min-w-80 w-fit' onChange={(PageNumber) => navigate(`PageNumber=${PageNumber}`)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
     </div>
+    </>
   )
 }
 

@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <div className='iranSans font-semibold flex justify-start flex-col gap-32 w-80 my-10 p-5 bg-gray-200 rounded-xl h-fit md:flex-row-reverse' style={{width: '1320px'}}>
+    <div className='w-dvw'>
+    <div className='iranSans font-semibold flex justify-start flex-col gap-32 w-11/12 my-10 md:w-11/12 mx-auto p-5 bg-gray-200 rounded-xl h-fit md:flex-row-reverse'>
       <div className='flex flex-row-reverse justify-center items-center gap-10 h-full px-2 md:flex-col'>
         <div className='flex flex-col-reverse'>
             <img src={Bahr2} className='w-20 h-4 inline' />
@@ -60,6 +61,7 @@ const Footer = () => {
         </div>
       </div>
 
+    </div>
     </div>
   )
 }

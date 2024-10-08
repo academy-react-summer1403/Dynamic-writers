@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { getItem } from '../common/storage';
 import http from '../interceptor'
+import { useSearchParams } from 'react-router-dom';
 // import { baseUrl } from "../../../config";
 
-export const getCourseList = async() => {
+export const getCourseList = async (pageNumber, Query, RowsOfPage) => {
   try {
-  const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=1&RowsOfPage=9&SortingCol=Active&SortType=DESC&TechCount=0`)
+  const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${Number(pageNumber)}&RowsOfPage=9`)
 
   return result;
   
