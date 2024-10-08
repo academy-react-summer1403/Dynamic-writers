@@ -5,17 +5,9 @@ import {getCourserList} from '../core/services/api/cours';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import Root from '../screens/Root';
+import News from '../screens/News';
 
 function App() {
-
-  const getList = async() => {
-    const result = await getCourserList(5);
-    console.log(result);
-  }
-
-  useEffect(()=>{
-    getList();
-  },[])
 
   const router = createBrowserRouter([
     {
@@ -23,8 +15,8 @@ function App() {
       element: <Root />,
       children: [
         {
-          path: '/landing'
-          
+          path: '/landing',
+          element: <News />
         }
       ]
     }
