@@ -39,7 +39,7 @@ const NewsList = () => {
                   miniDescribe = {item.miniDescribe}
                   currentView = {item.currentView}
                   currentImageAddressTumb={item.currentImageAddressTumb}
-                  insertDate={jMoment(item.insertDate)}
+                  insertDate={jMoment((item.insertDate).format('jYYYY / jM / jD'))}
                   addUserFullName={item.addUserFullName}
                   id={item.id}
                   newsCatregoryId={item.newsCatregoryId}
