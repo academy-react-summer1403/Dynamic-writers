@@ -3,6 +3,7 @@ import { Field, Formik } from 'formik'
 import { CellsIcon, Search01Icon } from 'hugeicons-react'
 import React from 'react'
 import { Form } from 'react-router-dom'
+import { DatePicker } from "zaman"
 
 const FilterNews = () => {
   return (
@@ -27,11 +28,21 @@ const FilterNews = () => {
 
             </div>
         </div>
-        <div className='flex flex-col gap-2.5 w-full items-start'>
+        <div className='flex flex-col gap-2 w-full items-start'>
 
             <div className='flex flex-row-reverse gap-2'> <span className='text-base font-semibold'> دسته بندی </span> <CellsIcon /> </div>
 
-            <Select className=''></Select>
+            <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
+                
+            </Select>
+
+        </div>
+
+        <div className='flex flex-col gap-2 w-full items-start'>
+
+            <div className='flex flex-row-reverse gap-2'> <span className='text-base font-semibold'> تاریخ انتشار </span> <CellsIcon /> </div>
+
+            <DatePicker />
 
         </div>
     </div>
