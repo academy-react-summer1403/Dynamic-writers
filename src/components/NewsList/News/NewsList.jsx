@@ -4,6 +4,7 @@ import FilterNews from './Filter/FilterNews'
 import { Pagination } from '@nextui-org/react'
 import NewsItem from './NewsItem/NewsItem'
 import { getNewsList } from '../../../core/services/api/news'
+import jMoment from 'moment-jalaali'
 
 const NewsList = () => {
 
