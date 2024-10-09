@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import SortNews from './Sort/SortNews'
 import FilterNews from './Filter/FilterNews'
-import { Pagination } from '@nextui-org/react'
+import { Button, Pagination } from '@nextui-org/react'
 import NewsItem from './NewsItem/NewsItem'
 import { getNewsList } from '../../../core/services/api/news'
 import jMoment from 'moment-jalaali'
 import { getNewsCount } from '../../../core/services/api/NewsCount'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import NewsItemsRes from '../Responsive/NewsList/NewsItemsRes'
+import { Search01Icon } from 'hugeicons-react'
 
 const NewsList = () => {
 
@@ -44,13 +45,21 @@ const NewsList = () => {
     <div className='w-dvw'>
       <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between'>
         
-        <div className='flex flex-col gap-5 w-9/12 items-end'>
+        <div className='flex flex-col gap-5 md:w-9/12 w-full items-end'>
 
             <SortNews />
 
+            <div className='flex justify-between items-center md:hidden w-full'>
+
+              <Button className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
+
+              <Search01Icon className='size-6 cursor-pointer' />
+
+            </div>
+
             <div className='flex flex-col gap-8'>
 
-              {window.innerWidth < 768 &&
+              {window.innerWidth < 1058 &&
               
               news.map((item,index) => {
 
@@ -68,11 +77,12 @@ const NewsList = () => {
                   newsCatregoryName={item.newsCatregoryName}
                   currentDissLikeCount={item.currentDissLikeCount}
                   keyword={item.keyword}
+                  addUserProfileImage={item.addUserProfileImage}
                 />
 
               })}
 
-              {window.innerWidth > 768 &&
+              {window.innerWidth > 1058 &&
               
               news.map((item,index) => {
 
@@ -90,6 +100,7 @@ const NewsList = () => {
                   newsCatregoryName={item.newsCatregoryName}
                   currentDissLikeCount={item.currentDissLikeCount}
                   keyword={item.keyword}
+                  addUserProfileImage={item.addUserProfileImage}
                 />
 
               })}
