@@ -31,9 +31,9 @@ const NewsCom = () => {
         <StarIcon className='text-blue-500 rounded-full bg-blue-500 size-1 absolute -bottom-5 left-5' />
       </div>
 
-      <div className='flex flex-col items-center justify-center gap-2 text-gray-500 text-sm my-10'>
-        <span className='text-sm' style={scrollPos > 0 ? {display: 'none'} : {display: 'flex'}}> لیست اخبار و مقالات </span>
-        <ArrowDown01Icon style={scrollPos > 0 ? {display: 'none'} : {display: 'flex'}} />
+      <div className='flex flex-col items-center justify-center gap-2 text-gray-500 text-sm my-10'  style={scrollPos > 0 ? {display: 'none'} : {display: 'flex'}}>
+        <span className='text-sm' > لیست اخبار و مقالات </span>
+        <ArrowDown01Icon />
       </div>
 
       <NewsList />
