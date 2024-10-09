@@ -21,7 +21,7 @@ const FilterCourseRes = ({ closeFilter }) => {
     const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
   return (
-    <div className={`bg-white rounded-t-3xl w-dvw p-5 flex flex-col gap-3 font-semibold text-sm absolute bottom-${scrollPosition.y} right-0 z-50 h-fit`}>
+    <div className={`bg-white rounded-t-3xl w-dvw p-5 flex flex-col gap-3 font-semibold text-sm fixed bottom-${scrollPosition.y} right-0 z-50 h-fit`}>
     <div className='border-2 w-10 mx-auto cursor-pointer'></div>
     <div className='flex flex-row-reverse justify-between item-center'>
         <h2 className='font-extrabold'> ترتیب و فیلتر </h2>

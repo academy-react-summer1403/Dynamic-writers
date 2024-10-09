@@ -40,16 +40,6 @@ const CourseView1 = () => {
     }
   }, [pageNumber, Query, RowsOfPage])
 
-  const handleResize = () => {
-    setWindowWidth(windowWidth)
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-
-    window.removeEventListener('resize', handleResize)
-  }, [])
-
   useEffect(() => {
     if(windowWidth < 768) {
       navigate('?RowsOfPage=3')
@@ -107,7 +97,7 @@ const CourseView1 = () => {
           changeView={changeView}
         />
 
-        <div className='flex justify-between w-full items-center'>
+        <div className='flex justify-between w-full items-center px-2'>
           {windowWidth < 768 && <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>}
           {windowWidth < 768 && searchDiv === false && <Search01Icon className='size- cursor-pointer mx-3' onClick={() => {setSearchDiv(true)}} />}
           {searchDiv === true && <SearchRes />}

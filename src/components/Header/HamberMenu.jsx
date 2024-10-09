@@ -7,7 +7,7 @@ const HamberMenu = ({ closeHamber }) => {
   const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
   return (
-    <div className={`bg-white absolute rounded-t-3xl bottom-${scrollPosition.y} right-0 w-full h-fit font-semibold z-10`}>
+    <div className={`bg-white fixed rounded-t-3xl bottom-${scrollPosition.y} right-0 w-full h-fit font-semibold z-10`}>
     <div className='border-2 w-10 mx-auto cursor-pointer' onClick={closeHamber}></div>
       <div className='w-full flex flex-col gap-6 p-5'>
         <div className='text-sm flex flex-row-reverse justify-between w-full'>
