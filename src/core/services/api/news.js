@@ -1,11 +1,12 @@
 import http from '../interceptor'
 // import { baseUrl } from "../../../config";
 
-export const getNewsList = async(count) => {
+export const getNewsList = async(pageNumber) => {
   try {
-  const result = await http.get(`/News?PageNumber=1&RowsOfPage=9`);
+  // alert(pageNumber)
+  const result = await http.get(`/News?PageNumber=${pageNumber}&RowsOfPage=8`);
 
-  return result;
+  return result.news;
   
   } catch (error) {
   console.log(error);
