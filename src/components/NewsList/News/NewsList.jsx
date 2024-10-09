@@ -10,6 +10,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import NewsItemsRes from '../Responsive/NewsList/NewsItemsRes'
 import { Search01Icon } from 'hugeicons-react'
 import FilterResNews from '../Responsive/Filter/FilterResNews'
+import SearchRes from '../Responsive/Search/SearchRes'
 
 const NewsList = () => {
 
@@ -19,7 +20,9 @@ const NewsList = () => {
   const [news, setNews] = useState([])
   const [pages, setPages] = useState(0)
   const pageNum = searchParams.get('PageNumber') || 1
+
   const [closeFilter, setCloseFilter] = useState(false)
+  const [closeSearchBol, setCloseSearchBol] = useState(false)
 
   useEffect(() => {
 
@@ -43,6 +46,11 @@ const NewsList = () => {
     setCloseFilter(false)
   }
 
+  const closeSearch = () => {
+
+    setCloseSearchBol(false)
+  }
+
   useEffect(() => {
 
     getNews()
@@ -63,7 +71,8 @@ const NewsList = () => {
 
               <Button onClick={() => setCloseFilter(true)} className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
 
-              <Search01Icon className='size-6 cursor-pointer' />
+              {!closeSearchBol && <Search01Icon onClick={() => setCloseSearchBol(true)} className='size-6 cursor-pointer' />}
+              {closeSearchBol && <SearchRes closeSearch={closeSearch}/>}
 
             </div>
 
