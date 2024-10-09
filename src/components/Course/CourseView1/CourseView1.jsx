@@ -27,6 +27,7 @@ const CourseView1 = () => {
   const initialView = getItem('view') || "view1"
   const [view, setView] = useState(initialView)
 
+  
   const [windowWidth , setWindowWidth] = useState(window.innerWidth)
 
   const [searchParams, setSearchParams] = useSearchParams()
@@ -98,9 +99,9 @@ const CourseView1 = () => {
         />
 
         <div className='flex justify-between w-full items-center px-2'>
-          {windowWidth < 768 && <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>}
-          {windowWidth < 768 && searchDiv === false && <Search01Icon className='size- cursor-pointer mx-3' onClick={() => {setSearchDiv(true)}} />}
-          {searchDiv === true && <SearchRes />}
+          <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 md:hidden block' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>
+          {!searchDiv && searchDiv === false && <Search01Icon className='size-6 cursor-pointer mx-3 md:hidden block' onClick={() => {setSearchDiv(true)}} />}
+          {searchDiv && <SearchRes />}
         </div>
 
         <div className='flex'>
@@ -152,6 +153,27 @@ const CourseView1 = () => {
               statusName={item.statusName}
             />
             
+          })}
+
+          {windowWidth < 768 && courses.map((item,index) => {
+
+            return <CoursesView1
+              key={index}
+              id={item.courseId}
+              title={item.title}
+              describe={item.describe}
+              date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+              levelName={item.levelName}
+              dissLikeCount={item.dissLikeCount}
+              likeCount={item.likeCount}
+              teacherName={item.teacherName}
+              currentRegistrants={item.currentRegistrants}
+              technologyList={(item.technologyList)}
+              tumbImageAddress={item.tumbImageAddress}
+              cost={(parseInt(item.cost).toLocaleString('en-US'))}
+              statusName={item.statusName}
+            />
+
           })}
 
           </div>

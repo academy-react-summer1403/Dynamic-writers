@@ -5,7 +5,7 @@ import { Form } from 'react-router-dom'
 
 const SearchRes = () => {
   return (
-    <div>
+    <div className='md:hidden block'>
         <div className='relative flex flex-col gap-3'>
 
         <Formik
