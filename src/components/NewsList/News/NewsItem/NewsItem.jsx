@@ -8,8 +8,8 @@ const NewsItem = ({ id, title, miniDescribe, currentImageAddressTumb, currentVie
       <div className='bg-red-300 h-full w-5/12 rounded-3xl relative'>
         <img src={currentImageAddressTumb} className='w-full h-full rounded-3xl' />
         <div className='h-fit w-fit absolute top-2 right-2 flex gap-2 flex-row-reverse'>
-            <div className='bg-blue-500 w-fit text-white rounded-full px-3 py-1 shadow-lg text-sm font-bold whitespace-nowrap max-w-40 overflow-auto text-ellipsis'> {keyword} </div>
-            <div className='bg-blue-500 w-fit text-white rounded-full px-3 py-1 shadow-lg text-sm font-bold whitespace-nowrap max-w-40 overflow-auto text-ellipsis'> {newsCatregoryName} </div>
+            <div className='bg-blue-500 w-fit text-white rounded-full px-3 py-1 shadow-lg text-sm font-bold whitespace-nowrap max-w-40 overflow-hidden text-ellipsis'> {keyword} </div>
+            <div className='bg-blue-500 w-fit text-white rounded-full px-3 py-1 shadow-lg text-sm font-bold whitespace-nowrap max-w-40 overflow-hidden text-ellipsis'> {newsCatregoryName} </div>
         </div>
       </div>
       <div className='flex flex-col gap-4 p-3 w-7/12 items-end justify-between'>

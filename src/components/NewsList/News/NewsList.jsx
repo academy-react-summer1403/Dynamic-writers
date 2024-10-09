@@ -19,26 +19,53 @@ const NewsList = () => {
 
   const [news, setNews] = useState([])
   const [pages, setPages] = useState(0)
+  const [partCount, setPartCount] = useState([])
+
   const pageNum = searchParams.get('PageNumber') || 1
+  const rowsPage = searchParams.get('RowsOfPage') || 8
+  const query = searchParams.get('Query') || ''
 
   const [closeFilter, setCloseFilter] = useState(false)
   const [closeSearchBol, setCloseSearchBol] = useState(false)
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
   useEffect(() => {
 
-    if(pageNum) {
+    if(windowWidth < 768) {
+
+      navigate('?RowsOfPage=3')
+
+    }
+
+  }, [windowWidth])
+
+  useEffect(() => {
+
+    if(pageNum || rowsPage || query) {
       getNews()
     }
 
-  }, [pageNum])
+  }, [pageNum, rowsPage, query])
 
   const getNews = async () => {
 
-    const response = await getNewsList(pageNum)
+    const response = await getNewsList(pageNum, rowsPage, query)
     const newsCount = await getNewsCount()
     setPages(Number(newsCount % 8))
     setNews(response)
+
+    const partCounts = response.map((part) => part.newsCatregoryName)
+    const uniqueArray = [...new Set(partCounts)]
+    setPartCount(uniqueArray)
+    console.log(partCount)
     
+  }
+  
+  const updateParams = (key, value) => {
+    const newParams = new URLSearchParams(searchParams)
+    newParams.set(key, value)
+    navigate(`?${newParams.toString()}`)
   }
 
   const closeFil = () => {
@@ -59,7 +86,7 @@ const NewsList = () => {
   return (
     <div className='w-dvw my-10'>
 
-      {closeFilter && <FilterResNews closeFil={closeFil} /> }
+      {closeFilter && <FilterResNews closeFil={closeFil} />}
 
       <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between'>
         
@@ -126,12 +153,12 @@ const NewsList = () => {
 
             </div>
 
-            <Pagination onChange={(pageNumber) => navigate(`?PageNumber=${pageNumber}`)} isCompact showControls total={pages} initialPage={1} />
+            <Pagination onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={pages} initialPage={1} />
 
         </div>
 
 
-        <FilterNews />
+        <FilterNews updateParams={updateParams} partCount={partCount} />
 
 
       </div>
