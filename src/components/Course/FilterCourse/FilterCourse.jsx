@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import { Calendar02Icon, CellsIcon, Layers01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
 import { useNavigate } from 'react-router-dom'
 
-const FilterCourse = ({ teachers }) => {
+const FilterCourse = ({ teachers, updateParams }) => {
 
     const [priceFrom, setPriceFrom] = useState(0)
     const [priceTo, setPriceTo] = useState(1000000000)
@@ -29,8 +29,8 @@ const FilterCourse = ({ teachers }) => {
     <div className='relative flex flex-col gap-3'>
 
     <Formik
-        initialValues={{search: ''}}
-        onSubmit={(value) => navigate(`?PageNumber=${pageNumber}&Query=${value.search}`)}
+        initialValues={{Query: ''}}
+        onSubmit={(value) => updateParams('Query', value)}
     >
            
         <Form>

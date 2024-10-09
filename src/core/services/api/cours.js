@@ -4,11 +4,11 @@ import http from '../interceptor'
 import { useSearchParams } from 'react-router-dom';
 // import { baseUrl } from "../../../config";
 
-export const getCourseList = async (pageNumber, Query, RowsOfPage) => {
+export const getCourseList = async (pageNumber, Query, rowsPage) => {
   try {
-  const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${Number(pageNumber)}&RowsOfPage=9`)
+  const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${pageNumber}&RowsOfPage=${rowsPage}&Query=${Query}`);
 
-  return result;
+  return result.courseFilterDtos;
   
   } catch (error) {
   console.log(error);

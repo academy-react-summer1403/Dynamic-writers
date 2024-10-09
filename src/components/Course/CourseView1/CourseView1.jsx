@@ -30,16 +30,17 @@ const CourseView1 = () => {
   
   const [windowWidth , setWindowWidth] = useState(window.innerWidth)
 
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
+
   const pageNumber = searchParams.get('PageNumber') || 1
-  const Query = searchParams.get('Query') || null
-  const RowsOfPage = searchParams.get('RowsOfPage')
+  const Query = searchParams.get('Query') || {}
+  const rowsPage = searchParams.get('RowsOfPage') || 9
 
   useEffect(() => {
-    if(pageNumber || Query || RowsOfPage) {
+    if(pageNumber || Query || rowsPage) {
       getCourses()
     }
-  }, [pageNumber, Query, RowsOfPage])
+  }, [pageNumber, Query, rowsPage])
 
   useEffect(() => {
     if(windowWidth < 768) {
@@ -51,12 +52,20 @@ const CourseView1 = () => {
 
   const getCourses = async () => {
 
-    const response = await getCourseList(pageNumber, Query, RowsOfPage)
+    const response = await getCourseList(pageNumber, Query, rowsPage)
     const res = await getCourseCount()
 
     setTotalCount(parseInt(res / 9));
-    setCourses(response.courseFilterDtos)
+    setCourses(response)
 
+  }
+
+  const updateParams = (key, value) => {
+    alert("HI")
+    const newParams = new URLSearchParams(searchParams)
+    newParams.set(key, value)
+    navigate(`?${newParams.toString()}`)
+    getCourses()
   }
 
   const getTeachers = async () => {
@@ -108,7 +117,7 @@ const CourseView1 = () => {
 
           <FilterCourse 
             teachers={teachers}
-            pageNumber={pageNumber}
+            updateParams={updateParams}
           />
 
           <div className='md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
@@ -181,7 +190,7 @@ const CourseView1 = () => {
         </div>
 
         <div className='w-full flex justify-center md:justify-end md:px-3 py-10'>
-          <Pagination className='min-w-80 w-fit' onChange={(PageNumber) => navigate(`?PageNumber=${PageNumber}`)} isCompact showControls total={totalCount} initialPage={1} />
+          <Pagination className='min-w-80 w-fit' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
