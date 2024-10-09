@@ -3,7 +3,7 @@ import React from 'react'
 
 const SortNews = () => {
   return (
-    <div className='flex gap-3 w-full h-fit flex-row-reverse items-center px-2 font-semibold text-sm'>
+    <div className='md:flex hidden gap-3 w-full h-fit flex-row-reverse items-center px-2 font-semibold text-sm'>
       <span className='text-sm font-semibold text-gray-600'> ترتیب </span>
       <input type='radio' name='sortNews' id='sortNew1' className='hidden inputSortNews' />
       <label htmlFor='sortNew1' className='labelSortNews border px-4 py-2 rounded-full'> پرطرفدار ترین </label>

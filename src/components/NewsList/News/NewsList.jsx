@@ -7,6 +7,7 @@ import { getNewsList } from '../../../core/services/api/news'
 import jMoment from 'moment-jalaali'
 import { getNewsCount } from '../../../core/services/api/NewsCount'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import NewsItemsRes from '../Responsive/NewsList/NewsItemsRes'
 
 const NewsList = () => {
 
@@ -15,27 +16,34 @@ const NewsList = () => {
 
   const [news, setNews] = useState([])
   const [pages, setPages] = useState(0)
-  const pageNumber = searchParams.get('PageNumber')
+  const pageNum = searchParams.get('PageNumber') || 1
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-  useEffect(() => {
-
-    alert(windowWidth)
-
-  }, [windowWidth])
+  const handleResize = () => {
+    setWindowWidth(windowWidth)
+  }
 
   useEffect(() => {
+    window.addEventListener('resize', handleResize)
 
-    if(pageNumber) {
-      getNews(pageNumber)
+    return () => {
+      window.removeEventListener('resize', handleResize)
     }
 
-  }, [pageNumber])
+  }, [])
 
-  const getNews = async (pageNumber) => {
+  useEffect(() => {
 
-    const response = await getNewsList(pageNumber)
+    if(pageNum) {
+      getNews(pageNum)
+    }
+
+  }, [pageNum])
+
+  const getNews = async () => {
+
+    const response = await getNewsList(pageNum)
     const newsCount = await getNewsCount()
     setPages(Number(newsCount % 8))
     setNews(response)
@@ -53,11 +61,37 @@ const NewsList = () => {
         
         <div className='flex flex-col gap-5 w-9/12 items-end'>
 
+            {windowWidth}
+
             <SortNews />
 
             <div className='flex flex-col gap-8'>
 
-              {news.map((item, index) => {
+              {windowWidth < 768 ? 
+              
+              news.map((item,index) => {
+
+                return <NewsItemsRes
+                  key={index}
+                  title={item.title}
+                  miniDescribe = {item.miniDescribe}
+                  currentView = {item.currentView}
+                  currentImageAddressTumb={item.currentImageAddressTumb}
+                  insertDate={(jMoment(item.insertDate).format('jYYYY / jM / jD'))}
+                  addUserFullName={(item.addUserFullName).replace('-', ' ')}
+                  id={item.id}
+                  newsCatregoryId={item.newsCatregoryId}
+                  currentLikeCount={item.currentLikeCount}
+                  newsCatregoryName={item.newsCatregoryName}
+                  currentDissLikeCount={item.currentDissLikeCount}
+                  keyword={item.keyword}
+                />
+
+              })
+
+              :
+
+              news.map((item,index) => {
 
                 return <NewsItem 
                   key={index}
@@ -75,7 +109,9 @@ const NewsList = () => {
                   keyword={item.keyword}
                 />
 
-              })}
+              })
+
+              }
 
             </div>
 

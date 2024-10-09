@@ -7,7 +7,7 @@ import { DatePicker } from "zaman"
 
 const FilterNews = () => {
   return (
-    <div className='bg-gray-100 flex flex-col gap-6 p-2.5 rounded-3xl w-80 h-80 m-2' dir='rtl'>
+    <div className='bg-gray-100 md:flex flex-col gap-6 p-2.5 rounded-3xl w-80 h-80 m-2 hidden' dir='rtl'>
         <div className='flex flex-col gap-2.5 w-full'>
             <div className='flex items-center gap-2'>
             <Search01Icon />
