@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div className='w-dvw'>
-    <div className='iranSans font-semibold flex flex-col justify-between p-10 w-11/12 my-10 md:w-11/12 mx-auto pb-24 bg-gray-100 rounded-xl h-fit md:flex-row-reverse'>
-      <div className='flex flex-row-reverse justify-center items-center gap-4 h-full px-2 md:flex-col'>
+    <div className='iranSans font-semibold flex flex-col justify-between p-10 w-11/12 gap-10 md:gap-0 my-10 md:w-11/12 mx-auto pb-24 bg-gray-100 rounded-xl h-fit md:flex-row-reverse'>
+      <div className='flex flex-row-reverse md:justify-center justify-between items-center gap-4 h-full px-2 md:flex-col'>
         <div className='flex flex-col-reverse'>
             <img src={Bahr2} className='w-20 h-4 inline' />
             <img src={Bahr} className='size-20 inline' />
@@ -26,12 +26,12 @@ const Footer = () => {
 
       <div className='flex md:flex-row-reverse gap-20 flex-col'>
 
-      <div className='flex flex-col justify-center items-end gap-10 h-full px-2'>
+      <div className='md:flex hidden flex-col justify-center items-end gap-10 h-full px-2'>
         <h2 className='text-xl iranSansBold'> آکادمی کدنویسی بحر </h2>
         <span style={{direction: 'rtl'}} className='w-72 text-right text-sm text-gray-500'> +13 سال سابقه فعالیت در زمینه آموزش کدنویسی از سنین کودکی تا بزرگسال. هدف ما همیشه این بوده که دانشجویان را با مهارت های لازم برای موفقیت در دنیای فناوری و برنامه نویسی مجهز کنیم. </span>
       </div>
 
-      <div className='flex gap-20'>
+      <div className='flex gap-20 justify-between md:justify-normal md:flex-row flex-row-reverse'>
         <div className='flex flex-col justify-center items-end gap-3 h-full px-2'>
           <h2 className='text-gray-600 text-base mb-10'> صفحات </h2>
           <Link to='' className='whitespace-nowrap'> خانه </Link> 
@@ -48,9 +48,14 @@ const Footer = () => {
 
       </div>
 
+      <div className='md:hidden flex flex-col justify-center items-end gap-10 h-full px-2'>
+        <h2 className='text-xl iranSansBold'> آکادمی کدنویسی بحر </h2>
+        <span style={{direction: 'rtl'}} className='w-72 text-right text-sm text-gray-500'> +13 سال سابقه فعالیت در زمینه آموزش کدنویسی از سنین کودکی تا بزرگسال. هدف ما همیشه این بوده که دانشجویان را با مهارت های لازم برای موفقیت در دنیای فناوری و برنامه نویسی مجهز کنیم. </span>
       </div>
 
-      <div className='flex gap-10'>
+      </div>
+
+      <div className='flex gap-10 justify-between md:justify-center items-center'>
         <div className='flex flex-col justify-start items-start h-full'>
           <div className='bg-gray-200 size-28 justify-center'> نماد اعتماد الکترونیک  </div>
         </div>

@@ -18,25 +18,10 @@ const NewsList = () => {
   const [pages, setPages] = useState(0)
   const pageNum = searchParams.get('PageNumber') || 1
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-  const handleResize = () => {
-    setWindowWidth(windowWidth)
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-
-  }, [])
-
   useEffect(() => {
 
     if(pageNum) {
-      getNews(pageNum)
+      getNews()
     }
 
   }, [pageNum])
@@ -61,13 +46,11 @@ const NewsList = () => {
         
         <div className='flex flex-col gap-5 w-9/12 items-end'>
 
-            {windowWidth}
-
             <SortNews />
 
             <div className='flex flex-col gap-8'>
 
-              {windowWidth < 768 ? 
+              {window.innerWidth < 768 &&
               
               news.map((item,index) => {
 
@@ -87,13 +70,13 @@ const NewsList = () => {
                   keyword={item.keyword}
                 />
 
-              })
+              })}
 
-              :
-
+              {window.innerWidth > 768 &&
+              
               news.map((item,index) => {
 
-                return <NewsItem 
+                return <NewsItem
                   key={index}
                   title={item.title}
                   miniDescribe = {item.miniDescribe}
@@ -109,9 +92,7 @@ const NewsList = () => {
                   keyword={item.keyword}
                 />
 
-              })
-
-              }
+              })}
 
             </div>
 
