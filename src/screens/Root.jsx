@@ -4,11 +4,11 @@ import { Outlet } from 'react-router-dom'
 
 const Root = () => {
   return (
-    <>
+    <div className='iranSans'>
      <Header />
 
      <Outlet /> 
-    </>
+    </div>
   )
 }
 

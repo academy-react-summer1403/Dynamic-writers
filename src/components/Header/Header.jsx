@@ -24,7 +24,7 @@ const Header = () => {
         <img src={Bahr} className='size-6 inline' />
       </div>
 
-      <div className='items-center gap-10 flex-row-reverse hidden md:flex'>
+      <div className='items-center gap-14 flex-row-reverse hidden md:flex'>
         <Link to='' className='hover:text-gray-600'> خانه </Link>
         <Link to='' className='hover:text-gray-600'> دوره ها </Link>
         <Link to='' className='hover:text-gray-600'> اخبار و مقالات </Link>
