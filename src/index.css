@@ -1,0 +1,40 @@
+@font-face {
+  font-family: iranSans;
+  src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-Light.ttf')
+}
+
+@font-face {
+  font-family: iranSansBold;
+  src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-DemiBold.ttf')
+}
+
+
+@font-face {
+  font-family: dana;
+  src: url('./assets/DanaPro/')
+}
+
+
+.iranSans {
+  font-family: iranSans;
+}
+
+.dana {
+  font-family: dana;
+}
+
+.iranSansBold {
+  font-family: iranSansBold;
+}
+
+.er {
+  color: rgb(255, 119, 119);
+  font-family: iranSans;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.inputSortNews:checked + .labelSortNews{
+  background-color: rgb(74, 74, 255);
+  color: white;
+}

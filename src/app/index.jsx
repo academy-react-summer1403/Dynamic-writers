@@ -1,4 +1,3 @@
-import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import NotFoundPage from '../screens/NotFoundPage';
