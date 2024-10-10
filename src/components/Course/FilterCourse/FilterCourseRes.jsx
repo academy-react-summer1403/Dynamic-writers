@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Input, Select, Button, SelectItem } from '@nextui-org/react'
+import { Input, Select, Button, SelectItem, checkbox } from '@nextui-org/react'
 import { Formik, Form, Field } from 'formik'
 import { Calendar02Icon, Cancel01Icon, CellsIcon, Layers01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import { getTechList } from '../../../core/services/api/tech'
 import { getCourseLevels } from '../../../core/services/api/courseLevel'
@@ -14,6 +14,8 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
     const [levels, setLevels] = useState([])
     const [techs, setTechs] = useState([])
     const [teachers, setTeachers] = useState([])
+
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const navigate = useNavigate()
 
@@ -55,6 +57,12 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
         getTechs()
         getTeachers()
     }, [])
+
+    const updateParamsSort = (value, value2) => {
+        searchParams.set('SortingCol', value)
+        searchParams.set('SortType', value2)
+        setSearchParams(searchParams)
+    }
 
     const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
@@ -132,8 +140,10 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
     </div>
 
     <div className='flex flex-row-reverse'>
-    <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' defaultValue={0} min='0' max='100000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
-    <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' defaultValue={100000000} min='0' max='100000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' 
+    defaultValue={0} min='0' max='1000000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' 
+    defaultValue={100000000} min='0' max='1000000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     </div>
 
     <div className='flex flex-col'>
@@ -153,9 +163,10 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
         </div>
         <div className='relative flex flex-col gap-3'>
             <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-                <SelectItem> پرطرفدار ترین </SelectItem>
-                <SelectItem> محبوب ترین </SelectItem>
-                <SelectItem> ارزان ترین </SelectItem>
+                <SelectItem onClick={() => {updateParamsSort('LastUpdate', 'DESC')}}> جدید ترین </SelectItem>
+                <SelectItem onClick={() => {updateParamsSort('LastUpdate', 'ASC')}}> قدیمی ترین </SelectItem>
+                <SelectItem onClick={() => {updateParamsSort('Cost', 'ASC')}}> ارزان ترین </SelectItem>
+                <SelectItem onClick={() => {updateParamsSort('', '')}}> هیچ کدام </SelectItem>
             </Select>
         </div>
     </div>

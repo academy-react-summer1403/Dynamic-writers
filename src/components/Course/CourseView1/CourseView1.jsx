@@ -36,16 +36,18 @@ const CourseView1 = () => {
   const rowsPage = searchParams.get('RowsOfPage') || 9
   const idLevel = searchParams.get('courseLevelId') || ""
   const idTeacher = searchParams.get('TeacherId') || ""
-  const costUp = searchParams.get('CostUp') || 100000000
+  const costUp = searchParams.get('CostUp') || 1000000000
   const costDown = searchParams.get('CostDown') || 0
   const techList = searchParams.get('ListTech') || 0
   const techCount = searchParams.get('TechCount') || 0
+  const sortingCol = searchParams.get('SortingCol') || 'Active'
+  const sortType = searchParams.get('SortType') || 'DESC'
 
   useEffect(() => {
-    if(pageNumber || idLevel || query || rowsPage || idTeacher || costUp || costDown || techList || techCount) {
+    if(pageNumber || idLevel || query || rowsPage || idTeacher || costUp || costDown || techList || techCount || sortingCol || sortType) {
       getCourses()
     }
-  }, [pageNumber, idLevel, query, rowsPage, idTeacher, costUp , costDown, techCount, techList])
+  }, [pageNumber, idLevel, query, rowsPage, idTeacher, costUp , costDown, techCount, techList, sortType, sortingCol])
 
   useEffect(() => {
     if(windowWidth < 768) {
@@ -60,7 +62,8 @@ const CourseView1 = () => {
 
   const getCourses = async () => {
 
-    const response = await getCourseList(pageNumber, query, rowsPage, idLevel, idTeacher, costUp , costDown, techCount, techList)
+    const response = await getCourseList(pageNumber, query, rowsPage, idLevel, idTeacher, 
+    costUp , costDown, techCount, techList, sortType, sortingCol)
 
     setTotalCount(parseInt(response.totalCount / rowsPage));
     setCourses(response.courseFilterDtos)
@@ -111,6 +114,7 @@ const CourseView1 = () => {
 
         <SortView1 
           changeView={changeView}
+          updateParams={updateParams}
         />
 
         <div className='flex justify-between w-full items-center px-2'>
@@ -196,7 +200,7 @@ const CourseView1 = () => {
         </div>
 
         <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
-          <Pagination className='min-w-80 w-fit z-0' dir='rtl' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
+          <Pagination className='min-w-80 w-fit z-0' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
