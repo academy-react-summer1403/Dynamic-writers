@@ -15,7 +15,19 @@ const FilterCourse = ({ updateParams }) => {
     const [techs, setTechs] = useState([])
     const [teachers, setTeachers] = useState([])
 
+    const [startDate, setStartDate] = useState()
+    const [endDate, setEndDate] = useState()
+
     const navigate = useNavigate()
+
+    const dateSplit = (value) => {
+        const splitDate = value.split('-')
+        setStartDate(splitDate[0])
+        setEndDate(splitDate[1])
+
+        updateParams('StartDate', startDate)
+        updateParams('EndDate', endDate)
+    }
 
     const handlePriceFrom = (value) => {
         setPriceFrom(value)
@@ -86,11 +98,11 @@ const FilterCourse = ({ updateParams }) => {
         <span className='text-base font-semibold'> دسته بندی </span>
     </div>
     <div className='relative flex flex-col gap-3'>
-        <Select placeholder='انتخاب کنید' onChange={(e) => techCounting(e)} className='w-full my-2 rounded-xl text-gray-100' dir='rtl' selectionMode="multiple">
+        <Select placeholder='انتخاب کنید' onChange={(e) => {techCounting(e)}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl' selectionMode="multiple">
             
             {techs.map((item, index) => {
 
-                return <SelectItem onClick={() => updateParams('ListTech', item.id)}> {item.techName} </SelectItem>
+                return <SelectItem onClick={() => updateParams('ListTech', item.id)} id={item.id}> {item.techName} </SelectItem>
 
             })}
 
@@ -109,7 +121,7 @@ const FilterCourse = ({ updateParams }) => {
             {levels.map((item,index) => {
                 return <SelectItem onClick={() => updateParams('courseLevelId', item.id)}> {item.levelName} </SelectItem>
             })}
-            <SelectItem onClick={() => updateParams('courseLevelId', "")}> </SelectItem>
+            <SelectItem onClick={() => updateParams('courseLevelId', "")}> هیچ کدام </SelectItem>
 
         </Select>
     </div>
@@ -125,7 +137,7 @@ const FilterCourse = ({ updateParams }) => {
             {teachers.map((item, index) => {
                 return <SelectItem onClick={() => updateParams('TeacherId', item.teacherId)}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
             })}
-            <SelectItem onClick={() => updateParams('TeacherId', "")}> </SelectItem>
+            <SelectItem onClick={() => updateParams('TeacherId', "")}> هیچ کدام </SelectItem>
         </Select>
     </div>
     </div>
@@ -155,7 +167,7 @@ const FilterCourse = ({ updateParams }) => {
             <span className='text-base font-semibold'> تاریخ برگزاری </span>
         </div>
         <div className='relative flex flex-col gap-3'>
-            <Input placeholder='1403/5/20 - 1403/6/20' className='w-full my-2 rounded-xl' dir='ltr'></Input>
+            <Input placeholder='1403/5/20 - 1403/6/20' onChange={(e) => dateSplit(e.target.value)} className='w-full my-2 rounded-xl' dir='ltr'></Input>
         </div>
     </div>
 

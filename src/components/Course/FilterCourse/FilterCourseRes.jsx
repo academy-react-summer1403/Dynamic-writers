@@ -3,11 +3,17 @@ import { Input, Select, Button, SelectItem } from '@nextui-org/react'
 import { Formik, Form, Field } from 'formik'
 import { Calendar02Icon, Cancel01Icon, CellsIcon, Layers01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
 import { useNavigate } from 'react-router-dom'
+import { getTeacherList } from '../../../core/services/api/teachers'
+import { getTechList } from '../../../core/services/api/tech'
+import { getCourseLevels } from '../../../core/services/api/courseLevel'
 
-const FilterCourseRes = ({ closeFilter }) => {
+const FilterCourseRes = ({ closeFilter, updateParams }) => {
 
     const [priceFrom, setPriceFrom] = useState(0)
     const [priceTo, setPriceTo] = useState(1000000000)
+    const [levels, setLevels] = useState([])
+    const [techs, setTechs] = useState([])
+    const [teachers, setTeachers] = useState([])
 
     const navigate = useNavigate()
 
@@ -17,6 +23,38 @@ const FilterCourseRes = ({ closeFilter }) => {
     const handlePriceTo = (value) => {
         setPriceTo(value)
     }
+
+    const techCounting = (value) => {
+        updateParams('TechCount', (value.target.value).split(',').length)
+
+        if(!value.target.value) {
+            {updateParams('ListTech', 0), updateParams('TechCount', 0)}
+        }
+    }
+
+    const getLevels = async () => {
+
+        const response = await getCourseLevels()
+        setLevels(response)
+    }
+
+    const getTechs = async () => {
+
+        const response = await getTechList()
+        setTechs(response)
+    }
+
+    const getTeachers = async () => {
+
+        const response = await getTeacherList()
+        setTeachers(response)
+    }
+
+    useEffect(() => {
+        getLevels()
+        getTechs()
+        getTeachers()
+    }, [])
 
     const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
@@ -37,11 +75,12 @@ const FilterCourseRes = ({ closeFilter }) => {
         <span className='text-sm font-semibold'> دسته بندی </span>
     </div>
     <div className='relative flex flex-col gap-3'>
-        <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-            <SelectItem> بک اند </SelectItem>
-            <SelectItem> فرانت اند </SelectItem>
-            <SelectItem> React </SelectItem>
-            <SelectItem> NextJs </SelectItem>
+        <Select placeholder='انتخاب کنید'  onChange={(e) => techCounting(e)} className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
+        {techs.map((item, index) => {
+
+            return <SelectItem onClick={() => updateParams('ListTech', item.id)}> {item.techName} </SelectItem>
+
+        })}
         </Select>
     </div>
     </div>
@@ -53,9 +92,12 @@ const FilterCourseRes = ({ closeFilter }) => {
     </div>
     <div className='relative flex flex-col gap-3'>
         <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-            <SelectItem> مبتدی </SelectItem>
-            <SelectItem> متوسط </SelectItem>
-            <SelectItem> پیشرفته </SelectItem>
+            
+            {levels.map((item,index) => {
+                return <SelectItem onClick={() => updateParams('courseLevelId', item.id)}> {item.levelName} </SelectItem>
+            })}
+            <SelectItem onClick={() => updateParams('courseLevelId', "")}> </SelectItem>
+
         </Select>
     </div>
     </div>
@@ -67,7 +109,10 @@ const FilterCourseRes = ({ closeFilter }) => {
     </div>
     <div className='relative flex flex-col gap-3'>
         <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-            
+            {teachers.map((item, index) => {
+                return <SelectItem onClick={() => updateParams('TeacherId', item.teacherId)}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
+            })}
+            <SelectItem onClick={() => updateParams('TeacherId', "")}> </SelectItem>
         </Select>
     </div>
     </div>
@@ -87,8 +132,8 @@ const FilterCourseRes = ({ closeFilter }) => {
     </div>
 
     <div className='flex flex-row-reverse'>
-    <input onChange={(e) => handlePriceFrom(e.target.value)} type='range' min='0' max='10000000' step='100' className='border-none cursor-pointer bg-gray-200 w-full h-2 rounded-full appearance-none thump' />
-    <input onChange={(e) => handlePriceTo(e.target.value)} type='range'  min='0' max='10000000' step='100' className='border-none cursor-pointer bg-gray-200 w-full h-2 rounded-full appearance-none thump' />
+    <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' defaultValue={0} min='0' max='100000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' defaultValue={100000000} min='0' max='100000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     </div>
 
     <div className='flex flex-col'>

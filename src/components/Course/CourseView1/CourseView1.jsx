@@ -104,7 +104,8 @@ const CourseView1 = () => {
 
   return (
     <>
-    {filterRes === true && <FilterCourseRes closeFilter={closeFilter} />}
+    {filterRes === true && <FilterCourseRes closeFilter={closeFilter} updateParams={updateParams}
+            getCourses={getCourses} />}
     <div className='my-20 h-fit w-dvw iranSans font-semibold'>
       <div className='rounded-3xl mx-auto border-3 pl-3 h-fit' style={{width: '94%'}}>
 
@@ -121,7 +122,6 @@ const CourseView1 = () => {
         <div className='flex'>
 
           <FilterCourse 
-            teachers={teachers}
             updateParams={updateParams}
             getCourses={getCourses}
           />
@@ -196,7 +196,7 @@ const CourseView1 = () => {
         </div>
 
         <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
-          <Pagination className='min-w-80 w-fit' dir='rtl' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
+          <Pagination className='min-w-80 w-fit z-0' dir='rtl' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
