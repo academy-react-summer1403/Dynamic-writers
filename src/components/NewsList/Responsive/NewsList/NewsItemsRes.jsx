@@ -4,7 +4,7 @@ import { Calendar01Icon, QuillWrite01Icon, QuillWrite02Icon, ThumbsDownIcon, Thu
 
 const NewsItemsRes = ({ id, title, miniDescribe, currentImageAddressTumb, addUserProfileImage, currentView, addUserFullName, insertDate, currentDissLikeCount, currentLikeCount, keyword, newsCatregoryName }) => {
   return (
-    <div className='flex bg-gray-100 rounded-3xl h-72 flex-col' style={{width: '345px', height: '505px'}}>
+    <div className='flex bg-gray-100 rounded-3xl h-72 flex-col' style={{width: '315px', height: '520px'}}>
     <div className='bg-red-300 w-full rounded-3xl relative' style={{height: "225px"}}>
       <img src={currentImageAddressTumb} className='w-full h-full rounded-3xl' />
       <div className='h-fit w-fit absolute top-2 right-2 flex gap-2 flex-row-reverse'>

@@ -5,7 +5,6 @@ import { Button, Pagination } from '@nextui-org/react'
 import NewsItem from './NewsItem/NewsItem'
 import { getNewsList } from '../../../core/services/api/news'
 import jMoment from 'moment-jalaali'
-import { getNewsCount } from '../../../core/services/api/NewsCount'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import NewsItemsRes from '../Responsive/NewsList/NewsItemsRes'
 import { Search01Icon } from 'hugeicons-react'
@@ -24,6 +23,8 @@ const NewsList = () => {
   const pageNum = searchParams.get('PageNumber') || 1
   const rowsPage = searchParams.get('RowsOfPage') || 8
   const query = searchParams.get('Query') || ''
+  const sortingCol = searchParams.get('SortingCol') || 'Active'
+  const sortType = searchParams.get('SortType') || 'DESC'
 
   const [closeFilter, setCloseFilter] = useState(false)
   const [closeSearchBol, setCloseSearchBol] = useState(false)
@@ -33,32 +34,32 @@ const NewsList = () => {
   useEffect(() => {
 
     if(windowWidth < 768) {
-
-      navigate('?RowsOfPage=3')
-
+      updateParams('RowsOfPage', 3)
+    }
+    else if(windowWidth > 768) {
+      updateParams('RowsOfPage', 8)
+      updateParams('PageNumber', 1)
     }
 
   }, [windowWidth])
 
   useEffect(() => {
 
-    if(pageNum || rowsPage || query) {
+    if(pageNum || rowsPage || query || sortingCol || sortType) {
       getNews()
     }
 
-  }, [pageNum, rowsPage, query])
+  }, [pageNum, rowsPage, query, sortingCol , sortType])
 
   const getNews = async () => {
 
-    const response = await getNewsList(pageNum, rowsPage, query)
-    const newsCount = await getNewsCount()
-    setPages(Number(newsCount % 8))
-    setNews(response)
+    const response = await getNewsList(pageNum, rowsPage, query, sortingCol , sortType)
+    setPages(Math.ceil(response.totalCount / rowsPage))
+    setNews(response.news)
 
     const partCounts = response.map((part) => part.newsCatregoryName)
     const uniqueArray = [...new Set(partCounts)]
     setPartCount(uniqueArray)
-    console.log(partCount)
     
   }
   
@@ -76,6 +77,8 @@ const NewsList = () => {
   const closeSearch = () => {
 
     setCloseSearchBol(false)
+
+    updateParams('Query', '')
   }
 
   useEffect(() => {
@@ -99,7 +102,7 @@ const NewsList = () => {
               <Button onClick={() => setCloseFilter(true)} className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
 
               {!closeSearchBol && <Search01Icon onClick={() => setCloseSearchBol(true)} className='size-6 cursor-pointer' />}
-              {closeSearchBol && <SearchRes closeSearch={closeSearch}/>}
+              {closeSearchBol && <SearchRes updateParams={updateParams} closeSearch={closeSearch}/>}
 
             </div>
 
@@ -153,7 +156,9 @@ const NewsList = () => {
 
             </div>
 
-            <Pagination onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={pages} initialPage={1} />
+            <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
+              <Pagination className='min-w-80 w-fit z-0' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={pages} initialPage={1} />
+            </div>
 
         </div>
 
