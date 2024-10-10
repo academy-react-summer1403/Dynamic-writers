@@ -1,8 +1,8 @@
 import http from '../interceptor'
 
-export const getTeacherList = async() => {
+export const getTechList = async () => {
   try {
-  const result = await http.get(`/Home/GetTeachers`)
+  const result = await http.get(`/Home/GetTechnologies`);
 
   return result;
   

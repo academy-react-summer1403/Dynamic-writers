@@ -11,8 +11,8 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
         <div className='relative w-full rounded-xl h-56 bg-red-300 border'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
-              <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {technologyList} </div>
-              <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {levelName} </div>
+              <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1 max-w-52 w-fit overflow-hidden text-ellipsis whitespace-nowrap'> {technologyList} </div>
+              <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1 w-fit overflow-hidden text-ellipsis whitespace-nowrap'> {levelName} </div>
           </div>
           <div className='bg-stone-100 bg-opacity-80 text-red-500 rounded-xl px-2 py-0.5 text-xs flex items-center gap-2 absolute bottom-2 right-2'> {statusName} <CircleIcon className='size-1.5 bg-red-500 rounded-full' /> </div>
         </div>

@@ -9,9 +9,9 @@ const SortView1 = ({ changeView }) => {
   const navigate = useNavigate()
 
   return (
-    <div className='hidden gap-5 items-center flex-row-reverse px-3 py-2 iranSans md:flex'>
+    <div className='hidden gap-5 items-center flex-row-reverse px-9 py-2 iranSans md:flex'>
         <div className='flex gap-2 flex-row-reverse'>
-          <input type='radio' name='view' id='view1' checked className='hidden inputView'/>
+          <input type='radio' name='view' id='view1' defaultChecked className='hidden inputView'/>
           <label htmlFor='view1' className='labelView' onClick={() => {changeView('view1')}} > <GridViewIcon className='size-5' /> </label>
           <input type='radio' name='view' id='view2' className='hidden inputView'/>
           <label onClick={() => {changeView('view2')}} htmlFor='view2' className='labelView'> <Layout3RowIcon className='size-5' /> </label>

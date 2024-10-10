@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input, Select, Button, SelectItem } from '@nextui-org/react'
 import { Formik, Form, Field } from 'formik'
 import { Calendar02Icon, CellsIcon, Layers01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
 import { useNavigate } from 'react-router-dom'
+import { getCourseLevels } from '../../../core/services/api/courseLevel'
+import { getTechList } from '../../../core/services/api/tech'
+import { getTeacherList } from '../../../core/services/api/teachers'
 
-const FilterCourse = ({ teachers, updateParams }) => {
+const FilterCourse = ({ updateParams }) => {
 
     const [priceFrom, setPriceFrom] = useState(0)
     const [priceTo, setPriceTo] = useState(1000000000)
+    const [levels, setLevels] = useState([])
+    const [techs, setTechs] = useState([])
+    const [teachers, setTeachers] = useState([])
 
     const navigate = useNavigate()
 
@@ -18,8 +24,40 @@ const FilterCourse = ({ teachers, updateParams }) => {
         setPriceTo(value)
     }
 
+    const techCounting = (value) => {
+        updateParams('TechCount', (value.target.value).split(',').length)
+
+        if(!value.target.value) {
+            {updateParams('ListTech', 0), updateParams('TechCount', 0)}
+        }
+    }
+
+    const getLevels = async () => {
+
+        const response = await getCourseLevels()
+        setLevels(response)
+    }
+
+    const getTechs = async () => {
+
+        const response = await getTechList()
+        setTechs(response)
+    }
+
+    const getTeachers = async () => {
+
+        const response = await getTeacherList()
+        setTeachers(response)
+    }
+
+    useEffect(() => {
+        getLevels()
+        getTechs()
+        getTeachers()
+    }, [])
+
   return (
-    <div className='bg-gray-100 rounded-3xl w-80 p-5 md:flex flex-col gap-5 font-semibold hidden' style={{height: '620px'}}>
+    <div className='bg-gray-50 rounded-3xl w-80 p-5 md:flex flex-col gap-5 font-semibold hidden' style={{height: '620px'}}>
 
     <div className='flex flex-col gap-6'>
     <div className='flex items-center flex-row-reverse gap-2'>
@@ -30,11 +68,11 @@ const FilterCourse = ({ teachers, updateParams }) => {
 
     <Formik
         initialValues={{Query: ''}}
-        onSubmit={(value) => updateParams('Query', value)}
+        onSubmit={(value) => updateParams('Query', value.Query)}
     >
            
         <Form>
-            <Field type='search' name='search' className='w-full h-10 rounded-xl bg-gray-200 text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+            <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
             <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
         </Form>
     </Formik>
@@ -48,11 +86,14 @@ const FilterCourse = ({ teachers, updateParams }) => {
         <span className='text-base font-semibold'> دسته بندی </span>
     </div>
     <div className='relative flex flex-col gap-3'>
-        <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-            <SelectItem> بک اند </SelectItem>
-            <SelectItem> فرانت اند </SelectItem>
-            <SelectItem> React </SelectItem>
-            <SelectItem> NextJs </SelectItem>
+        <Select placeholder='انتخاب کنید' onChange={(e) => techCounting(e)} className='w-full my-2 rounded-xl text-gray-100' dir='rtl' selectionMode="multiple">
+            
+            {techs.map((item, index) => {
+
+                return <SelectItem onClick={() => updateParams('ListTech', item.id)}> {item.techName} </SelectItem>
+
+            })}
+
         </Select>
     </div>
     </div>
@@ -64,9 +105,12 @@ const FilterCourse = ({ teachers, updateParams }) => {
     </div>
     <div className='relative flex flex-col gap-3'>
         <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-            <SelectItem> مبتدی </SelectItem>
-            <SelectItem> متوسط </SelectItem>
-            <SelectItem> پیشرفته </SelectItem>
+
+            {levels.map((item,index) => {
+                return <SelectItem onClick={() => updateParams('courseLevelId', item.id)}> {item.levelName} </SelectItem>
+            })}
+            <SelectItem onClick={() => updateParams('courseLevelId', "")}> </SelectItem>
+
         </Select>
     </div>
     </div>
@@ -78,7 +122,10 @@ const FilterCourse = ({ teachers, updateParams }) => {
     </div>
     <div className='relative flex flex-col gap-3'>
         <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
-            
+            {teachers.map((item, index) => {
+                return <SelectItem onClick={() => updateParams('TeacherId', item.teacherId)}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
+            })}
+            <SelectItem onClick={() => updateParams('TeacherId', "")}> </SelectItem>
         </Select>
     </div>
     </div>
@@ -98,8 +145,8 @@ const FilterCourse = ({ teachers, updateParams }) => {
     </div>
 
     <div className='flex flex-row-reverse'>
-    <input onChange={(e) => handlePriceFrom(e.target.value)} type='range' min='0' max='10000000' step='100' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump' />
-    <input onChange={(e) => handlePriceTo(e.target.value)} type='range'  min='0' max='10000000' step='100' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump' />
+    <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' defaultValue={0} min='0' max='100000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' defaultValue={100000000} min='0' max='100000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     </div>
 
     <div className='flex flex-col'>

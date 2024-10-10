@@ -5,7 +5,6 @@ import { getCourseList } from '../../../core/services/api/cours'
 import jMoment from 'moment-jalaali'
 import { getItem, setItem } from '../../../core/services/common/storage'
 import { Button, Pagination } from '@nextui-org/react'
-import { getCourseCount } from '../../../core/services/api/courseCount'
 import FilterCourse from '../FilterCourse/FilterCourse'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -33,18 +32,27 @@ const CourseView1 = () => {
   const [searchParams] = useSearchParams()
 
   const pageNumber = searchParams.get('PageNumber') || 1
-  const Query = searchParams.get('Query') || {}
+  const query = searchParams.get('Query') || {}
   const rowsPage = searchParams.get('RowsOfPage') || 9
+  const idLevel = searchParams.get('courseLevelId') || ""
+  const idTeacher = searchParams.get('TeacherId') || ""
+  const costUp = searchParams.get('CostUp') || 100000000
+  const costDown = searchParams.get('CostDown') || 0
+  const techList = searchParams.get('ListTech') || 0
+  const techCount = searchParams.get('TechCount') || 0
 
   useEffect(() => {
-    if(pageNumber || Query || rowsPage) {
+    if(pageNumber || idLevel || query || rowsPage || idTeacher || costUp || costDown || techList || techCount) {
       getCourses()
     }
-  }, [pageNumber, Query, rowsPage])
+  }, [pageNumber, idLevel, query, rowsPage, idTeacher, costUp , costDown, techCount, techList])
 
   useEffect(() => {
     if(windowWidth < 768) {
-      navigate('?RowsOfPage=3')
+      updateParams('RowsOfPage', 3)
+    }
+    else if(windowWidth > 768) {
+      updateParams('RowsOfPage', 9)
     }
   }, [windowWidth])
 
@@ -52,20 +60,17 @@ const CourseView1 = () => {
 
   const getCourses = async () => {
 
-    const response = await getCourseList(pageNumber, Query, rowsPage)
-    const res = await getCourseCount()
+    const response = await getCourseList(pageNumber, query, rowsPage, idLevel, idTeacher, costUp , costDown, techCount, techList)
 
-    setTotalCount(parseInt(res / 9));
-    setCourses(response)
+    setTotalCount(parseInt(response.totalCount / rowsPage));
+    setCourses(response.courseFilterDtos)
 
   }
 
   const updateParams = (key, value) => {
-    alert("HI")
     const newParams = new URLSearchParams(searchParams)
     newParams.set(key, value)
     navigate(`?${newParams.toString()}`)
-    getCourses()
   }
 
   const getTeachers = async () => {
@@ -110,7 +115,7 @@ const CourseView1 = () => {
         <div className='flex justify-between w-full items-center px-2'>
           <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 md:hidden block' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>
           {!searchDiv && searchDiv === false && <Search01Icon className='size-6 cursor-pointer mx-3 md:hidden block' onClick={() => {setSearchDiv(true)}} />}
-          {searchDiv && <SearchRes />}
+          {searchDiv && <SearchRes updateParams={updateParams} />}
         </div>
 
         <div className='flex'>
@@ -118,6 +123,7 @@ const CourseView1 = () => {
           <FilterCourse 
             teachers={teachers}
             updateParams={updateParams}
+            getCourses={getCourses}
           />
 
           <div className='md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
@@ -189,8 +195,8 @@ const CourseView1 = () => {
 
         </div>
 
-        <div className='w-full flex justify-center md:justify-end md:px-3 py-10'>
-          <Pagination className='min-w-80 w-fit' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
+        <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
+          <Pagination className='min-w-80 w-fit' dir='rtl' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
