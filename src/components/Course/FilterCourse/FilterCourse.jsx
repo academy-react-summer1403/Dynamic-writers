@@ -65,7 +65,7 @@ const FilterCourse = ({ updateParams }) => {
     }
 
     const updateParamsTechList = (key, value) => {
-        
+
         let currentValues = searchParams.get(key) ? searchParams.get(key).split(',') : [];
         currentValues.push(value);
         currentValues = [...new Set(currentValues)];
@@ -196,9 +196,9 @@ const FilterCourse = ({ updateParams }) => {
 
     <div className='flex flex-row-reverse'>
     <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' 
-    defaultValue={0} min='0' max='1000000000' step='1000000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    defaultValue={0} min='0' max='100000000' step='100000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' 
-    defaultValue={1000000000} min='0' max='1000000000' step='1000000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    defaultValue={100000000} min='0' max='100000000' step='100000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     </div>
 
     <div className='flex flex-col gap-2'>
