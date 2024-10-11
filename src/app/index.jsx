@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import NotFoundPage from '../screens/NotFoundPage';
 import Root from '../screens/Root';
+import { NewDetail } from '../screens/NewsDetail/NewDetail';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
     },
     {
       path: '/NewsDetail',
-      element: <Root />
+      element: <NewDetail />
     },
     {
       path: '*',

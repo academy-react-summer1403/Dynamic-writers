@@ -1,5 +1,5 @@
 import React from 'react'
-import http from '../interceptor'
+import http from '../../interceptor'
 
 const NewsDisLike = async(id) => {
     try{
