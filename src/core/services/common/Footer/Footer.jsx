@@ -1,8 +1,8 @@
 import React from 'react'
-import Bahr from '../../assets/Bahr.png'
-import Bahr2 from '../../assets/Bahr2.png'
+import Bahr from '../../../../assets/Bahr.png'
+import Bahr2 from '../../../../assets/Bahr2.png'
 import { InstagramIcon, TelegramIcon } from 'hugeicons-react'
-import '../../output.css'
+import '../../../../output.css'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
