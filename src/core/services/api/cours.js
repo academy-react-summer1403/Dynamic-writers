@@ -11,12 +11,15 @@ export const getCourseList = async (
   techCount, 
   techList, 
   sortType, 
-  sortingCol) => {
+  sortingCol, 
+  startDate, 
+  endDate) => {
   
     try {
   const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${pageNumber}
     &RowsOfPage=${rowsPage}&Query=${Query}&courseLevelId=${idLevel}&TeacherId=${idTeacher}&CostUp=${costUp}&CostDown=${costDown}
-    &TechCount=${techCount}&ListTech=${techList}&SortingCol=${sortingCol}&SortType=${sortType}`);
+    &TechCount=${techCount}&ListTech=${techList}&SortingCol=${sortingCol}&SortType=${sortType}&StartDate=${startDate}
+    &EndDate=${endDate}`);
 
   return result;
   

@@ -86,7 +86,7 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
         <Select placeholder='انتخاب کنید'  onChange={(e) => techCounting(e)} className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
         {techs.map((item, index) => {
 
-            return <SelectItem onClick={() => updateParams('ListTech', item.id)}> {item.techName} </SelectItem>
+            return <SelectItem onClick={() => updateParams('ListTech', item.id)} textValue={item.techName}> {item.techName} </SelectItem>
 
         })}
         </Select>
@@ -102,7 +102,7 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
         <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
             
             {levels.map((item,index) => {
-                return <SelectItem onClick={() => updateParams('courseLevelId', item.id)}> {item.levelName} </SelectItem>
+                return <SelectItem onClick={() => updateParams('courseLevelId', item.id)} textValue={item.levelName}> {item.levelName} </SelectItem>
             })}
             <SelectItem onClick={() => updateParams('courseLevelId', "")}> </SelectItem>
 
@@ -118,7 +118,7 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
     <div className='relative flex flex-col gap-3'>
         <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
             {teachers.map((item, index) => {
-                return <SelectItem onClick={() => updateParams('TeacherId', item.teacherId)}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
+                return <SelectItem onClick={() => updateParams('TeacherId', item.teacherId)} textValue={item.fullName}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
             })}
             <SelectItem onClick={() => updateParams('TeacherId', "")}> </SelectItem>
         </Select>

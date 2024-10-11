@@ -42,12 +42,15 @@ const CourseView1 = () => {
   const techCount = searchParams.get('TechCount') || 0
   const sortingCol = searchParams.get('SortingCol') || 'Active'
   const sortType = searchParams.get('SortType') || 'DESC'
+  const startDate = searchParams.get('StartDate') || ''
+  const endDate = searchParams.get('EndDate') || ''
 
   useEffect(() => {
-    if(pageNumber || idLevel || query || rowsPage || idTeacher || costUp || costDown || techList || techCount || sortingCol || sortType) {
+    if(pageNumber || idLevel || query || rowsPage || idTeacher || costUp || costDown || techList ||
+      techCount || sortingCol || sortType || startDate || endDate) {
       getCourses()
     }
-  }, [pageNumber, idLevel, query, rowsPage, idTeacher, costUp , costDown, techCount, techList, sortType, sortingCol])
+  }, [pageNumber, idLevel, query, rowsPage, idTeacher, costUp , costDown, techCount, techList, sortType, sortingCol, startDate, endDate])
 
   useEffect(() => {
     if(windowWidth < 768) {
@@ -63,7 +66,7 @@ const CourseView1 = () => {
   const getCourses = async () => {
 
     const response = await getCourseList(pageNumber, query, rowsPage, idLevel, idTeacher, 
-    costUp , costDown, techCount, techList, sortType, sortingCol)
+    costUp , costDown, techCount, techList, sortType, sortingCol, startDate, endDate)
 
     setTotalCount(parseInt(response.totalCount / rowsPage));
     setCourses(response.courseFilterDtos)
