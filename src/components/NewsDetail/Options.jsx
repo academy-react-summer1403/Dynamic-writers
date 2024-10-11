@@ -17,9 +17,9 @@ const Options = () => {
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
-          let massage=NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
-          alert(massage)
-          notifySuccess(massage)
+          //let massage=NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+          //alert(massage)
+          //notifySuccess(massage)
         }
       }
       else if(Name=='like'){
@@ -39,13 +39,13 @@ const Options = () => {
     }
   return (
     <div className='flex flex-row gap-2'>
-       <div className={`w-[56px] h-[56px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.dislike ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all`}  onClick={()=>CheckClick('dislike')}>
+       <div className={`w-[56px] h-[56px] rounded-full border-[#E4E4E4] border-2 ${checkClick.dislike ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all`}  onClick={()=>CheckClick('dislike')}>
             <ThumbsDownIcon color={`${checkClick.dislike ? "white":"black"}`} />
         </div>
-        <div className={`w-[56px] h-[56px] rounded-[100%] border-[#E4E4E4] ${checkClick.like ? "bg-black":""} border-2 flex items-center justify-center cursor-pointer hover:scale-110 transition-all`}  onClick={()=>CheckClick('like')}>
+        <div className={`w-[56px] h-[56px] rounded-full border-[#E4E4E4] ${checkClick.like ? "bg-black":""} border-2 flex items-center justify-center cursor-pointer hover:scale-110 transition-all`}  onClick={()=>CheckClick('like')}>
             <ThumbsUpIcon color={`${checkClick.like ? "white":"black"}`}/>
         </div>
-        <div className={`w-[56px] h-[56px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all`}  onClick={()=>CheckClick('save')}>
+        <div className={`w-[56px] h-[56px] rounded-full border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all`}  onClick={()=>CheckClick('save')}>
             <BookmarkAdd02Icon color={`${checkClick.save ? "white":"black"}`}/>
         </div>
         <ToastContainer/>

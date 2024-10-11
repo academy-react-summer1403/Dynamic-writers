@@ -9,12 +9,16 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Root />
+      element: <Root />,
+      children:[
+        {
+          index:"true",
+          path: '/NewsDetail',
+          element: <NewDetail />,
+          errorElement:<Error/>
+        }]
     },
-    {
-      path: '/NewsDetail',
-      element: <NewDetail />
-    },
+
     {
       path: '*',
       element: <NotFoundPage />
