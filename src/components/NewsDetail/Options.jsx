@@ -1,8 +1,8 @@
 import React, {useState } from 'react'
 import { ThumbsUpIcon,ThumbsDownIcon,BookmarkAdd02Icon } from 'hugeicons-react'
-import NewsLike from '../core/services/api/News/NewsLike'
-import DeleteNewsLike from '../core/services/api/News/DeleteNewsLike'
-import NewsDisLike from '../core/services/api/News/NewsDisLike'
+// import NewsLike from '../core/services/api/News/NewsLike'
+// import DeleteNewsLike from '../core/services/api/News/DeleteNewsLike'
+import NewsDisLike from '../../core/services/api/News/NewsDisLike'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -1,4 +1,4 @@
-import Image from './Image'
+import Image from '../../common/image/Image'
 const Profile = ({img,name}) => {
   return (
     <div className='flex flex-row-reverse gap-4'>

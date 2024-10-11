@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import RightDiv from './RightDiv'
-import LeftDiv from './LeftDiv'
+import RightDiv from '../../components/NewsDetail/RightDiv'
+import LeftDiv from '../../components/NewsDetail/LeftDiv'
 
 const NewDetail = () => {
   return (

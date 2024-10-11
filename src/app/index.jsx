@@ -11,6 +11,10 @@ function App() {
       element: <Root />
     },
     {
+      path: '/NewsDetail',
+      element: <Root />
+    },
+    {
       path: '*',
       element: <NotFoundPage />
     }
