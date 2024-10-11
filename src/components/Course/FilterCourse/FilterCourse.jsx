@@ -65,7 +65,7 @@ const FilterCourse = ({ updateParams }) => {
     }
 
     const updateParamsTechList = (key, value) => {
-
+        
         let currentValues = searchParams.get(key) ? searchParams.get(key).split(',') : [];
         currentValues.push(value);
         currentValues = [...new Set(currentValues)];

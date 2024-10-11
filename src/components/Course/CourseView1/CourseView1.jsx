@@ -28,6 +28,7 @@ const CourseView1 = () => {
 
   
   const [windowWidth , setWindowWidth] = useState(window.innerWidth)
+  const [costTop , setCostTop] = useState()
 
   const [searchParams] = useSearchParams()
 
@@ -202,8 +203,8 @@ const CourseView1 = () => {
 
         </div>
 
-        <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
-          <Pagination className='min-w-80 w-fit z-0' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
+        <div className='w-full flex justify-center md:justify-end md:px-10 py-5'>
+          <Pagination className='min-w-80 w-fit z-0 float-start' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>
