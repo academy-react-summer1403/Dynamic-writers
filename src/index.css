@@ -38,3 +38,8 @@
   background-color: rgb(74, 74, 255);
   color: white;
 }
+
+.inputDash:checked + .labelDash > .buttonDash{
+  background-color: rgb(74, 74, 255);
+  color: white;
+}
