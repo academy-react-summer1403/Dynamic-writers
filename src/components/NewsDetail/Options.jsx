@@ -1,7 +1,7 @@
 import React, {useState } from 'react'
 import { ThumbsUpIcon,ThumbsDownIcon,BookmarkAdd02Icon } from 'hugeicons-react'
-// import NewsLike from '../core/services/api/News/NewsLike'
-// import DeleteNewsLike from '../core/services/api/News/DeleteNewsLike'
+import NewsLike from '../../core/services/api/News/NewsLike'
+import DeleteNewsLike from '../../core/services/api/News/DeleteNewsLike'
 import NewsDisLike from '../../core/services/api/News/NewsDisLike'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,26 +11,25 @@ const Options = () => {
     const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
     const notifyError = () => toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"});
 
-    function CheckClick(Name){
+    async function CheckClick(Name){
       if(Name=='dislike'){
         if(checkClick.dislike==true){
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
-          let massage=NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
-          alert(massage)
-          //notifySuccess(massage)
+          let message=await NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+          notifySuccess(message.message)
         }
       }
       else if(Name=='like'){
           if(checkClick.like==true){
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            //DeleteNewsLike(idNew)
-            notifySuccess()
+            let message=await DeleteNewsLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+            notifySuccess(message.message)
           }else{
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            //NewsLike(idNew)
-            notifySuccess()
+            let message=await NewsLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+            notifySuccess(message.message)
           }
          
       }
