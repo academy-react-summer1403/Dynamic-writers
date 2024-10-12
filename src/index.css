@@ -17,17 +17,7 @@
 
 .iranSans {
   font-family: iranSans;
-@font-face {
-  src: url('./assets/DanaPro/');
-  font-family: iranSans;
-}
 
-.iranSans {
-  font-family: iranSans;
-}
-
-.dana {
-  font-family: dana;
 }
 
 .iranSansBold {
@@ -36,10 +26,6 @@
 
 .dana {
   font-family: dana;
-}
-
-.iranSansBold {
-  font-family: iranSansBold;
 }
 
 .er {
@@ -61,13 +47,6 @@
 
 .inputView:checked + .labelView{
   color: rgb(74, 74, 255);
-}
-
-.er {
-  color: rgb(255, 119, 119);
-  font-family: iranSans;
-  font-size: 13px;
-  font-weight: 700;
 }
 
 .inputSortNews:checked + .labelSortNews{

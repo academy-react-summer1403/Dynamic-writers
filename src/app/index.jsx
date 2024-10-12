@@ -1,4 +1,3 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
 import Login from '../screens/Login/Login';
 import Verify from '../screens/Login/verify';
@@ -9,7 +8,6 @@ import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { NextUIProvider } from '@nextui-org/react';
 import Root from '../screens/Root';
 import CourseListRout from '../screens/CourseListRout';
 
