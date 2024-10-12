@@ -3,11 +3,7 @@ import http from '../../interceptor'
 
 const NewsDisLike = async(id) => {
     try{
-        const data={
-            NewsId:id
-        }
-        let response = await http.post('/News/NewsDissLike',data);
-        alert(response)
+        let response = await http.post(`/News/NewsDissLike/${id}`);
         return response
 
     }catch(er){
