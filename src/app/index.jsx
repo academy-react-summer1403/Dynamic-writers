@@ -7,14 +7,18 @@ import RegisterStep3 from '../screens/Register/RegisterStep3';
 import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
-import PanelLayout from '../screens/PanelLayOut';
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
-import { getItem } from '../core/services/common/storage';
-import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import MyCourseRout from '../screens/User Panel/MyCourseRout';
+import MyNewsRout from '../screens/User Panel/MyNewsRout';
+import FavCourseRout from '../screens/User Panel/FavCourseRout';
+import FavNewsRout from '../screens/User Panel/FavNewsRout';
+import ProfileRout from '../screens/User Panel/ProfileRout';
+import PanelLayout from '../screens/User Panel/PanelLayout';
+import DashboardRout from '../screens/User Panel/DashboardRout';
 
 function App() {
 
@@ -54,8 +58,34 @@ function App() {
       element: <ResetPassword />
     },
     {
-      path: '/panel',
-      element: <PanelLayout />
+      path: '/layoutPanel',
+      element: <PanelLayout />,
+      children: [
+        {
+          path: 'dashboard',
+          element: <MyCourseRout />
+        },
+        {
+          path: 'myCourse',
+          element: <DashboardRout />
+        },
+        {
+          path: 'myReserve',
+          element: <MyNewsRout />
+        },
+        {
+          path: 'favCourse',
+          element: <FavCourseRout />
+        },
+        {
+          path: 'favNews',
+          element: <FavNewsRout />
+        },
+        {
+          path: 'profile',
+          element: <ProfileRout />
+        },
+      ]
     },
     {
       path: '*',

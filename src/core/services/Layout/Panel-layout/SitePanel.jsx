@@ -2,16 +2,10 @@ import React from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import Bahr2 from '../../../../assets/Bahr2.png' 
 import { Button } from '@nextui-org/react'
-import { Book02Icon, BookBookmark02Icon, DashboardCircleIcon, DashboardCircleSettingsIcon, FileBookmarkIcon, Logout03Icon, MoneySend01Icon, MoneySend02Icon, TimeSetting03Icon, UserEdit01Icon, UserSettings01Icon } from 'hugeicons-react'
-import { useNavigate } from 'react-router-dom'
+import { Book02Icon, BookBookmark02Icon, Bookmark02Icon, DashboardCircleIcon, DashboardCircleSettingsIcon, FileBookmarkIcon, Logout03Icon, MoneySend01Icon, MoneySend02Icon, TimeSetting02Icon, TimeSetting03Icon, UserEdit01Icon, UserSettings01Icon } from 'hugeicons-react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const SitePanel = () => {
-
-  const navigate = useNavigate()
-
-  const handleClickButton = (event) => {
-    event.stopPropagation()
-  }
 
   return (
     <div className='bg-white rounded-2xl flex flex-col py-7 px-6 justify-between' style={{width: '276px', height: '976px'}}>
@@ -22,20 +16,14 @@ const SitePanel = () => {
         </div>
 
         <div className='flex flex-col w-full h-fit gap-10 justify-center' dir='rtl'>
-          <div className='flex flex-col w-full h-fit gap-3 justify-center'>
+          <div className='flex flex-col w-full h-fit gap-3 font-semibold justify-center'>
               <h2 className='text-gray-600 font-semibold'> عمومی </h2>
-              <input className='hidden inputDash' id='dash1' name='dash' type='radio' defaultChecked />
-              <label htmlFor='dash1' className='labelDash w-full '> <Button onClick={(e) => handleClickButton(e)} className='buttonDash bg-white w-full p-2 rounded-full flex flex-row-reverse text-right text-lg justify-end gap-4 font-semibold'> داشبرد <DashboardCircleIcon /> </Button> </label> 
-              <input className='hidden inputDash' id='dash2' name='dash' type='radio' />
-              <label htmlFor='dash2' className='labelDash w-full '> <Button onClick={(e) => handleClickButton(e)} className='buttonDash bg-white w-full p-2 rounded-full flex flex-row-reverse text-right text-lg justify-end gap-4 font-semibold'> دوره من <Book02Icon /> </Button> </label>
-              <input className='hidden inputDash' id='dash3' name='dash' type='radio' />
-              <label htmlFor='dash3' className='labelDash w-full '> <Button onClick={(e) => handleClickButton(e)} className='buttonDash bg-white w-full p-2 rounded-full flex flex-row-reverse text-right text-lg justify-end gap-4 font-semibold'> رزرو من <TimeSetting03Icon /> </Button> </label>
-              <input className='hidden inputDash' id='dash4' name='dash' type='radio' />
-              <label htmlFor='dash4' className='labelDash w-full '> <Button onClick={(e) => handleClickButton(e)} className='buttonDash bg-white w-full p-2 rounded-full flex flex-row-reverse text-right text-lg justify-end gap-4 font-semibold'> علاقه مندی دوره <BookBookmark02Icon /> </Button> </label>
-              <input className='hidden inputDash' id='dash5' name='dash' type='radio' />
-              <label htmlFor='dash5' className='labelDash w-full '> <Button onClick={(e) => handleClickButton(e)} className='buttonDash bg-white w-full p-2 rounded-full flex flex-row-reverse text-right text-lg justify-end gap-4 font-semibold'> علاقه مندی مقالات <FileBookmarkIcon /> </Button> </label>
-              <input className='hidden inputDash' id='dash6' name='dash' type='radio' />
-              <label htmlFor='dash6' className='labelDash w-full '> <Button onClick={(e) => handleClickButton(e)} className='buttonDash bg-white w-full p-2 rounded-full flex flex-row-reverse text-right text-lg justify-end gap-4 font-semibold'> پروفایل <UserEdit01Icon /> </Button> </label>     
+              <NavLink to='dashboard' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> داشبرد <DashboardCircleIcon /> </NavLink>
+              <NavLink to='myCourse' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> دوره من <Book02Icon /> </NavLink>
+              <NavLink to='myReserve' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> رزرو من <TimeSetting03Icon /> </NavLink>
+              <NavLink to='favCourse' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> علاقه مندی دوره <Bookmark02Icon /> </NavLink>
+              <NavLink to='favNews' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> علاقه مندی مقالات <FileBookmarkIcon /> </NavLink>
+              <NavLink to='profile' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> پروفابل <UserEdit01Icon /> </NavLink>
           </div>
           <div className='flex flex-col w-full h-fit gap-3 justify-center'>
             <h2 className='text-gray-600 font-semibold'> مالی </h2>
