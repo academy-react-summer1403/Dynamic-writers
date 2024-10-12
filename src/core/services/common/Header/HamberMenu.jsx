@@ -1,7 +1,7 @@
 import { Book01Icon, FlipPhoneIcon, Home01Icon, InstagramIcon, News01Icon, TelegramIcon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
-import Bahr from '../../assets/Bahr.png'
-import Bahr2 from '../../assets/Bahr2.png'
+import Bahr from '../../../../assets/Bahr.png'
+import Bahr2 from '../../../../assets/Bahr2.png'
 
 const HamberMenu = ({ closeHamber }) => {
   const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
