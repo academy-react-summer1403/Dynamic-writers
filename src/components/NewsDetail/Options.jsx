@@ -17,8 +17,8 @@ const Options = () => {
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
-          //let massage=NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
-          //alert(massage)
+          let massage=NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+          alert(massage)
           //notifySuccess(massage)
         }
       }

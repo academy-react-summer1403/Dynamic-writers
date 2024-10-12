@@ -13,7 +13,7 @@ function App() {
       children:[
         {
           index:"true",
-          path: '/NewsDetail',
+          path: '/',
           element: <NewDetail />,
           errorElement:<Error/>
         }]
