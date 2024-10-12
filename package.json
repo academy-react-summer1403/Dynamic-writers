@@ -23,7 +23,11 @@
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
     "@persian-tools/persian-tools": "^3.5.2",
+<<<<<<< HEAD
 >>>>>>> 51fb536d2d63706f2a9efdf3a7abd84811f1d84c
+=======
+    "all": "^0.0.0",
+>>>>>>> feature/Panel-layout
     "axios": "^1.7.7",
     "formik": "^2.4.6",
     "framer-motion": "^11.11.1",
