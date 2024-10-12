@@ -7,6 +7,7 @@ import VerifyRegister from '../screens/Register/VerifyRegister';
 import RegisterStep3 from '../screens/Register/RegisterStep3';
 import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
+import NotFoundPage from '../screens/NotFoundPage';
 
 function App() {
 
