@@ -9,15 +9,12 @@ import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
-<<<<<<< HEAD
 import PanelLayout from '../screens/PanelLayOut';
-=======
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
 import { getItem } from '../core/services/common/storage';
 import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
->>>>>>> Develop
 
 function App() {
 
