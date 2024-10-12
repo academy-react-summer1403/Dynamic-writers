@@ -1,21 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NextUIProvider } from '@nextui-org/react';
-<<<<<<< HEAD
-import NotFoundPage from '../screens/NotFoundPage';
-import Root from '../screens/Root';
-
-function App() {
-
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Root />
-    },
-    {
-      path: '*',
-      element: <NotFoundPage />
-    }
-=======
 import Login from '../screens/Login/Login';
 import Verify from '../screens/Login/verify';
 import Register from '../screens/Register/Register';
@@ -25,15 +9,6 @@ import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 
 function App() {
-
-  const getList = async() => {
-    const result = await getCourserList(5);
-    // console.log(result);
-  }
-
-  useEffect(()=>{
-    getList();
-  },[])
 
   const router = createBrowserRouter([
     {
@@ -67,8 +42,11 @@ function App() {
       path: '/resetPassword/:configValue',
       element: <ResetPassword />
     },
+    {
+      path: '*',
+      element: <NotFoundPage />
+    }
 
->>>>>>> feature/Login
   ])
 
   return <NextUIProvider>
