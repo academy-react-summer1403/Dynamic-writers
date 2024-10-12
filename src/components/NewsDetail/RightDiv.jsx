@@ -5,7 +5,7 @@ import Options from './Options'
 
 import { Calendar03Icon,ViewIcon } from 'hugeicons-react'
 
-const RightDiv = () => {
+const RightDiv = ({New}) => {
   return (
     <div className='w-[538px] h-[460px] border-4 border-solid border-[#E4E4E4] rounded-[24px] flex flex-col gap-10 p-5'>
         <div className='w-[493px]'>
@@ -29,7 +29,7 @@ const RightDiv = () => {
             <div className='font-[700] text-[16px] text-right text-[#787878]'>منتشر کننده</div>
             <div className='flex flex-row-reverse mr-2 justify-between'>
                 <Profile name="نیما علیزاده" img=""/>
-                <Options/>
+                <Options News={New}/>
             </div>
         </div>
     </div>

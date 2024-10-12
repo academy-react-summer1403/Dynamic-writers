@@ -2,11 +2,9 @@ import http from '../../interceptor'
 import GetNewsById from './GetNewsById';
 const DeleteNewsLike = async(id) => {
     try{
-        let News = await GetNewsById(id)
-        console.log(News.detailsNewsDto.likeId)
         let response=await http.delete('/News/DeleteLikeNews',{
             data: {
-                deleteEntityId: News.detailsNewsDto.likeId
+                deleteEntityId: id
             }})
         return response
 

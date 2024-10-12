@@ -3,10 +3,11 @@ import { ThumbsUpIcon,ThumbsDownIcon,BookmarkAdd02Icon } from 'hugeicons-react'
 import NewsLike from '../../core/services/api/News/NewsLike'
 import DeleteNewsLike from '../../core/services/api/News/DeleteNewsLike'
 import NewsDisLike from '../../core/services/api/News/NewsDisLike'
+import AddFavoriteNews from '../../core/services/api/News/AddFavoriteNews'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Options = () => {
+const Options = ({News}) => {
     const [checkClick, setcheckClick] = useState({like:false,dislike:false,save:false})
     const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
     const notifyError = () => toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"});
@@ -17,24 +18,33 @@ const Options = () => {
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
-          let message=await NewsDisLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+          let message=await NewsDisLike(News.detailsNewsDto.id)
           notifySuccess(message.message)
         }
       }
       else if(Name=='like'){
           if(checkClick.like==true){
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            let message=await DeleteNewsLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+            let message=await DeleteNewsLike(News.detailsNewsDto.likeId)
             notifySuccess(message.message)
           }else{
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            let message=await NewsLike('eed400fe-4e77-ef11-b6da-8f406465b439')
+            let message=await NewsLike(News.detailsNewsDto.id)
             notifySuccess(message.message)
           }
          
       }
-      else
-        setcheckClick({...checkClick,save:!checkClick.save})
+      else{
+        if(checkClick.save==true){
+          setcheckClick({...checkClick,save:!checkClick.save})
+          let message=await DeleteFavoriteNews(News.detailsNewsDto.id)
+          notifySuccess(message.message)
+        }else{
+          setcheckClick({...checkClick,save:!checkClick.save})
+          let message=await AddFavoriteNews(News.detailsNewsDto.id)
+          notifySuccess(message.message)
+        }
+      }
     }
   return (
     <div className='flex flex-row gap-2'>
