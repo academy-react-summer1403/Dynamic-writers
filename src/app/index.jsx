@@ -73,7 +73,7 @@ function App() {
           element: <News />
         },
         {
-          path: '/',
+          path: '/NewDetail/:id',
           element: <NewDetail />
         }
       ]
