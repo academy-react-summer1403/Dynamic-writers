@@ -20,14 +20,14 @@ const Header = () => {
   return (
     <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-between items-center md:justify-between px-3 md:px-14 font-semibold'>
       {hamberMenu === true && <HamberMenu closeHamber={closeHamber}/>}
-      <div onClick={() => navigate('/')} className='flex gap-3 h-6 w-13'>
+      <div className='flex gap-3 h-6 w-13'>
         <img src={Bahr2} className='w-full h-full hidden md:inline' />
         <img src={Bahr} className='size-6 inline' />
       </div>
 
       <div className='items-center gap-14 flex-row-reverse hidden md:flex'>
         <Link to='/' className='hover:text-gray-600'> خانه </Link>
-        <Link to='/courseList' className='hover:text-gray-600'> دوره ها </Link>
+        <Link to='courseList' className='hover:text-gray-600'> دوره ها </Link>
         <Link to='/newsList' className='hover:text-gray-600'> اخبار و مقالات </Link>
         <Link to='/about' className='hover:text-gray-600'> ارتباط با ما </Link>
       </div>
