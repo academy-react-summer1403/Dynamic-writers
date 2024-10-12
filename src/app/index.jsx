@@ -9,15 +9,12 @@ import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
-<<<<<<< HEAD
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
-=======
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
 import { getItem } from '../core/services/common/storage';
 import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
->>>>>>> Develop
 
 function App() {
 
@@ -27,17 +24,6 @@ function App() {
 
   const router = createBrowserRouter([
     {
-<<<<<<< HEAD
-      path: '/',
-      element: <Root />,
-      children:[
-        {
-          index:"true",
-          path: '/',
-          element: <NewDetail />,
-          errorElement:<Error/>
-        }]
-=======
       path: '/login',
       element: (
         <Login />
@@ -67,7 +53,6 @@ function App() {
     {
       path: '/resetPassword/:configValue',
       element: <ResetPassword />
->>>>>>> Develop
     },
 
     {
@@ -86,6 +71,10 @@ function App() {
         {
           path: '/newsList',
           element: <News />
+        },
+        {
+          path: '/',
+          element: <NewDetail />
         }
       ]
     }
