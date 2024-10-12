@@ -34,9 +34,9 @@ const Footer = () => {
       <div className='flex gap-20 justify-between md:justify-normal md:flex-row flex-row-reverse'>
         <div className='flex flex-col justify-center items-end gap-3 h-full px-2'>
           <h2 className='text-gray-600 text-base mb-10'> صفحات </h2>
-          <Link to='' className='whitespace-nowrap'> خانه </Link> 
-          <Link to='' className='whitespace-nowrap'> دوره ها </Link> 
-          <Link to='' className='whitespace-nowrap'> اخبار و مقالات </Link> 
+          <Link to='/' className='whitespace-nowrap'> خانه </Link> 
+          <Link to='/courseList' className='whitespace-nowrap'> دوره ها </Link> 
+          <Link to='/newsList' className='whitespace-nowrap'> اخبار و مقالات </Link> 
         </div>
 
         <div className='flex flex-col justify-center items-end gap-3 h-full px-2'>
