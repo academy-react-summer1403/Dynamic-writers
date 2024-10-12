@@ -1,4 +1,5 @@
 @font-face {
+<<<<<<< HEAD
   font-family: iranSans;
   src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-Light.ttf')
 }
@@ -6,16 +7,31 @@
 @font-face {
   font-family: iranSansBold;
   src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-DemiBold.ttf')
+=======
+    font-family: iranSans;
+    src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-Light.ttf')
+}
+
+@font-face {
+    font-family: iranSansBold;
+    src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-DemiBold.ttf')
+>>>>>>> feature/Login
 }
 
 
 @font-face {
+<<<<<<< HEAD
   font-family: dana;
   src: url('./assets/DanaPro/')
+=======
+    font-family: dana;
+    src: url('./assets/DanaPro/')
+>>>>>>> feature/Login
 }
 
 
 .iranSans {
+<<<<<<< HEAD
   font-family: iranSans;
 }
 
@@ -37,4 +53,22 @@
 .inputSortNews:checked + .labelSortNews{
   background-color: rgb(74, 74, 255);
   color: white;
+=======
+    font-family: iranSans;
+}
+
+.dana {
+    font-family: dana;
+}
+
+.iranSansBold {
+    font-family: iranSansBold;
+}
+
+.er {
+    color: rgb(255, 119, 119);
+    font-family: iranSans;
+    font-size: 13px;
+    font-weight: 700;
+>>>>>>> feature/Login
 }
