@@ -8,7 +8,7 @@ const instance = axios.create({
 })
 
 const onSuccess = (response) => {
-       return response.data;
+   return response.data;
 }
 
 const onError = (err) => {
@@ -31,7 +31,7 @@ instance.interceptors.response.use(onSuccess, onError)
 instance.interceptors.request.use((opt) => {
    const token = getItem('token')
 
-   if (token) opt.headers.Authorization = 'Bearer ' + token;
+   if (token) opt.headers.Authorization = 'Bearer ' + JSON.parse(token);
    return opt
 })
 
