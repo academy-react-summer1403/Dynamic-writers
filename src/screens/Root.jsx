@@ -8,7 +8,7 @@ const Root = () => {
     <div className='iranSans'>
      <Header />
 
-     <Outlet /> 
+     <Outlet />
 
      <Footer />
     </div>
