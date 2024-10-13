@@ -3,6 +3,9 @@ import HeaderPanel from '../../core/services/Layout/Panel-layout/HeaderPanel'
 import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
+import Dashboard from '../../components/User Panel/Dashboard/Dashboard'
+import DashboardRout from './DashboardRout'
+import { Outlet } from 'react-router-dom'
 
 const PanelLayout = () => {
 
@@ -43,8 +46,7 @@ const PanelLayout = () => {
             <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
-            {/*  اینحا رو برای پنل گزاشتم بزنید  */}
-
+            <Outlet />
 
         </div>
 
