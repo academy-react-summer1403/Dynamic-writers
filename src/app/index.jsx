@@ -11,7 +11,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
-import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import MyCourseRout from '../screens/User Panel/MyCourseRout';
 import MyNewsRout from '../screens/User Panel/MyNewsRout';
 import FavCourseRout from '../screens/User Panel/FavCourseRout';
@@ -19,12 +18,9 @@ import FavNewsRout from '../screens/User Panel/FavNewsRout';
 import ProfileRout from '../screens/User Panel/ProfileRout';
 import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
+import AllNewCourses from '../screens/User Panel/AllNewCourses';
 
 function App() {
-
-  // const [token, setToken] = useState(getItem('token'))
-
-  // return token ? element : <Navigate to='/login' />
 
   const router = createBrowserRouter([
     {
@@ -87,6 +83,10 @@ function App() {
           element: <ProfileRout />
         },
       ]
+    },
+    {
+      path: '/allNewCourses',
+      element: <AllNewCourses />
     },
     {
       path: '*',

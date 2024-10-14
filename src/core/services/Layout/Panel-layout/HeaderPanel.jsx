@@ -10,7 +10,7 @@ const HeaderPanel = ({ editingImage, profileInfo }) => {
             <div onClick={editingImage} className='cursor-pointer size-4 bg-blue-500 rounded-full absolute right-1 bottom-1 flex items-center justify-center'> <PencilEdit01Icon className='size-3 font-semibold text-white' /> </div>
         </div>
         <div className='flex flex-col'>
-            <h2 className='font-semibold text-xl text-right'> {profileInfo.lName || profileInfo.fName ? [profileInfo.lName , ' ' , profileInfo.fName] : "نامشخص"}  </h2>
+            <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.fName , ' ' , profileInfo.lName] : "نامشخص"}  </h2>
             <span className='text-gray-500 text-right'> ادمین ، دانشجو </span>
         </div>
       </div>

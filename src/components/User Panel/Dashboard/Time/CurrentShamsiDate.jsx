@@ -1,0 +1,19 @@
+import React, { useEffect, useState } from "react";
+import moment from "jalali-moment";
+
+const CurrentShamsiDate = () => {
+  const [shamsiDate, setShamsiDate] = useState("");
+
+  useEffect(() => {
+    const currentDate = moment().locale('fa').format('jD jMMMM jYYYY');
+    setShamsiDate(currentDate);
+  }, []);
+
+  return (
+    <div>
+      <p className="font-bold"> {shamsiDate}</p>
+    </div>
+  );
+};
+
+export default CurrentShamsiDate;
