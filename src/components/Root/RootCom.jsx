@@ -6,11 +6,11 @@ import { Outlet } from 'react-router-dom'
 const RootCom = () => {
   return (
     <div className='flex flex-col items-center'>
-      {/* <Header />
+      <Header />
 
       <Outlet />
       
-      <Footer /> */}
+      <Footer />
     </div>
   )
 }
