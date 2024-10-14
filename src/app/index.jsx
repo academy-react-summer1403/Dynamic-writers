@@ -11,10 +11,13 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Root from '../screens/Root';
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
 import CourseListRout from '../screens/CourseListRout';
+import {CourseDetail} from '../screens/CourseDetail/CourseDetail';
 import News from '../screens/News';
 import { getItem } from '../core/services/common/storage';
 import { useState } from 'react';
+import './App.css'
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import CourseReserve from '../components/CourseReserve/CourseReserve';
 
 function App() {
 
@@ -75,6 +78,10 @@ function App() {
         {
           path: '/NewDetail/:id',
           element: <NewDetail />
+        },
+        {
+          path:'/CourseDetail/:id',
+          element:<CourseDetail/>
         }
       ]
     }
