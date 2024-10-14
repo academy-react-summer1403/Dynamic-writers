@@ -3,6 +3,7 @@ import HeaderPanel from '../../core/services/Layout/Panel-layout/HeaderPanel'
 import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
+import MyCourseRout from './MyCourseRout'
 
 const PanelLayout = () => {
 
@@ -43,8 +44,8 @@ const PanelLayout = () => {
             <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
-            {/*  اینحا رو برای پنل گزاشتم بزنید  */}
-
+            
+            <MyCourseRout />
 
         </div>
 

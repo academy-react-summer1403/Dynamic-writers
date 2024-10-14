@@ -64,11 +64,11 @@ function App() {
       children: [
         {
           path: 'dashboard',
-          element: <MyCourseRout />
+          element: <DashboardRout />
         },
         {
           path: 'myCourse',
-          element: <DashboardRout />
+          element: <MyCourseRout />
         },
         {
           path: 'myReserve',
