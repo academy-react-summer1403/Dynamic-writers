@@ -4,10 +4,8 @@ import { getProfileInfo } from '../../../core/services/api/Panel/GetProfile/getP
 import CurrentTime from './Time/CurrentTime'
 import CurrentShamsiDate from './Time/CurrentShamsiDate'
 import { Link, NavLink } from 'react-router-dom'
-import TabelDashboard from './Tabel/TableDashboard'
 import TableDashboard from './Tabel/TableDashboard'
-import { getCourseTops } from '../../../core/services/api/courseTop'
-import { buildStyles, CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar'
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css';
 
 const Dashboard = () => {

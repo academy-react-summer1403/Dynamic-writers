@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import Bahr2 from '../../../../assets/Bahr2.png' 
 import { Button } from '@nextui-org/react'
@@ -11,7 +11,7 @@ const SitePanel = () => {
   const navigate = useNavigate()
 
   return (
-    <div className='bg-white rounded-2xl flex flex-col py-7 px-6 justify-between' style={{width: '276px', height: '976px'}}>
+    <div className='bg-white rounded-2xl md:flex flex-col py-7 px-6 justify-between hidden'>
       <div className='flex flex-col gap-12'>
         <div onClick={() => navigate('/')} className='flex flex-row-reverse justify-between gap-3 items-center'>
           <img src={Bahr} className='size-10' />

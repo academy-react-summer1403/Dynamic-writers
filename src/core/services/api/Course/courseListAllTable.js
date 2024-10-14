@@ -6,12 +6,14 @@ export const getCourseListAllTable = async (
     query,
     teacher, 
     costDown, 
-    costUp
+    costUp, 
+    convertedDates
 ) => {
   
     try {
   const result = await http.get(`/Home/GetCoursesWithPagination?PageNumber=${pageNumber}
-    &RowsOfPage=${rows}&Query=${query}&TeacherId=${teacher}&CostDown=${costDown}&CostUp=${costUp}`);
+    &RowsOfPage=${rows}&Query=${query}&TeacherId=${teacher}&CostDown=${costDown}&CostUp=${costUp}&
+    StartDate=${convertedDates.startDate}&EndDate=${convertedDates.endDate}`);
 
   return result;
   

@@ -6,7 +6,14 @@ import { NavLink, Link } from 'react-router-dom'
 import jMoment from 'moment-jalaali'
 import { getCourseListAllTable } from '../../../../core/services/api/Course/courseListAllTable'
 import { getTeacherList } from '../../../../core/services/api/teachers'
+import { toGregorian } from 'jalaali-js'
 
+const convertJalaliToGregorian = (jalaliDate) => {
+
+  const jalaaliDateShams = (jalaliDate.split('/'))
+  const gregorianDate = toGregorian(parseInt(jalaaliDateShams[0]), parseInt(jalaaliDateShams[1]), parseInt(jalaaliDateShams[2]))
+  return `${gregorianDate.gy}-${gregorianDate.gm}-${gregorianDate.gd}`
+} 
 
 const AllNewCoursesCom = () => {
 
@@ -49,18 +56,15 @@ const AllNewCoursesCom = () => {
         const convertedStartDate = convertJalaliToGregorian(startDate);
         const convertedEndDate = convertJalaliToGregorian(endDate);
         setConvertedDates({ startDate: convertedStartDate, endDate: convertedEndDate });
-        setEndDate(convertedDates.endDate)
-        setStartDate(convertedDates.startDate)
       }
       else {
-        setEndDate('')
-        setStartDate('')
+        setConvertedDates({endDate: '', startDate: ''})
       }
     }
 
     const getCourses = async () => {
   
-      const response = await getCourseListAllTable(pageNumber, rows, query, teacher, costDown.toString(), costUp.toString(), startDate, endDate)
+      const response = await getCourseListAllTable(pageNumber, rows, query, teacher, costDown.toString(), costUp.toString(), convertedDates)
   
       setTotalCount(parseInt(response.totalCount / rows))
       setCourseTops(response.courseFilterDtos)
@@ -82,7 +86,7 @@ const AllNewCoursesCom = () => {
         setquery({})
       }
       getCourses()
-    }, [pageNumber, rows, query, teacher, costDown, costUp, startDate, endDate])
+    }, [pageNumber, rows, query, teacher, costDown, costUp, convertedDates])
 
   return (
     <div className='w-dvw h-dvh bg-white rounded-2xl flex gap-4 flex-col p-6' dir='rtl'>
@@ -118,17 +122,10 @@ const AllNewCoursesCom = () => {
                 <span className='text-base font-semibold'> تاریخ برگزاری </span>
             </div>
             <div className='relative gap-3 flex flex-col'>
-                <Formik
-                    initialValues={{date: ''}}
-                    onSubmit={() => handleSubmit(e)}
-                >
-
-                  <Form>
-                    <Input name='date' placeholder='1403/5/20 - 1403/6/20' onChange={(e) => handleChange(e)} className='w-full h-10 rounded-xl my-1.5 bg-gray-100 text-gray-700 px-2 text-sm font-semibold outline-none' dir='ltr' />
-                    <button type='submit' className='text-white bg-gray-500 absolute rounded-xl h-10 w-10 right-0 bottom-2 text-center flex justify-center items-center hover:bg-gray-600'> <Calendar02Icon className='size-5' /> </button>
-                  </Form>
-
-                </Formik>
+            <form className='relative items-center flex' onSubmit={handleSubmit}>
+               <Input placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
+               <button type='submit' className='text-white bg-gray-500 absolute rounded-xl h-10 w-10 right-0 bottom-2 text-center flex justify-center items-center hover:bg-gray-600'> <Calendar02Icon className='size-5' /> </button>
+            </form>
             </div>
         </div>
 

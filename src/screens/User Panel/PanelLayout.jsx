@@ -6,6 +6,7 @@ import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProf
 import Dashboard from '../../components/User Panel/Dashboard/Dashboard'
 import DashboardRout from './DashboardRout'
 import { Outlet } from 'react-router-dom'
+import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
 
 const PanelLayout = () => {
 
@@ -37,11 +38,11 @@ const PanelLayout = () => {
   }, [])
 
   return (
-    <div className='bg-gray-200 w-dvw h-fit gap-5 flex py-5 px-5 iranSans flex-row-reverse'>
+    <div className='bg-gray-200 w-dvw md:h-fit h-dvh gap-5 flex py-5 px-5 iranSans md:flex-row-reverse flex-col'>
 
         <SitePanel />
             
-        <div className='flex flex-col border items-end h-fit gap-2 relative' style={{width: '1196px'}}>
+        <div className='flex flex-col border items-end h-fit gap-2 relative w-full' style={{maxWidth: '1196px'}}>
 
             <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
@@ -49,6 +50,8 @@ const PanelLayout = () => {
             <Outlet />
 
         </div>
+
+        <SitePanelRes />
 
     </div>
   )
