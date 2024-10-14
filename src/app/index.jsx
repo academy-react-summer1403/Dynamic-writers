@@ -19,6 +19,7 @@ import FavNewsRout from '../screens/User Panel/FavNewsRout';
 import ProfileRout from '../screens/User Panel/ProfileRout';
 import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
+import MyReserveRout from '../screens/User Panel/MyReserveRout';
 
 function App() {
 
