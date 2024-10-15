@@ -12,13 +12,13 @@ import Root from '../screens/Root';
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
 import MyCourseRout from '../screens/User Panel/MyCourseRout';
-import MyNewsRout from '../screens/User Panel/MyReserveRout';
 import FavCourseRout from '../screens/User Panel/FavCourseRout';
 import FavNewsRout from '../screens/User Panel/FavNewsRout';
 import ProfileRout from '../screens/User Panel/ProfileRout';
 import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
+import AllNewCourses from '../screens/User Panel/AllNewCourses';
 
 function App() {
 
@@ -61,11 +61,9 @@ function App() {
         {
           path: 'dashboard',
           element: <DashboardRout />
-          element: <DashboardRout />
         },
         {
           path: 'myCourse',
-          element: <MyCourseRout />
           element: <MyCourseRout />
         },
         {

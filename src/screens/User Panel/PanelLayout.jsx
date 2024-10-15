@@ -4,6 +4,7 @@ import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
 import { Outlet } from 'react-router'
+import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
 
 const PanelLayout = () => {
 
