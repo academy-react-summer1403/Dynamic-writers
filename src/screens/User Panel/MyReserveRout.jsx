@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MyNewsRout = () => {
+const MyReserveRout = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const MyNewsRout = () => {
   )
 }
 
-export default MyNewsRout
+export default MyReserveRout

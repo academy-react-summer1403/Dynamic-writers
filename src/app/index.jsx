@@ -13,7 +13,7 @@ import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import MyCourseRout from '../screens/User Panel/MyCourseRout';
-import MyNewsRout from '../screens/User Panel/MyNewsRout';
+import MyNewsRout from '../screens/User Panel/MyReserveRout';
 import FavCourseRout from '../screens/User Panel/FavCourseRout';
 import FavNewsRout from '../screens/User Panel/FavNewsRout';
 import ProfileRout from '../screens/User Panel/ProfileRout';
@@ -64,15 +64,15 @@ function App() {
       children: [
         {
           path: 'dashboard',
-          element: <MyCourseRout />
-        },
-        {
-          path: 'myCourse',
           element: <DashboardRout />
         },
         {
+          path: 'myCourse',
+          element: <MyCourseRout />
+        },
+        {
           path: 'myReserve',
-          element: <MyNewsRout />
+          element: <MyReserveRout />
         },
         {
           path: 'favCourse',
