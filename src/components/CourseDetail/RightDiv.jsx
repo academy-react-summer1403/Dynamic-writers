@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Tags from '../../common/tags/tags'
 import Profile from './Profile'
 import Options from './Options'
+import jMoment from 'moment-jalaali'
 import { Calendar03Icon,StarIcon,Calendar02Icon,ViewIcon,StudentsIcon } from 'hugeicons-react'
 
 const RightDiv = ({Course,Flags}) => {
@@ -39,11 +40,11 @@ const isClick=()=>{
             </div>
             <div className='flex flex-row-reverse gap-2'>
                 <Calendar03Icon color='black'/>
-                <span className='text-[#272727] font-[700] text-[20px]'><span className='font-[500] text-[16px] text-[#787878]'>(شروع) </span>{Course.startTime}</span>
+                <span className='text-[#272727] font-[700] text-[20px]'><span className='font-[500] text-[16px] text-[#787878]'>(شروع) </span>{(jMoment(Course.startTime).locale('fa').format('jD  jMMMM  jYYYY'))}</span>
             </div>
             <div className='flex flex-row-reverse gap-2'>
                 <Calendar02Icon color='black'/>
-                <span className='text-[#272727] font-[700] text-[20px]'><span className='font-[500] text-[16px] text-[#787878]'>(پایان) </span>{Course.endTime}</span>
+                <span className='text-[#272727] font-[700] text-[20px]'><span className='font-[500] text-[16px] text-[#787878]'>(پایان) </span>{jMoment(Course.endTime).locale('fa').format('jD  jMMMM  jYYYY')}</span>
             </div>
             <div className='text-[#3772FF] text-[16px] font-[700] flex-row'>
                  تومان    

@@ -3,6 +3,7 @@ import { CheckmarkCircle03Icon,UserStoryIcon,ProfileIcon } from 'hugeicons-react
 import image from '../../assets/arrow.png'
 const CourseReserve = ({Flags}) => {
   return (
+    
     <div className='w-[551px] h-[480px] rounded-[24px] border-[4px] flex flex-col justify-center items-center gap-6 p-3 bg-white sticky top-[50px] '>
         <div className='text-[#FEFDFF] bg-[#2CDA5D] font-[700] rounded-[40px] w-[390px] flex flex-row gap-3 p-3 text-right whitespace-nowrap'><CheckmarkCircle03Icon color='green'/>دوره با موفقیت به لیست رزرو های شما اضافه شد</div>
         <div className='flex flex-row-reverse items-center justify-center'>
