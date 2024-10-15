@@ -1,5 +1,4 @@
 // tailwind.config.js
-// tailwind.config.js
 const {nextui} = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
@@ -35,6 +34,9 @@ export default {
         6: '6',
         7: '7',
         8: '8',
+      },
+      height: {
+        471: '471px',
       }
     },
   },

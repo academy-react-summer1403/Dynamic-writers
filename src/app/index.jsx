@@ -7,20 +7,21 @@ import RegisterStep3 from '../screens/Register/RegisterStep3';
 import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
-import { getItem } from '../core/services/common/storage';
-import { useState } from 'react';
-import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import MyCourseRout from '../screens/User Panel/MyCourseRout';
+import FavCourseRout from '../screens/User Panel/FavCourseRout';
+import FavNewsRout from '../screens/User Panel/FavNewsRout';
+import ProfileRout from '../screens/User Panel/ProfileRout';
+import PanelLayout from '../screens/User Panel/PanelLayout';
+import DashboardRout from '../screens/User Panel/DashboardRout';
+import MyReserveRout from '../screens/User Panel/MyReserveRout';
+import AllNewCourses from '../screens/User Panel/AllNewCourses';
 
 function App() {
-
-  // const [token, setToken] = useState(getItem('token'))
-
-  // return token ? element : <Navigate to='/login' />
 
   const router = createBrowserRouter([
     {
@@ -33,7 +34,6 @@ function App() {
       path: '/verify',
       element: <Verify />
     },
-    
     {
       path: '/register',
       element: <Register />
@@ -55,6 +55,40 @@ function App() {
       element: <ResetPassword />
     },
 
+    {
+      path: '/layoutPanel',
+      element: <PanelLayout />,
+      children: [
+        {
+          path: 'dashboard',
+          element: <DashboardRout />
+        },
+        {
+          path: 'myCourse',
+          element: <MyCourseRout />
+        },
+        {
+          path: 'myReserve',
+          element: <MyReserveRout />
+        },
+        {
+          path: 'favCourse',
+          element: <FavCourseRout />
+        },
+        {
+          path: 'favNews',
+          element: <FavNewsRout />
+        },
+        {
+          path: 'profile',
+          element: <ProfileRout />
+        },
+      ]
+    },
+    {
+      path: '/allNewCourses',
+      element: <AllNewCourses />
+    },
     {
       path: '*',
       element: <NotFoundPage />

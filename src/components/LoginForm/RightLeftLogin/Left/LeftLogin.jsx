@@ -72,10 +72,10 @@ const LeftLogin = () => {
   }
 
   return (
-    <div className='grow-8 bg-white flex flex-col justify-start items-center my-7'>
+    <div className='grow-8 bg-white flex flex-col md:justify-start justify-center items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6'>
-            <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
+            <div onClick={() => navigate('/')} className='cursor-pointer w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </div>
             <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold'> 👋!خوش برگشتی </h2>
@@ -107,7 +107,7 @@ const LeftLogin = () => {
 
         <div className='w-4/6 flex flex-col items-end md:hidden mt-10'>
         <div className='w-full h-16 my-8 flex items-center' style={{direction : 'rtl'}}> 
-            <div className='block size-12 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
+            <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
             <span className='inline iranSansBold mr-5 whitespace-nowrap w-full'> وارد کردن شماره همراه یا ایمیل </span>
         </div>
         <div className='flex items-center w-full h-14' style={{direction : 'rtl'}} >

@@ -9,7 +9,7 @@ const RootCom = () => {
       <Header />
 
       <Outlet />
-
+      
       <Footer />
     </div>
   )
