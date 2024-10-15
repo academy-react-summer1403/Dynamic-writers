@@ -28,7 +28,7 @@ const Dashboard = () => {
         <div className='grow border items-center py-5'>
           <h2 className='font-bold text-2xl'> سلام , صبح بخیر {profileInfo.fName} 😍 </h2>
         </div>
-        <div className='grow flex justify-start gap-24 items-center'>
+        <div className='grow flex md:justify-start justify-between w-full md:gap-24 items-center'>
           <div className='flex gap-4'>
             <div className='rounded-full size-12 bg-white flex justify-center items-center'> <Clock01Icon className='size-6' /> </div>
             <div className='flex flex-col'> <h5 className='text-gray-600 text-base'> ساعت </h5> <CurrentTime /> </div>
