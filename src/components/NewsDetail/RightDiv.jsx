@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import Tags from './tags'
+import Tags from '../../common/tags/tags'
 import Profile from './Profile'
 import Options from './Options'
 import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
