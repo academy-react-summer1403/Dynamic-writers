@@ -4,13 +4,26 @@ import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
 import MyCourseRout from './MyCourseRout'
+import { GetMyCource } from "../../core/services/api/Panel/getMyCource/getMyCource";
+import { Outlet } from 'react-router-dom'
 
 const PanelLayout = () => {
 
   const [editImage, setEditImage] = useState(false)
   const [editImag, setEditImag] = useState(1)
 
-  const [profileInfo, setProfileInfo] = useState([])
+  const [profileInfo, setProfileInfo] = useState([]);
+
+  const [dataCources, setDataCources] = useState([]);
+
+  const reData = async()=> {
+       const params = {
+             Count: 5,
+       }
+
+       const courcesIs = await GetMyCource(params);
+       setDataCources(courcesIs);
+  }
 
 
   const editingImage = () => {
@@ -31,7 +44,8 @@ const PanelLayout = () => {
   }
 
   useEffect(() => {
-    getProfile()
+    getProfile();
+    reData();
   }, [])
 
   return (
@@ -44,8 +58,12 @@ const PanelLayout = () => {
             <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
+            <Outlet />
             
-            <MyCourseRout />
+            {dataCources.map((el , index)=> <MyCourseRout 
+           key={index} id={el.studentId} courseTitle={el.courseTitle} fullName={el.fullName}
+           termName={el.termName} cost={el.cost} paymentStatus={el.paymentStatus} imaged={el.tumbImageAddress} 
+           />)}
 
         </div>
 

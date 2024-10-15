@@ -6,8 +6,10 @@ import cheshm from '../../assets/cheshm.png'
 import parcham from '../../assets/parcham.png'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css';
+import {Pagination, PaginationItem, PaginationCursor} from "@nextui-org/react";
 
-const MyCourseRout = () => {
+const MyCourseRout = (props) => {
+  const {id , courseTitle , fullName , termName , cost , paymentStatus , imaged} = props;
   return (
     <div className='min-w-full rounded-xl mx-auto my-1'>
       <div className='rounded-xl mb-3' style={{direction: "rtl"}}>
@@ -44,16 +46,16 @@ const MyCourseRout = () => {
 
         <div id='list' className='mt-6 m-auto rounded-xl h-3/4' style={{width:"1064px"}}>
 
-            <div id='card' className='rounded-xl h-20 m-auto flex gap-4 relative' style={{width: "99.5%" , direction: "rtl"}}>
+            <div id='card' className='rounded-xl h-20 m-auto flex gap-4 relative hover:bg-slate-100 hover:cursor-pointer' style={{width: "99.5%" , direction: "rtl"}}>
 
               <div id='photo' className='rounded-lg border-1.5 relative bg-slate-500' style={{width: "104px" , height: "72px" , top: "3px" , overflow: "hidden"}}>
-                <img className='block' style={{height: "100%"}} src="../../assets/photos.svg" alt="" />
+                <img className='block' style={{height: "100%"}} src={imaged} alt="" />
               </div>
 
-              <div id='isName' className='font-bold text-xl' style={{lineHeight: "75px"}}>ری‌اکت جی‌اس</div>
-              <div id='isName' className='font-medium text-base' style={{lineHeight: "75px"}}>محسن اسفندیاری...</div>
-              <div id='isName' className='font-medium text-base mr-5' style={{lineHeight: "75px"}}>25 اردیبهشت 1403</div>
-              <div id='isName' className='font-medium text-xl mr-8' style={{lineHeight: "75px"}}>1،800،000تومان</div>
+              <div id='isName' className='font-bold text-xl' style={{lineHeight: "75px"}}>{courseTitle}</div>
+              <div id='isName' className='font-medium text-base' style={{lineHeight: "75px"}}>{fullName}</div>
+              <div id='isName' className='font-medium text-base mr-5' style={{lineHeight: "75px"}}>{termName}</div>
+              <div id='isName' className='font-medium text-xl mr-8' style={{lineHeight: "75px"}}>{cost}</div>
 
               <div className='flex text-base font-bold' style={{lineHeight: "75px", textIndent: "5px"}}>
                   <div style={{ width: "48px", height: "48px" , marginTop: "16px", marginRight: "55px"  }}>
@@ -68,7 +70,7 @@ const MyCourseRout = () => {
                       })}
                     />
                 </div>
-                پرداخت شده
+                 {paymentStatus}
               </div>
 
               <div className='cursor-pointer' style={{width: "24px" , height: "24px" , marginTop: "25px" , marginRight: "50px"}}><img src={cheshm} alt="" /></div>
@@ -78,6 +80,7 @@ const MyCourseRout = () => {
 
         </div>
 
+        <Pagination className='mx-auto mt-6' style={{width: "322px" , height: "48px"}} isCompact showControls total={10} initialPage={1} />
 
       </div>
     </div>
