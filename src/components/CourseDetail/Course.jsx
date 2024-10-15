@@ -37,7 +37,7 @@ const Course = () => {
   return (
     <Fragment>
         {Flag && <div className='absolute top-0 w-[100%] h-[100%] z-30 flex justify-center  bg-opacity-80 bg-[#000000] transition-opacity duration-300 ease-in-out'><CourseReserve Flags={setFlag}/></div>}
-        <div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse max-lg:flex-col items-center max-md:flex-col max-xl:justify-evenly max-2xl:justify-evenly'>
+        <div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
         <RightDiv Course={Course} Flags={setFlag}/>
         <LeftDiv Course={Course}/>
         </div>

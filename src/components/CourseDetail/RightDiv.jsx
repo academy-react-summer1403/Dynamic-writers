@@ -11,7 +11,7 @@ const isClick=()=>{
 }
     
   return (
-    <div className='h-[550px] w-[500px] border-4 border-solid border-[#E4E4E4] rounded-[24px] items-end  flex flex-col top-10 gap-8 p-5 max-2xl:w-[500px] max-xl:w-[50%] sticky max-lg:w-[80%] relative  max-md:w-[100%] max-sm:w-[100%] ' >
+    <div className='h-[550px] w-[500px] border-4 border-solid border-[#E4E4E4] rounded-[24px] items-end  flex flex-col  gap-8 p-5 max-sm:w-[100%] max-md:w-[100%] max-xl:w-[50%]  xl:sticky  max-lg:w-[80%] relative top-[-10px] lg:sticky top-10 max-2xl:w-[500px]' >
         <div className={`${Course.courseStatusName=="درحال برگزاری" ? "bg-yellow-300" : Course.courseStatusName=="منقضی شده" ? "bg-red-400" : "bg-green-400"} flex flex-row items-center gap-2 justify-end pr-[7px]  w-[120px] rounded-[30px] text-center text-[14px] font-[500] `}>{Course.courseStatusName}<div className={`${Course.courseStatusName=="درحال برگزاری" ? "bg-yellow-800" : Course.courseStatusName=="منقضی شده" ? "bg-red-800" : "bg-green-800"} rounded-[100%] w-[10px] h-[10px]`}></div></div>
         <div className='w-[100%] flex-row flex-wrap'>
            
