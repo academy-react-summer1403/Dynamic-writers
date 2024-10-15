@@ -18,6 +18,11 @@ import { useState } from 'react';
 import './App.css'
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import CourseReserve from '../components/CourseReserve/CourseReserve';
+import Panel from '../screens/Panel/PanelScreen';
+import InformationUser from '../components/Panel/InformationUser'
+import AddProfileImage from '../components/Panel/AddProfileImage'
+import AddAddress from '../components/Panel/AddAddress'
+import Likes from '../components/Panel/Likes'
 
 function App() {
 
@@ -82,6 +87,29 @@ function App() {
         {
           path:'/CourseDetail/:id',
           element:<CourseDetail/>
+        }
+      ]
+    },
+    {
+      path:'/:id',
+      element:<Panel/>,
+      children:[
+        {
+          path:"/:id",
+          element:<InformationUser/>,
+          index:true
+        },
+        {
+          path:"/:id/AddProfileImage",
+          element:<AddProfileImage/>
+        },
+        {
+          path:"/:id/AddAddress",
+          element:<AddAddress/>
+        },
+        {
+          path:"/:id/Likes",
+          element:<Likes/>
         }
       ]
     }
