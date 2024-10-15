@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import Rate from '../../common/Rate/Rate'
+import Rate from '../../components/NewsDetail/Rate'
 const LeftDiv = ({New}) => {
   const [text, setText] = useState(New.detailsNewsDto.describe);
   const [firstPart, setFirstPart] = useState('');

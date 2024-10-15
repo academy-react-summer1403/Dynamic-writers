@@ -11,7 +11,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
 import CourseListRout from '../screens/CourseListRout';
+import {CourseDetail} from '../screens/CourseDetail/CourseDetail';
 import News from '../screens/News';
+<<<<<<< HEAD
 import MyCourseRout from '../screens/User Panel/MyCourseRout';
 import FavCourseRout from '../screens/User Panel/FavCourseRout';
 import FavNewsRout from '../screens/User Panel/FavNewsRout';
@@ -20,6 +22,13 @@ import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
+=======
+import { getItem } from '../core/services/common/storage';
+import { useState } from 'react';
+import './App.css'
+import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+import CourseReserve from '../components/CourseReserve/CourseReserve';
+>>>>>>> CourseDetail
 
 function App() {
 
@@ -109,6 +118,10 @@ function App() {
         {
           path: '/NewDetail/:id',
           element: <NewDetail />
+        },
+        {
+          path:'/CourseDetail/:id',
+          element:<CourseDetail/>
         }
       ]
     }
