@@ -29,8 +29,7 @@ const onError = (err) => {
 instance.interceptors.response.use(onSuccess, onError)
 
 instance.interceptors.request.use((opt) => {
-   // const token = getItem('token')
-   const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYWJkNTdlYS1lNzU2LTQ3MGEtOTBiZS1iODMyMjI5NGY4ZDMiLCJqdGkiOiJkZGYzZmFlYS1lNWQwLTRjYzUtYmNkNS0zMmUxNzc4Njk5NDEiLCJlbWFpbCI6Im1hc2cxMzc3QGdtYWlsLmNvbSIsIlVpZCI6IlA2YXJGZ0Y0T2ljMk80d0dWZTJGMWEzeFNUSDdqcW4vUUFaWnFBY253VkE9RXM3ODg5OGQ5NjllZWY2ZWNhZDNjMjlhM2E2MjkyODBlNjg2Y2YwYzNmNWQ1YTg2YWZmM2NhMTIwMjBjOTIzYWRjNmM5MiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6WyJSZWZlcmVlIiwiQWRtaW5pc3RyYXRvciIsIlN0dWRlbnQiXSwiZXhwIjoxNzI5MTA0NTU5LCJpc3MiOiJTZXBlaHJBY2FkZW15IiwiYXVkIjoiU2VwZWhyQWNhZGVteSJ9.wfs3v_jhPQVMzRB4wo2axxL-gCWJ5jusRme-0qkvCT8"
+   const token = getItem('token')
    if (token) opt.headers.Authorization = 'Bearer ' + token;
    console.log(opt)
 
