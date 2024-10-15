@@ -11,7 +11,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from '../screens/Root';
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
-import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import MyCourseRout from '../screens/User Panel/MyCourseRout';
 import MyNewsRout from '../screens/User Panel/MyReserveRout';
 import FavCourseRout from '../screens/User Panel/FavCourseRout';
@@ -22,10 +21,6 @@ import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
 
 function App() {
-
-  // const [token, setToken] = useState(getItem('token'))
-
-  // return token ? element : <Navigate to='/login' />
 
   const router = createBrowserRouter([
     {
@@ -66,9 +61,11 @@ function App() {
         {
           path: 'dashboard',
           element: <DashboardRout />
+          element: <DashboardRout />
         },
         {
           path: 'myCourse',
+          element: <MyCourseRout />
           element: <MyCourseRout />
         },
         {
@@ -88,6 +85,10 @@ function App() {
           element: <ProfileRout />
         },
       ]
+    },
+    {
+      path: '/allNewCourses',
+      element: <AllNewCourses />
     },
     {
       path: '*',

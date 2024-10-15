@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import Bahr2 from '../../../../assets/Bahr2.png' 
 import { Button } from '@nextui-org/react'
 import { Book02Icon, BookBookmark02Icon, Bookmark02Icon, DashboardCircleIcon, DashboardCircleSettingsIcon, FileBookmarkIcon, Logout03Icon, MoneySend01Icon, MoneySend02Icon, TimeSetting02Icon, TimeSetting03Icon, UserEdit01Icon, UserSettings01Icon } from 'hugeicons-react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { removeItem } from '../../common/storage'
 
 const SitePanel = () => {
 
+  const navigate = useNavigate()
+
   return (
-    <div className='bg-white rounded-2xl flex flex-col py-7 px-6 justify-between' style={{width: '276px', height: '976px'}}>
+    <div className='bg-white rounded-2xl md:flex flex-col py-7 px-6 justify-between hidden'>
       <div className='flex flex-col gap-12'>
-        <div className='flex flex-row-reverse justify-between gap-3 items-center'>
+        <div onClick={() => navigate('/')} className='flex flex-row-reverse justify-between gap-3 items-center'>
           <img src={Bahr} className='size-10' />
           <img src={Bahr2} className='h-8 w-48' />
         </div>
@@ -32,9 +35,9 @@ const SitePanel = () => {
         </div>
       </div>
 
-      <div className='flex w-full h-fit gap-4 flex-col'>
-        <Button onClick={() => navigate('')} className='hover:bg-blue-700 hover:text-white bg-white border w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold'>  حساب‌های کابری <UserSettings01Icon /> </Button>
-        <Button onClick={() => navigate('')} className='hover:bg-red-500 hover:text-white bg-white border text-red-500 w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold'> خروج از حساب <Logout03Icon /> </Button>
+      <div className='flex w-full h-fit gap-4 flex-col mt-16'>
+        <NavLink onClick={() => navigate('')} className='hover:bg-blue-700 hover:text-white bg-white border w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold'>  حساب‌های کابری <UserSettings01Icon /> </NavLink>
+        <NavLink to='/login' onClick={() => removeItem('token')} className='hover:bg-red-500 hover:text-white bg-white border text-red-500 w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold'> خروج از حساب <Logout03Icon /> </NavLink>
       </div>
     </div>
   )

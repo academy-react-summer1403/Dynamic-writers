@@ -35,11 +35,11 @@ const PanelLayout = () => {
   }, [])
 
   return (
-    <div className='bg-gray-200 w-dvw h-fit gap-5 flex py-5 px-5 iranSans flex-row-reverse'>
+    <div className='bg-gray-200 w-dvw md:h-fit h-full gap-5 flex py-5 px-5 iranSans md:flex-row-reverse flex-col'>
 
         <SitePanel />
             
-        <div className='flex flex-col border items-end h-fit' style={{width: '1196px'}}>
+        <div className='flex flex-col border items-end h-fit gap-2 relative w-full' style={{maxWidth: '1196px'}}>
 
             <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
@@ -48,6 +48,8 @@ const PanelLayout = () => {
 
 
         </div>
+
+        <SitePanelRes />
 
     </div>
   )
