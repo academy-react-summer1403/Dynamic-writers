@@ -23,8 +23,8 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className='border h-fit flex flex-col gap-5 iranSans' style={{width: '1196px'}}>
-      <div className='border flex w-full h-fit' dir='rtl'>
+    <div className='border h-fit w-full flex flex-col gap-5 iranSans'>
+      <div className='border flex-col md:flex-row flex w-full h-fit' dir='rtl'>
         <div className='grow border items-center py-5'>
           <h2 className='font-bold text-2xl'> سلام , صبح بخیر {profileInfo.fName} 😍 </h2>
         </div>
@@ -40,13 +40,13 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='w-full flex gap-5' dir='rtl' style={{height: '287px'}}>
+      <div className='w-full flex gap-5 flex-col md:flex-row mdh-72 h-fit' dir='rtl'>
         
         <div className='h-full bg-white rounded-2xl py-3 px-4' style={{width: '522px'}}>
     
         </div>
         
-        <div className='h-full bg-white rounded-2xl py-3 px-4 overflow-hidden text-center' style={{width: '325px'}}>
+        <div className='h-full bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block' style={{width: '325px'}}>
         <div className='bg-red-500 text-yellow-300 text-sm font-semibold flex justify-center items-center rotate-12 translate-x-8 w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
@@ -59,7 +59,7 @@ const Dashboard = () => {
           <div className='flex items-center justify-center size-32 mx-auto'>
             <CircularProgressbar value={profileInfo.profileCompletionPercentage} text={`${profileInfo.profileCompletionPercentage}%`} styles={buildStyles({
               textColor: `${profileInfo.profileCompletionPercentage > 70 ? 'blue' : 'orange'}`,
-              textSize: '30px',
+              textSize: '25px',
               display: 'flex',
               pathColor: `${profileInfo.profileCompletionPercentage > 70 ? 'blue' : 'orange'}`,
               trailColor: 'transparent'

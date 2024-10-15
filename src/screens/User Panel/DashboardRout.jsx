@@ -3,7 +3,7 @@ import Dashboard from '../../components/User Panel/Dashboard/Dashboard'
 
 const DashboardRout = () => {
   return (
-    <div>
+    <div className='w-full'>
       <Dashboard />
     </div>
   )
