@@ -3,7 +3,7 @@ import HeaderPanel from '../../core/services/Layout/Panel-layout/HeaderPanel'
 import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
-import MyCourseRout from './MyCourseRout'
+// import MyCourseRout from './MyCourseRout'
 import { GetMyCource } from "../../core/services/api/Panel/getMyCource/getMyCource";
 import { Outlet } from 'react-router-dom'
 
@@ -60,10 +60,10 @@ const PanelLayout = () => {
 
             <Outlet />
             
-            {dataCources.map((el , index)=> <MyCourseRout 
+            {/* {dataCources.map((el , index)=> <MyCourseRout 
            key={index} id={el.studentId} courseTitle={el.courseTitle} fullName={el.fullName}
            termName={el.termName} cost={el.cost} paymentStatus={el.paymentStatus} imaged={el.tumbImageAddress} 
-           />)}
+           />)} */}
 
         </div>
 

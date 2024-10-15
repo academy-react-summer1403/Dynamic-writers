@@ -12,7 +12,7 @@ import Root from '../screens/Root';
 import CourseListRout from '../screens/CourseListRout';
 import News from '../screens/News';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
-import MyCourseRout from '../screens/User Panel/MyCourseRout';
+import MyCourseRout from '../components/panelMyCourse/myCourse/myCourse';
 import MyNewsRout from '../screens/User Panel/MyNewsRout';
 import FavCourseRout from '../screens/User Panel/FavCourseRout';
 import FavNewsRout from '../screens/User Panel/FavNewsRout';
