@@ -11,7 +11,7 @@ const CurrentShamsiDate = () => {
 
   return (
     <div>
-      <p className="font-bold"> {shamsiDate}</p>
+      <p className="font-bold whitespace-nowrap"> {shamsiDate}</p>
     </div>
   );
 };

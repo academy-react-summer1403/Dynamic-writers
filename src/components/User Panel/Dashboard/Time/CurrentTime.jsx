@@ -16,7 +16,7 @@ function CurrentTime() {
   const minutes = time.getMinutes().toString().padStart(2, "0");
 
   return (
-    <div className="font-bold">
+    <div className="font-bold whitespace-nowrap">
       {hours}:{minutes}
     </div>
   );

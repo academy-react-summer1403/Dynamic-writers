@@ -40,17 +40,17 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='w-full flex gap-5 flex-col md:flex-row mdh-72 h-fit' dir='rtl'>
+      <div className='w-full flex gap-5 flex-col-reverse md:flex-row md:h-72 h-fit' dir='rtl'>
         
-        <div className='h-full bg-white rounded-2xl py-3 px-4' style={{width: '522px'}}>
+        <div className='md:h-full h-72 md:grow-8 bg-white rounded-2xl py-3 px-4'>
     
         </div>
         
-        <div className='h-full bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block' style={{width: '325px'}}>
+        <div className='h-full md:w-80 bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
         <div className='bg-red-500 text-yellow-300 text-sm font-semibold flex justify-center items-center rotate-12 translate-x-8 w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
-        <div className='h-full bg-white rounded-2xl py-3 px-4 flex flex-col justify-between' style={{width: '303px'}}>
+        <div className='md:h-full h-72 md:w-72 bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>
@@ -70,7 +70,7 @@ const Dashboard = () => {
       
       </div>
 
-      <div className='bg-white w-full rounded-2xl flex flex-col gap-4 py-3 px-4' dir='rtl' style={{height: '470px'}}>
+      <div className='bg-white w-full rounded-2xl flex flex-col gap-4 py-3 px-4 h-471' dir='rtl'>
         <div className='w-full h-fit flex justify-between'>
           <h2 className='text-base font-bold'> جدیدترین دوره ها </h2>
           <Link to='/allNewCourses' className='flex text-blue-500 items-center font-semibold text-sm'> <span> مشاهده همه </span> <ArrowLeft01Icon className='size-4' /> </Link>

@@ -35,7 +35,7 @@ const SitePanel = () => {
         </div>
       </div>
 
-      <div className='flex w-full h-fit gap-4 flex-col'>
+      <div className='flex w-full h-fit gap-4 flex-col mt-16'>
         <NavLink onClick={() => navigate('')} className='hover:bg-blue-700 hover:text-white bg-white border w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold'>  حساب‌های کابری <UserSettings01Icon /> </NavLink>
         <NavLink to='/login' onClick={() => removeItem('token')} className='hover:bg-red-500 hover:text-white bg-white border text-red-500 w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold'> خروج از حساب <Logout03Icon /> </NavLink>
       </div>

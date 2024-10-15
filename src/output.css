@@ -1111,6 +1111,10 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1185,11 +1189,6 @@ video {
 .size-14 {
   width: 3.5rem;
   height: 3.5rem;
-}
-
-.size-16 {
-  width: 4rem;
-  height: 4rem;
 }
 
 .size-20 {
@@ -1277,6 +1276,10 @@ video {
   height: 5rem;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
 .h-3 {
   height: 0.75rem;
 }
@@ -1295,6 +1298,10 @@ video {
 
 .h-40 {
   height: 10rem;
+}
+
+.h-471 {
+  height: 471px;
 }
 
 .h-5 {
@@ -1376,6 +1383,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-24 {
+  height: 6rem;
 }
 
 .max-h-64 {
@@ -1622,6 +1633,14 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .min-w-10 {
@@ -2385,6 +2404,10 @@ video {
   border-radius: 0.75rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .\!rounded-e-none {
   border-start-end-radius: 0px !important;
   border-end-end-radius: 0px !important;
@@ -2428,6 +2451,11 @@ video {
 .rounded-t-small {
   border-top-left-radius: var(--nextui-radius-small);
   border-top-right-radius: var(--nextui-radius-small);
+}
+
+.rounded-s-3xl {
+  border-start-start-radius: 1.5rem;
+  border-end-start-radius: 1.5rem;
 }
 
 .border {
@@ -2485,6 +2513,10 @@ video {
 }
 
 .border-b {
+  border-bottom-width: 1px;
+}
+
+.border-b-1 {
   border-bottom-width: 1px;
 }
 
@@ -2595,6 +2627,11 @@ video {
 .border-warning {
   --tw-border-opacity: 1;
   border-color: hsl(var(--nextui-warning) / var(--nextui-warning-opacity, var(--tw-border-opacity)));
+}
+
+.border-red-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 242 242 / var(--tw-border-opacity));
 }
 
 .border-x-transparent {
@@ -2946,6 +2983,16 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
+
+.bg-gray-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-80 {
@@ -3667,6 +3714,12 @@ video {
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -5481,6 +5534,11 @@ video {
   background-color: rgb(253 224 71 / var(--tw-bg-opacity));
 }
 
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -5698,6 +5756,16 @@ video {
 }
 
 .group:hover .group-hover\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.has-\[\:checked\]\:bg-blue-500:has(:checked) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.has-\[\:checked\]\:text-white:has(:checked) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -8630,6 +8698,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:visible {
+    visibility: visible;
+  }
+
   .md\:block {
     display: block;
   }
@@ -8650,17 +8722,37 @@ video {
     display: none;
   }
 
+  .md\:h-72 {
+    height: 18rem;
+  }
+
   .md\:h-fit {
     height: -moz-fit-content;
     height: fit-content;
+  }
+
+  .md\:h-full {
+    height: 100%;
   }
 
   .md\:w-11\/12 {
     width: 91.666667%;
   }
 
+  .md\:w-72 {
+    width: 18rem;
+  }
+
+  .md\:w-80 {
+    width: 20rem;
+  }
+
   .md\:w-9\/12 {
     width: 75%;
+  }
+
+  .md\:grow-8 {
+    flex-grow: 8;
   }
 
   .md\:flex-row {
@@ -8717,6 +8809,14 @@ video {
   .md\:px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.953rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.563rem;
   }
 }
 
