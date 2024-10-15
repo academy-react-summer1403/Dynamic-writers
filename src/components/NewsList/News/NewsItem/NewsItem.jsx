@@ -1,6 +1,7 @@
 import { Button } from '@nextui-org/react'
 import { Calendar01Icon, QuillWrite01Icon, QuillWrite02Icon, ThumbsDownIcon, ThumbsUpIcon, ViewIcon } from 'hugeicons-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NewsItem = ({ id, title, miniDescribe, currentImageAddressTumb, currentView, addUserFullName, insertDate, currentDissLikeCount, currentLikeCount, keyword, newsCatregoryName }) => {
   return (
@@ -32,7 +33,7 @@ const NewsItem = ({ id, title, miniDescribe, currentImageAddressTumb, currentVie
         </div>
 
         <div className='w-full flex justify-between items-center'>
-            <Button className='bg-blue-500 text-white rounded-full font-semibold'> بیشتر بخوانید </Button>
+            <Button className='bg-blue-500 text-white rounded-full font-semibold'> <Link to={`/NewDetail/${id}`}> بیشتر بخوانید </Link> </Button>
             <div className='flex w-fit h-fit gap-8 flex-row-reverse items-center'>
                 <div className='flex gap-4 flex-row-reverse font-semibold text-sm items-center'> <ThumbsUpIcon /> {currentLikeCount} </div>
                 <div className='flex gap-4 flex-row-reverse font-semibold text-sm items-center'> <ThumbsDownIcon /> {currentDissLikeCount} </div>
