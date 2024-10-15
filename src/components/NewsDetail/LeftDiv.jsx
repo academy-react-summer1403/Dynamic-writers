@@ -31,7 +31,7 @@ const LeftDiv = ({New}) => {
           <p className='text-justify'>{secondPart}</p>
         </div>
         <Rate RateNews={New.detailsNewsDto.currentUserRateNumber} Flag={New.detailsNewsDto.currentUserSetRate} id={New.detailsNewsDto.id}/>
-        <div className='font-[700] text-[50px] text-[#272727] text-right'>نظرات</div>
+        <div className='font-[700] text-[30px] text-[#272727] text-right'>نظرات</div>
 
         {/* Put Comment <Comment/> */}
     </div>
