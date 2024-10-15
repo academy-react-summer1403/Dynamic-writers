@@ -30,14 +30,8 @@ instance.interceptors.response.use(onSuccess, onError)
 
 instance.interceptors.request.use((opt) => {
    const token = getItem('token')
-<<<<<<< HEAD
-   if (token) opt.headers.Authorization = 'Bearer ' + token;
-   console.log(opt)
-
-=======
 
    if (token) opt.headers.Authorization = 'Bearer ' + JSON.parse(token);
->>>>>>> f76e7ec08a6990ceebf4cdcf5250a5d2d860726f
    return opt
 })
 
