@@ -43,7 +43,7 @@ const Dashboard = () => {
       <div className='w-full flex gap-5 flex-col-reverse md:flex-row md:h-72 h-fit' dir='rtl'>
         
         <div className='md:h-full h-72 md:grow-8 bg-white rounded-2xl py-3 px-4'>
-    
+          <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <Link className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </Link> </div>
         </div>
         
         <div className='h-full md:w-80 bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
