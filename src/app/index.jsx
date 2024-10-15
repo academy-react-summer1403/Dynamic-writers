@@ -33,7 +33,6 @@ function App() {
       path: '/verify',
       element: <Verify />
     },
-    
     {
       path: '/register',
       element: <Register />
