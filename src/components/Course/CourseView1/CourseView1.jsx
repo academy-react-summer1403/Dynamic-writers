@@ -69,7 +69,6 @@ const CourseView1 = () => {
     const response = await getCourseList(pageNumber, query, rowsPage, idLevel, idTeacher, 
     costUp , costDown, techCount, techList, sortType, sortingCol, startDate, endDate)
 
-    console.log(response)
     setTotalCount(parseInt(response.totalCount / rowsPage));
     setCourses(response.courseFilterDtos)
 

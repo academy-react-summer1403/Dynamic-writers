@@ -2,6 +2,9 @@ import React, { useEffect,useState } from 'react'
 import Rate from '../../components/CourseDetail/Rate'
 import Teacher from './Teacher';
 import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
+import Comment from '../Comment&Reply/Comment';
+import { getCommentsCourse } from '../../core/services/api/Comments/getCommentsCourse';
+import jMoment from 'moment-jalaali'
 
 const LeftDiv = ({Course}) => {
   const [text, setText] = useState(Course.describe);
@@ -9,13 +12,25 @@ const LeftDiv = ({Course}) => {
   const [secondPart, setSecondPart] = useState('');
   const [Image, setImage] = useState("")
 
-  const GetUserProfile=async(Course)=>{
-        let response=await UserDetailsWithId(Course.teacherId)
-        setImage(response.currentPictureAddress)
+  const [comments, setComment] = useState([])
+
+  const GetUserProfile = async () => {
+        const res = await UserDetailsWithId(Course.teacherId)
+        setImage(res.currentPictureAddress)
+    }
+  
+  const getComments = async () => {
+    const params = {
+      id: Course.courseId
     }
 
+    const response2 = await getCommentsCourse(params)
+    setComment(response2)
+  }
+
     useEffect(() => {
-      GetUserProfile(Course)
+      GetUserProfile()
+      getComments()
     }, [])
 
   useEffect(() => {
@@ -49,7 +64,10 @@ const LeftDiv = ({Course}) => {
         <Rate RateCourse={Course.currentUserRateNumber} Flag={Course.currentUserSetRate} id={Course.courseId}/>
         <div className='font-[700] text-[30px] text-[#272727] text-right'>نظرات</div>
 
-        {/* Put Comment <Comment/> */}
+        <Comment 
+          comments={comments}
+          courseId={Course.courseId}
+        />
     </div>
   )
 }

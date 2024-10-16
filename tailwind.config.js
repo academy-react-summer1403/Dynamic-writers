@@ -37,6 +37,11 @@ export default {
       },
       height: {
         471: '471px',
+        908: '908px',
+        770: '770px'
+      },
+      width: {
+        717: '717px',
       }
     },
   },
