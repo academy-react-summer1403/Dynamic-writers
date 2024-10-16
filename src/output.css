@@ -1713,6 +1713,10 @@ video {
   width: 60%;
 }
 
+.w-\[7px\] {
+  width: 7px;
+}
+
 .w-\[80\%\] {
   width: 80%;
 }
@@ -1769,14 +1773,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[5px\] {
-  width: 5px;
-}
-
-.w-\[7px\] {
-  width: 7px;
 }
 
 .min-w-10 {
@@ -2506,6 +2502,10 @@ video {
   border-radius: 100%;
 }
 
+.rounded-\[10px\] {
+  border-radius: 10px;
+}
+
 .rounded-\[24px\] {
   border-radius: 24px;
 }
@@ -2580,30 +2580,6 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
-}
-
-.rounded-\[\] {
-  border-radius: ;
-}
-
-.rounded-\[2px\] {
-  border-radius: 2px;
-}
-
-.rounded-\[5px\] {
-  border-radius: 5px;
-}
-
-.rounded-\[5\%\] {
-  border-radius: 5%;
-}
-
-.rounded-\[50px\] {
-  border-radius: 50px;
-}
-
-.rounded-\[10px\] {
-  border-radius: 10px;
 }
 
 .\!rounded-e-none {
@@ -2687,10 +2663,6 @@ video {
   border-width: var(--nextui-border-width-small);
 }
 
-.border-5 {
-  border-width: 5px;
-}
-
 .border-x-\[calc\(theme\(spacing\.5\)\/2\)\] {
   border-left-width: calc(1.25rem / 2);
   border-right-width: calc(1.25rem / 2);
@@ -2735,22 +2707,6 @@ video {
 
 .border-t-1 {
   border-top-width: 1px;
-}
-
-.border-r-3 {
-  border-right-width: 3px;
-}
-
-.border-r-\[20px\] {
-  border-right-width: 20px;
-}
-
-.border-r-\[10px\] {
-  border-right-width: 10px;
-}
-
-.border-r-\[8px\] {
-  border-right-width: 8px;
 }
 
 .border-solid {
@@ -3294,8 +3250,22 @@ video {
   --tw-bg-opacity: 0.8;
 }
 
+.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
 .bg-stripe-gradient {
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent);
+}
+
+.from-white {
+  --tw-gradient-from: #fff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-transparent {
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
 
 .bg-\[length\:1\.25rem_1\.25rem\] {
@@ -3565,14 +3535,6 @@ video {
 
 .pt-20 {
   padding-top: 5rem;
-}
-
-.pr-10 {
-  padding-right: 2.5rem;
-}
-
-.pr-5 {
-  padding-right: 1.25rem;
 }
 
 .text-left {
