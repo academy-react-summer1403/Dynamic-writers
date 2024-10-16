@@ -91,24 +91,24 @@ function App() {
       ]
     },
     {
-      path:'/:id',
+      path:'/',
       element:<Panel/>,
       children:[
         {
-          path:"/:id",
+          path:"/",
           element:<InformationUser/>,
           index:true
         },
         {
-          path:"/:id/AddProfileImage",
+          path:"/AddProfileImage",
           element:<AddProfileImage/>
         },
         {
-          path:"/:id/AddAddress",
+          path:"/AddAddress",
           element:<AddAddress/>
         },
         {
-          path:"/:id/Likes",
+          path:"/Likes",
           element:<Likes/>
         }
       ]
