@@ -19,7 +19,13 @@ export default {
       13: '13px',
     },
     extend: {
-
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
       flexGrow: {
         2: '2',
         3: '3',
