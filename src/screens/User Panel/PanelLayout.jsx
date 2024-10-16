@@ -14,17 +14,6 @@ const PanelLayout = () => {
 
   const [profileInfo, setProfileInfo] = useState([]);
 
-  const [dataCources, setDataCources] = useState([]);
-
-  const reData = async()=> {
-       const params = {
-             Count: 5,
-       }
-
-       const courcesIs = await GetMyCource(params);
-       setDataCources(courcesIs);
-  }
-
 
   const editingImage = () => {
     if(editImag === 1){
@@ -45,7 +34,6 @@ const PanelLayout = () => {
 
   useEffect(() => {
     getProfile();
-    reData();
   }, [])
 
   return (
@@ -59,11 +47,6 @@ const PanelLayout = () => {
             { editImage && <EditImage /> }
 
             <Outlet />
-            
-            {/* {dataCources.map((el , index)=> <MyCourseRout 
-           key={index} id={el.studentId} courseTitle={el.courseTitle} fullName={el.fullName}
-           termName={el.termName} cost={el.cost} paymentStatus={el.paymentStatus} imaged={el.tumbImageAddress} 
-           />)} */}
 
         </div>
 

@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useEffect , useState } from 'react'
 import searching from '../../../assets/search.png'
 import searching2 from '../../../assets/search2.png'
 import date from '../../../assets/date.png'
-import cheshm from '../../../assets/cheshm.png'
-import parcham from '../../../assets/parcham.png'
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css';
 import {Pagination} from "@nextui-org/react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
+import { GetMyCource } from "../../../core/services/api/Panel/getMyCource/getMyCource";
+import CardMyCourse from '../cardMyCourse';
 
-const MyCourseRout = (props) => {
-  const {id , courseTitle , fullName , termName , cost , paymentStatus , imaged} = props;
+const MyCourse = () => {
+
   return (
     <div className='min-w-full rounded-xl mx-auto my-1'>
       <div className='rounded-xl mb-3' style={{direction: "rtl"}}>
@@ -36,26 +34,12 @@ const MyCourseRout = (props) => {
 
       <div className=" rounded-xl mx-auto relative" style={{ width: '1096px', height: '681px' }}>
 
+        {/* {dataCources.map((el , index) => <CardMyCourse key={index} id={el.studentId}
+         courseTitle={el.courseTitle} fullName={el.fullName} 
+         termName={el.termName} cost={el.cost} paymentStatus={el.paymentStatus} imaged={el.tumbImageAddress}
+         />)} */}
 
-    <Table aria-label="Example static collection table" dir='rtl'>
-
-      <TableHeader>
-        <TableColumn className='font-medium text-base mt-3'>#</TableColumn>
-        <TableColumn className='font-medium text-base mt-3'>نام دوره</TableColumn>
-        <TableColumn className='font-medium text-base mt-3'>استاد دوره</TableColumn>
-        <TableColumn className='font-medium text-base mt-3'>شروع دوره</TableColumn>
-        <TableColumn className='font-medium text-base mt-3'>قیمت دوره</TableColumn>
-        <TableColumn className='font-medium text-base mt-3'>وضعیت پرداختی</TableColumn>
-        <TableColumn className='font-medium text-base mt-3'></TableColumn>
-        <TableColumn className='font-medium text-base mt-3'></TableColumn>
-      </TableHeader>
-
-      <TableBody id='list'>
-
-       {/* card */}
-
-      </TableBody>
-    </Table>
+         <CardMyCourse />
 
     <Pagination className='mx-auto mt-6' style={{width: "322px" , height: "48px"}} isCompact showControls total={10} initialPage={1} />
     </div>
@@ -63,4 +47,4 @@ const MyCourseRout = (props) => {
   )
 }
 
-export default MyCourseRout
+export default MyCourse
