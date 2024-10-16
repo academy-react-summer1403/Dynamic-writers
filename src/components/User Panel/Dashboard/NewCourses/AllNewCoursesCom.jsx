@@ -1,7 +1,7 @@
 import { Button, Input, Pagination, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
 import { Calendar02Icon, Cancel01Icon, Money03Icon, Search01Icon, TeacherIcon, ViewIcon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import jMoment from 'moment-jalaali'
 import { getCourseListAllTable } from '../../../../core/services/api/Course/courseListAllTable'
 import { getTeacherList } from '../../../../core/services/api/teachers'
@@ -17,6 +17,8 @@ const convertJalaliToGregorian = (jalaliDate) => {
 } 
 
 const AllNewCoursesCom = () => {
+
+    const navigate = useNavigate()
 
     const [filterRes, setFilterRes] = useState(false)
     const [courseTop, setCourseTops] = useState([])
@@ -124,7 +126,7 @@ const AllNewCoursesCom = () => {
             <TableCell> <div className="max-w-32 h-10 truncate leading-8"> {item.teacherName} </div> </TableCell>
             <TableCell> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </TableCell>
             <TableCell className="text-base font-semibold"> {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span> </TableCell>
-            <TableCell> <NavLink> <ViewIcon className="size-4 cursor-pointer"/> </NavLink> </TableCell>
+            <TableCell> <NavLink to={`/CourseDetail/${item.courseId}`}> <ViewIcon className="size-4 cursor-pointer"/> </NavLink> </TableCell>
           </TableRow>
         })}
       
@@ -138,7 +140,7 @@ const AllNewCoursesCom = () => {
       </TableHeader>
       <TableBody>
         {courseTop.map((item, index) => {
-          return <TableRow key={index} className='h-28 border-b-1 flex justify-start'>
+          return <TableRow onClick={() => navigate('/CourseDetail/' + item.courseId)} key={index} className='h-28 border-b-1 flex justify-start'>
             <TableCell className=''>
               <img src={item.tumbImageAddress} className='rounded-lg w-28 h-20' style={{backgroundColor: '#D9D9D9'}}/>
             </TableCell>

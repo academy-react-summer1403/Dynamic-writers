@@ -56,7 +56,7 @@ const TableDashboard = () => {
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {item.teacherName} </div> </TableCell>
             <TableCell className="invisible md:visible"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </TableCell>
             <TableCell className="text-base font-semibold invisible md:visible"> {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span> </TableCell>
-            <TableCell> <NavLink> <ViewIcon className="size-4 cursor-pointer"/> </NavLink> </TableCell>
+            <TableCell> <NavLink to={`/CourseDetail/${item.courseId}`}> <ViewIcon className="size-4 cursor-pointer"/> </NavLink> </TableCell>
           </TableRow>
         })}
       
@@ -77,7 +77,7 @@ const TableDashboard = () => {
                 <span className="text-base text-gray-400"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </span>
               </div>  
             </TableCell>
-            <TableCell className="flex justify-end"> <NavLink> <ViewIcon className="size-6 text-gray-600 hover:text-black cursor-pointer"/> </NavLink> </TableCell>
+            <TableCell className="flex justify-end"> <NavLink to={`/CourseDetail/${item.courseId}`}> <ViewIcon className="size-6 text-gray-600 hover:text-black cursor-pointer"/> </NavLink> </TableCell>
           </TableRow>
         })}
         </TableBody>
