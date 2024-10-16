@@ -1,9 +1,9 @@
 import http from '../../../interceptor'
 
-export const GetMyCource = async(count) => {
+export const GetMyCource = async(count, slider) => {
    try {
        
-       const resulted = await http.get(`/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=${count}`);
+       const resulted = await http.get(`/SharePanel/GetMyCourses?PageNumber=${slider}&RowsOfPage=1&SortingCol=DESC&SortType=LastUpdate&Query=${count}`);
        return resulted
 
    } catch (error) {

@@ -2,30 +2,34 @@ import React, { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/table";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { GetMyCource } from "../../core/services/api/Panel/getMyCource/getMyCource";
+import { Pagination } from "@nextui-org/pagination";
 
 
 
-const CardMyCourse = () => {
+const CardMyCourse = (props) => {
 
-//   const {id , courseTitle , fullName , termName , cost , paymentStatus , imaged} = props;
+  const {count} = props;
 
   const [dataCources, setDataCources] = useState([]);
+  const [total, setTotal] = useState();
+  const [slider, setSlider] = useState(1);
 
   const reData = async()=> {
        const params = {
-             Count: 5,
+             Count: 1,
        }
 
-       const courcesIs = await GetMyCource(params);
+       const courcesIs = await GetMyCource(params, slider, count);
        setDataCources(courcesIs.listOfMyCourses);
+       setTotal(Number(courcesIs.totalCount / 1));
   }
 
   useEffect(() => {
     reData();
-  },[])
+  },[slider])
 
   return(
-
+<>
 <Table aria-label="Example static collection table" dir='rtl'>
 
       <TableHeader>
@@ -76,6 +80,9 @@ const CardMyCourse = () => {
 
       </TableBody>
     </Table>
+
+      <Pagination className='mx-auto mt-6' style={{width: "322px" , height: "48px"}} isCompact showControls onChange={(e) => setSlider(e)} total={total} initialPage={1} />
+    </>
   );
 }
 

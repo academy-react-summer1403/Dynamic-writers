@@ -3,8 +3,6 @@ import HeaderPanel from '../../core/services/Layout/Panel-layout/HeaderPanel'
 import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
-// import MyCourseRout from './MyCourseRout'
-import { GetMyCource } from "../../core/services/api/Panel/getMyCource/getMyCource";
 import { Outlet } from 'react-router-dom'
 
 const PanelLayout = () => {
