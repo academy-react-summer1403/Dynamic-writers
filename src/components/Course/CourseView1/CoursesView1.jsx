@@ -5,16 +5,23 @@ import { useNavigate } from 'react-router-dom'
 const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount, cost, teacherName, date, currentRegistrants, technologyList, tumbImageAddress, statusName}) => {
 
   const navigate = useNavigate()
+
+  const callCourse = () => {
+    navigate('/')
+    setTimeout(() => {
+      navigate('/CourseDetail/' + id)
+    }, 100)
+  }
   
   return (
-    <div onClick={() => navigate('')} className='rounded-3xl bg-gray-100 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
+    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
         <div className='relative w-full rounded-xl h-56 bg-red-300 border'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
               <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1 max-w-52 w-fit overflow-hidden text-ellipsis whitespace-nowrap'> {technologyList} </div>
               <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1 w-fit overflow-hidden text-ellipsis whitespace-nowrap'> {levelName} </div>
           </div>
-          <div className='bg-stone-100 bg-opacity-80 text-red-500 rounded-xl px-2 py-0.5 text-xs flex items-center gap-2 absolute bottom-2 right-2'> {statusName} <CircleIcon className='size-1.5 bg-red-500 rounded-full' /> </div>
+          <div className='bg-stone-100 bg-opacity-80 text-red-500 rounded-xl px-2 py-0.5 text-sm flex items-center gap-2 absolute bottom-2 right-2'> {statusName} <CircleIcon className='size-1.5 bg-red-500 rounded-full' /> </div>
         </div>
 
         <div className='flex-col flex items-end p-2 gap-2 overflow-hidden'>

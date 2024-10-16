@@ -23,7 +23,6 @@ import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
 import { getItem } from '../core/services/common/storage';
 import { useState } from 'react';
-import './App.css'
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import CourseReserve from '../components/CourseReserve/CourseReserve';
 
@@ -63,7 +62,7 @@ function App() {
 
     {
       path: '/layoutPanel',
-      element: <PanelLayout />,
+      element: <PrivateRoute element={<PanelLayout />} />,
       children: [
         {
           path: 'dashboard',

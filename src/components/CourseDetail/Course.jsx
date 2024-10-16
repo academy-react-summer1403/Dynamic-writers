@@ -21,7 +21,7 @@ const Course = () => {
     let course =await GetCourseById(id)
     let Courses=await AllCourse()
     const point=Courses.filter((value)=>{return value.courseId==id})
-    setTecknologyList(point[0].technologyList)
+    setTecknologyList(point.technologyList)
 
     setAllCourse(Courses)
     setLoading(true)
@@ -36,14 +36,14 @@ const Course = () => {
   }
   return (
     <Fragment>
-        {Flag && <div className='absolute top-0 w-[100%] h-[100%] z-30 flex justify-center  bg-opacity-80 bg-[#000000] transition-opacity duration-300 ease-in-out'><CourseReserve Flags={setFlag}/></div>}
+        {Flag && <div className='absolute top-0 right-0 w-[100%] h-[100%] z-30 flex justify-center  bg-opacity-80 bg-[#000000] transition-opacity duration-300 ease-in-out'><CourseReserve Flags={setFlag}/></div>}
         <div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
         <RightDiv Course={Course} Flags={setFlag}/>
         <LeftDiv Course={Course}/>
         </div>
         <div className='w-[100%]'>
-          <div className='w-[95%] text-[48px] font-[800] text-right p-5'>دوره های دیگر</div>
-          <div className='w-[95%] p-6 flex flex-row items-center justify-end gap-5 flex-wrap'>
+          <div className='w-[95%] text-[30px] font-[800] text-right p-5'>دوره های دیگر</div>
+          <div className='w-[95%] p-6 flex flex-row items-center justify-end gap-5'>
           {allCourse.slice(0,4).map((value,index)=>{
               return <CoursesView1 key={index} levelName={value.levelName} id={value.courseId} title={value.title} describe={value.describe} dissLikeCount={value.dissLikeCount} likeCount={value.likeCount} cost={value.cost} teacherName={value.teacherName} date={value.lastUpdate} currentRegistrants={value.currentRegistrants} technologyList={value.technologyList} tumbImageAddress={value.tumbImageAddress} statusName={value.statusName}/>
           })}
