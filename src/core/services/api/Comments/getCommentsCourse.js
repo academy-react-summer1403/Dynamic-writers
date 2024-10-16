@@ -7,7 +7,6 @@ export const getCommentsCourse = async (params) => {
   return result
   
   } catch (error) {
-  console.log(error);
-    return [];
+    console.log(error.value.ErrorMessage)
   }
 }

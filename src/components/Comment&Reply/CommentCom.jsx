@@ -32,12 +32,14 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const handleLike = () => {
         if(!likeCheck){
             setLike(true)
+            setDissLike(false)
         }
     }
 
     const handleDissLike = () => {
         if(!dissLikeCheck){
             setDissLike(true)
+            setLike(false)
         }
     }
 
@@ -64,8 +66,8 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
         </div>
         <div className='flex gap-6 items-center'>
             <div className='flex gap-4'>
-                <div onClick={() => handleLike()} className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={likeCheck && {color: 'red'}} className='cursor-pointer' /> </div>
-                <div onClick={() => handleDissLike()} className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {disslikeCount} <ThumbsDownIcon style={dissLikeCheck && {color: 'red'}} className='cursor-pointer' /> </div>
+                <div onClick={() => handleLike()} className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={likeCheck ? {color: 'red'} : {color: 'black'}} className='cursor-pointer' /> </div>
+                <div onClick={() => handleDissLike()} className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {disslikeCount} <ThumbsDownIcon style={dissLikeCheck ? {color: 'red'} : {color: 'black'}} className='cursor-pointer' /> </div>
             </div>
             <Button className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>
             {acceptReplysCount !== 0 && <button onClick={() => setVisible()} className='text-[14px] font-[500] underline flex gap-1 items-center'> مشاهده جواب‌ها ({acceptReplysCount}) {replyVisible ? <ArrowUp01Icon className='size-5' /> : <ArrowDown01Icon className='size-5' />} </button> }
