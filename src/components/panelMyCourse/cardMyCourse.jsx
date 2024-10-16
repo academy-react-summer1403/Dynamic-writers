@@ -8,7 +8,7 @@ import { Pagination } from "@nextui-org/pagination";
 
 const CardMyCourse = (props) => {
 
-  const {count} = props;
+  const {countSearch} = props;
 
   const [dataCources, setDataCources] = useState([]);
   const [total, setTotal] = useState();
@@ -19,14 +19,14 @@ const CardMyCourse = (props) => {
              Count: 1,
        }
 
-       const courcesIs = await GetMyCource(params, slider, count);
+       const courcesIs = await GetMyCource(params, slider, countSearch);
        setDataCources(courcesIs.listOfMyCourses);
        setTotal(Number(courcesIs.totalCount / 1));
   }
 
   useEffect(() => {
     reData();
-  },[slider])
+  },[slider , countSearch])
 
   return(
 <>

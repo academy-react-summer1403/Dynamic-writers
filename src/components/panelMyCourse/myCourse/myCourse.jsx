@@ -9,7 +9,7 @@ import { Formik , Form , Field } from 'formik';
 
 const MyCourse = () => {
 
-  const [count, setCount] = useState({})
+  const [countSearch, setCountSearch] = useState({})
 
   // const reData2 = async() => {
   //   await GetMyCource(count);
@@ -29,12 +29,26 @@ const MyCourse = () => {
 
             <div className='relative' style={{width: "292px" , height: "80px"}}>
               <label htmlFor="reSearch" className='block text-base font-medium' style={{width: "121px" , height: "23px"}}><img src={searching} className='inline-block h-6 w-6 ml-1' alt="" /> جست‌جو دوره</label>
-              <Formik initialValues={{searchName: ""}}
-              onSubmit={(valuse) => setCount(valuse.searchName)}
+              <Formik
+                initialValues={{ searchName: "" }}
+                onSubmit={(values) => {
+                  setCountSearch(values.searchName);
+                }}
               >
                 <Form>
-                  <Field className='mt-2 rounded-2xl bg-gray-300 outline-none placeholder-gray-600' style={{width: "289px" , height: "48px" , textIndent: "10px"}} name="searchedIs" placeholder="جست جو کنید ..." />
-                  <button className='rounded-2xl absolute left-0' style={{width: "48px" , height: "48px" , backgroundColor: "#3772ff" , marginRight: "240px" , marginTop: "8px"}}><img className='block mx-auto'  onClick={(values) => setDataIs(values)} src={searching2} alt="" /></button>
+                  <Field
+                    className='mt-2 rounded-2xl bg-gray-300 outline-none placeholder-gray-600'
+                    style={{ width: "289px", height: "48px", textIndent: "10px" }}
+                    name="searchName"
+                    placeholder="جست جو کنید ..."
+                  />
+                  <button
+                    type="submit"
+                    className='rounded-2xl absolute left-0'
+                    style={{ width: "48px", height: "48px", backgroundColor: "#3772ff", marginRight: "240px", marginTop: "8px" }}
+                  >
+                    <img className='block mx-auto' src={searching2} alt="" />
+                  </button>
                 </Form>
               </Formik>
             </div>
@@ -50,7 +64,7 @@ const MyCourse = () => {
 
       <div className=" rounded-xl mx-auto relative" style={{ width: '1096px', height: '681px' }}>
 
-         <CardMyCourse count={count} />
+         <CardMyCourse countSearch={countSearch} />
     </div>
     </div>
   )
