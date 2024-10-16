@@ -5,6 +5,7 @@ import {CircularProgressbar,buildStyles} from 'react-circular-progressbar'
 import { Calendar03Icon } from 'hugeicons-react'
 
 import "react-circular-progressbar/dist/styles.css";
+import jMoment from 'moment-jalaali'
 
 
 const InformationUser = () => {
@@ -13,7 +14,7 @@ const InformationUser = () => {
   const OnClick=()=>{
 
   }
-  const [selectedDate, setSelectedDate] = useState(`${profile.birthDay ? profile.birthDay : ''}`);
+  const [selectedDate, setSelectedDate] = useState(`${profile.birthDay ? jMoment(profile.birthDay).locale('fa').format('jYYYY jMMMM jD') : ''}`);
 
   useEffect(() => {
     jalaliDatepicker.startWatch();

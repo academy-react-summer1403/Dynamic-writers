@@ -4,6 +4,8 @@ import Profile from './Profile'
 import Options from './Options'
 import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
 import { Calendar03Icon,ViewIcon } from 'hugeicons-react'
+import jMoment from 'moment-jalaali'
+
 
 const RightDiv = ({New}) => {
     const [Image, setImage] = useState("")
