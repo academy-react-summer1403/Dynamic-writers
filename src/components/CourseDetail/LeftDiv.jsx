@@ -36,8 +36,8 @@ const LeftDiv = ({Course}) => {
     }
   }
   return (
-    <div className='w-[50%] flex gap-10 flex-col max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[80%] max-xl:w-[700px]  max-2xl:w-[700px] '>
-        <img className='w-[100%] h-[460px] bg-[#4DBFFF] rounded-[24px]' src={Course.imageAddress}/>
+    <div className='w-[50%] flex gap-10 flex-col max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[80%]  max-2xl:w-[700px] max-xl:w-[700px]'>
+    <img className='w-[100%] h-[460px] bg-[#4DBFFF] rounded-[24px]' src={Course.imageAddress}/>
         <div className='text-[16px] font-[700] text-[#787878] text-right'>مدرس</div>
         <Teacher image={Image} ability={Course.techs} name={Course.teacherName}/>
         <div className='text-[16px] font-[700] text-[#787878] text-right'>توضیحات</div>
