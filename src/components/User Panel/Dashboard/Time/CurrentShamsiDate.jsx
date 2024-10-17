@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment-jalaali";
+import moment from "jalali-moment";
 
 const CurrentShamsiDate = () => {
   const [shamsiDate, setShamsiDate] = useState("");

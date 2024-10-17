@@ -19,6 +19,16 @@ const onError = (err) => {
       window.location.pathname = '/Error401'
    }
 
+   if(!token){
+      removeItem('token')
+      window.location.pathname = '/Error401'
+   }
+
+   if(err.response.status === 401){
+      removeItem('token')
+      window.location.pathname = '/Error401'
+   }
+
    if(err.response.status === 400) {
       window.location.pathname = '/Error400'
    }

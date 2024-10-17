@@ -24,7 +24,7 @@ const CoursesView2 = ({levelName, id, title, describe, dissLikeCount, likeCount,
             <div className='flex flex-col gap-4 text-base font-semibold mt-3'>
               <div className='flex flex-row gap-3'> <TeacherIcon className='text-slate-700'/> <span> {teacherName} </span> </div>
               <div className='flex flex-row gap-3'> <StudentIcon className='text-slate-700'/> <div className='flex flex-row gap-2'> <span> {currentRegistrants} </span> <span> دانشجو </span> </div> </div>
-              <div className='flex flex-row gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex flex-row gap-1'> <span dir='ltr'> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
+              <div className='flex flex-row gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex flex-row gap-2'> <span dir='rtl'> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
             </div>
             <div className='w-full flex justify-between items-center'>
                 <div className='flex gap-10 text-sm font-semibold items-center'>

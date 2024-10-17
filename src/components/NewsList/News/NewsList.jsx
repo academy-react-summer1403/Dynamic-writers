@@ -4,7 +4,7 @@ import FilterNews from './Filter/FilterNews'
 import { Button, Pagination } from '@nextui-org/react'
 import NewsItem from './NewsItem/NewsItem'
 import { getNewsList } from '../../../core/services/api/news'
-import jMoment from 'moment-jalaali'
+import jMoment from "jalali-moment";
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import NewsItemsRes from '../Responsive/NewsList/NewsItemsRes'
 import { Search01Icon } from 'hugeicons-react'
@@ -118,7 +118,7 @@ const NewsList = () => {
                   miniDescribe = {item.miniDescribe}
                   currentView = {item.currentView}
                   currentImageAddressTumb={item.currentImageAddressTumb}
-                  insertDate={(jMoment(item.insertDate).format('jYYYY / jM / jD'))}
+                  insertDate={(jMoment(item.insertDate).locale('fa').format('jD jMMMM jYYYY'))}
                   addUserFullName={(item.addUserFullName).replace('-', ' ')}
                   id={item.id}
                   newsCatregoryId={item.newsCatregoryId}
@@ -141,7 +141,7 @@ const NewsList = () => {
                   miniDescribe = {item.miniDescribe}
                   currentView = {item.currentView}
                   currentImageAddressTumb={item.currentImageAddressTumb}
-                  insertDate={(jMoment(item.insertDate).format('jYYYY / jM / jD'))}
+                  insertDate={(jMoment(item.insertDate).locale('fa').format('jD jMMMM jYYYY'))}
                   addUserFullName={(item.addUserFullName).replace('-', ' ')}
                   id={item.id}
                   newsCatregoryId={item.newsCatregoryId}

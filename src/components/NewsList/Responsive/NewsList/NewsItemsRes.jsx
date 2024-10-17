@@ -28,7 +28,7 @@ const NewsItemsRes = ({ id, title, miniDescribe, currentImageAddressTumb, addUse
           </div>
           <div className='flex gap-4 flex-row-reverse items-center'>
               <Calendar01Icon />
-              <span className='font-semibold text-sm'> {insertDate} </span>
+              <span className='font-semibold text-sm' dir='rtl'> {insertDate} </span>
           </div>
       </div>
 
