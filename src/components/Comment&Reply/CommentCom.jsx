@@ -18,8 +18,8 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
 
     const [searchParams] = useSearchParams()
 
-    const notifySuccess = (message) => { toast.dismiss() toast.success(message) }
-    const notifyError = () => { toast.dismiss() toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
+    const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
+    const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
 
     const setVisible = () => {
       if(replyVisible === false){

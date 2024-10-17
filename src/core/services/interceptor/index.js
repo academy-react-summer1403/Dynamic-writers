@@ -14,15 +14,27 @@ const onSuccess = (response) => {
 const onError = (err) => {
    console.log(err);
 
-   if(err.response.status === 401){
+   if(!err.config.headers.Authorization){
       removeItem('token')
-      window.location.pathname = '/login'
+      window.location.pathname = '/Error401'
    }
 
-   // if(err.response.status >= 400 && err.response.status < 500){
-   //     alert("error:" + err.response.status);
-   // }
+   if(err.response.status === 400) {
+      window.location.pathname = '/Error400'
+   }
    
+   if(err.response.status === 403) {
+      window.location.pathname = '/Error403'
+   }
+   
+   if(err.response.status === 408) {
+      window.location.pathname = '/Error408'
+   }
+   
+   if(err.response.status === 500) {
+      window.location.pathname = '/Error500'
+   }
+
    return Promise.reject(err);
 }
 

@@ -26,8 +26,8 @@ const ReplyCom = ({
 
   const [checkAdd, setCheckAdd] = useState(false)
 
-  const notifySuccess = (message) => { toast.dismiss() toast.success(message) }
-  const notifyError = () => { toast.dismiss() toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
+  const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
+  const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
 
   const likeComment = async () => {
     const response = await addLikeComment(id)

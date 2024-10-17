@@ -25,6 +25,11 @@ import { getItem } from '../core/services/common/storage';
 import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import CourseReserve from '../components/CourseReserve/CourseReserve';
+import Error401 from '../screens/Error/401/Error401';
+import Error400 from '../screens/Error/400/Error400';
+import Error403 from '../screens/Error/403/Error403';
+import Error500 from '../screens/Error/500/Error500';
+import Error408 from '../screens/Error/408/Error408';
 
 function App() {
 
@@ -118,9 +123,29 @@ function App() {
         {
           path:'/CourseDetail/:id',
           element:<CourseDetail/>
-        }
+        },
+        {
+          path: 'Error401',
+          element: <Error401 />
+        },
+        {
+          path: 'Error400',
+          element: <Error400 />
+        },
+        {
+          path: 'Error403',
+          element: <Error403 />
+        },
+        {
+          path: 'Error500',
+          element: <Error500 />
+        },
+        {
+          path: 'Error408',
+          element: <Error408 />
+        },
       ]
-    }
+    },
 
   ])
 
