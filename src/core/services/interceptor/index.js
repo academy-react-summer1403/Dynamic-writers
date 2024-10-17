@@ -14,10 +14,10 @@ const onSuccess = (response) => {
 const onError = (err) => {
    console.log(err);
 
-   // if(err.response.status === 401){
-   //    removeItem('token')
-   //    window.location.pathname = '/login'
-   // }
+   if(err.response.status === 401){
+      removeItem('token')
+      window.location.pathname = '/login'
+   }
 
    // if(err.response.status >= 400 && err.response.status < 500){
    //     alert("error:" + err.response.status);

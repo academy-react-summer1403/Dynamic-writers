@@ -4,6 +4,7 @@ import jMoment from 'moment-jalaali'
 import { ArrowUp01Icon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import { Button } from '@nextui-org/react'
 import ReplyCom from './ReplyCom'
+import { getRepliesNew } from '../../core/services/api/Comments/New/getRepliesNew'
 
 const Reply = ({ commentId, Oid }) => {
 
@@ -18,9 +19,18 @@ const Reply = ({ commentId, Oid }) => {
       const response = await getRepliesCourse(params)
       setReply(response)
     }
+
+    const repliesNew = async () => {
+  
+      const response = await getRepliesNew(commentId)
+      setReply(response)
+      console.log(response)
+      console.log(commentId)
+    }
   
     useEffect(() => {
       getReplies()
+      repliesNew()
     }, [])
 
     return <>
@@ -30,7 +40,7 @@ const Reply = ({ commentId, Oid }) => {
                 id={reply.id}
                 title={reply.title}
                 describe={reply.describe}
-                author={reply.author.replace('-', ' ')}
+                author={(reply.author) ? (reply.author === null ? 'ناشناس' : reply.author.replace('-', ' ')) : (reply.autor === null ? 'ناشناس' : reply.autor.replace('-', ' '))}
                 userId={reply.userId}
                 insertDate={jMoment(reply.insertDate).locale('fa').format('jD jMMMM jYYYY')}
                 accept={reply.accept}

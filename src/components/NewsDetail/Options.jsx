@@ -50,13 +50,13 @@ const Options = ({News}) => {
     
   return (
     <div className='flex flex-row gap-2'>
-       <div className={`w-[52px] h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.dislike ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('dislike')}>
+       <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.dislike ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('dislike')}>
             <ThumbsDownIcon color={`${checkClick.dislike ? "white":"black"}`} />
         </div>
-        <div className={`w-[52px] h-[52px] rounded-[100%] border-[#E4E4E4] ${checkClick.like ? "bg-black":""} border-2 flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('like')}>
+        <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] ${checkClick.like ? "bg-black":""} border-2 flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('like')}>
             <ThumbsUpIcon color={`${checkClick.like ? "white":"black"}`}/>
         </div>
-        <div className={`w-[52px] h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('save')}>
+        <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('save')}>
             <BookmarkAdd02Icon color={`${checkClick.save ? "white":"black"}`}/>
         </div>
         <ToastContainer/>

@@ -2,44 +2,71 @@ import { Field, Form, Formik } from 'formik'
 import { SentIcon, SmileIcon } from 'hugeicons-react'
 import React from 'react'
 import { addCommentCourse } from '../../core/services/api/Comments/Add/AddCommendCourse'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { getItem } from '../../core/services/common/storage'
 import { useNavigate } from 'react-router'
+import { addCommentNew } from '../../core/services/api/Comments/New/Add/AddCommentNew'
 
-const AddComment = ({ courseId, setCheckAdd }) => {
+const AddComment = ({ Oid, setCheckAdd }) => {
 
   const navigate = useNavigate()
 
   const notifySuccess = (message) => {
+    toast.dismiss()
+
     toast.success(message)
   }
   
-  const notifyError = () => {
-    toast.error(' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ')
+  const notifyError = (message) => {
+    toast.dismiss()
+
+    toast.error(message)
   }
 
   const addComment = async (value) => {
 
-    const formData = new FormData()
-    formData.append('Title', value.title )
-    formData.append('Describe', value.describe)
-    formData.append('CourseId', courseId)
+    if(window.location.pathname.includes('CourseDetail')) {
+      const formData = new FormData()
+      formData.append('CourseId', Oid)
+      formData.append('Title', value.title )
+      formData.append('Describe', value.describe)
 
-    const response = await addCommentCourse(formData)
-    const token = getItem('token')
+      const response = await addCommentCourse(formData)
 
+      if(value.title.length < 10 || value.describe.length < 10){
+        notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
+      }
 
-    if(!token) {
-        navigate('/login')
+      if(response.success === true) {
+          notifySuccess(response.message)
+          setCheckAdd(false)
+      }
+      else{
+          notifyError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+      }
     }
-    else if(response.success === true) {
-        notifySuccess(response.message)
+    else if(window.location.pathname.includes('NewDetail')) {
+      const raw = {
+        newsId: Oid,
+        title: value.title,
+        describe: value.describe,
+      }
+      const response2 = await addCommentNew(raw)
+    
+      if(value.title.length < 10 || value.describe.length < 10){
+        notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
+      }
+
+      if(response2.success === true) {
+        notifySuccess('درخواست شما با موفقیت ثبت شد')
         setCheckAdd(false)
+      }
+      else{
+        notifyError(" مشکلی وجود دارد ")
+      }
     }
-    else{
-        notifyError()
-    }
+
   }
 
   return (
@@ -57,6 +84,8 @@ const AddComment = ({ courseId, setCheckAdd }) => {
                 <Field name='title' placeholder='عنوان نظر خود را بنویسید' className='outline-none' />
                 <div className='w-full border'></div>
                 <Field name='describe' placeholder='متن نظر خود را بنویسید' className='outline-none' />
+            
+                <ToastContainer />
             </div>
 
         </Form>

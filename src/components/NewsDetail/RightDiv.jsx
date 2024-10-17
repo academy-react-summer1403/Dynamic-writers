@@ -37,7 +37,7 @@ const RightDiv = ({New}) => {
         </div>
         <div className='flex flex-col gap-6'>
             <div className='font-[700] text-[16px] text-right text-[#787878]'>منتشر کننده</div>
-            <div className='flex flex-row-reverse gap-10 mr-2 justify-between'>
+            <div className='flex flex-row-reverse mr-2 justify-between'>
                 <Profile name={New.detailsNewsDto.addUserFullName} img={Image}/>
                 <Options News={New}/>
             </div>

@@ -4,7 +4,7 @@ import {Course} from '../../components/CourseDetail/Course'
 const CourseDetail = () => {
 
   return (
-    <div>
+    <div className='w-full'>
       <Course/>
     </div>
     

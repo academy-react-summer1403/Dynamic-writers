@@ -7,7 +7,7 @@ const UserDetailsWithId =async (id) => {
         return response
 
     }catch(er){
-        console.log(er)
+        
     }
 
 }

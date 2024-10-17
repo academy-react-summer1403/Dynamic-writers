@@ -5,7 +5,7 @@ import React, { Fragment, useState } from 'react'
 import AddReply from './AddReply'
 import { addLikeComment } from '../../core/services/api/Comments/Like&DissLike/likeComment'
 import { addDissLikeComment } from '../../core/services/api/Comments/Like&DissLike/disslikeComment'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 
 const ReplyCom = ({                 
     id,
@@ -26,8 +26,8 @@ const ReplyCom = ({
 
   const [checkAdd, setCheckAdd] = useState(false)
 
-  const notifySuccess = (message) => { toast.success(message) }
-  const notifyError = () => { toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
+  const notifySuccess = (message) => { toast.dismiss() toast.success(message) }
+  const notifyError = () => { toast.dismiss() toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
 
   const likeComment = async () => {
     const response = await addLikeComment(id)
@@ -73,6 +73,7 @@ const ReplyCom = ({
                 {checkAdd && <AddReply commentId={id} Oid={Oid} />}
             </div>
         </div>
+        <ToastContainer />
     </Fragment>
   )
 }

@@ -7,6 +7,6 @@ export const addCommentCourse = async (formData) => {
   return result
   
   } catch (error) {
-    // console.log(error.message)
+    console.log(error.message)
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@nextui-org/react'
 import { Calendar01Icon, QuillWrite01Icon, QuillWrite02Icon, ThumbsDownIcon, ThumbsUpIcon, ViewIcon } from 'hugeicons-react'
+import { Link } from 'react-router-dom'
 
 const NewsItemsRes = ({ id, title, miniDescribe, currentImageAddressTumb, addUserProfileImage, currentView, addUserFullName, insertDate, currentDissLikeCount, currentLikeCount, keyword, newsCatregoryName }) => {
   return (
@@ -14,7 +15,7 @@ const NewsItemsRes = ({ id, title, miniDescribe, currentImageAddressTumb, addUse
     </div>
     <div className='flex flex-col gap-3 p-3 w-full items-end justify-between overflow-hidden' style={{height: '280px'}}>
       <h2 className='text-xl iranSansBold w-full text-right text-ellipsis'> {title} </h2>
-      <span className='w-full h-14 text-ellipsis overflow-hidden text-gray-600 text-sm font-semibold text-right'> {miniDescribe} </span>
+      <span className='w-full h-14 text-ellipsis break-all overflow-hidden text-gray-600 text-sm font-semibold text-right'> {miniDescribe} </span>
     
       <div className='flex flex-col gap-4 items-end'>
           <div className='flex gap-4 flex-row-reverse items-center'>
@@ -32,7 +33,7 @@ const NewsItemsRes = ({ id, title, miniDescribe, currentImageAddressTumb, addUse
       </div>
 
       <div className='w-full flex justify-between items-center'>
-          <Button className='bg-blue-500 text-white rounded-full font-semibold'> بیشتر بخوانید </Button>
+          <Button className='bg-blue-500 text-white rounded-full font-semibold' > <Link to={`/NewDetail/${id}`}> بیشتر بخوانید </Link> </Button>
           <div className='flex w-fit h-fit gap-8 flex-row-reverse items-center'>
               <div className='flex gap-4 flex-row-reverse font-semibold text-sm items-center'> <ThumbsUpIcon /> {currentLikeCount} </div>
               <div className='flex gap-4 flex-row-reverse font-semibold text-sm items-center'> <ThumbsDownIcon /> {currentDissLikeCount} </div>
