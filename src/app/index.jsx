@@ -24,10 +24,7 @@ import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
-import { getItem } from '../core/services/common/storage';
-import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
-import CourseReserve from '../components/CourseReserve/CourseReserve';
 import Error401 from '../screens/Error/401/Error401';
 import Error400 from '../screens/Error/400/Error400';
 import Error403 from '../screens/Error/403/Error403';
@@ -55,7 +52,8 @@ function App() {
           element: <Landing />
         },
       ]
-    }
+    },
+    {
       path: '/login',
       element: (
         <Login />
@@ -128,7 +126,10 @@ function App() {
       path: '/',
       element: <Root />,
       children: [
-
+        {
+          path: '/',
+          element: <Landing />
+        },
         {
           path: '/courseList',
           element: <CourseListRout />
