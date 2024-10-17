@@ -1,13 +1,13 @@
 import http from '../../../interceptor'
 
-export const addDissLikeComment = async (courseId) => {
+export const addDissLikeComment = async (id) => {
   try {
-  const result = await http.get(`/Course/AddCourseCommentDissLike?CourseCommandId=${courseId}`);
+  const result = await http.post(`/Course/AddCourseCommentDissLike?CourseCommandId=${id}`);
 
   return result
   
   } catch (error) {
   console.log(error);
-    return [];
+    return error.message;
   }
 }

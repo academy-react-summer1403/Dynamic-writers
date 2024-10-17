@@ -5,13 +5,13 @@ import { ArrowUp01Icon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import { Button } from '@nextui-org/react'
 import ReplyCom from './ReplyCom'
 
-const Reply = ({ commentId, courseId }) => {
+const Reply = ({ commentId, Oid }) => {
 
     const [replies, setReply] = useState([])
 
     const getReplies = async () => {
       const params = {
-          courseId: courseId,
+          Oid: Oid,
           commentId: commentId
       }
   
@@ -40,6 +40,7 @@ const Reply = ({ commentId, courseId }) => {
                 currentUserEmotion={reply.currentUserEmotion}
                 pictureAddress={reply.pictureAddress}
                 currentUserLikeId={reply.currentUserLikeId}
+                Oid={Oid}
             />
             </li>
         })}

@@ -1,7 +1,11 @@
 import { Button } from '@nextui-org/react'
 import { insert } from 'formik'
 import { ArrowUp01Icon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+import AddReply from './AddReply'
+import { addLikeComment } from '../../core/services/api/Comments/Like&DissLike/likeComment'
+import { addDissLikeComment } from '../../core/services/api/Comments/Like&DissLike/disslikeComment'
+import { toast } from 'react-toastify'
 
 const ReplyCom = ({                 
     id,
@@ -16,7 +20,34 @@ const ReplyCom = ({
     likeCount,
     currentUserEmotion,
     pictureAddress,
-    currentUserLikeId, }) => {
+    currentUserLikeId,
+    Oid,
+ }) => {
+
+  const [checkAdd, setCheckAdd] = useState(false)
+
+  const notifySuccess = (message) => { toast.success(message) }
+  const notifyError = () => { toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
+
+  const likeComment = async () => {
+    const response = await addLikeComment(id)
+    if(response.success) {
+        notifySuccess(response.message)
+    }
+    else{
+        notifyError()
+    }
+    }
+
+    const dissLikeComment = async () => {
+        const response = await addDissLikeComment(id)
+        if(response.success) {
+            notifySuccess(response.message)
+        }
+        else{
+            notifyError()
+        }
+    }
 
   return (
     <Fragment>
@@ -35,10 +66,11 @@ const ReplyCom = ({
             </div>
             <div className='flex gap-6 items-center'>
                 <div className='flex gap-4'>
-                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon className='cursor-pointer' /> </div>
-                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {disslikeCount} <ThumbsDownIcon className='cursor-pointer' /> </div>
+                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={currentUserEmotion === 'LIKED' ? {color: 'red'} : {color: 'black'} } onClick={likeComment} className='cursor-pointer' /> </div>
+                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {disslikeCount} <ThumbsDownIcon style={currentUserEmotion === 'DISSLIKED' ? {color: 'red'} : {color: 'black'} } onClick={dissLikeComment} className='cursor-pointer' /> </div>
                 </div>
-                <Button className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>
+                {!checkAdd && <Button onClick={() => {setCheckAdd(true), console.log(checkAdd)}} className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>}
+                {checkAdd && <AddReply commentId={id} Oid={Oid} />}
             </div>
         </div>
     </Fragment>

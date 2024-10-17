@@ -1,13 +1,28 @@
 import React, { useEffect,useState } from 'react'
 import Rate from '../../components/NewsDetail/Rate'
+import { getCommentsCourse } from '../../core/services/api/Comments/getCommentsCourse';
+import Comment from '../Comment&Reply/Comment';
+import { getCommentsNew } from '../../core/services/api/Comments/New/getCommentsNew';
 const LeftDiv = ({New}) => {
   const [text, setText] = useState(New.detailsNewsDto.describe);
   const [firstPart, setFirstPart] = useState('');
   const [secondPart, setSecondPart] = useState('');
 
+  const [comments, setComment] = useState([])
+
   useEffect(() => {
+    getComments()
     textCalc();
   },[])
+
+  const getComments = async () => {
+    const params = {
+      id: New.detailsNewsDto.id
+    }
+
+    const response2 = await getCommentsNew(params)
+    setComment(response2)
+  }
 
   function textCalc(){
     if (text.length > 0) {
@@ -33,7 +48,11 @@ const LeftDiv = ({New}) => {
         <Rate RateNews={New.detailsNewsDto.currentUserRateNumber} Flag={New.detailsNewsDto.currentUserSetRate} id={New.detailsNewsDto.id}/>
         <div className='font-[700] text-[30px] text-[#272727] text-right'>نظرات</div>
 
-        {/* Put Comment <Comment/> */}
+        <Comment 
+            comments={comments}
+            Oid={New.detailsNewsDto.id}
+        />
+
     </div>
   )
 }

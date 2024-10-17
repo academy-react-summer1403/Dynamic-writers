@@ -65,8 +65,8 @@ const LeftDiv = ({Course}) => {
         <div className='font-[700] text-[30px] text-[#272727] text-right'>نظرات</div>
 
         <Comment 
-          comments={comments}
-          courseId={Course.courseId}
+          comments= {comments}
+          Oid={Course.courseId}
         />
     </div>
   )
