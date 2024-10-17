@@ -11,8 +11,6 @@ import { addReplyNew } from '../../core/services/api/Comments/New/Add/AddReplyCo
 
 const AddReply = ({ commentId, Oid, setCheckAdd }) => {
 
-  const navigate = useNavigate()
-
   const notifySuccess = (message) => {
     toast.dismiss()
 
@@ -35,12 +33,13 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
       formData.append('CommentId', commentId)
   
       const response = await addReplyComment(formData)
+      // console.log(response)
   
         if(value.title.length < 10 || value.describe.length < 10){
           notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
         }
   
-        if(response.success === true) {
+        if(response.success == true) {
             notifySuccess(response.message)
             setCheckAdd(false)
         }
@@ -78,10 +77,10 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
         onSubmit={(value) => addReply(value)}
       >
 
-        <Form className='w-full border border-[#3772FF] rounded-[24px] h-fit md:h-[72px] flex md:flex-row gap-4 p-4'>
+        <Form className='w-full border border-[#3772FF] rounded-[24px] h-fit flex gap-4 p-4'>
 
             <button type='submit' className='size-10 min-w-10 min-h-10 bg-[#3772FF] rounded-full flex justify-center items-center'> <SentIcon className='size-5 text-white' /> </button>
-            <button className='size-10 min-w-10 min-h-10 border border-[#F1F1F1] hidden rounded-full md:flex justify-center items-center'> <SmileIcon className='size-5 text-blue-500' /> </button>
+            <button className='size-10 min-w-10 min-h-10 border border-[#F1F1F1] flex rounded-full justify-center items-center'> <SmileIcon className='size-5 text-blue-500' /> </button>
 
             <div className='w-full flex flex-col justify-between'>
                 <Field name='title' placeholder='عنوان نظر خود را بنویسید' className='outline-none' />

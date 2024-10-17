@@ -51,6 +51,7 @@ const LeftDiv = ({New}) => {
         <Comment 
             comments={comments}
             Oid={New.detailsNewsDto.id}
+            title={New.detailsNewsDto.title}
         />
 
     </div>

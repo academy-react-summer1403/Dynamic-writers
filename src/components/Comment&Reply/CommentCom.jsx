@@ -16,8 +16,6 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const [replyVisible, setVisibleReply] = useState(false)
     const [checkAdd, setCheckAdd] = useState(false)
 
-    const [searchParams] = useSearchParams()
-
     const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
     const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
 
@@ -73,14 +71,14 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
             <span className='font-[700] text-[#2F2F2F] text-[18px]'> {title} </span>
             <span className='font-[500] text-[#2F2F2F] text-[16px]'> {describe} </span>
         </div>
-        <div className='flex gap-6 md:flex-row flex-col items-start md:items-center'>
+        <div className='flex gap-6 flex-col items-start'>
             <div className='flex gap-4'>
                 <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={window.location.pathname.includes('NewDetail') ? currentUserIsLike ? {color: 'red'} : {color: 'black'} : currentUserEmotion === 'LIKED' ? {color: 'red'} : {color: 'black'} } onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(true) : likeComment()}  className='cursor-pointer' /> </div>
 
                 <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount} <ThumbsDownIcon style={window.location.pathname.includes('NewDetail') ? currentUserIsDissLike ? {color: 'red'} : {color: 'black'}  : currentUserEmotion === 'DISSLIKED' ? {color: 'red'} : {color: 'black'} } onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(false) : dissLikeComment()} className='cursor-pointer' /> </div>
             </div>
             <div className='flex gap-4'>
-                {!checkAdd && <Button onClick={() => {setCheckAdd(true), console.log(checkAdd)}} className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>}
+                {!checkAdd && <Button onClick={() => {setCheckAdd(true)}} className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>}
                 {acceptReplysCount > 0 && <button onClick={() => setVisible()} className='whitespace-nowrap text-[14px] font-[500] underline flex gap-1 items-center'> مشاهده جواب‌ها ({acceptReplysCount}) {replyVisible ? <ArrowUp01Icon className='size-5' /> : <ArrowDown01Icon className='size-5' />} </button> }
             </div>
 

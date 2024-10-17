@@ -67,6 +67,7 @@ const LeftDiv = ({Course}) => {
         <Comment 
           comments= {comments}
           Oid={Course.courseId}
+          title={Course.title}
         />
     </div>
   )

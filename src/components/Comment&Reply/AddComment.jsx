@@ -75,15 +75,15 @@ const AddComment = ({ Oid, setCheckAdd }) => {
         onSubmit={(value) => addComment(value)}
       >
 
-        <Form className='w-full border border-[#3772FF] rounded-[24px] h-[72px] flex gap-4 p-4'>
+        <Form className='w-full border border-[#3772FF] rounded-[24px] h-[72px] flex gap-4 p-4 my-5'>
 
             <button type='submit' className='size-10 min-w-10 min-h-10 bg-[#3772FF] rounded-full flex justify-center items-center'> <SentIcon className='size-5 text-white' /> </button>
             <button className='size-10 min-w-10 min-h-10 border border-[#F1F1F1] rounded-full flex justify-center items-center'> <SmileIcon className='size-5 text-blue-500' /> </button>
 
             <div className='w-full flex flex-col justify-between'>
-                <Field name='title' placeholder='عنوان نظر خود را بنویسید' className='outline-none' />
+                <Field name='title' placeholder='عنوان نظر خود را بنویسید' className='outline-none w-full' />
                 <div className='w-full border'></div>
-                <Field name='describe' placeholder='متن نظر خود را بنویسید' className='outline-none' />
+                <Field name='describe' placeholder='متن نظر خود را بنویسید' className='outline-none w-full' />
             
                 <ToastContainer />
             </div>
