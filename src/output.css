@@ -1575,6 +1575,10 @@ video {
   width: 80%;
 }
 
+.w-\[800px\] {
+  width: 800px;
+}
+
 .w-\[calc\(100\%_-_16px\)\] {
   width: calc(100% - 16px);
 }
@@ -1619,6 +1623,22 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[900px\] {
+  width: 900px;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[1200px\] {
+  width: 1200px;
+}
+
+.w-\[10px\] {
+  width: 10px;
 }
 
 .min-w-10 {
@@ -8723,6 +8743,12 @@ video {
   .md\:px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:w-\[1096px\] {
+    width: 1096px;
   }
 }
 

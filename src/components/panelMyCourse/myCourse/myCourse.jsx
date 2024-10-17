@@ -10,7 +10,7 @@ import { Formik , Form , Field } from 'formik';
 
 const MyCourse = () => {
 
-  const [countSearch, setCountSearch] = useState({})
+  const [countSearch, setCountSearch] = useState()
 
   // const reData2 = async() => {
   //   await GetMyCource(count);
