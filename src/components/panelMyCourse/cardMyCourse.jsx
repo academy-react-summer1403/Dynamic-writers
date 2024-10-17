@@ -3,6 +3,8 @@ import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { GetMyCource } from "../../core/services/api/Panel/getMyCource/getMyCource";
 import { Pagination } from "@nextui-org/pagination";
+import ViewCard from "./view";
+import Parcham from '../../assets/parcham.png'
 
 
 
@@ -53,7 +55,7 @@ const CardMyCourse = (props) => {
           <TableCell className='font-medium text-base mr-5'>{el.termName}</TableCell>
           <TableCell className='font-medium text-xl mr-8'>{(parseInt(el.cost).toLocaleString('en-US'))}</TableCell>
           <TableCell className='flex text-base font-bold' style={{lineHeight: "75px", textIndent: "5px"}}>
-            <div style={{ width: "48px", height: "48px" , marginTop: "16px"  }}>
+            <div className=" w-12 h-12 mt-4">
                     <CircularProgressbar 
                       value={66}
                       text={`${66}%`}
@@ -69,11 +71,13 @@ const CardMyCourse = (props) => {
           </TableCell>
 
           <TableCell  className=''>
-            <div className='cursor-pointer w-6 h-6'><img src="" alt="" /></div>
+            <ViewCard imaged={el.tumbImageAddress} nameTitle={el.courseTitle}  price={el.cost}
+                      modares={el.fullName} termNameed={el.termName} pardakhti={el.paymentStatus}
+             />
           </TableCell>
           
           <TableCell  className=''>
-            <div className='cursor-pointer w-6 h-6'> <img src="" alt="" /> </div>
+            <div className='cursor-pointer w-6 h-6' style={{marginTop: "-5px"}}> <img src={Parcham} alt="" /> </div>
           </TableCell>
 
         </TableRow>)}
