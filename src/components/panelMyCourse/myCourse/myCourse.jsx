@@ -4,21 +4,12 @@ import searching2 from '../../../assets/search2.png'
 import date from '../../../assets/date.png'
 import 'react-circular-progressbar/dist/styles.css';
 import CardMyCourse from '../cardMyCourse';
-import { GetMyCource } from "../../../core/services/api/Panel/getMyCource/getMyCource";
 import { Formik , Form , Field } from 'formik';
 
 
 const MyCourse = () => {
 
   const [countSearch, setCountSearch] = useState()
-
-  // const reData2 = async() => {
-  //   await GetMyCource(count);
-  // }
-
-  // useEffect(() => {
-  //     reData2();
-  // },[count]);
 
   return (
     <div className='min-w-full rounded-xl mx-auto my-1'>
