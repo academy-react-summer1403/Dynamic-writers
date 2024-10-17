@@ -17,7 +17,6 @@ const BoxThird = () => {
 
     const [viewBetter, setViewBetter] = useState(false);
 
-    console.log(viewBetter)
 
     useEffect(() => { 
       getCourse()
