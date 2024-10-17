@@ -32,4 +32,8 @@ export {
   clearStorage,
   setItemGeneric,
   getItemGeneric,
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> Develop
