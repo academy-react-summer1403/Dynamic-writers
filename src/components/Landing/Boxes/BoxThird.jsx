@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getCourserList } from '../../../core/services/api/cours'
 import CourseTops from './CourseTops'
 import moment from 'moment-jalaali'
 import { Button } from '@nextui-org/react'
+import { getCourserList } from '../../../core/services/api/courseToper'
 
 const BoxThird = () => {
 
@@ -11,12 +11,8 @@ const BoxThird = () => {
     const getCourse = async () => {
 
         const response = await getCourserList(4)
-
-        // console.log(response)
-
         setCourse(response)
 
-        // console.log('course:', course)
     }
 
     const [viewBetter, setViewBetter] = useState(false);
@@ -43,7 +39,7 @@ const BoxThird = () => {
           id={item.courseId}
           title={item.title}
           describe={item.describe}
-          date={(moment(item.lastUpdate).format('jYYYY / jM / jD'))}
+          date={(moment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
           levelName={item.levelName}
           dissLikeCount={item.dissLikeCount}
           likeCount={item.likeCount}

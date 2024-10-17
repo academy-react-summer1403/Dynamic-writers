@@ -7,6 +7,7 @@ import Icon3 from '../../../assets/icon3.png'
 import Icon4 from '../../../assets/icon4.png'
 import Icon5 from '../../../assets/icon5.png'
 import ScreenShot from '../../../assets/Screenshot (9).png'
+import { Link } from 'react-router-dom'
 
 function BoxFirst() {
   return (
@@ -15,7 +16,7 @@ function BoxFirst() {
       <div className='border-3 rounded-xl grow h-64 flex flex-col'>
         <div className='flex flex-row-reverse justify-between h-2/12 items-center p-2'>
             <h2 className='iranSansBold w-3/6  min-w-40 text-xl' style={{direction: 'rtl'}}> درباره ما بیشتر بخوانید </h2>
-            <div className='bg-blue-500 text-white rounded-full min-w-10 min-h-10 flex justify-center items-center cursor-pointer'> <ArrowUpLeft01Icon /> </div>
+            <Link to='/about' className='bg-blue-500 text-white rounded-full min-w-10 min-h-10 flex justify-center items-center cursor-pointer'> <ArrowUpLeft01Icon /> </Link>
         </div>
 
         <div className='rounded-xl h-8/12 mt-7 flex flex-col pr-3'>
@@ -36,7 +37,7 @@ function BoxFirst() {
                 <h2 className='text-xl font-extrabold whitespace-nowrap' style={{direction: 'rtl'}}> دوره‌های جدید تابستانه! </h2>
                 <div className='w-40 text-sm' style={{direction: 'rtl'}}> شروع دوره های جدید مبتدی و پیشرفته برای همین تابستان </div>
             </div>
-            <div className='mb-8 bg-white text-black rounded-full min-w-10 min-h-10 cursor-pointer flex justify-center items-center'> <ArrowUpLeft01Icon /> </div>
+            <Link to='/courseList' className='mb-8 bg-white text-black rounded-full min-w-10 min-h-10 cursor-pointer flex justify-center items-center'> <ArrowUpLeft01Icon /> </Link>
         </div>
         <div className='w-3/6 h-fit flex justify-end relative'>
           <img src={Icon1} className='size-32 -rotate-12 translate-x-16' />

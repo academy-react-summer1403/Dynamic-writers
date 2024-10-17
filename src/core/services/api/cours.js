@@ -1,10 +1,5 @@
 import http from '../interceptor'
 
-<<<<<<< HEAD
-export const getCourserList = async(count) => {
-  try {
-  const result = await http.get('/Home/GetCoursesTop?Count=' + count);
-=======
 export const getCourseList = async (
   pageNumber, 
   Query, 
@@ -25,7 +20,6 @@ export const getCourseList = async (
     &RowsOfPage=${rowsPage}&Query=${Query}&courseLevelId=${idLevel}&TeacherId=${idTeacher}&CostUp=${costUp}&CostDown=${costDown}
     &TechCount=${techCount}&ListTech=${techList}&SortingCol=${sortingCol}&SortType=${sortType}&StartDate=${startDate}
     &EndDate=${endDate}`);
->>>>>>> Develop
 
   return result;
   

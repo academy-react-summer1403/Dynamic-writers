@@ -32,7 +32,7 @@ function LandingCom() {
 
       <div className='items-center gap-5 flex flex-col my-6'>
         <span className='text-gray-400 iranSansBold text-sm text-center'> آکادمی فوق تخصصی کدنویسی و برنامه‌نویسی از سنین کودکی تا بزرگسالی </span>
-        <Button onClick={() => navigate('')} className='cursor-pointer bg-blue-500 text-white rounded-full flex items-baseline items-center text-sm iranSansBold'> شروع یادگیری </Button>
+        <Button onClick={() => navigate('/courseList')} className='cursor-pointer bg-blue-500 text-white rounded-full flex items-baseline items-center text-sm iranSansBold'> شروع یادگیری </Button>
       </div>
 
       <BoxFirst />
@@ -51,9 +51,9 @@ function LandingCom() {
         <span className='font-semibold text-sm  whitespace-nowrap'> خدماتی که ما به شما ارائه میدیم </span>
       </div>
 
-      <BoxSecond />
+      {/* <BoxSecond /> */}
 
-      <div className='mx-auto text-center'> 
+      <div className='mx-auto text-center mt-20'> 
         <h2 className='text-2xl iranSansBold'> محبوب ترین دوره ها </h2>
         <span className='text-gray-400 iranSansBold text-base'> دوره هایی که بین دانشجو های ما محبوبیت بالایی داشتند </span>
       </div>

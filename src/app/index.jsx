@@ -8,10 +8,8 @@ import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { NextUIProvider } from '@nextui-org/react';
 import Root from '../screens/Root/Root';
 import Landing from '../screens/Landing/Landing';
-import Root from '../screens/Root';
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
 import CourseListRout from '../screens/CourseListRout';
 import {CourseDetail} from '../screens/CourseDetail/CourseDetail';
@@ -33,14 +31,6 @@ import Error408 from '../screens/Error/408/Error408';
 
 function App() {
 
-  // const getList = async() => {
-  //   const result = await getCourserList(5);
-  //   console.log(result);
-  // }
-
-  // useEffect(()=>{
-  //   getList();
-  // },[])
 
   const router = createBrowserRouter([
     {

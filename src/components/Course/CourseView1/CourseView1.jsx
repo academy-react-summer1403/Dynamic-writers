@@ -143,7 +143,7 @@ const CourseView1 = () => {
                 id={item.courseId}
                 title={item.title}
                 describe={item.describe}
-                date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+                date={(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
                 levelName={item.levelName}
                 dissLikeCount={item.dissLikeCount}
                 likeCount={item.likeCount}
@@ -164,7 +164,7 @@ const CourseView1 = () => {
               id={item.courseId}
               title={item.title}
               describe={item.describe}
-              date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+              date={(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
               levelName={item.levelName}
               dissLikeCount={item.dissLikeCount}
               likeCount={item.likeCount}

@@ -1,8 +1,11 @@
 import React from 'react'
 import { Button } from '@nextui-org/react'
 import { Calendar02Icon, EyeIcon, QuillWrite01Icon, QuillWrite02Icon, StudentIcon, TeacherIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
+import { useNavigate } from 'react-router-dom'
 
 const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, addUserFullName, currentView, newsCatregoryName, id, image}) => {
+
+  const navigate = useNavigate()
 
   return (
     <div className='rounded-2xl min-w-80 max-w-96 bg-gray-200 relative h-fit' style={{height: '410px'}}>
@@ -19,7 +22,7 @@ const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, 
             <div className='flex flex-row-reverse gap-3 my-2'> <EyeIcon className='text-slate-700'/> <span className='text-base font-semibold'> {currentView} </span> </div>
         </div>
         <div className='w-full flex px-3 gap-10 items-center my-0'>
-            <Button className='bg-blue-500 text-white rounded-full'> بیشتر بخوانید </Button>
+            <Button onClick={() => navigate('/NewDetail/' + id)} className='bg-blue-500 text-white rounded-full'> بیشتر بخوانید </Button>
             <div className='flex gap-2'> {currentDissLikeCount} <ThumbsDownIcon /> </div>
             <div className='flex gap-2'> {currentLikeCount} <ThumbsUpIcon /> </div>
         </div>

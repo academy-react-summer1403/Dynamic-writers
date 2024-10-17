@@ -12,12 +12,8 @@ const BoxFifth = () => {
     const getNews = async () => {
 
         const response = await getNewsList()
-    
         setNews(response)
-
-        setNewsTop(response.news.slice(3,7))
-
-        // console.log(newsTop)
+        setNewsTop(response.news.slice(0,4))
     
     }
 
