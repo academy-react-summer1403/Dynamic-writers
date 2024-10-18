@@ -96,7 +96,7 @@ const MyCourseTable = ({ myCourse }) => {
       </TableHeader>
         <TableBody>
             {myCourse.map((item, index) => {
-                return <TableRow key={index}>
+                return <TableRow onClick={() => handleOpenModal(item.courseId)} key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
                     <TableCell>
                         <div className="flex flex-col gap-2">

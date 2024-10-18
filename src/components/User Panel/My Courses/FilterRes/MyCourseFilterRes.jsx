@@ -3,7 +3,7 @@ import { Calendar02Icon, Cancel01Icon, Search01Icon } from 'hugeicons-react'
 import React from 'react'
 import { Button, Select, SelectItem } from '@nextui-org/react';
 
-const MyCourseFilterRes = ({ setquery, filterClose }) => {
+const MyCourseFilterRes = ({ setquery, filterClose, setSortType, setSortingCol }) => {
   return (
     <div className='z-[100] flex flex-col w-full h-fit border gap-5 bg-white fixed bottom-0 right-0 p-2'>
         <div className='border w-[50px] mt-1 cursor-pointer mx-auto'></div>
@@ -37,9 +37,10 @@ const MyCourseFilterRes = ({ setquery, filterClose }) => {
                 </div>
                 <div className='relative gap-3 flex flex-col'>
                     <Select classNames={{trigger: 'bg-gray-200'}} placeholder='انتخاب کنید...'>
-                        <SelectItem> ارزان ترین </SelectItem>
-                        <SelectItem> پرداخت شده ها </SelectItem>
-                        <SelectItem> جدید ترین </SelectItem>
+                        <SelectItem onClick={() => {setSortType('ASC'), setSortingCol('Cost')}}> ارزان ترین </SelectItem>
+                        <SelectItem onClick={() => {setSortType('ASC'), setSortingCol('LastUpdate')}}> قدیمی ترین ها </SelectItem>
+                        <SelectItem onClick={() => {setSortType('DESC'), setSortingCol('LastUpdate')}}> جدید ترین </SelectItem>
+                        <SelectItem onClick={() => {setSortType(''), setSortingCol('')}}> هیچ کدام </SelectItem>
                     </Select>
                 </div>
             </div>

@@ -45,6 +45,8 @@ const MyCourseCom = () => {
       {filterClose && <MyCourseFilterRes
         setquery={setquery}
         filterClose={setFilterClose}
+        setSortingCol={setSortingCol}
+        setSortType={setSortType}
       />}
       <div className='md:flex flex-col w-full h-fit gap-10 hidden'>
         <h2 className='text-[28px] font-bold mt-8'> دوره من </h2>
