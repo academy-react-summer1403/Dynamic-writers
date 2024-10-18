@@ -41,15 +41,15 @@ const MyCommentCourseCom = ({
   return (
     <ul className='w-full h-fit flex flex-col gap-4'>
         <div className='w-fit h-[48px] flex gap-2'>
-            <img className='size-12 rounded-full bg-[#5865F2]' />
+            <img className='size-12 rounded-full min-w-12 min-h-12 bg-[#5865F2]' />
             <div className='flex flex-col justify-center gap-1'>
                 <h2 className='font-[600] text-[14px] text-right'> شما </h2>
-                <span className='font-[600] text-[12px] text-[#707070] text-right'> {jMoment(insertDat).locale('fa').format('jD jMMMM jYYYY')} </span>
+                <span className='font-[600] text-[12px] text-[#707070] text-right whitespace-nowrap'> {jMoment(insertDat).locale('fa').format('jD jMMMM jYYYY')} </span>
             </div>
         </div>
         <div className='flex flex-col gap-2 text-right'>
-            <span className='font-[700] text-[#2F2F2F] text-[18px] text-ellipsis'> {title} </span>
-            <span className='font-[500] text-[#2F2F2F] text-[16px] text-ellipsis'> {describe} </span>
+            <span className='font-[700] text-[#2F2F2F] text-[18px] text-ellipsis whitespace-nowrap'> {title} </span>
+            <span className='font-[500] text-[#2F2F2F] text-[16px] text-ellipsis whitespace-nowrap'> {describe} </span>
         </div>
         <div className='flex gap-6 flex-col md:flex-row md:items-center items-start'>
             <div className='flex gap-4'>

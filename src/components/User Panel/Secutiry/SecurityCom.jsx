@@ -18,8 +18,8 @@ const SecurityCom = () => {
   }, [])
 
   return (
-    <div className='p-2 bg-white w-[400px] h-[220px] rounded-2xl my-5 flex flex-col items-start gap-2' dir='rtl'>
-        <div className='flex w-full flex-col gap-5'>
+    <div className='p-2 bg-white w-[1192px] h-[220px] rounded-2xl my-5 flex flex-col items-start gap-2' dir='rtl'>
+        <div className='flex flex-col gap-5 w-[500px]'>
             <Switch defaultSelected={(securityInfo.twoStepAuth === true) ? true : false} classNames={{
                 wrapper: 'md:bg-gray-100 bg-white', 
                 }}>
@@ -33,7 +33,7 @@ const SecurityCom = () => {
                 <Input className='w-full' placeholder=' لطفا ایمیل را وارد فرمایید' startContent={<ComputerIcon className='text-gray-500' />} />
             </div>
         </div>
-        <Button className='cursor-pointer items-center text-sm font-[600] w-full bg-blue-500 text-white rounded-full px-2 py-1 flex gap-2'> تایید دو مرحله ای <SecurityCheckIcon className='size-5' /> </Button>
+        <Button className='cursor-pointer items-center text-sm font-[600] w-[500px] max-w-[500px] bg-blue-500 text-white rounded-full px-2 py-1 flex gap-2'> تایید دو مرحله ای <SecurityCheckIcon className='size-5' /> </Button>
     </div>
   )
 }

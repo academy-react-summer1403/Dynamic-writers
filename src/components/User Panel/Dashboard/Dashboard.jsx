@@ -82,11 +82,11 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className='h-full md:w-80 bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
+        <div className='h-full md:w-[355px] bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
         <div className='bg-red-500 text-yellow-300 text-sm font-semibold flex justify-center items-center rotate-12 translate-x-8 w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
-        <div className='md:h-full h-72 md:w-72 bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
+        <div className='md:h-full h-72 md:w-[279px] bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>

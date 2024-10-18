@@ -53,15 +53,15 @@ const MyReplyCom = ({
     <Fragment>
         <div className='w-full h-fit flex flex-col gap-4'>
             <div className='w-fit h-[48px] flex gap-2'>
-                <img src={pictureAddress} className='size-12 rounded-full bg-[#5865F2]' />
+                <img src={pictureAddress} className='min-w-12 min-h-12 size-12 rounded-full bg-[#5865F2]' />
                 <div className='flex flex-col justify-center gap-1'>
                     <h2 className='font-[600] text-[14px] text-right'> {author} </h2>
-                    <span className='font-[600] text-[12px] text-[#707070] text-right'> {insertDate} </span>
+                    <span className='font-[600] text-[12px] text-[#707070] text-right whitespace-nowrap'> {insertDate} </span>
                 </div>
             </div>
             <div className='flex flex-col gap-2 text-right'>
-                <span className='font-[700] text-[#2F2F2F] text-[18px]'> {title} </span>
-                <span className='font-[500] text-[#2F2F2F] text-[16px]'> {describe} </span>
+                <span className='font-[700] text-[#2F2F2F] text-[18px] whitespace-nowrap'> {title} </span>
+                <span className='font-[500] text-[#2F2F2F] text-[16px] whitespace-nowrap'> {describe} </span>
             </div>
             <div className='flex gap-6 md:items-center md:flex-row flex-col justify-start'>
                 <div className='flex gap-4'>
