@@ -47,3 +47,8 @@
 .inputView:checked + .labelView{
   color: rgb(74, 74, 255);
 }
+
+.inputSortNews:checked + .labelSortNews{
+  background-color: rgb(74, 74, 255);
+  color: white;
+}
