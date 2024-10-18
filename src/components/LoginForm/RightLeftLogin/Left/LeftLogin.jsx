@@ -53,7 +53,7 @@ const LeftLogin = () => {
     }
 
     if(user.success === true){
-        navigate('/')
+        navigate('/layoutPanel/dashboard')
         notifySuccess()
     }
     else if(user.success === false){

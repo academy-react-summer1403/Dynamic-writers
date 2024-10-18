@@ -45,7 +45,7 @@ const LeftRegisterAccount = () => {
     console.log(response)
 
     if(response ? response.success === true: response){
-        navigate('/')
+        navigate('/layoutPanel/dashboard')
     }
     else if(values.gmail === ""){
         notifyGmail()
