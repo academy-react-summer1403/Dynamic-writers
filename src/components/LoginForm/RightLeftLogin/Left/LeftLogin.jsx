@@ -22,10 +22,6 @@ const LeftLogin = () => {
 
     const user = await postLogin(userObj);
 
-    setItem('token', user.token)
-
-    console.log(user)
-
     const notify = () => {
         toast.error(user.message, {
           autoClose: 5000,
@@ -53,6 +49,8 @@ const LeftLogin = () => {
     }
 
     if(user.success === true){
+        setItem('token', user.token)
+        setItem('userId', user.id)    
         navigate('/layoutPanel/dashboard')
         notifySuccess()
     }

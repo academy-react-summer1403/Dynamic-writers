@@ -4,8 +4,24 @@ import Bahr from '../../../../assets/Bahr.png'
 import { Link } from 'react-router-dom'
 import { Switch } from '@nextui-org/react'
 import { getSecurityInfo } from '../../api/SecurityAPI/getSecurityInfo'
+import { getItem } from '../../common/storage'
+import UserDetailsWithId from '../../api/User/UserDetailsWithId'
 
 const HeaderPanel = ({ editingImage, profileInfo }) => {
+
+  const [student, setStudent] = useState()
+  const [teacher, setTeacher] = useState()
+
+  const getRoles = async () => {
+    const id = getItem('userId')
+    const response = await UserDetailsWithId(id)
+    setStudent(response.isStudent)
+    setTeacher(response.isTecher)
+  }
+
+  useEffect(() => {
+    getRoles()
+  }, [])
 
   return (
     <div className='md:bg-white rounded-2xl flex justify-between flex-row-reverse md:px-3 w-full' style={{height: '80px'}}>
@@ -16,7 +32,11 @@ const HeaderPanel = ({ editingImage, profileInfo }) => {
         </div>
         <div className='flex flex-col'>
             <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.lName , ' ' , profileInfo.fName] : "نامشخص"}  </h2>
-            <span className='text-gray-500 text-right'> ادمین ، دانشجو </span>
+            <span className='text-gray-500 text-right flex gap-1 flex-row-reverse'>
+              <span> {student && 'دانشجو'} </span>
+              ,
+              <span> {teacher && 'استاد'} </span>
+            </span>
         </div>
       </div>
       <Link to='/' className='flex md:hidden flex-row-reverse justify-between gap-3 items-center'>

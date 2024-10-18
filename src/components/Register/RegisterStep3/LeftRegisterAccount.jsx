@@ -8,6 +8,7 @@ import '../../../index.css'
 import { toast, ToastContainer } from 'react-toastify';
 import { RegisterAPI } from '../../../core/services/api/register/registerAPI';
 import 'react-toastify/dist/ReactToastify.css';
+import { setItem } from '../../../core/services/common/storage';
 
 const LeftRegisterAccount = () => {
 
@@ -20,6 +21,8 @@ const LeftRegisterAccount = () => {
     }
     
     const response = await RegisterAPI(registerObg)
+
+
 
     const notify = () => {
 
@@ -41,10 +44,9 @@ const LeftRegisterAccount = () => {
         autoClose: 5000,
         })
     }
-
-    console.log(response)
-
-    if(response ? response.success === true: response){
+    if(response.success === true){
+        setItem('token', response.token)
+        setItem('userId', response.id)    
         navigate('/layoutPanel/dashboard')
     }
     else if(values.gmail === ""){
