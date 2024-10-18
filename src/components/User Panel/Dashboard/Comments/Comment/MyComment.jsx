@@ -22,7 +22,7 @@ const MyComment = ({  comments, commentsNew }) => {
                 describe={item.describe}
             />
         })}
-        {comments[0] == undefined && <span className='mx-auto text-[18px] text-gray-400 font-semibold flex items-center'> نظری ثبت نشده است :( </span>}
+        {comments[0] == undefined && <span className='mx-auto text-[18px] text-gray-400 font-semibold flex items-center'> نظری ثبت نشده است </span>}
       </div>
       <div className='h-full border'></div>
       <div className='max-w-3/6 h-[750px] flex flex-col overflow-hidden gap-8 bg-gradient-to-b from-white to-transparent'>
@@ -41,7 +41,7 @@ const MyComment = ({  comments, commentsNew }) => {
                 describe={item.describe}
             />
         })}
-        {commentsNew[0] == undefined && <span className='mx-auto text-[18px] text-gray-400 font-semibold flex items-center'> نظری ثبت نشده است :( </span>}
+        {commentsNew[0] == undefined && <span className='mx-auto text-[18px] text-gray-400 font-semibold flex items-center'> نظری ثبت نشده است </span>}
       </div>
     </div>
   )

@@ -9425,24 +9425,16 @@ video {
     width: 75%;
   }
 
-  .md\:w-\[259px\] {
-    width: 259px;
-  }
-
-  .md\:w-\[375px\] {
-    width: 375px;
-  }
-
-  .md\:w-\[522px\] {
-    width: 522px;
+  .md\:w-\[279px\] {
+    width: 279px;
   }
 
   .md\:w-\[355px\] {
     width: 355px;
   }
 
-  .md\:w-\[279px\] {
-    width: 279px;
+  .md\:w-\[522px\] {
+    width: 522px;
   }
 
   .md\:grow {
