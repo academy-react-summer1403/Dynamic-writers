@@ -47,9 +47,9 @@ const Dashboard = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
-    <div className='border h-fit w-full flex flex-col gap-5 iranSans'>
-      <div className='border flex-col md:flex-row flex w-full h-fit' dir='rtl'>
-        <div className='grow border items-center py-5'>
+    <div className='h-fit w-full flex flex-col gap-5 iranSans'>
+      <div className='flex-col md:flex-row flex w-full h-fit' dir='rtl'>
+        <div className='grow items-center py-5'>
           <h2 className='font-bold text-2xl'> سلام , صبح بخیر {profileInfo.lName} 😍 </h2>
         </div>
         <div className='md:grow flex md:justify-start justify-between grow-0 md:gap-24 items-center'>

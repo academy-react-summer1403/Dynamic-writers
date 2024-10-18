@@ -710,6 +710,10 @@ video {
   bottom: 5rem;
 }
 
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
 .bottom-\[10\%\] {
   bottom: 10%;
 }
@@ -892,6 +896,14 @@ video {
 
 .z-50 {
   z-index: 50;
+}
+
+.z-\[\] {
+  z-index: ;
+}
+
+.z-\[100\] {
+  z-index: 100;
 }
 
 .order-1 {
@@ -1169,6 +1181,10 @@ video {
   margin-top: 1.75rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mt-9 {
   margin-top: 2.25rem;
 }
@@ -1247,6 +1263,11 @@ video {
 .size-14 {
   width: 3.5rem;
   height: 3.5rem;
+}
+
+.size-2 {
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 .size-20 {
@@ -1426,6 +1447,10 @@ video {
   height: 220px;
 }
 
+.h-\[287px\] {
+  height: 287px;
+}
+
 .h-\[297px\] {
   height: 297px;
 }
@@ -1596,6 +1621,10 @@ video {
   min-height: 52px;
 }
 
+.min-h-\[72px\] {
+  min-height: 72px;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -1764,6 +1793,10 @@ video {
   width: 20%;
 }
 
+.w-\[289px\] {
+  width: 289px;
+}
+
 .w-\[390px\] {
   width: 390px;
 }
@@ -1848,6 +1881,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[50px\] {
+  width: 50px;
 }
 
 .min-w-10 {
@@ -1954,6 +1991,10 @@ video {
 .min-w-min {
   min-width: -moz-min-content;
   min-width: min-content;
+}
+
+.min-w-\[104px\] {
+  min-width: 104px;
 }
 
 .max-w-2xl {
@@ -2629,6 +2670,10 @@ video {
   border-radius: 100%;
 }
 
+.rounded-\[16px\] {
+  border-radius: 16px;
+}
+
 .rounded-\[24px\] {
   border-radius: 24px;
 }
@@ -2647,6 +2692,10 @@ video {
 
 .rounded-\[64px\] {
   border-radius: 64px;
+}
+
+.rounded-\[8px\] {
+  border-radius: 8px;
 }
 
 .rounded-\[calc\(theme\(borderRadius\.large\)\/1\.5\)\] {
@@ -3098,9 +3147,19 @@ video {
   background-color: rgb(217 217 217 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#E8E8E8\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 232 232 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#FEFDFF\] {
   --tw-bg-opacity: 1;
   background-color: rgb(254 253 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FF5454\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 84 84 / var(--tw-bg-opacity));
 }
 
 .bg-background {
@@ -3295,6 +3354,11 @@ video {
 
 .bg-primary\/20 {
   background-color: hsl(var(--nextui-primary) / 0.2);
+}
+
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 
 .bg-red-300 {
@@ -3596,6 +3660,11 @@ video {
 .py-7 {
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .\!pb-0 {
@@ -3966,6 +4035,11 @@ video {
 .text-\[\#FEFDFF\] {
   --tw-text-opacity: 1;
   color: rgb(254 253 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#FF5454\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 84 84 / var(--tw-text-opacity));
 }
 
 .text-\[\#FFFFFF\] {
