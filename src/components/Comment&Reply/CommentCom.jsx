@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from '@nextui-org/react'
 import { ArrowDown01Icon, ArrowUp01Icon, Comment01Icon, CommentAdd01Icon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
-import jMoment from 'moment-jalaali'
+import jMoment from 'jalali-moment'
 import Reply from './Reply'
 import 'react-toastify/dist/ReactToastify.css';
 import { addLikeComment } from '../../core/services/api/Comments/Like&DissLike/likeComment'

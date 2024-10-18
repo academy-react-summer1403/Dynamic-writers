@@ -51,7 +51,6 @@ const ReplyCom = ({
 
   return (
     <Fragment>
-      <div className='h-full w-[7px] bg-blue-500 rounded-[10px]'> </div>
         <div className='w-full h-fit flex flex-col gap-4'>
             <div className='w-fit h-[48px] flex gap-2'>
                 <img src={pictureAddress} className='size-12 rounded-full bg-[#5865F2]' />

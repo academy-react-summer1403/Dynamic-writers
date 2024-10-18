@@ -9,7 +9,7 @@ const CommentModal = ({onOpen, isOpen, onOpenChange, Oid, title, comments }) => 
   const [checkAdd, setCheckAdd] = useState(false)
 
   return (
-     <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top'>
+     <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top' size='5xl'>
      <ModalContent>
           {(onClose) => (
             <>

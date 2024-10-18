@@ -34,8 +34,8 @@ const Reply = ({ commentId, Oid }) => {
     }, [])
 
     return <>
-        {replies.map(reply => {
-            return <li className='w-full h-fit flex gap-4'>
+        {replies.map((reply, index) => {
+            return <li key={index} className='border-r-5 border-blue-500 pr-5 w-full h-fit flex gap-4'>
               <ReplyCom
                 id={reply.id}
                 title={reply.title}
