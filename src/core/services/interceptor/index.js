@@ -14,17 +14,7 @@ const onSuccess = (response) => {
 const onError = (err) => {
    console.log(err);
 
-   if(!err.config.headers.Authorization){
-      removeItem('token')
-      window.location.pathname = '/Error401'
-   }
-
-   if(!token){
-      removeItem('token')
-      window.location.pathname = '/Error401'
-   }
-
-   if(err.response.status === 401){
+   if(!err.response){
       removeItem('token')
       window.location.pathname = '/Error401'
    }
