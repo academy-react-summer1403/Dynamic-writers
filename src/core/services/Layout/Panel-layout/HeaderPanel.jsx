@@ -1,9 +1,12 @@
 import { Moon02Icon, Notification02Icon, PencilEdit01Icon } from 'hugeicons-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import { Link } from 'react-router-dom'
+import { Switch } from '@nextui-org/react'
+import { getSecurityInfo } from '../../api/SecurityAPI/getSecurityInfo'
 
 const HeaderPanel = ({ editingImage, profileInfo }) => {
+
   return (
     <div className='md:bg-white rounded-2xl flex justify-between flex-row-reverse md:px-3 w-full' style={{height: '80px'}}>
       <div className='md:flex gap-4 h-full w-fit flex-row-reverse items-center hidden'>

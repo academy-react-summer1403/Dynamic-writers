@@ -2,12 +2,11 @@ import { Button } from '@nextui-org/react'
 import { insert } from 'formik'
 import { ArrowUp01Icon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import React, { Fragment, useState } from 'react'
-import AddReply from './AddReply'
-import { addLikeComment } from '../../core/services/api/Comments/Like&DissLike/likeComment'
-import { addDissLikeComment } from '../../core/services/api/Comments/Like&DissLike/disslikeComment'
+import AddReply from '../../../../Comment&Reply/AddReply'
+import { addLikeComment } from '../../../../../core/services/api/Comments/Like&DissLike/likeComment'
+import { addDissLikeComment } from '../../../../../core/services/api/Comments/Like&DissLike/disslikeComment'
 import { toast, ToastContainer } from 'react-toastify'
-
-const ReplyCom = ({                 
+const MyReplyCom = ({
     id,
     title,
     describe,
@@ -22,32 +21,33 @@ const ReplyCom = ({
     pictureAddress,
     currentUserLikeId,
     Oid,
- }) => {
+}) => {
 
-  const [checkAdd, setCheckAdd] = useState(false)
 
-  const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
-  const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
+    const [checkAdd, setCheckAdd] = useState(false)
 
-  const likeComment = async () => {
-    const response = await addLikeComment(id)
-    if(response.success) {
-        notifySuccess(response.message)
-    }
-    else{
-        notifyError()
-    }
-    }
-
-    const dissLikeComment = async () => {
-        const response = await addDissLikeComment(id)
-        if(response.success) {
-            notifySuccess(response.message)
-        }
-        else{
-            notifyError()
-        }
-    }
+    const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
+    const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
+  
+    const likeComment = async () => {
+      const response = await addLikeComment(id)
+      if(response.success) {
+          notifySuccess(response.message)
+      }
+      else{
+          notifyError()
+      }
+      }
+  
+      const dissLikeComment = async () => {
+          const response = await addDissLikeComment(id)
+          if(response.success) {
+              notifySuccess(response.message)
+          }
+          else{
+              notifyError()
+          }
+      }
 
   return (
     <Fragment>
@@ -55,11 +55,11 @@ const ReplyCom = ({
             <div className='w-fit h-[48px] flex gap-2'>
                 <img src={pictureAddress} className='size-12 rounded-full bg-[#5865F2]' />
                 <div className='flex flex-col justify-center gap-1'>
-                    <h2 className='font-[600] text-[14px]'> {author} </h2>
-                    <span className='font-[600] text-[12px] text-[#707070]'> {insertDate} </span>
+                    <h2 className='font-[600] text-[14px] text-right'> {author} </h2>
+                    <span className='font-[600] text-[12px] text-[#707070] text-right'> {insertDate} </span>
                 </div>
             </div>
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-2 text-right'>
                 <span className='font-[700] text-[#2F2F2F] text-[18px]'> {title} </span>
                 <span className='font-[500] text-[#2F2F2F] text-[16px]'> {describe} </span>
             </div>
@@ -77,4 +77,4 @@ const ReplyCom = ({
   )
 }
 
-export default ReplyCom
+export default MyReplyCom

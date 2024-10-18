@@ -45,7 +45,7 @@ const LeftResetPass2 = () => {
         notifyPass()
     }
     else if(respone ? respone.success === true : respone) {
-        navigate('/')  
+        navigate('/login')  
     }
 
     }

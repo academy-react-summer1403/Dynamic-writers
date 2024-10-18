@@ -1,6 +1,7 @@
 import React from 'react'
 import { CheckmarkCircle03Icon,UserStoryIcon,ProfileIcon } from 'hugeicons-react'
 import image from '../../assets/arrow.png'
+import { Link } from 'react-router-dom'
 const CourseReserve = ({Flags}) => {
   return (
     
@@ -18,10 +19,10 @@ const CourseReserve = ({Flags}) => {
                 <div className='text-[20px] font-[700] text-center'>دوره من</div>
             </div>
         </div>
-        <div className='text-[20px] font-[500] text-[#787878] text-center'>بعد از تایید ادمین مربوط دوره شما به <a className='text-[#000000] text-[20px] font-[700] underline'>دوره من</a><br/> اضافه خواهد شد</div>
+        <div className='text-[20px] font-[500] text-[#787878] text-center'>بعد از تایید ادمین مربوط دوره شما به <Link to='/layoutPanel/myCourse' className='text-[#000000] text-[20px] font-[700] underline'>دوره من</Link><br/> اضافه خواهد شد</div>
         <div className='flex flex-row gap-4 justify-center w-[90%]'>
             <div className='w-[20%] h-[56px] text-[#272727] bg-[#FEFDFF] rounded-[40px] text-center leading-[50px] text-[25px] border-[1px] border-[#E4E4E4] cursor-pointer' onClick={()=>Flags(false)}>باشه</div>
-            <div className='w-[60%] h-[56px] bg-[#3772FF] text-[#FEFDFF] rounded-[40px] text-center leading-[50px] text-[20px] cursor-pointer'>لیست رزرو های من</div>
+            <Link to='/layoutPanel/myReserve' className='w-[60%] h-[56px] bg-[#3772FF] text-[#FEFDFF] rounded-[40px] text-center leading-[50px] text-[20px] cursor-pointer'>لیست رزرو های من</Link>
         </div>
 
     </div>

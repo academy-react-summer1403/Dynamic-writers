@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import Bahr2 from '../../../../assets/Bahr2.png' 
 import { Button } from '@nextui-org/react'
-import { Book02Icon, BookBookmark02Icon, Bookmark02Icon, DashboardCircleIcon, DashboardCircleSettingsIcon, FileBookmarkIcon, Logout03Icon, MoneySend01Icon, MoneySend02Icon, TimeSetting02Icon, TimeSetting03Icon, UserEdit01Icon, UserSettings01Icon } from 'hugeicons-react'
+import { Book02Icon, BookBookmark02Icon, Bookmark02Icon, DashboardCircleIcon, DashboardCircleSettingsIcon, FileBookmarkIcon, Logout03Icon, MoneySend01Icon, MoneySend02Icon, SecurityIcon, TimeSetting02Icon, TimeSetting03Icon, UserEdit01Icon, UserSettings01Icon } from 'hugeicons-react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { removeItem } from '../../common/storage'
 
@@ -26,7 +26,8 @@ const SitePanel = () => {
               <NavLink to='myReserve' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> رزرو من <TimeSetting03Icon /> </NavLink>
               <NavLink to='favCourse' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> علاقه مندی دوره <Bookmark02Icon /> </NavLink>
               <NavLink to='favNews' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> علاقه مندی مقالات <FileBookmarkIcon /> </NavLink>
-              <NavLink to='profile' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> پروفابل <UserEdit01Icon /> </NavLink>
+              <NavLink to='profile' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> پروفایل <UserEdit01Icon /> </NavLink>
+              <NavLink to='security' className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }> امنیت <SecurityIcon /> </NavLink>
           </div>
           <div className='flex flex-col w-full h-fit gap-3 justify-center'>
             <h2 className='text-gray-600 font-semibold'> مالی </h2>

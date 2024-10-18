@@ -71,7 +71,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
             <span className='font-[700] text-[#2F2F2F] text-[18px]'> {title} </span>
             <span className='font-[500] text-[#2F2F2F] text-[16px]'> {describe} </span>
         </div>
-        <div className='flex gap-6 flex-col items-start'>
+        <div className='flex gap-6 flex-col md:flex-row items-start'>
             <div className='flex gap-4'>
                 <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={window.location.pathname.includes('NewDetail') ? currentUserIsLike ? {color: 'red'} : {color: 'black'} : currentUserEmotion === 'LIKED' ? {color: 'red'} : {color: 'black'} } onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(true) : likeComment()}  className='cursor-pointer' /> </div>
 

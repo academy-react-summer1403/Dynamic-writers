@@ -28,6 +28,7 @@ import Error400 from '../screens/Error/400/Error400';
 import Error403 from '../screens/Error/403/Error403';
 import Error500 from '../screens/Error/500/Error500';
 import Error408 from '../screens/Error/408/Error408';
+import SecurityPanel from '../screens/User Panel/SecurityPanel';
 
 function App() {
 
@@ -91,6 +92,10 @@ function App() {
         {
           path: 'profile',
           element: <ProfileRout />
+        },
+        {
+          path: 'security',
+          element: <SecurityPanel />
         },
       ]
     },

@@ -7,10 +7,18 @@ import { Link, NavLink } from 'react-router-dom'
 import TableDashboard from './Tabel/TableDashboard'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css';
+import MyComment from './Comments/Comment/MyComment'
+import { getMyCommentsCourse } from '../../../core/services/api/MyComments/getMyCommentCourse'
+import { getMyCommentsNew } from '../../../core/services/api/MyComments/getMyCommentsNew'
+import CommentModal from '../../Comment&Reply/CommentModal'
+import { useDisclosure } from '@nextui-org/react'
+import MyCommentModal from './Comments/MyCommentModal'
 
 const Dashboard = () => {
 
   const [profileInfo, setProfileInfo] = useState([])
+  const [commentsCourse, setCommentsCourse] = useState([])
+  const [commentsNew, setCommentsNew] = useState([])
 
   const getProfile = async () => {
 
@@ -18,9 +26,25 @@ const Dashboard = () => {
     setProfileInfo(response)
   }
 
+  const getCommentsCourse = async () => {
+
+    const response = await getMyCommentsCourse()
+    setCommentsCourse(response.myCommentsDtos)
+  }
+
+  const getCommentsNew = async () => {
+
+    const response = await getMyCommentsNew()
+    setCommentsNew(response.myNewsCommetDtos)
+  }
+
   useEffect(() => {
     getProfile()
+    getCommentsCourse()
+    getCommentsNew()
   }, [])
+
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
     <div className='border h-fit w-full flex flex-col gap-5 iranSans'>
@@ -42,8 +66,20 @@ const Dashboard = () => {
 
       <div className='w-full flex gap-5 flex-col-reverse md:flex-row md:h-72 h-fit' dir='rtl'>
         
-        <div className='md:h-full h-72 md:grow-8 bg-white rounded-2xl py-3 px-4'>
-          <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <Link className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </Link> </div>
+        <div className='md:h-full h-72 md:w-[522px] overflow-hidden bg-white rounded-2xl py-3 px-4'>
+          <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <button onClick={onOpen} className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </button> </div>
+        
+          <MyComment
+            comments={commentsCourse}
+            commentsNew={commentsNew}
+          />
+          <MyCommentModal
+            isOpen={isOpen}
+            onOpen={onOpen}
+            onOpenChange={onOpenChange}
+            comments={commentsCourse}
+            commentsNew={commentsNew}
+          />
         </div>
         
         <div className='h-full md:w-80 bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
