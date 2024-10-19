@@ -20,6 +20,20 @@ const MyCourseTable = ({ myCourse }) => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
     
   const [openCourseId, setOpenCourseId] = useState(null)
+  const [myCourses, setMyCourses] = useState([])
+
+  const addCourse = () => {
+    if(myCourse !== undefined) {
+      setMyCourses(myCourse)
+    }
+    else{
+      setMyCourses([])
+    }
+  }
+
+  useEffect(() => {
+    addCourse()
+  }, [])
 
   const handleOpenModal = (courseId) => {
     if(openCourseId === courseId) {
@@ -45,7 +59,7 @@ const MyCourseTable = ({ myCourse }) => {
       </TableHeader>
       <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
 
-        {myCourse.map((item, index) => {
+        {myCourses.map((item, index) => {
           return <TableRow key={index} className="h-10">
             <TableCell> <img className="w-[104px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
             <TableCell className="text-base font-bold truncate invisible md:visible"> <div className="max-w-40 h-10 truncate leading-8"> {item.courseTitle} </div> </TableCell>
@@ -95,7 +109,7 @@ const MyCourseTable = ({ myCourse }) => {
         <TableColumn>INFO</TableColumn>
       </TableHeader>
         <TableBody>
-            {myCourse.map((item, index) => {
+            {myCourses.map((item, index) => {
                 return <TableRow onClick={() => handleOpenModal(item.courseId)} key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
                     <TableCell>
