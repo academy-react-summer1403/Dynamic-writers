@@ -17,8 +17,8 @@ const Canceltion = (props) => {
   return (
     <>
       <div className=" w-6">
-          <Button onPress={onOpen} 
-          className="block p-0 m-0 rounded-full" style={{backgroundColor: "#cccccc00"}} ><img src={Canceled} alt="" /></Button>
+          <button onClick={onOpen} 
+          className="block p-0 m-0 rounded-full" style={{backgroundColor: "#cccccc00"}} ><img src={Canceled} alt="" /></button>
       </div>
       <Modal 
         size={size} 
