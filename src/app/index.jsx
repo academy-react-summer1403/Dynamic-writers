@@ -25,6 +25,11 @@ import { getItem } from '../core/services/common/storage';
 import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import CourseReserve from '../components/CourseReserve/CourseReserve';
+import Panel from '../screens/Panel/PanelScreen';
+import InformationUser from '../components/Panel/InformationUser'
+import AddProfileImage from '../components/Panel/AddProfileImage'
+import AddAddress from '../components/Panel/AddAddress'
+import Likes from '../components/Panel/Linkes'
 
 function App() {
 
@@ -118,6 +123,29 @@ function App() {
         {
           path:'/CourseDetail/:id',
           element:<CourseDetail/>
+        }
+      ]
+    },
+    {
+      path:'/',
+      element:<Panel/>,
+      children:[
+        {
+          path:"/",
+          element:<InformationUser/>,
+          index:true
+        },
+        {
+          path:"/AddProfileImage",
+          element:<AddProfileImage/>
+        },
+        {
+          path:"/AddAddress",
+          element:<AddAddress/>
+        },
+        {
+          path:"/Linkes",
+          element:<Likes/>
         }
       ]
     }
