@@ -126,29 +126,29 @@ function App() {
         }
       ]
     },
-    {
-      path:'/',
-      element:<Panel/>,
-      children:[
-        {
-          path:"/",
-          element:<InformationUser/>,
-          index:true
-        },
-        {
-          path:"/AddProfileImage",
-          element:<AddProfileImage/>
-        },
-        {
-          path:"/AddAddress",
-          element:<AddAddress/>
-        },
-        {
-          path:"/Linkes",
-          element:<Likes/>
-        }
-      ]
-    }
+    // {
+    //   path:'/',
+    //   element:<Panel/>,
+    //   children:[
+    //     {
+    //       path:"/",
+    //       element:<InformationUser/>,
+    //       index:true
+    //     },
+    //     {
+    //       path:"/AddProfileImage",
+    //       element:<AddProfileImage/>
+    //     },
+    //     {
+    //       path:"/AddAddress",
+    //       element:<AddAddress/>
+    //     },
+    //     {
+    //       path:"/Linkes",
+    //       element:<Likes/>
+    //     }
+    //   ]
+    // }
 
   ])
 
