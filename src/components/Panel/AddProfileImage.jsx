@@ -46,7 +46,7 @@ const AddProfileImage = () => {
  
   
   return (
-    <div className='flex flex-row flex-wrap gap-5 justify-end overflow-y-scroll max-h-[500px] p-[40px]'>
+    <div className='flex flex-row flex-wrap gap-5 justify-end overflow-y-scroll max-h-[1000px] p-[40px]'>
         
       
       {profile.userImage.map((value,index)=>{
