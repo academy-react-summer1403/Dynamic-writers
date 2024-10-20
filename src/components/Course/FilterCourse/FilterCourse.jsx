@@ -107,7 +107,7 @@ const FilterCourse = ({ updateParams }) => {
     }, [])
 
   return (
-    <div className='bg-gray-50 rounded-3xl w-80 p-5 md:flex flex-col gap-5 font-semibold hidden' style={{height: '620px'}}>
+    <div className='bg-gray-50 rounded-3xl w-80 p-5 md:flex flex-col gap-5 font-semibold hidden dark:bg-slate-200 dark:text-black' style={{height: '620px'}}>
 
     <div className='flex flex-col gap-2'>
     <div className='flex items-center flex-row-reverse gap-2'>
@@ -122,8 +122,8 @@ const FilterCourse = ({ updateParams }) => {
     >
            
         <Form>
-            <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
-            <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
+            <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 dark:bg-gray-800 dark:text-white text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+            <button type='submit' className='text-white bg-blue-500 dark:bg-gray-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
         </Form>
     </Formik>
 
@@ -196,9 +196,9 @@ const FilterCourse = ({ updateParams }) => {
 
     <div className='flex flex-row-reverse'>
     <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' 
-    defaultValue={0} min='0' max='100000000' step='100000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    defaultValue={0} min='0' max='100000000' step='100000' className='border-none cursor-pointer bg-gray-200 dark:bg-gray-700 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' 
-    defaultValue={100000000} min='0' max='100000000' step='100000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    defaultValue={100000000} min='0' max='100000000' step='100000' className='border-none cursor-pointer bg-gray-200 dark:bg-gray-700 w-36 h-2 rounded-full appearance-none thump rotate-180' />
     </div>
 
     <div className='flex flex-col gap-2'>

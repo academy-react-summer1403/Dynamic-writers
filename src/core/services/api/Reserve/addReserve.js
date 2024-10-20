@@ -1,8 +1,8 @@
 import http from '../../interceptor'
 
-export const AddReserve = async (params) => {
+export const AddReserve = async (courseId) => {
   try {
-  const result = await http.post('/CourseReserve/ReserveAdd', params);
+  const result = await http.post('/CourseReserve/ReserveAdd', {'courseId': courseId});
 
   return result
   

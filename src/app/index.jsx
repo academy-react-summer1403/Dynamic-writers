@@ -29,8 +29,23 @@ import Error403 from '../screens/Error/403/Error403';
 import Error500 from '../screens/Error/500/Error500';
 import Error408 from '../screens/Error/408/Error408';
 import SecurityPanel from '../screens/User Panel/SecurityPanel';
+import { useEffect, useState } from 'react';
+import { getItem, setItem } from '../core/services/common/storage';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(() => {
+    getItem('darkMode') == true
+  })
+
+  useEffect(() => {
+    if(darkMode) {
+      document.documentElement.classList.add('dark')
+      setItem('darkMode', true)
+    } else {
+      document.documentElement.classList.remove('dark')
+      setItem('darkMode', false)
+    }
+  }, [darkMode])
 
 
   const router = createBrowserRouter([
@@ -67,7 +82,7 @@ function App() {
 
     {
       path: '/layoutPanel',
-      element: <PrivateRoute element={<PanelLayout />} />,
+      element: <PrivateRoute element={<PanelLayout darkMode={darkMode} setDarkMode={setDarkMode} />} />,
       children: [
         {
           path: 'dashboard',
@@ -109,7 +124,7 @@ function App() {
     },
     {
       path: '/',
-      element: <Root />,
+      element: <Root darkMode={darkMode} setDarkMode={setDarkMode} />,
       children: [
         {
           path: '/',

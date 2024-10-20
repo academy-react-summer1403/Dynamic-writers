@@ -30,7 +30,7 @@ const BoxThird = () => {
 
   return (
     <>
-    <div className={` my-20 w-5/6 mx-auto flex flex-col gap-5 justify-center md:flex-row md:h-fit overflow-hidden md:overflow-visible`} style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
+    <div className={` my-20 w-5/6 mx-auto flex flex-col gap-5 justify-center items-center md:flex-row md:h-fit overflow-hidden md:overflow-visible`} style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
       {course.map((item, index) => {
 
         return <CourseTops 
@@ -52,11 +52,11 @@ const BoxThird = () => {
 
         })}
     </div>
-    <Button onClick={() => {viewBetter ? setViewBetter(false) : setViewBetter(true)}} className='md:hidden text-white bg-blue-500 w-32 rounded-full mx-auto mb-20'>
+    {/* <Button onClick={() => {viewBetter ? setViewBetter(false) : setViewBetter(true)}} className='md:hidden text-white bg-blue-500 w-32 rounded-full mx-auto mb-20'>
 
         {viewBetter ? "نمایش کمتر" : "نمایش بیشتر"}
 
-    </Button>
+    </Button> */}
     </>
   )
 }

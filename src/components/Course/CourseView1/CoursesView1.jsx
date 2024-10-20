@@ -14,7 +14,7 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
   }
   
   return (
-    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
+    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 dark:bg-slate-200 dark:text-black iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
         <div className='relative w-full rounded-xl h-56 bg-red-300 border'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>

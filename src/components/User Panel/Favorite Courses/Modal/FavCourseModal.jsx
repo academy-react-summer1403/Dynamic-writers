@@ -9,15 +9,17 @@ import CourseLike from '../../../../core/services/api/Course/CourseLike'
 import CourseDisLike from '../../../../core/services/api/Course/CourseDisLike'
 import { toast, ToastContainer } from 'react-toastify'
 import GetCourseById from '../../../../core/services/api/Course/GetCourseById'
+import { AddReserve } from '../../../../core/services/api/Reserve/addReserve'
+import CourseReserve from '../../../CourseReserve/CourseReserve'
 
-const MyReserveModal = ({ 
+const FavCourseModal = ({ 
     courseId,
-    accept,
     isOpen, 
     onOpenChange,   
 }) => {
 
     const [course, setCourse] = useState([])
+    const [Flags, setFlags] = useState(false)
   
     const NotifySuccess = (message) => {
         toast.dismiss()
@@ -64,6 +66,16 @@ const MyReserveModal = ({
         setCourse(response)
     }
 
+    const addReserve = async () => {
+      const response = await AddReserve(courseId)
+
+      if(response.success === true) {
+        setFlags(true)
+      }
+      else{
+        NotifyError(' شما قبلا این دوره را رزرو کرده اید ')
+      }
+    }
     
     useEffect(() => {
         getCourse()
@@ -87,9 +99,11 @@ const MyReserveModal = ({
         </ModalHeader>
 
         <ModalBody>
-
+                {Flags && <CourseReserve Flags={setFlags} />}
                 <div className='w-full h-[287px] bg-[#E8E8E8] rounded-[16px] relative'>
                     <img src={course.imageAddress} className='w-full h-full rounded-[16px]' />
+                                        <div className='bg-[#5A7EFF] rounded-full px-3 py-0.5 text-sm font-semibold text-white absolute top-3 right-3'> {course.courseLevelName} </div>
+                    <div className='px-3 text-sm py-0.5 bg-red-200 text-[#FF5454] rounded-full absolute bottom-3 right-3 flex flex-row-reverse gap-2 items-center'> {course.courseStatusName} <div className='bg-[#FF5454] rounded-full size-2'></div> </div>
                 </div>
                 <div className='w-full h-fit flex justify-between items-center'>
                     <Button className='bg-blue-500 text-white rounded-full'> <Link to={`/CourseDetail/${courseId}`}> صفحه دوره  </Link> </Button>
@@ -103,10 +117,7 @@ const MyReserveModal = ({
                     <span className='text-[24px] font-bold'> {course.title} </span>
                 </div>
                 <div className='flex flex-col gap-4 my-5'>
-                    <h2 className='text-base text-[#787878]'> وضعیت ثبت نام </h2>
-                    <div className='flex justify-between w-full items-center'>
-                    <span className={`${accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full`}> {accept ? 'تایید شده' : 'تایید نشده'} </span>
-                    </div>
+                    <Button className='bg-blue-500 text-white font-semibold text-sm rounded-full w-fit' onClick={() => {addReserve()}}> رزرو دوره </Button>
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
                     <h2 className='text-base text-[#787878]'> توضیح مختصر </h2>
@@ -141,4 +152,4 @@ const MyReserveModal = ({
   )
 }
 
-export default MyReserveModal
+export default FavCourseModal

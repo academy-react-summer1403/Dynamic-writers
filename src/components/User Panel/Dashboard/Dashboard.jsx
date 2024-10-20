@@ -94,10 +94,10 @@ const Dashboard = () => {
 
           <div className='flex items-center justify-center size-32 mx-auto'>
             <CircularProgressbar value={(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"} text={`${(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"}%`} styles={buildStyles({
-              textColor: `${profileInfo.profileCompletionPercentage > 70 ? 'blue' : 'orange'}`,
+              textColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
               textSize: '25px',
               display: 'flex',
-              pathColor: `${profileInfo.profileCompletionPercentage > 70 ? 'blue' : 'orange'}`,
+              pathColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
               trailColor: 'transparent'
             })} />
           </div>

@@ -51,18 +51,19 @@ const LeftDiv = ({Course}) => {
     }
   }
   return (
-    <div className='w-[50%] flex gap-10 flex-col max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[80%]  max-2xl:w-[700px] max-xl:w-[700px]'>
-      <img className='w-[719px] h-[428px] bg-[#4DBFFF] rounded-[24px]' src={Course.imageAddress}/>
-        <div className='text-[16px] font-[700] text-[#787878] text-right'>مدرس</div>
+
+    <div className='w-[50%] flex gap-10 flex-col dark:text-white max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[80%]  max-2xl:w-[700px] max-xl:w-[700px]'>
+      <img className='w-[100%] h-[460px] bg-[#4DBFFF] rounded-[24px]' src={Course.imageAddress}/>
+        <div className='text-[16px] font-[700] text-[#787878] text-right dark:text-white'>مدرس</div>
         <Teacher image={Image} ability={Course.techs} name={Course.teacherName}/>
-        <div className='text-[16px] font-[700] text-[#787878] text-right'>توضیحات</div>
-        <div className='text-[#272727] font-[700] text-[20px] text-right leading-[30px]' style={{direction:"rtl"}}>
+        <div className='text-[16px] font-[700] text-[#787878] text-right dark:text-white'>توضیحات</div>
+        <div className='text-[#272727] font-[500] text-[20px] text-right leading-[30px] dark:text-gray-300' style={{direction:"rtl"}}>
           <p className='text-justify'>{firstPart}</p>
           <br/>
           <p className='text-justify'>{secondPart}</p>
         </div>
         <Rate RateCourse={Course.currentUserRateNumber} Flag={Course.currentUserSetRate} id={Course.courseId}/>
-        <div className='font-[700] text-[30px] text-[#272727] text-right'>نظرات</div>
+        <div className='font-[700] text-[30px] text-[#272727] text-right dark:text-white'>نظرات</div>
 
         <Comment 
           comments= {comments}

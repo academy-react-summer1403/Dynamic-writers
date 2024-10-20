@@ -34,7 +34,7 @@ const BoxFifth = () => {
 
     return (
         <>
-       <div className=' my-10 w-5/6 mx-auto flex flex-col gap-5 justify-center md:flex-row overflow-hidden md:overflow-visible' 
+       <div className=' my-10 w-5/6 mx-auto flex flex-col gap-5 justify-center items-center md:flex-row overflow-hidden md:overflow-visible' 
        style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
             {newsTop.map((item, index) => {
                 return (
@@ -49,16 +49,17 @@ const BoxFifth = () => {
                         addUserFullName={item.addUserFullName}
                         currentView={item.currentView}
                         image={item}
+                        currentImageAddressTumb={item.currentImageAddressTumb}
                     /> 
                 )
             })}
         </div>
 
-            <Button onClick={() => {viewBetter ? setViewBetter(false) : setViewBetter(true)}} className='text-white bg-blue-500 w-32 rounded-full mx-auto mb-20 md:hidden'>
+            {/* <Button onClick={() => {viewBetter ? setViewBetter(false) : setViewBetter(true)}} className='text-white bg-blue-500 w-32 rounded-full mx-auto mb-20 md:hidden'>
 
                 {viewBetter ? "نمایش کمتر" : "نمایش بیشتر"}
 
-            </Button>
+            </Button> */}
         </>    
   )
 }

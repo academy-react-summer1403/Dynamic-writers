@@ -14,9 +14,9 @@ const onSuccess = (response) => {
 const onError = (err) => {
    console.log(err);
 
-   if(err.response.status === 400) {
-      window.location.pathname = '/Error400'
-   }
+   // if(err.response.status === 400) {
+   //    window.location.pathname = '/Error400'
+   // }
 
    if(err.response.status === 403) {
       window.location.pathname = '/Error403'

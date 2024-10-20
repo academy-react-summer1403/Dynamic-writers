@@ -5,9 +5,16 @@ import { useNavigate } from 'react-router-dom'
 const CoursesView2 = ({levelName, id, title, describe, dissLikeCount, likeCount, cost, teacherName, date, currentRegistrants, technologyList, tumbImageAddress, statusName}) => {
 
   const navigate = useNavigate()
+
+  const callCourse = () => {
+    navigate('/')
+    setTimeout(() => {
+      navigate('/CourseDetail/' + id)
+    }, 100)
+  }
   
   return (
-    <div className='md:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden' style={{height: '288px', width: '985px'}}>
+    <div onClick={() => callCourse()} className='md:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-200 dark:text-black' style={{height: '288px', width: '985px'}}>
         <div className='w-5/12 h-full bg-red-300 rounded-3xl relative border'>
             <img className='w-full h-full rounded-3xl' src={tumbImageAddress} />
             <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>

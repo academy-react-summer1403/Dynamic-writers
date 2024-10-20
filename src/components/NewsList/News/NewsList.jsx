@@ -91,7 +91,7 @@ const NewsList = () => {
 
       {closeFilter && <FilterResNews closeFil={closeFil} />}
 
-      <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between'>
+      <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between dark:border-gray-600'>
         
         <div className='flex flex-col gap-5 md:w-9/12 w-full items-end'>
 

@@ -36,7 +36,7 @@ const PanelLayout = () => {
   }, [])
 
   return (
-    <div className='bg-gray-100 w-dvw md:h-fit h-dvh gap-5 flex py-5 px-5 iranSans md:flex-row-reverse flex-col'>
+    <div className='bg-gray-100 dark:bg-slate-950 w-dvw md:h-fit h-dvh gap-5 flex py-5 px-5 iranSans md:flex-row-reverse flex-col'>
 
         <SitePanel />
             
