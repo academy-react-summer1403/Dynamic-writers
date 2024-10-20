@@ -23,14 +23,12 @@ import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
-<<<<<<< HEAD
 import CourseReserve from '../components/CourseReserve/CourseReserve';
 import Panel from '../screens/Panel/PanelScreen';
 import InformationUser from '../components/Panel/InformationUser'
 import AddProfileImage from '../components/Panel/AddProfileImage'
 import AddAddress from '../components/Panel/AddAddress'
 import Likes from '../components/Panel/Linkes'
-=======
 import Error401 from '../screens/Error/401/Error401';
 import Error400 from '../screens/Error/400/Error400';
 import Error403 from '../screens/Error/403/Error403';
@@ -39,7 +37,6 @@ import Error408 from '../screens/Error/408/Error408';
 import SecurityPanel from '../screens/User Panel/SecurityPanel';
 import { useEffect, useState } from 'react';
 import { getItem, setItem } from '../core/services/common/storage';
->>>>>>> c5c643e81aded4e643c59b3181250a7f54cf775c
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -177,7 +174,6 @@ function App() {
         },
       ]
     },
-<<<<<<< HEAD
     // {
     //   path:'/',
     //   element:<Panel/>,
@@ -201,8 +197,6 @@ function App() {
     //     }
     //   ]
     // }
-=======
->>>>>>> c5c643e81aded4e643c59b3181250a7f54cf775c
 
   ])
 
