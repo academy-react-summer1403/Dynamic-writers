@@ -27,7 +27,7 @@ const Panel = ({profile,setRerender}) => {
     // }, [])
     
     return (
-    <div className='w-[1196px] rounded-[16px] border-4 border-blue-500 h-auto mx-auto mt-[30px] overflow-hidden relative'>
+    <div className='w-full rounded-[16px] border-4 border-blue-500 h-auto mx-auto mt-[30px] overflow-hidden relative'>
         <div className='w-[100%] h-[113px] bg-[#2A67F9]'></div>
         <div className='rounded-[100%] w-[128px] h-[128px] border-[7px] bg-[#2A67F9] absolute top-12 right-8 overflow-hidden'>
             <img className='w-[100%] h-[100%] bg-purple-400' src={profile.currentPictureAddress}/>
@@ -36,10 +36,10 @@ const Panel = ({profile,setRerender}) => {
         <div className='border-[3px] border-white bg-[#2A67F9] w-[24px] h-[24px] absolute top-[150px] right-12 flex justify-center items-center cursor-pointer rounded-[100%]' >
                 <ImageAdd02Icon color='white' size={15} onClick={()=>navigate("AddProfileImage")}/>
          </div>
-        <div className='flex flex-row-reverse h-[300px] items-end justify-center'>
+        <div className='flex flex-row-reverse h-[300px] items-end justify-center gap-4 flex-wrap'>
             <div className='w-[50%] h-[200px] flex flex-col items-end gap-5'>
                 <div className='font-[700] text-[32px] text-[#272727] text-right'><span className='font-[500] text-[16px] text-[#787878]'> </span>{profile.lName} {profile.fName}</div>
-                <div className='flex flex-row gap-3'><span className='cursor-pointer'><PencilEdit01Icon color='blue' onClick={()=>navigate("profileInfo")}/></span><div className='flex flex-row gap-2'>{profile.email}<Mail01Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.nationalCode}<AccountSetting03Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.phoneNumber} <SmartPhone01Icon color='gray'/></div></div>
+                <div className='flex flex-row-reverse gap-3 w-[100%] flex-wrap items-end justify-start'><div className='flex flex-row gap-2'>{profile.phoneNumber} <SmartPhone01Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.nationalCode}<AccountSetting03Icon color='gray'/></div><div className='flex flex-row-reverse gap-3'><div className='flex flex-row gap-2'>{profile.email}<Mail01Icon color='gray'/></div><span className='cursor-pointer'><PencilEdit01Icon color='blue' onClick={()=>navigate("profileInfo")}/></span></div></div>
             </div>
             <div className='w-[40%] h-[200px] flex flex-col items-end gap-5'>
                 <div className='font-[700] text-[16px] text-[#787878]'>درباره من</div>

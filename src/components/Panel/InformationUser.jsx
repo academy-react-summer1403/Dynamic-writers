@@ -115,15 +115,15 @@ const InformationUser = () => {
                   <span className='font-[700] text-[16px]'>جنسیت</span>
                   <div className='flex flex-row-reverse gap-10'>
                     
-                    <div className='flex flex-row gap-3'>
+                    <div className='flex flex-row items-center gap-3'>
                       <Field  type="radio" name="selectedOption" value="false" className="cursor-pointer"/>
                       <span className='font-[700] text-[18px]'>مرد</span>
                     </div>
-                    <div className='flex flex-row gap-3'>
+                    <div className='flex flex-row items-center gap-3'>
                       <Field type="radio" name="selectedOption" value="true" className="cursor-pointer"/>
                       <span className='font-[700] text-[18px]'>زن</span>
                     </div>
-                    <span className='text-[14px] font-[500] text-[#3772FF]'>انتخاب کنید</span>
+                    <span className='text-[14px] font-[500] text-[#3772FF] whitespace-nowrap'>انتخاب کنید</span>
                   </div>
                 </div>
                 <div className='flex flex-col items-end gap-2 h-[80px] flex-grow-3 w-[90%]'>
