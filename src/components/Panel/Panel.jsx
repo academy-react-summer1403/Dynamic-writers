@@ -4,30 +4,30 @@ import { NavLink, Outlet,useNavigate } from 'react-router-dom'
 import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
 
 
-const Panel = ({profile}) => {
+const Panel = ({profile,setRerender}) => {
     const navigate=useNavigate();
     const [Text, setText] = useState('')
 
-   
-    const getRole=async()=>{
-        const Prof=await UserDetailsWithId(id)
-        let text = "";
-        for (const item of profile.roles) {
-            text += item.roleName; 
-            setText(text)
-            if (item.roleName !== profile.roles[profile.roles.length - 1].roleName) {
-                text += ","; 
-                setText(text)
-            }
-        }
-    }
+   {/*for roles*/}
+    // const getRole=async()=>{
+    //     const Prof=await UserDetailsWithId(id)
+    //     let text = "";
+    //     for (const item of profile.roles) {
+    //         text += item.roleName; 
+    //         setText(text)
+    //         if (item.roleName !== profile.roles[profile.roles.length - 1].roleName) {
+    //             text += ","; 
+    //             setText(text)
+    //         }
+    //     }
+    // }
 
-    useEffect(() => {
-        getRole()
-    }, [])
+    // useEffect(() => {
+    //     getRole()
+    // }, [])
     
     return (
-    <div className='w-[1500px] rounded-[16px] border-4 border-blue-500 h-auto mx-auto mt-[30px] overflow-hidden relative'>
+    <div className='w-[1096px] rounded-[16px] border-4 border-blue-500 h-auto mx-auto mt-[30px] overflow-hidden relative'>
         <div className='w-[100%] h-[113px] bg-[#2A67F9]'></div>
         <div className='rounded-[100%] w-[128px] h-[128px] border-[7px] bg-[#2A67F9] absolute top-12 right-8 overflow-hidden'>
             <img className='w-[100%] h-[100%] bg-purple-400' src={profile.currentPictureAddress}/>
@@ -38,7 +38,7 @@ const Panel = ({profile}) => {
          </div>
         <div className='flex flex-row-reverse h-[300px] items-end justify-center'>
             <div className='w-[50%] h-[200px] flex flex-col items-end gap-5'>
-                <div className='font-[700] text-[32px] text-[#272727] text-right'><span className='font-[500] text-[16px] text-[#787878]'> </span>{profile.fName}{profile.lName}</div>
+                <div className='font-[700] text-[32px] text-[#272727] text-right'><span className='font-[500] text-[16px] text-[#787878]'> </span>{profile.lName} {profile.fName}</div>
                 <div className='flex flex-row gap-3'><span className='cursor-pointer'><PencilEdit01Icon color='blue' onClick={()=>navigate("/")}/></span><div className='flex flex-row gap-2'>{profile.email}<Mail01Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.nationalCode}<AccountSetting03Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.phoneNumber} <SmartPhone01Icon color='gray'/></div></div>
             </div>
             <div className='w-[40%] h-[200px] flex flex-col items-end gap-5'>
@@ -50,10 +50,10 @@ const Panel = ({profile}) => {
             <NavLink to="/" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
             <NavLink to="/AddProfileImage" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF] ":"border-0 text-[#787878] "}whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>عکس پروفایل</NavLink>
             <NavLink to="/AddAddress" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF]":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>آدرس سکونت</NavLink>
-            <NavLink to="/Likes" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
+            <NavLink to="/Linkes" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
         </div>
         <div className='border-t-1'>
-            <Outlet context={profile}/>
+            <Outlet context={[profile,setRerender]}/>
         </div>
     </div>
   )

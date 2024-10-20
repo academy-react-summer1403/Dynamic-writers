@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 const PanelScreen = () => {
   const [profile, setProfile] = useState('')
   const[loading,setLoading]=useState(false)
-
+  const [Rerender,setRerender]=useState(false)
 
   const getProfile=async()=>{
     const Prof=await GetProfileInfo()
@@ -16,13 +16,14 @@ const PanelScreen = () => {
   }
   useEffect(() => {
     getProfile()
-  }, [])
+  }, [Rerender])
+  
   if(loading==false){
     return <Loading/>
   }
   return (
     <div>
-        <Panel profile={profile}/>
+        <Panel profile={profile} setRerender={setRerender}/>
     </div>
   )
 }

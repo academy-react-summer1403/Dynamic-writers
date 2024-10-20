@@ -4,9 +4,12 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import markerIconUrl from 'leaflet/dist/images/marker-icon.png'; 
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import UpdateLocationInProf from '../../core/services/api/Panel/UpdateLocationInProf';
 const AddAddress = () => {
-  const profile = useOutletContext();
+  const [profile] = useOutletContext();
+  const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
 
   const markerIcon = new L.Icon({
     iconUrl: markerIconUrl,
@@ -20,12 +23,13 @@ const AddAddress = () => {
   const [address, setAddress] = useState(`Lat:${profile.latitude},Lng:${profile.longitude}`); 
   const [popupVisible, setPopupVisible] = useState(false); 
 
-  const updateMarkerPosition = (event) => {
+  const updateMarkerPosition =async (event) => {
     const { lat, lng } = event.latlng; 
     setPosition([lat, lng]);
     const newAddress = `Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`; 
     setAddress(newAddress);
-    console.log(`Updated Position: ${newAddress}`); 
+    let massage=await UpdateLocationInProf(profile,lat.toString(),lng.toString())
+    notifySuccess(massage.message)
   };
 
   const MapEventHandler = () => {
@@ -74,6 +78,7 @@ const AddAddress = () => {
             </Marker>
           )}
         </MapContainer>
+        <ToastContainer/>
       </div>
     </div>
   );

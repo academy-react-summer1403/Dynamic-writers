@@ -22,7 +22,7 @@ import Panel from '../screens/Panel/PanelScreen';
 import InformationUser from '../components/Panel/InformationUser'
 import AddProfileImage from '../components/Panel/AddProfileImage'
 import AddAddress from '../components/Panel/AddAddress'
-import Likes from '../components/Panel/Likes'
+import Likes from '../components/Panel/Linkes'
 
 function App() {
 
@@ -108,7 +108,7 @@ function App() {
           element:<AddAddress/>
         },
         {
-          path:"/Likes",
+          path:"/Linkes",
           element:<Likes/>
         }
       ]
