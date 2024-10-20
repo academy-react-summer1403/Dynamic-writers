@@ -27,7 +27,7 @@ const Panel = ({profile,setRerender}) => {
     // }, [])
     
     return (
-    <div className='w-[1096px] rounded-[16px] border-4 border-blue-500 h-auto mx-auto mt-[30px] overflow-hidden relative'>
+    <div className='w-[1196px] rounded-[16px] border-4 border-blue-500 h-auto mx-auto mt-[30px] overflow-hidden relative'>
         <div className='w-[100%] h-[113px] bg-[#2A67F9]'></div>
         <div className='rounded-[100%] w-[128px] h-[128px] border-[7px] bg-[#2A67F9] absolute top-12 right-8 overflow-hidden'>
             <img className='w-[100%] h-[100%] bg-purple-400' src={profile.currentPictureAddress}/>
@@ -47,10 +47,10 @@ const Panel = ({profile,setRerender}) => {
             </div>
         </div>
         <div className='w-[100%] gap-4 h-12 flex flex-row-reverse justify-start pr-16'>
-            <NavLink to="/" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
-            <NavLink to="/AddProfileImage" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF] ":"border-0 text-[#787878] "}whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>عکس پروفایل</NavLink>
-            <NavLink to="/AddAddress" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF]":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>آدرس سکونت</NavLink>
-            <NavLink to="/Linkes" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
+            <NavLink to="/layoutPanel/profile/profileInfo" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
+            <NavLink to="/layoutPanel/profile/AddProfileImage" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF] ":"border-0 text-[#787878] "}whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>عکس پروفایل</NavLink>
+            <NavLink to="/layoutPanel/profile/AddAddress" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF]":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>آدرس سکونت</NavLink>
+            <NavLink to="/layoutPanel/profile/Linkes" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
         </div>
         <div className='border-t-1'>
             <Outlet context={[profile,setRerender]}/>

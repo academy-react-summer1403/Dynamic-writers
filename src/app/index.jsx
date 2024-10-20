@@ -37,6 +37,7 @@ import Error408 from '../screens/Error/408/Error408';
 import SecurityPanel from '../screens/User Panel/SecurityPanel';
 import { useEffect, useState } from 'react';
 import { getItem, setItem } from '../core/services/common/storage';
+import PanelScreen from '../screens/Panel/PanelScreen';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -112,7 +113,26 @@ function App() {
         },
         {
           path: 'profile',
-          element: <ProfileRout />
+          element:<PanelScreen/>,
+          children:[
+            {
+              path:"profileInfo",
+              element:<InformationUser/>,
+              index:true
+            },
+            {
+              path:"AddProfileImage",
+              element:<AddProfileImage/>
+            },
+            {
+              path:"AddAddress",
+              element:<AddAddress/>
+            },
+            {
+              path:"Linkes",
+              element:<Likes/>
+            }
+          ]
         },
         {
           path: 'security',
@@ -174,29 +194,6 @@ function App() {
         },
       ]
     },
-    // {
-    //   path:'/',
-    //   element:<Panel/>,
-    //   children:[
-    //     {
-    //       path:"/",
-    //       element:<InformationUser/>,
-    //       index:true
-    //     },
-    //     {
-    //       path:"/AddProfileImage",
-    //       element:<AddProfileImage/>
-    //     },
-    //     {
-    //       path:"/AddAddress",
-    //       element:<AddAddress/>
-    //     },
-    //     {
-    //       path:"/Linkes",
-    //       element:<Likes/>
-    //     }
-    //   ]
-    // }
 
   ])
 
