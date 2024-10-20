@@ -9,14 +9,7 @@ import UserDetailsWithId from '../../api/User/UserDetailsWithId'
 
 const HeaderPanel = ({ editingImage, profileInfo }) => {
 
-  const [student, setStudent] = useState()
-  const [teacher, setTeacher] = useState()
-
   const getRoles = async () => {
-    const id = getItem('userId')
-    const response = await UserDetailsWithId(id)
-    setStudent(response.isStudent)
-    setTeacher(response.isTecher)
   }
 
   useEffect(() => {
@@ -33,9 +26,7 @@ const HeaderPanel = ({ editingImage, profileInfo }) => {
         <div className='flex flex-col'>
             <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.lName , ' ' , profileInfo.fName] : "نامشخص"}  </h2>
             <span className='text-gray-500 text-right flex gap-1 flex-row-reverse'>
-              <span> {student && 'دانشجو'} </span>
-              ,
-              <span> {teacher && 'استاد'} </span>
+
             </span>
         </div>
       </div>

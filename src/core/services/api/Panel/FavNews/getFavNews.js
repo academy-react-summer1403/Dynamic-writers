@@ -1,10 +1,11 @@
 import http from '../../../interceptor'
 
-export const getProfileInfo = async () => {
+export const getFavNews = async () => {
   try {
-  const result = await http.get('/SharePanel/GetProfileInfo');
+  const result = await http.get('/SharePanel/GetMyFavoriteNews');
 
   return result
+  
   } catch (error) {
   console.log(error);
     return [];

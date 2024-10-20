@@ -14,7 +14,7 @@ const Rate = ({RateCourse,Flag,id}) => {
 
   
   return (
-    <div className='text-[#272727] flex flex-row-reverse gap-5 text-[20px] items-center font-[700]'>
+    <div className='text-[#272727] flex flex-row-reverse gap-5 text-[20px] dark:text-white items-center font-[700]'>
         <StarCircleIcon color='#3772FF'/>
          امتیاز دهید 
          <div className='flex flex-row items-center' >

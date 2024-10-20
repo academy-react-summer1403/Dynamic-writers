@@ -22,7 +22,7 @@ const BoxFourth = () => {
   return (
     <div className='my-20 flex w-5/6 mx-auto gap-20 md:gap-40 md:flex-row flex-col'>
       {teachers.map((teacher, index) => {
-        return <div key={index} style={{borderColor: index === 1 ? '#3772FF' : '#E4E4E4', width: index === 1 ? '570px' : '450px', height: index === 1 ? '341px' : '297px'}} className='py-5 h-[297px] border-3 rounded-xl relative p-2 flex flex-col justify-between items-center'>
+        return <div key={index} className={`${index === 1 ? 'md:w-[570px] md:h-[341px] border-[#3772FF]' : 'md:w-[450px] md:h-[297px] border-[#E4E4E4]'} dark:bg-white dark:text-black py-5 h-[297px] border-3 rounded-xl relative p-2 flex flex-col justify-between items-center`}>
           <img src={teacher.pictureAddress} className='bg-gray-500 rounded-full size-14 border-2 absolute -top-7' />
           <div className='mx-auto text-center mt-9'> 
             <h2 className='text-base font-semibold'> {teacher.fullName === null ? 'ناشناس' : (teacher.fullName).replace('-', ' ') } </h2>

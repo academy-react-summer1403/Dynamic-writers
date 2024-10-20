@@ -83,9 +83,9 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
             <button className='size-10 min-w-10 min-h-10 border border-[#F1F1F1] flex rounded-full justify-center items-center'> <SmileIcon className='size-5 text-blue-500' /> </button>
 
             <div className='w-full flex flex-col justify-between'>
-                <Field name='title' placeholder='عنوان نظر خود را بنویسید' className='outline-none' />
+                <Field name='title' placeholder='عنوان نظر خود را بنویسید' className='outline-none bg-transparent' />
                 <div className='w-full border'></div>
-                <Field name='describe' placeholder='متن نظر خود را بنویسید' className='outline-none' />
+                <Field name='describe' placeholder='متن نظر خود را بنویسید' className='outline-none bg-transparent' />
             </div>
 
             <ToastContainer />

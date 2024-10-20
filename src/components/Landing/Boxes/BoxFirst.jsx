@@ -13,7 +13,7 @@ function BoxFirst() {
   return (
     <div className='flex my-12 justify-center flex-col gap-6 iranSans md:flex-row w-5/6 mx-auto'>
       
-      <div className='border-3 rounded-xl grow h-64 flex flex-col'>
+      <div className='border-3 rounded-xl grow h-64 flex flex-col dark:bg-white dark:text-black'>
         <div className='flex flex-row-reverse justify-between h-2/12 items-center p-2'>
             <h2 className='iranSansBold w-3/6  min-w-40 text-xl' style={{direction: 'rtl'}}> درباره ما بیشتر بخوانید </h2>
             <Link to='/about' className='bg-blue-500 text-white rounded-full min-w-10 min-h-10 flex justify-center items-center cursor-pointer'> <ArrowUpLeft01Icon /> </Link>
@@ -48,7 +48,7 @@ function BoxFirst() {
         </div>
       </div>
     
-      <div className='border-3 rounded-xl grow-3 h-64 overflow-hidden flex flex-col'>
+      <div className='border-3 rounded-xl grow-3 h-64 overflow-hidden flex flex-col dark:bg-white dark:text-black'>
         <div className='flex w-full h-fit justify-end flex-col p-4' style={{direction: 'rtl'}}>
           <h2 className='iranSansBold text-2xl tracking-wider whitespace-nowrap'> پنل اختصاصی دانشجو </h2>
           <span className='w-56 text-sm font-semibold mt-1 tracking-wider'> پنل های اختصاصی دانشجویی برای مدیریت دوره ها و تمرین ها </span>

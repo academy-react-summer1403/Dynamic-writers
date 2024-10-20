@@ -18,8 +18,8 @@ const Teacher = ({image,name,ability}) => {
     <div className='flex flex-row-reverse gap-4'>
         <div><img className='w-[56px] h-[56px] rounded-[100%] bg-[#D9D9D9]' src={image}/></div>
         <div className='flex flex-col flex-nowrap'>
-            <div className='text-[20px] font-[700] text-[#272727] text-right'>{name}</div>
-            <div className='text-[16px] font-[500] text-[#787878] text-right'>{text}</div>
+            <div className='text-[20px] font-[700] text-[#272727] dark:text-white text-right'>{name}</div>
+            <div className='text-[16px] font-[500] text-[#787878] dark:text-white text-right'>{text}</div>
         </div>
     </div>
   )

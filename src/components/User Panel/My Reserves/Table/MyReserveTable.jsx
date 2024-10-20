@@ -102,7 +102,7 @@ const MyReserveTable = ({ myCourse }) => {
     <div className="w-full flex justify-start">
         <Pagination
             dir="ltr"
-            className="my-5"
+            className="my-5 z-0"
             isCompact showControls
             total={Math.ceil(myCourse.length / itemsPerPage)}
             initialPage={1}

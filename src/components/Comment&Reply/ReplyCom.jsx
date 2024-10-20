@@ -60,15 +60,15 @@ const ReplyCom = ({
                 </div>
             </div>
             <div className='flex flex-col gap-2'>
-                <span className='font-[700] text-[#2F2F2F] text-[18px]'> {title} </span>
-                <span className='font-[500] text-[#2F2F2F] text-[16px]'> {describe} </span>
+                <span className='font-[700] text-[#2F2F2F] text-[18px] dark:text-white'> {title} </span>
+                <span className='font-[500] text-[#2F2F2F] text-[16px] dark:text-white'> {describe} </span>
             </div>
             <div className='flex gap-6 md:items-center md:flex-row flex-col justify-start'>
                 <div className='flex gap-4'>
-                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={currentUserEmotion === 'LIKED' ? {color: 'red'} : {color: 'black'} } onClick={likeComment} className='cursor-pointer' /> </div>
-                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {disslikeCount} <ThumbsDownIcon style={currentUserEmotion === 'DISSLIKED' ? {color: 'red'} : {color: 'black'} } onClick={dissLikeComment} className='cursor-pointer' /> </div>
+                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] dark:text-white text-[16px]'> {likeCount} <ThumbsUpIcon className={`${currentUserEmotion === 'LIKED' ? 'text-red-500' : 'text-black dark:text-white' } cursor-pointer`} onClick={likeComment}  /> </div>
+                    <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] dark:text-white text-[16px]'> {disslikeCount} <ThumbsDownIcon className={`${currentUserEmotion === 'DISSLIKED' ? 'text-red-500' : 'text-black dark:text-white' } cursor-pointer`} onClick={dissLikeComment} /> </div>
                 </div>
-                {!checkAdd && <Button onClick={() => {setCheckAdd(true), console.log(checkAdd)}} className='bg-white w-fit text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>}
+                {!checkAdd && <Button onClick={() => {setCheckAdd(true), console.log(checkAdd)}} className='bg-white dark:bg-slate-700 dark:border-none dark:text-white w-fit text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>}
                 {checkAdd && <AddReply commentId={id} Oid={Oid} />}
             </div>
         </div>

@@ -68,17 +68,17 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
             </div>
         </div>
         <div className='flex flex-col gap-2'>
-            <span className='font-[700] text-[#2F2F2F] text-[18px]'> {title} </span>
-            <span className='font-[500] text-[#2F2F2F] text-[16px]'> {describe} </span>
+            <span className='font-[700] text-[#2F2F2F] text-[18px] dark:text-white'> {title} </span>
+            <span className='font-[500] text-[#2F2F2F] text-[16px] dark:text-white'> {describe} </span>
         </div>
-        <div className='flex gap-6 flex-col md:flex-row items-start'>
+        <div className='flex gap-6 flex-col md:flex-row items-start md:items-center'>
             <div className='flex gap-4'>
-                <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon style={window.location.pathname.includes('NewDetail') ? currentUserIsLike ? {color: 'red'} : {color: 'black'} : currentUserEmotion === 'LIKED' ? {color: 'red'} : {color: 'black'} } onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(true) : likeComment()}  className='cursor-pointer' /> </div>
+                <div className='flex gap-2 flex-row-reverse font-[500] dark:text-white text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon className={`${window.location.pathname.includes('NewDetail') ? currentUserIsLike ? 'text-red-500' : 'text-black dark:text-white' : currentUserEmotion === 'LIKED' ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(true) : likeComment()} /> </div>
 
-                <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px]'> {window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount} <ThumbsDownIcon style={window.location.pathname.includes('NewDetail') ? currentUserIsDissLike ? {color: 'red'} : {color: 'black'}  : currentUserEmotion === 'DISSLIKED' ? {color: 'red'} : {color: 'black'} } onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(false) : dissLikeComment()} className='cursor-pointer' /> </div>
+                <div className='flex gap-2 flex-row-reverse font-[500] dark:text-white text-[#2F2F2F] text-[16px]'> {window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount} <ThumbsDownIcon className={`${window.location.pathname.includes('NewDetail') ? currentUserIsDissLike ? 'text-red-500' : 'text-black dark:text-white'  : currentUserEmotion === 'DISSLIKED' ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(false) : dissLikeComment()} /> </div>
             </div>
             <div className='flex gap-4'>
-                {!checkAdd && <Button onClick={() => {setCheckAdd(true)}} className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold'> جواب دادن </Button>}
+                {!checkAdd && <Button onClick={() => {setCheckAdd(true)}} className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold dark:bg-slate-700 dark:border-none dark:text-white'> جواب دادن </Button>}
                 {acceptReplysCount > 0 && <button onClick={() => setVisible()} className='whitespace-nowrap text-[14px] font-[500] underline flex gap-1 items-center'> مشاهده جواب‌ها ({acceptReplysCount}) {replyVisible ? <ArrowUp01Icon className='size-5' /> : <ArrowDown01Icon className='size-5' />} </button> }
             </div>
 

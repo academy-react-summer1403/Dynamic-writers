@@ -11,9 +11,9 @@ const Comment = ({ comments, Oid, title }) => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
-    <div className='msx-w-717 h-908 border-4 rounded-3xl gap-10 justify-between flex p-6 flex-col iranSans' dir='rtl'>
+    <div className='msx-w-717 h-908 border-4 dark:border-none dark:bg-slate-900 rounded-3xl gap-10 justify-between flex p-6 flex-col iranSans' dir='rtl'>
       <Button onClick={() => setCheckAdd(true)} className='bg-blue-500 h-[40px] text-white md:flex hidden rounded-3xl text-base font-semibold'>  نظر شما <Comment01Icon /> </Button>
-      <div className='w-full h-[750px] flex flex-col overflow-hidden gap-8 bg-gradient-to-b from-white to-transparent'>
+      <div className='w-full h-[750px] dark:bg-slate-900 flex flex-col overflow-hidden gap-8'>
         {comments.map((item) => {
 
             return <CommentCom
