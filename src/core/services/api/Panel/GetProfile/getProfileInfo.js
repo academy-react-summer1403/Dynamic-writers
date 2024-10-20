@@ -5,7 +5,6 @@ export const getProfileInfo = async () => {
   const result = await http.get('/SharePanel/GetProfileInfo');
 
   return result
-  
   } catch (error) {
   console.log(error);
     return [];

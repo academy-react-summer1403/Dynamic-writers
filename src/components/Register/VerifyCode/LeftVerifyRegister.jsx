@@ -41,8 +41,6 @@ const LeftVerifyRegister = () => {
             })
         }
 
-        console.log('user', userVerify)
-
         if(userVerify.success === true) {
             navigate('/registerAccount')
             notifySuccess()

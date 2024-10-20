@@ -14,7 +14,7 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
   }
   
   return (
-    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
+    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 dark:bg-slate-200 dark:text-black iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
         <div className='relative w-full rounded-xl h-56 bg-red-300 border'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
@@ -30,7 +30,7 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
         </div>
         <div className='p-2 flex flex-col gap-4 text-base font-semibold'>
               <div className='flex flex-row-reverse gap-3'> <TeacherIcon className='text-slate-700'/> <span> {teacherName} </span> </div>
-              <div className='flex flex-row-reverse gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex flex-row-reverse gap-1'> <span> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
+              <div className='flex flex-row-reverse gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex gap-2' dir='rtl'> <span> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
               <div className='flex flex-row-reverse gap-3'> <StudentIcon className='text-slate-700'/> <div className='flex flex-row-reverse gap-2'> <span> {currentRegistrants} </span> <span> دانشجو </span> </div> </div>
         </div>
         <div className='w-full flex justify-around items-center'>

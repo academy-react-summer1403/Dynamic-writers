@@ -6,7 +6,7 @@ import { Form } from 'react-router-dom'
 
 const FilterNews = ({ updateParams, partCount }) => {
   return (
-    <div className='bg-gray-50 md:flex flex-col gap-6 p-2.5 rounded-3xl w-80 h-32 m-2 hidden' dir='rtl'>
+    <div className='bg-gray-50 md:flex flex-col gap-6 p-2.5 rounded-3xl w-80 h-32 m-2 hidden dark:bg-slate-200 dark:text-black' dir='rtl'>
         <div className='flex flex-col gap-2.5 w-full'>
             <div className='flex items-center gap-2'>
             <Search01Icon />
@@ -20,7 +20,7 @@ const FilterNews = ({ updateParams, partCount }) => {
             >
                     
                 <Form>
-                    <Field type='search' name='Query' className='w-full font-bold text-sm h-10 rounded-xl bg-gray-100 text-gray-700 px-2 outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                    <Field type='search' name='Query' className='w-full font-bold text-sm h-10 rounded-xl dark:bg-gray-800 bg-gray-100 text-gray-700 px-2 outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
                     <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
                 </Form>
             </Formik>

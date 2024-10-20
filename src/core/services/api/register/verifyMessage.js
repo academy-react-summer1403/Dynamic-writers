@@ -1,17 +1,16 @@
 import { getItem } from '../../common/storage';
 import http from '../../interceptor';
 
-export const VerifyMessage = async () => {
+export const VerifyMessage = async (verificationCode) => {
   try {
     const phone = JSON.parse(getItem('phoneNumber'));
-    const code = JSON.parse(getItem('verifyMessage'));
 
-    const result = await http.post('/Sign/VerifyMessage', { phoneNumber: phone, verifyCode: code });
+    const result = await http.post('/Sign/VerifyMessage', { phoneNumber: phone, verifyCode: verificationCode });
 
     return result;
 
   } catch (error) {
-    console.log('Error:', error.response ? error.response.data : error.message);
+    console.log(error);
     return [];
   }
 };

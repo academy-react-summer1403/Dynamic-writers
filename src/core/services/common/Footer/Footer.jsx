@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div className='w-dvw'>
-    <div className='iranSans font-semibold flex flex-col justify-between p-10 w-11/12 gap-10 md:gap-0 my-10 md:w-11/12 mx-auto pb-24 bg-gray-100 rounded-xl h-fit md:flex-row-reverse'>
+    <div className='iranSans font-semibold flex flex-col justify-between p-10 w-11/12 gap-10 md:gap-0 my-10 md:w-11/12 mx-auto pb-24 dark:bg-slate-800 bg-gray-100 rounded-xl h-fit md:flex-row-reverse'>
       <div className='flex flex-row-reverse md:justify-center justify-between items-center gap-4 h-full px-2 md:flex-col'>
         <div className='flex flex-col-reverse'>
             <img src={Bahr2} className='w-20 h-4 inline' />
@@ -19,9 +19,9 @@ const Footer = () => {
             <a href='#' className='cursor-pointer w-fit flex border border-gray-200 bg-white text-blue-500 px-2 py-1 rounded-full text-sm font-semibold gap-2'> تلگرام <TelegramIcon className='text-blue-500' /> </a>
         </div>
 
-        <div className='flex flex-col justify-center border h-full md:hidden'>
-          <div className='bg-gray-300 size-28 justify-center text-center items-center'> نماد اعتماد الکترونیک  </div>
-        </div>
+        {/* <div className='flex flex-col justify-center border h-full md:hidden'>
+          <div className='bg-gray-300 dark:bg-slate-700 size-28 justify-center text-center items-center'> نماد اعتماد الکترونیک  </div>
+        </div> */}
       </div>
 
       <div className='flex md:flex-row-reverse gap-20 flex-col'>
@@ -57,7 +57,7 @@ const Footer = () => {
 
       <div className='flex gap-10 justify-between md:justify-center items-center'>
         <div className='flex flex-col justify-start items-start h-full'>
-          <div className='bg-gray-200 size-28 justify-center'> نماد اعتماد الکترونیک  </div>
+          <div className='bg-gray-200 dark:bg-slate-700 size-28 justify-center'> نماد اعتماد الکترونیک  </div>
         </div>
 
         <div className='flex flex-col gap-2 items-end md:hidden'>

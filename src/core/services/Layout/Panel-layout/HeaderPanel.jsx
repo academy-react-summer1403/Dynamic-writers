@@ -1,9 +1,21 @@
 import { Moon02Icon, Notification02Icon, PencilEdit01Icon } from 'hugeicons-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import { Link } from 'react-router-dom'
+import { Switch } from '@nextui-org/react'
+import { getSecurityInfo } from '../../api/SecurityAPI/getSecurityInfo'
+import { getItem } from '../../common/storage'
+import UserDetailsWithId from '../../api/User/UserDetailsWithId'
 
 const HeaderPanel = ({ editingImage, profileInfo }) => {
+
+  const getRoles = async () => {
+  }
+
+  useEffect(() => {
+    getRoles()
+  }, [])
+
   return (
     <div className='md:bg-white rounded-2xl flex justify-between flex-row-reverse md:px-3 w-full' style={{height: '80px'}}>
       <div className='md:flex gap-4 h-full w-fit flex-row-reverse items-center hidden'>
@@ -12,8 +24,10 @@ const HeaderPanel = ({ editingImage, profileInfo }) => {
             <div onClick={editingImage} className='cursor-pointer size-4 bg-blue-500 rounded-full absolute right-1 bottom-1 flex items-center justify-center'> <PencilEdit01Icon className='size-3 font-semibold text-white' /> </div>
         </div>
         <div className='flex flex-col'>
-            <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.fName , ' ' , profileInfo.lName] : "نامشخص"}  </h2>
-            <span className='text-gray-500 text-right'> ادمین ، دانشجو </span>
+            <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.lName , ' ' , profileInfo.fName] : "نامشخص"}  </h2>
+            <span className='text-gray-500 text-right flex gap-1 flex-row-reverse'>
+
+            </span>
         </div>
       </div>
       <Link to='/' className='flex md:hidden flex-row-reverse justify-between gap-3 items-center'>

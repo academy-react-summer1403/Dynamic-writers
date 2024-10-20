@@ -114,7 +114,7 @@ const CourseView1 = () => {
     {filterRes === true && <FilterCourseRes closeFilter={closeFilter} updateParams={updateParams}
             getCourses={getCourses} />}
     <div className='my-20 h-fit w-dvw iranSans font-semibold'>
-      <div className='rounded-3xl mx-auto border-3 pl-3 h-fit' style={{width: '94%'}}>
+      <div className='rounded-3xl mx-auto border-3 dark:border-gray-600 pl-3 h-fit' style={{width: '94%'}}>
 
         <SortView1 
           changeView={changeView}
@@ -143,7 +143,7 @@ const CourseView1 = () => {
                 id={item.courseId}
                 title={item.title}
                 describe={item.describe}
-                date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+                date={(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
                 levelName={item.levelName}
                 dissLikeCount={item.dissLikeCount}
                 likeCount={item.likeCount}
@@ -164,7 +164,7 @@ const CourseView1 = () => {
               id={item.courseId}
               title={item.title}
               describe={item.describe}
-              date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+              date={(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
               levelName={item.levelName}
               dissLikeCount={item.dissLikeCount}
               likeCount={item.likeCount}
@@ -185,7 +185,7 @@ const CourseView1 = () => {
               id={item.courseId}
               title={item.title}
               describe={item.describe}
-              date={(jMoment(item.lastUpdate).format('jYYYY / jM / jD'))}
+              date={(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
               levelName={item.levelName}
               dissLikeCount={item.dissLikeCount}
               likeCount={item.likeCount}

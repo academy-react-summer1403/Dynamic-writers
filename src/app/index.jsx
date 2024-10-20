@@ -8,7 +8,8 @@ import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root from '../screens/Root';
+import Root from '../screens/Root/Root';
+import Landing from '../screens/Landing/Landing';
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
 import CourseListRout from '../screens/CourseListRout';
 import {CourseDetail} from '../screens/CourseDetail/CourseDetail';
@@ -21,17 +22,40 @@ import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
-import { getItem } from '../core/services/common/storage';
-import { useState } from 'react';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
+<<<<<<< HEAD
 import CourseReserve from '../components/CourseReserve/CourseReserve';
 import Panel from '../screens/Panel/PanelScreen';
 import InformationUser from '../components/Panel/InformationUser'
 import AddProfileImage from '../components/Panel/AddProfileImage'
 import AddAddress from '../components/Panel/AddAddress'
 import Likes from '../components/Panel/Linkes'
+=======
+import Error401 from '../screens/Error/401/Error401';
+import Error400 from '../screens/Error/400/Error400';
+import Error403 from '../screens/Error/403/Error403';
+import Error500 from '../screens/Error/500/Error500';
+import Error408 from '../screens/Error/408/Error408';
+import SecurityPanel from '../screens/User Panel/SecurityPanel';
+import { useEffect, useState } from 'react';
+import { getItem, setItem } from '../core/services/common/storage';
+>>>>>>> c5c643e81aded4e643c59b3181250a7f54cf775c
 
 function App() {
+  const [darkMode, setDarkMode] = useState(() => {
+    getItem('darkMode') == true
+  })
+
+  useEffect(() => {
+    if(darkMode) {
+      document.documentElement.classList.add('dark')
+      setItem('darkMode', true)
+    } else {
+      document.documentElement.classList.remove('dark')
+      setItem('darkMode', false)
+    }
+  }, [darkMode])
+
 
   const router = createBrowserRouter([
     {
@@ -67,7 +91,7 @@ function App() {
 
     {
       path: '/layoutPanel',
-      element: <PrivateRoute element={<PanelLayout />} />,
+      element: <PrivateRoute element={<PanelLayout darkMode={darkMode} setDarkMode={setDarkMode} />} />,
       children: [
         {
           path: 'dashboard',
@@ -93,6 +117,10 @@ function App() {
           path: 'profile',
           element: <ProfileRout />
         },
+        {
+          path: 'security',
+          element: <SecurityPanel />
+        },
       ]
     },
     {
@@ -105,9 +133,12 @@ function App() {
     },
     {
       path: '/',
-      element: <Root />,
+      element: <Root darkMode={darkMode} setDarkMode={setDarkMode} />,
       children: [
-
+        {
+          path: '/',
+          element: <Landing />
+        },
         {
           path: '/courseList',
           element: <CourseListRout />
@@ -123,9 +154,30 @@ function App() {
         {
           path:'/CourseDetail/:id',
           element:<CourseDetail/>
-        }
+        },
+        {
+          path: 'Error401',
+          element: <Error401 />
+        },
+        {
+          path: 'Error400',
+          element: <Error400 />
+        },
+        {
+          path: 'Error403',
+          element: <Error403 />
+        },
+        {
+          path: 'Error500',
+          element: <Error500 />
+        },
+        {
+          path: 'Error408',
+          element: <Error408 />
+        },
       ]
     },
+<<<<<<< HEAD
     // {
     //   path:'/',
     //   element:<Panel/>,
@@ -149,6 +201,8 @@ function App() {
     //     }
     //   ]
     // }
+=======
+>>>>>>> c5c643e81aded4e643c59b3181250a7f54cf775c
 
   ])
 

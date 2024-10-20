@@ -50,13 +50,13 @@ const Options = ({Course}) => {
   return (
     <div className='flex flex-row gap-2'>
        <div className={`w-[56px] h-[56px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.dislike=="1" ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('dislike')}>
-            <ThumbsDownIcon color={`${checkClick.dislike=="1" ? "white":"black"}`} />
+            <ThumbsDownIcon className={`${checkClick.dislike=="1" ? "text-red-500 ":"text-black dark:text-white"}`} />
         </div>
         <div className={`w-[56px] h-[56px] rounded-[100%] border-[#E4E4E4] ${checkClick.like=="1" ? "bg-black":""} border-2 flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('like')}>
-            <ThumbsUpIcon color={`${checkClick.like=="1" ? "white":"black"}`}/>
+            <ThumbsUpIcon className={`${checkClick.like=="1" ? "text-red-500 ":"text-black dark:text-white"}`}/>
         </div>
         <div className={`w-[56px] h-[56px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('save')}>
-            <BookmarkAdd02Icon color={`${checkClick.save ? "white":"black"}`}/>
+            <BookmarkAdd02Icon className={`${checkClick.save ? "text-red-500 ":"text-black dark:text-white"}`}/>
         </div>
         <ToastContainer/>
     </div>

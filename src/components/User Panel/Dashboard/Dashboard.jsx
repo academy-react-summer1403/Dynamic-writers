@@ -7,10 +7,18 @@ import { Link, NavLink } from 'react-router-dom'
 import TableDashboard from './Tabel/TableDashboard'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css';
+import MyComment from './Comments/Comment/MyComment'
+import { getMyCommentsCourse } from '../../../core/services/api/MyComments/getMyCommentCourse'
+import { getMyCommentsNew } from '../../../core/services/api/MyComments/getMyCommentsNew'
+import CommentModal from '../../Comment&Reply/CommentModal'
+import { useDisclosure } from '@nextui-org/react'
+import MyCommentModal from './Comments/MyCommentModal'
 
 const Dashboard = () => {
 
   const [profileInfo, setProfileInfo] = useState([])
+  const [commentsCourse, setCommentsCourse] = useState([])
+  const [commentsNew, setCommentsNew] = useState([])
 
   const getProfile = async () => {
 
@@ -18,15 +26,31 @@ const Dashboard = () => {
     setProfileInfo(response)
   }
 
+  const getCommentsCourse = async () => {
+
+    const response = await getMyCommentsCourse()
+    setCommentsCourse(response.myCommentsDtos)
+  }
+
+  const getCommentsNew = async () => {
+
+    const response = await getMyCommentsNew()
+    setCommentsNew(response.myNewsCommetDtos)
+  }
+
   useEffect(() => {
     getProfile()
+    getCommentsCourse()
+    getCommentsNew()
   }, [])
 
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
   return (
-    <div className='border h-fit w-full flex flex-col gap-5 iranSans'>
-      <div className='border flex-col md:flex-row flex w-full h-fit' dir='rtl'>
-        <div className='grow border items-center py-5'>
-          <h2 className='font-bold text-2xl'> سلام , صبح بخیر {profileInfo.fName} 😍 </h2>
+    <div className='h-fit w-full flex flex-col gap-5 iranSans'>
+      <div className='flex-col md:flex-row flex w-full h-fit' dir='rtl'>
+        <div className='grow items-center py-5'>
+          <h2 className='font-bold text-2xl'> سلام , صبح بخیر {profileInfo.lName} 😍 </h2>
         </div>
         <div className='md:grow flex md:justify-start justify-between grow-0 md:gap-24 items-center'>
           <div className='flex gap-4'>
@@ -42,26 +66,38 @@ const Dashboard = () => {
 
       <div className='w-full flex gap-5 flex-col-reverse md:flex-row md:h-72 h-fit' dir='rtl'>
         
-        <div className='md:h-full h-72 md:grow-8 bg-white rounded-2xl py-3 px-4'>
-          <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <Link className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </Link> </div>
+        <div className='md:h-full h-72 md:w-[522px] overflow-hidden bg-white rounded-2xl py-3 px-4'>
+          <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <button onClick={onOpen} className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </button> </div>
+        
+          <MyComment
+            comments={commentsCourse}
+            commentsNew={commentsNew}
+          />
+          <MyCommentModal
+            isOpen={isOpen}
+            onOpen={onOpen}
+            onOpenChange={onOpenChange}
+            comments={commentsCourse}
+            commentsNew={commentsNew}
+          />
         </div>
         
-        <div className='h-full md:w-80 bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
+        <div className='h-full md:w-[355px] bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
         <div className='bg-red-500 text-yellow-300 text-sm font-semibold flex justify-center items-center rotate-12 translate-x-8 w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
-        <div className='md:h-full h-72 md:w-72 bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
+        <div className='md:h-full h-72 md:w-[279px] bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>
           </div>
 
           <div className='flex items-center justify-center size-32 mx-auto'>
-            <CircularProgressbar value={profileInfo.profileCompletionPercentage} text={`${profileInfo.profileCompletionPercentage}%`} styles={buildStyles({
-              textColor: `${profileInfo.profileCompletionPercentage > 70 ? 'blue' : 'orange'}`,
+            <CircularProgressbar value={(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"} text={`${(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"}%`} styles={buildStyles({
+              textColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
               textSize: '25px',
               display: 'flex',
-              pathColor: `${profileInfo.profileCompletionPercentage > 70 ? 'blue' : 'orange'}`,
+              pathColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
               trailColor: 'transparent'
             })} />
           </div>

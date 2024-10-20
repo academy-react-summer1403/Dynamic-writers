@@ -3,7 +3,7 @@ const {nextui} = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}", "./src/**/*.{jsx,js,tsx,ts}"],
   theme: {
     fontSize: {
       sm: '0.8rem',
@@ -19,13 +19,7 @@ export default {
       13: '13px',
     },
     extend: {
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
-      },
+
       flexGrow: {
         2: '2',
         3: '3',
@@ -35,8 +29,8 @@ export default {
         7: '7',
         8: '8',
       },
-      height: {
-        471: '471px',
+      width: {
+        '800': '800px'
       }
     },
   },
