@@ -5,6 +5,7 @@ import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
 import { Outlet } from 'react-router'
 import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
+import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
 
 const PanelLayout = () => {
 
@@ -25,10 +26,10 @@ const PanelLayout = () => {
     }
   } 
 
-  const getProfile = async () => {
-
-    const response = await getProfileInfo()
-    setProfileInfo(response)
+  const getProfile=async()=>{
+    const Prof=await GetProfileInfo()
+    
+    setProfileInfo(Prof)
   }
 
   useEffect(() => {

@@ -20,7 +20,7 @@ const HeaderPanel = ({ editingImage, profileInfo }) => {
     <div className='md:bg-white rounded-2xl flex justify-between flex-row-reverse md:px-3 w-full' style={{height: '80px'}}>
       <div className='md:flex gap-4 h-full w-fit flex-row-reverse items-center hidden'>
         <div className='size-14 flex items-center rounded-full relative'>
-            <img src={profileInfo.userImage} className='rounded-full size-14 border bg-red-300' />
+            <img src={profileInfo.currentPictureAddress} className='rounded-full size-14 border bg-red-300' />
             <div onClick={editingImage} className='cursor-pointer size-4 bg-blue-500 rounded-full absolute right-1 bottom-1 flex items-center justify-center'> <PencilEdit01Icon className='size-3 font-semibold text-white' /> </div>
         </div>
         <div className='flex flex-col'>
