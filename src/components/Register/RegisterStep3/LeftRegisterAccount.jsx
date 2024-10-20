@@ -66,7 +66,7 @@ const LeftRegisterAccount = () => {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <div className='grow-8 bg-white flex flex-col justify-start items-center my-7'>
+    <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6 min-w-96'>
             <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
@@ -86,14 +86,14 @@ const LeftRegisterAccount = () => {
           
                 <h2 className='font-bold'>  ایمیل </h2>
                 <div className='w-full relative'>
-                    <Field name="gmail" type="email" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                    <Field name="gmail" type="email" className='min-w-80 w-full p-3 dark:bg-slate-600 dark:text-white dark:border-none rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12' placeholder="ایمیل خود را وارد کنید" /> 
                     <MailOpen01Icon className='absolute right-3 top-2 text-gray-500 focus:hidden' />
                 </div>
 
                 <h2 className='mt-2 font-bold'> رمز عبور </h2>
                 <div className='w-full relative'>
-                    <Field name="password" type={isVisible ? "password" : "text"} className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                    <Field name="password" type={isVisible ? "password" : "text"} className='dark:bg-slate-600 dark:text-white dark:border-none min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور خود را وارد کنید" />
 
                     <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">

@@ -8,7 +8,7 @@ const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, 
   const navigate = useNavigate()
 
   return (
-    <div className='rounded-2xl min-w-[315px] max-w-[315px] bg-gray-200 relative h-fit flex flex-col justify-between dark:bg-slate-200 dark:text-black' style={{height: '547px'}}>
+    <div className='rounded-2xl min-w-[315px] max-w-[315px] dark:bg-slate-900 dark:text-white bg-gray-200 relative h-fit flex flex-col justify-between' style={{height: '547px'}}>
         <img src={currentImageAddressTumb} className='w-full border rounded-xl h-[225px] bg-red-300' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
             <div className='bg-blue-500 text-white rounded-xl px-2'> {newsCatregoryName} </div>

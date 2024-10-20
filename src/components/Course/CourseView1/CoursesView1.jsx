@@ -14,8 +14,8 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
   }
   
   return (
-    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 dark:bg-slate-200 dark:text-black iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
-        <div className='relative w-full rounded-xl h-56 bg-red-300 border'>
+    <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 dark:text-white dark:bg-slate-900 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>
+        <div className='relative w-full rounded-xl h-56 bg-red-300 border dark:border-none'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
               <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1 max-w-52 w-fit overflow-hidden text-ellipsis whitespace-nowrap'> {technologyList} </div>
@@ -35,10 +35,10 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
         </div>
         <div className='w-full flex justify-around items-center'>
             <div className='flex gap-2 text-sm font-semibold items-center'>
-              <div className='flex gap-2 items-center text-gray-700'> {dissLikeCount} <ThumbsDownIcon /> </div>
-              <div className='flex gap-2 items-center text-gray-700'> {likeCount} <ThumbsUpIcon /> </div>
+              <div className='flex gap-2 items-center text-gray-700 dark:text-white'> {dissLikeCount} <ThumbsDownIcon /> </div>
+              <div className='flex gap-2 items-center text-gray-700 dark:text-white'> {likeCount} <ThumbsUpIcon /> </div>
             </div>
-            <div className='text-blue-500 flex flex-row gap-2 items-end my-4'> تومان  <span className='font-semibold text-black text-xl'> {cost} </span> </div>
+            <div className='text-blue-500 flex flex-row gap-2 items-end my-4'> تومان  <span className='dark:text-white font-semibold text-black text-xl'> {cost} </span> </div>
         </div>
     </div>
   )

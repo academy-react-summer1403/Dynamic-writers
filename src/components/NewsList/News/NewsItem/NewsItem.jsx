@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const NewsItem = ({ id, title, miniDescribe, currentImageAddressTumb, currentView, addUserFullName, insertDate, currentDissLikeCount, currentLikeCount, keyword, newsCatregoryName }) => {
   return (
-    <div className='flex bg-gray-100 rounded-3xl h-72 flex-row-reverse dark:bg-slate-200 dark:text-black' style={{width: '985px'}}>
+    <div className='flex bg-gray-100 rounded-3xl h-72 flex-row-reverse dark:text-white dark:bg-slate-900' style={{width: '985px'}}>
       <div className='bg-red-300 h-full w-5/12 rounded-3xl relative'>
         <img src={currentImageAddressTumb} className='w-full h-full rounded-3xl' />
         <div className='h-fit w-fit absolute top-2 right-2 flex gap-2 flex-row-reverse'>

@@ -70,13 +70,13 @@ const LeftLogin = () => {
   }
 
   return (
-    <div className='grow-8 bg-white flex flex-col md:justify-start justify-center items-center my-7'>
+    <div className='grow-8 h-dvh bg-white dark:bg-black flex flex-col md:justify-start justify-center items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6'>
             <div onClick={() => navigate('/')} className='cursor-pointer w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </div>
-            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold'> 👋!خوش برگشتی </h2>
+            <h2 className='my-2 text-3xl font-extrabold iranSansBold'> 👋!خوش برگشتی </h2>
             <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> لطفا برای ورود به پنل خود ایمیل یا شماره همراه و رمزعبور خود را وارد کنید </span>
 
         </div>

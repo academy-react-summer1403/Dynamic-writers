@@ -7,7 +7,7 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
   const navigate = useNavigate()
   
   return (
-    <div onClick={() => navigate('/CourseDetail/' + id)} className='rounded-2xl bg-gray-200 dark:bg-slate-200 dark:text-black iranSans flex flex-col justify-between font-semibold' style={{height: '512px', width: '315px'}}>
+    <div onClick={() => navigate('/CourseDetail/' + id)} className='rounded-2xl bg-gray-200 dark:bg-slate-900 dark:text-white dark:border-none iranSans flex flex-col justify-between font-semibold' style={{height: '512px', width: '315px'}}>
         <div className='relative w-full rounded-xl h-56 bg-red-300 border-none'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
@@ -28,10 +28,10 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
         </div>
         <div className='w-full flex justify-around items-center'>
             <div className='flex gap-2 text-sm font-semibold items-center'>
-              <div className='flex gap-2 items-center text-gray-700'> {dissLikeCount} <ThumbsDownIcon /> </div>
-              <div className='flex gap-2 items-center text-gray-700'> {likeCount} <ThumbsUpIcon /> </div>
+              <div className='flex gap-2 items-center text-gray-700 dark:text-white'> {dissLikeCount} <ThumbsDownIcon /> </div>
+              <div className='flex gap-2 items-center text-gray-700 dark:text-white'> {likeCount} <ThumbsUpIcon /> </div>
             </div>
-            <div className='text-blue-500 flex flex-row gap-2 items-end my-4 text-sm'> تومان  <span className='text-xl font-semibold text-black'> {cost} </span> </div>
+            <div className='text-blue-500 flex flex-row gap-1 items-end my-4 text-sm'> تومان  <span className='text-xl dark:text-white font-semibold text-black'> {cost} </span> </div>
         </div>
     </div>
   )

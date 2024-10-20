@@ -14,9 +14,9 @@ const CoursesView2 = ({levelName, id, title, describe, dissLikeCount, likeCount,
   }
   
   return (
-    <div onClick={() => callCourse()} className='md:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-200 dark:text-black' style={{height: '288px', width: '985px'}}>
-        <div className='w-5/12 h-full bg-red-300 rounded-3xl relative border'>
-            <img className='w-full h-full rounded-3xl' src={tumbImageAddress} />
+    <div onClick={() => callCourse()} className='md:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white' style={{height: '288px', width: '985px'}}>
+        <div className='w-5/12 h-full bg-red-300 rounded-3xl relative border dark:border-none'>
+            <img className='w-full h-full rounded-3xl dark:border-none' src={tumbImageAddress} />
             <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
               <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {technologyList} </div>
               <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {levelName} </div>
@@ -38,7 +38,7 @@ const CoursesView2 = ({levelName, id, title, describe, dissLikeCount, likeCount,
                     <div className='flex flex-row-reverse gap-3 items-center'> {dissLikeCount} <ThumbsDownIcon /> </div>
                     <div className='flex flex-row-reverse gap-3 items-center'> {likeCount} <ThumbsUpIcon /> </div>
                 </div>
-                <div className='text-blue-500 flex flex-row-reverse gap-2 items-end my-4'> تومان  <span className='font-semibold text-black text-xl'> {cost} </span> </div>
+                <div className='text-blue-500 flex flex-row-reverse gap-2 items-end my-4'> تومان  <span className='dark:text-white font-semibold text-black text-xl'> {cost} </span> </div>
             </div>
         </div>
     </div>

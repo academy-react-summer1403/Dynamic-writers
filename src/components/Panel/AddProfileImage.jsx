@@ -57,15 +57,15 @@ const AddProfileImage = () => {
                       </div>
                   }
                   
-                  <div className='flex justify-center items-center w-[32px] h-[32px] rounded-[100%] absolute top-2 right-2 z-10 bg-white cursor-pointer' onClick={()=>handleClick(index)}>
+                  <div className='flex justify-center dark:bg-slate-900 items-center w-[32px] h-[32px] rounded-[100%] absolute top-2 right-2 z-10 bg-white cursor-pointer' onClick={()=>handleClick(index)}>
                     <MoreVerticalCircle01Icon/>
                   </div>
                   <div className='absolute top-11 right-2'>
-                    {keyNum==index && <ul className='w-[200px] h-[112px] bg-white z-30 rounded-[16px] p-[10px] m-0 list-none relative border-[#E4E4E4] overflow-hidden border-[3px]'>
+                    {keyNum==index && <ul className='w-[200px] h-[112px] bg-white dark:bg-slate-900 dark:border-none z-30 rounded-[16px] p-[10px] m-0 list-none relative border-[#E4E4E4] overflow-hidden border-[3px]'>
                       <CheckmarkCircle02Icon color='green' className='w-[24px] h-[24px] absolute top-4 right-2'/>
-                      <li className='w-[100%] h-[50%]  leading-9 text-right pr-7 cursor-pointer' onClick={()=>chooseProfile(value.id)}>انتخاب عکس اصلی</li>
+                      <li className='w-[100%] h-[50%] leading-9 text-right pr-7 cursor-pointer' onClick={()=>chooseProfile(value.id)}>انتخاب عکس اصلی</li>
                       <Delete02Icon color='red' className='w-[24px] h-[24px] absolute top-[69px] right-2' />
-                      <li className='w-[100%] h-[50%] border-t-1 border-[#E4E4E4] leading-[45px] text-right pr-7 cursor-pointer' onClick={()=>DeleteImageProf(value.id)}>حذف عکس</li>
+                      <li className='w-[100%] h-[50%] border-t-1 dark:text-red-500 border-[#E4E4E4] leading-[45px] text-right pr-7 cursor-pointer' onClick={()=>DeleteImageProf(value.id)}>حذف عکس</li>
                     </ul>}
                   </div>
                   

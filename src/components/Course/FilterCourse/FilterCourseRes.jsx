@@ -67,11 +67,11 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
     const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
   return (
-    <div className={`bg-white rounded-t-3xl w-dvw p-5 flex flex-col gap-3 font-semibold text-sm fixed bottom-${scrollPosition.y} right-0 z-50 h-fit`}>
+    <div className={`bg-white rounded-t-3xl w-dvw p-5 flex flex-col gap-3 dark:text-white dark:bg-slate-900 font-semibold text-sm fixed bottom-${scrollPosition.y} right-0 z-50 h-fit`}>
     <div className='border-2 w-10 mx-auto cursor-pointer'></div>
     <div className='flex flex-row-reverse justify-between item-center'>
         <h2 className='font-extrabold'> ترتیب و فیلتر </h2>
-        <div onClick={closeFilter} className='group hover:bg-red-500 hover:text-white border py-1.5 px-3 border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
+        <div onClick={closeFilter} className='group dark:border-none dark:text-white dark:bg-red-500 hover:bg-red-500 hover:text-white border py-1.5 px-3 border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
             <Cancel01Icon className='size-4 group-hover:text-white' />
             بستن
         </div>
@@ -141,9 +141,9 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
 
     <div className='flex flex-row-reverse'>
     <input onChange={(e) => {handlePriceFrom(e.target.value), updateParams('CostDown', e.target.value)}} type='range' 
-    defaultValue={0} min='0' max='1000000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    defaultValue={0} min='0' max='1000000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-full h-2 rounded-full appearance-none thump rotate-180' />
     <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' 
-    defaultValue={100000000} min='0' max='1000000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-36 h-2 rounded-full appearance-none thump rotate-180' />
+    defaultValue={1000000000} min='0' max='1000000000' step='10000' className='border-none cursor-pointer bg-gray-200 w-full h-2 rounded-full appearance-none thump rotate-180' />
     </div>
 
     <div className='flex flex-col'>
@@ -152,7 +152,7 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
             <span className='text-sm font-semibold'> تاریخ برگزاری </span>
         </div>
         <div className='relative flex flex-col gap-3'>
-            <Input placeholder='1403/5/20 - 1403/6/20' className='w-full my-2 rounded-xl' dir='ltr'></Input>
+            <Input data-jdp placeholder='1403/5/20 - 1403/6/20' className='w-full my-2 rounded-xl' dir='ltr'></Input>
         </div>
     </div>
 
