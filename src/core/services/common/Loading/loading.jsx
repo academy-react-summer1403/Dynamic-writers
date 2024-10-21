@@ -1,7 +1,7 @@
 import React from 'react'
 import CircularProgress from '@mui/material/CircularProgress';
 
-const loading = () => {
+const Loading = () => {
   return (
     <div className='w-full h-[500px] flex justify-center items-center gap-4'>
     <span>...درحال بارگزاری</span>
@@ -10,4 +10,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default Loading
