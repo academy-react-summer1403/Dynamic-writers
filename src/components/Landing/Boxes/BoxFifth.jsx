@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getNewsList } from '../../../core/services/api/newsTop'
 import NewsTop from './newsTop'
-import { Button } from '@nextui-org/react'
+import { Button, Card } from '@nextui-org/react'
 
 const BoxFifth = () => {
 
     const [news, setNews] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const [newsTop, setNewsTop] = useState([])
   
@@ -31,10 +32,19 @@ const BoxFifth = () => {
 
     }, [])
 
+    useEffect(() => {
+        if(newsTop.length > 0){
+          setIsLoaded(true)
+        }
+  
+    }, [newsTop])
+  
+  
+
 
     return (
         <>
-       <div className=' my-10 w-5/6 mx-auto flex flex-col gap-5 justify-center items-center md:flex-row overflow-hidden md:overflow-visible' 
+       <Card classNames={{base: 'shadow-none'}} className='bg-transparent my-10 w-5/6 mx-auto flex flex-col gap-5 justify-center items-center md:flex-row overflow-hidden md:overflow-visible' 
        style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
             {newsTop.map((item, index) => {
                 return (
@@ -50,10 +60,11 @@ const BoxFifth = () => {
                         currentView={item.currentView}
                         image={item}
                         currentImageAddressTumb={item.currentImageAddressTumb}
+                        isLoaded={isLoaded}
                     /> 
                 )
             })}
-        </div>
+        </Card>
 
             {/* <Button onClick={() => {viewBetter ? setViewBetter(false) : setViewBetter(true)}} className='text-white bg-blue-500 w-32 rounded-full mx-auto mb-20 md:hidden'>
 

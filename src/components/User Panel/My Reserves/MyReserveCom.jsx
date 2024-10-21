@@ -47,7 +47,7 @@ const MyReserveCom = () => {
                 >
                         
                     <Form>
-                        <Field type='search' name='Query' className='w-[289px] h-10 rounded-xl bg-gray-200 px-2 text-sm outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                        <Field type='search' name='Query' className='w-[289px] h-10 rounded-xl dark:bg-slate-600 dark:text-white bg-gray-200 px-2 text-sm outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
                         <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
                     </Form>
                 </Formik>

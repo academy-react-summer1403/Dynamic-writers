@@ -60,7 +60,7 @@ const LeftVerifyRegister = () => {
 
 
   return (
-    <div className='grow-8 bg-white flex flex-col justify-start items-center my-7'>
+    <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6'>
             <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
@@ -82,7 +82,7 @@ const LeftVerifyRegister = () => {
                     <span className='iranSansBold'> کد تایید </span>
                     <VerificationInput name='verifyCode' length={5} onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
                             container: "flex flex-row-reverse gap-5 iranSans w-4/6 min-w-80",
-                            character: "rounded-xl border-none outline-none  bg-gray-100 text-sm p-1 size-12",
+                            character: "rounded-xl border-none outline-none dark:bg-slate-600 dark:text-white bg-gray-100 text-sm p-1 size-12",
                             characterInactive: "bg-gray-100 text-2xl outline-none border-none text-sm",
                             characterSelected: "border-none outline-blue-500 text-black",
                             characterFilled: "text-xl border-none outline-none",
@@ -94,13 +94,13 @@ const LeftVerifyRegister = () => {
                 <ToastContainer />
 
                 <div className='w-full flex flex-row-reverse gap-5 items-center justify-end min-w-80'>
-                    <div onClick={() => navigate('/register')} className='bg-blue-100 flex rounded-full flex-row-reverse p-1 cursor-pointer gap-2 items-center'>
+                    <div onClick={() => navigate('/register')} className='bg-blue-100 flex dark:bg-slate-300 rounded-full flex-row-reverse p-1 cursor-pointer gap-2 items-center'>
                         <ArrowMoveUpLeftIcon className='text-blue-500 size-4'/>
                         <span className='text-blue-500 text-sm whitespace-nowrap'> تغییر شماره همراه </span>
                     </div>
 
                     <Link onClick={verifyAgain} className='underline iranSans text-small cursor-pointer ml-4 whitespace-nowrap'> ارسال مجدد کد </Link>
-                    <div className='flex w-28 bg-blue-100 flex-row-reverse justify-center items-center rounded-full
+                    <div className='flex w-28 bg-blue-100 dark:bg-slate-300 flex-row-reverse justify-center items-center rounded-full
                     h-5 p-3 gap-3'> <Timer /> <TimeQuarterPassIcon className='text-blue-600 size-5'/> </div>
                 </div>
 

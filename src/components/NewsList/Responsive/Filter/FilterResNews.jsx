@@ -17,11 +17,11 @@ const FilterResNews = ({ closeFil }) => {
   const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
   return (
-    <div className={`bg-white z-50 flex-col gap-6 p-2.5 px-5 rounded-t-3xl w-dvw h-fit m-2 flex fixed bottom-${scrollPosition.y} right-0 backdrop-grayscale`} dir='rtl'>
+    <div className={`bg-white z-50 flex-col gap-6 p-2.5 px-5 rounded-t-3xl w-dvw h-fit m-2 dark:text-white dark:bg-slate-900 flex fixed bottom-${scrollPosition.y} right-0 backdrop-grayscale`} dir='rtl'>
 
         <div className='flex justify-between item-center'>
             <h2 className='font-extrabold'> ترتیب و فیلتر </h2>
-            <div onClick={closeFil} className='group hover:bg-red-500 hover:text-white border py-1.5 px-3 border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
+            <div onClick={closeFil} className='group dark:border-none dark:bg-red-500 dark:text-white hover:bg-red-500 hover:text-white border py-1.5 px-3 border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
                 <Cancel01Icon className='size-4 group-hover:text-white' />
                 بستن
             </div>

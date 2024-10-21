@@ -63,7 +63,7 @@ const MyCourseCom = () => {
                 >
                         
                     <Form>
-                        <Field type='search' name='Query' className='w-[289px] h-10 rounded-xl bg-gray-200 px-2 text-sm outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                        <Field type='search' name='Query' className='w-[289px] h-10 rounded-xl bg-gray-200 dark:bg-slate-600 dark:text-white px-2 text-sm outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
                         <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
                     </Form>
                 </Formik>
@@ -75,7 +75,7 @@ const MyCourseCom = () => {
                     <span className='text-base font-semibold'> ترتیب </span>
                 </div>
                 <div className='relative gap-3 flex flex-col'>
-                    <Select classNames={{trigger: 'bg-gray-200'}} placeholder='انتخاب کنید...'>
+                    <Select classNames={{trigger: 'bg-gray-200 dark:bg-slate-600 dark:text-white'}} placeholder='انتخاب کنید...'>
                         <SelectItem onClick={() => {setSortType('ASC'), setSortingCol('Cost')}}> ارزان ترین </SelectItem>
                         <SelectItem onClick={() => {setSortType('ASC'), setSortingCol('LastUpdate')}}> قدیمی ترین ها </SelectItem>
                         <SelectItem onClick={() => {setSortType('DESC'), setSortingCol('LastUpdate')}}> جدید ترین </SelectItem>

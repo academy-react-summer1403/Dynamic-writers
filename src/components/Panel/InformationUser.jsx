@@ -58,7 +58,7 @@ const InformationUser = () => {
       field2:yup.string().required('این فیلد اجباریست'),
       field3:yup.string().required('این فیلد اجباریست').min(11, "تعداد کارکتر های درباره ی من باید از 10 بیشتر باشد"),
       field4:yup.string().required('این فیلد اجباریست').matches(phoneRegex,"شماره تلفن معتبر نیست"),
-      field5:yup.string().required('این فیلد اجباریست').matches(nationalIdRegex,'کد ملی ممعتبر نیست').length(10, "تعداد کاراکتر های کد ملی باید 10 رقم باشد"),
+      field5:yup.string().required('این فیلد اجباریست').length(10, "تعداد کاراکتر های کد ملی باید 10 رقم باشد"),
       field7:yup.string().required('این فیلد اجباریست').email(),
       field8:yup.string().required('این فیلد اجباریست').min(11," تعداد کارکتر های آدرس محل سکونت باید از 10 بیشتر باشد")
     }
@@ -69,31 +69,31 @@ const InformationUser = () => {
             <Form className='w-[80%] flex flex-row-reverse flex-wrap gap-12 h-auto px-5 items-center justify-start'>
                 <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[286px]'>
                   <span className='font-[700] text-[16px]'>نام</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="نام خود را وارد کنید" name="field1" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="نام خود را وارد کنید" name="field1" />
                   <ErrorMessage name='field1' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
                 <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[286px]'>
                   <span className='font-[700] text-[16px]'>نام خانوادگی</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3  w-[100%] h-[48px]' placeholder="نام خانوادگی خود را وارد کنید" name="field2" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3  w-[100%] h-[48px]' placeholder="نام خانوادگی خود را وارد کنید" name="field2" />
                   <ErrorMessage name='field2' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
                 <div className='flex flex-col items-end gap-2 h-[150px] flex-grow-3 w-[90%]'>
                   <span className='font-[700] text-[16px]'>درباره من</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] text-right p-3 placeholder-[#787878] font-[700] text-[14px] px-3  w-[100%] h-[93px] min-h-[93px]' as="textarea" row="5" placeholder="یک متن درباره خود را وارد کنید" name="field3" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right p-3 placeholder-[#787878] font-[700] text-[14px] px-3  w-[100%] h-[93px] min-h-[93px]' as="textarea" row="5" placeholder="یک متن درباره خود را وارد کنید" name="field3" />
                   <ErrorMessage name='field3' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
                 <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-3 w-[286px]'>
                   <span className='font-[700] text-[16px]'>شماره همراه</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="شماره همراه خود را وارد کنید" name="field4" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="شماره همراه خود را وارد کنید" name="field4" />
                   <ErrorMessage name='field4' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
                 <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[286px]'>
                   <span className='font-[700] text-[16px]'>کد ملی</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="کد ملی خود را وارد کنید" name="field5" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="کد ملی خود را وارد کنید" name="field5" />
                   <ErrorMessage name='field5' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
@@ -106,7 +106,7 @@ const InformationUser = () => {
                         id='DateBirth'
                         onChange={handleDateChange}
                         placeholder='تاریخ تولد خود را وارد کنید'
-                        className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] flex-grow-2'
+                        className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] flex-grow-2'
                         value={selectedDate}
                       />
                     
@@ -116,11 +116,11 @@ const InformationUser = () => {
                   <div className='flex flex-row-reverse gap-10'>
                     
                     <div className='flex flex-row gap-3'>
-                      <Field  type="radio" name="selectedOption" value="false" className="cursor-pointer"/>
+                      <Field  type="radio" name="selectedOption" value="false" className="dark:bg-slate-900 cursor-pointer"/>
                       <span className='font-[700] text-[18px]'>مرد</span>
                     </div>
                     <div className='flex flex-row gap-3'>
-                      <Field type="radio" name="selectedOption" value="true" className="cursor-pointer"/>
+                      <Field type="radio" name="selectedOption" value="true" className="dark:bg-slate-900 cursor-pointer"/>
                       <span className='font-[700] text-[18px]'>زن</span>
                     </div>
                     <span className='text-[14px] font-[500] text-[#3772FF]'>انتخاب کنید</span>
@@ -128,13 +128,13 @@ const InformationUser = () => {
                 </div>
                 <div className='flex flex-col items-end gap-2 h-[80px] flex-grow-3 w-[90%]'>
                   <span className='font-[700] text-[16px]'>ایمیل</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="ایمیل خود را وارد کنید" name="field7" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="ایمیل خود را وارد کنید" name="field7" />
                   <ErrorMessage name='field7' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
                 <div className='flex flex-col items-end gap-2 h-[150px] flex-grow-3 w-[90%]'>
                   <span className='font-[700] text-[16px]'>آدرس سکونت</span>
-                  <Field className='bg-[#e8e7e7] rounded-[16px] p-3 text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[93px] min-h-[93px]' as="textarea" row="5" placeholder="آدرس سکونت خود را وارد کنید" name="field8" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] p-3 text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[93px] min-h-[93px]' as="textarea" row="5" placeholder="آدرس سکونت خود را وارد کنید" name="field8" />
                   <ErrorMessage name='field8' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 <button type='submit' className='bg-[#3772FF] px-[24px] py-[14px] rounded-[64px] text-white font-[700] text-[20px]'> اعمال تغییرات</button>
@@ -143,17 +143,17 @@ const InformationUser = () => {
 
             </Formik>
         <div className=' h-[500px] w-[50%] flex justify-center'>
-          <div className='flex flex-col justify-center gap-10 items-center border-[1px] rounded-[16px] h-[287px] w-[259px] relative'>
+          <div className='flex flex-col justify-center gap-10 items-center border-[1px] dark:border-gray-500 rounded-[16px] h-[287px] w-[259px] relative'>
             <span className='absolute top-3 right-3 font-[700]'>وضعیت اطلاعات حساب</span>
             <div className='w-[140px] h-[140px] mt-10'>
               <CircularProgressbar
                 value={profile.profileCompletionPercentage}
                 text={`${profile.profileCompletionPercentage}%`}
                 strokeWidth={5}
-                styles={buildStyles({textColor:`${profile.profileCompletionPercentage==100 ? "#57b4f3":"#FFC619"}`,textSize:"30px",pathColor:`${profile.profileCompletionPercentage==100 ? "#467ccd":"#FFC619"}`,trailColor:"#f0f0f0",TextAlignment:"Center" })}
+                styles={buildStyles({textColor:`${profile.profileCompletionPercentage >= 80 ? "#57b4f3":"#FFC619"}`,textSize:"30px",pathColor:`${profile.profileCompletionPercentage >= 80 ? "#467ccd":"#FFC619"}`,trailColor:"#f0f0f0",TextAlignment:"Center" })}
               />
             </div>
-            <span className={`${profile.profileCompletionPercentage==100 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px]`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
+            <span className={`${profile.profileCompletionPercentage >= 80 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px]`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
           </div>
         </div>
         <ToastContainer/>

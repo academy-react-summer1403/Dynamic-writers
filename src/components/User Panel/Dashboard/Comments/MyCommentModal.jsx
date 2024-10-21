@@ -34,7 +34,7 @@ const MyCommentModal = ({ isOpen, onOpenChange, comments, commentsNew }) => {
                         <Tab key='courses' title='دوره ها'>
                             <Card>
                                 <CardBody>
-                                        <div className='w-full h-fit flex flex-col overflow-hidden gap-8 bg-gradient-to-b from-white to-transparent'>
+                                        <div className='w-full h-fit flex flex-col overflow-hidden gap-8'>
                                             {comments.map((item) => {
 
                                                 return <MyCommentCourseCom
@@ -59,7 +59,7 @@ const MyCommentModal = ({ isOpen, onOpenChange, comments, commentsNew }) => {
                         <Tab key='News' title='اخبار و مقالات'>
                             <Card>
                                 <CardBody>
-                                        <div className='w-full h-fit flex flex-col overflow-hidden gap-8 bg-gradient-to-b from-white to-transparent'>
+                                        <div className='w-full h-fit flex flex-col overflow-hidden gap-8'>
                                             {commentsNew.map((item) => {
 
                                                 return <MyCommentNewCom

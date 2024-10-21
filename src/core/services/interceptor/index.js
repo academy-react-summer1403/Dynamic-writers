@@ -12,25 +12,37 @@ const onSuccess = (response) => {
 }
 
 const onError = (err) => {
-   // console.log(err);
+   console.log(err);
 
-   // if(err.response.status === 400) {
-   //    window.location.pathname = '/Error400'
-   // }
-
-   if(err.response.status === 403) {
+   if(err.response) {
+      const status = err.response.status
+      
+      if(status === 400) {
+         window.location.pathname = '/Error400'
+      }
+   
+      if(status === 403) {
+         window.location.pathname = '/Error403'
+      }
+      
+      if(status === 408) {
+         window.location.pathname = '/Error408'
+      }
+      
+      if(status === 500) {
+         window.location.pathname = '/Error500'
+      }
+   }
+   else if(err.request && err.request.status === 401) {
+      window.location.pathname = '/Error401'
+   }
+   else if(err.request && err.request.status === 403) {
       window.location.pathname = '/Error403'
    }
-   
-   if(err.response.status === 408) {
-      window.location.pathname = '/Error408'
+   else {
+      // window.location.pathname = '/Error500'
+      console.log(err.request)
    }
-   
-   if(err.response.status === 500) {
-      window.location.pathname = '/Error500'
-   }
-
-   return Promise.reject(err);
 }
 
 instance.interceptors.response.use(onSuccess, onError)

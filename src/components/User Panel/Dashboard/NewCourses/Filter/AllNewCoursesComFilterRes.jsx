@@ -38,7 +38,7 @@ const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChang
         </div>
         <div className='relative gap-3 flex flex-col'>
         <form className='relative items-center flex' onSubmit={handleSubmit}>
-           <Input placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
+           <Input data-jdp placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
            <button type='submit' className='text-white bg-gray-500 absolute rounded-xl h-10 w-10 right-0 bottom-2 text-center flex justify-center items-center hover:bg-gray-600'> <Calendar02Icon className='size-5' /> </button>
         </form>
         </div>

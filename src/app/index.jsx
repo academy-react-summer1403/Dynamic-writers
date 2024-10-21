@@ -41,7 +41,7 @@ import PanelScreen from '../screens/Panel/PanelScreen';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    getItem('darkMode') == true
+    getItem('darkMode') === true
   })
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function App() {
       setItem('darkMode', true)
     } else {
       document.documentElement.classList.remove('dark')
-      setItem('darkMode', false)
+      setItem('darkMode', true)
     }
   }, [darkMode])
 
@@ -142,7 +142,7 @@ function App() {
     },
     {
       path: '/allNewCourses',
-      element: <AllNewCourses />
+      element: <AllNewCourses darkMode={darkMode} setDarkMode={setDarkMode} />
     },
     {
       path: '*',
