@@ -32,7 +32,6 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
     const Prof=await GetProfileInfo()
     
     setProfileInfo(Prof)
-    // setLoading(true)
   }
 
   useEffect(() => {
@@ -49,12 +48,12 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
 
         <SitePanel />
             
-        <div className='flex flex-col items-end h-fit gap-2 relative md:w-full lg:w-[70%] ' style={{maxWidth: '1196px'}}>
+        <div className='flex flex-col items-end h-fit gap-2 relative md:w-full ' style={{maxWidth: '1196px'}}>
 
             <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
-            <Outlet loadingR={loading} />
+            <Outlet />
 
 
         </div>
