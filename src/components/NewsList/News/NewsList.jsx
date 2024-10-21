@@ -56,9 +56,6 @@ const NewsList = () => {
     const response = await getNewsList(pageNum, rowsPage, query, sortingCol , sortType)
     setPages(Math.ceil(response.totalCount / rowsPage))
     setNews(response.news)
-    if(news.length > 0) {
-      setIsLoaded(true)
-    }
 
     const partCounts = response.map((part) => part.newsCatregoryName)
     const uniqueArray = [...new Set(partCounts)]
@@ -88,6 +85,12 @@ const NewsList = () => {
 
     getNews()
   }, [])
+
+  useEffect(() => {
+    if(news.length > 0) {
+      setIsLoaded(true)
+    }
+  }, [news])
 
   const [isLoaded, setIsLoaded] = useState(false);
 
