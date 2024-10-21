@@ -6,6 +6,7 @@ import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProf
 import { Outlet } from 'react-router'
 import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
 import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
+import Loading from '../../core/services/common/Loading/loading'
 
 const PanelLayout = ({ darkMode, setDarkMode }) => {
 
@@ -13,7 +14,8 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
   const [editImag, setEditImag] = useState(1)
 
   const [profileInfo, setProfileInfo] = useState([])
-
+  const[loading,setLoading]=useState(false)
+  const [Rerender,setRerender]=useState(false)
 
   const editingImage = () => {
     if(editImag === 1){
@@ -30,11 +32,17 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
     const Prof=await GetProfileInfo()
     
     setProfileInfo(Prof)
+    // setLoading(true)
   }
 
   useEffect(() => {
     getProfile()
   }, [])
+
+  useEffect(() => {
+    getProfile()
+  }, [Rerender])
+  
 
   return (
     <div className='bg-gray-100 dark:bg-slate-950 w-dvw md:h-fit h-dvh gap-5 flex py-5 px-5 iranSans md:flex-row-reverse flex-col'>
@@ -46,7 +54,7 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
             <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
-            <Outlet />
+            <Outlet loadingR={loading} />
 
 
         </div>

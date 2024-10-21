@@ -13,6 +13,7 @@ import { getMyCommentsNew } from '../../../core/services/api/MyComments/getMyCom
 import CommentModal from '../../Comment&Reply/CommentModal'
 import { useDisclosure } from '@nextui-org/react'
 import MyCommentModal from './Comments/MyCommentModal'
+import Loading from '../../../core/services/common/Loading/loading'
 
 const Dashboard = () => {
 
