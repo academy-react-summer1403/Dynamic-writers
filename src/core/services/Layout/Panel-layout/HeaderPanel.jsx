@@ -33,7 +33,7 @@ const HeaderPanel = ({ editingImage, profileInfo, darkMode, setDarkMode }) => {
           <img src={Bahr} className='size-10' />
       </Link>
       <div className='flex h-full w-fit gap-3 items-center'>
-        <div className='border bg-white size-14 rounded-full flex justify-center items-center cursor-pointer hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-none'>
+        <div className='border bg-white size-14 rounded-full flex justify-center items-center cursor-pointer hover:bg-black hover:text-white dark:bg-black dark:text-white dark:border-1 dark:border-gray-500 dark:md:border-none'>
           {darkMode ? <Sun01Icon onClick={() => setDarkMode(!darkMode)} className='size-6' /> : <Moon02Icon onClick={() => setDarkMode(!darkMode)} className='size-6' /> }
         </div>
         <div className='border bg-white size-14 rounded-full flex justify-center items-center cursor-pointer relative hover:text-white hover:bg-yellow-300 dark:bg-yellow-300 dark:text-white dark:border-none'> 

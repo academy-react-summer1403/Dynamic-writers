@@ -38,7 +38,7 @@ const MyReserveTable = ({ myCourse }) => {
 
   return (
     <div>
-    <Table className="w-[1196px] hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
         <TableColumn> نام دوره </TableColumn>

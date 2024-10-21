@@ -3,7 +3,7 @@ import FavCourseCom from '../../components/User Panel/Favorite Courses/FavCourse
 
 const FavCourseRout = () => {
   return (
-    <div>
+    <div className='w-full h-full'>
       <FavCourseCom />
     </div>
   )

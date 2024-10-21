@@ -26,7 +26,7 @@ const MyComment = ({  comments, commentsNew }) => {
       </div>
       <div className='h-full border'></div>
       <div className='max-w-3/6 h-[750px] flex flex-col overflow-hidden gap-8 dark:bg-slate-700 dark:text-white'>
-        <span className='text-[14px] font-[700] text-[#787878] dark:bg-slate-700 dark:text-white'> اخبار و مقالات </span>
+        <span className='text-[14px] font-[700] text-[#787878] dark:bg-slate-700 dark:text-white whitespace-nowrap'> اخبار و مقالات </span>
         {commentsNew.map((item) => {
 
             return <MyCommentNewCom

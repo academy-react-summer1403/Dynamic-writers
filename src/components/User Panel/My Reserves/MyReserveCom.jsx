@@ -31,8 +31,8 @@ const MyReserveCom = () => {
       }, [searchCourse])
 
   return (
-    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-fit' dir='rtl'>
-        <div className='flex flex-col w-full h-fit gap-10'>
+    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
+        <div className='flex flex-col w-full h-full gap-10'>
         <h2 className='text-[28px] font-bold mt-8'> رزرو من </h2>
         <div className='flex gap-6 w-full h-fit'>
             <div className='flex flex-col gap-4 w-[289px]'>

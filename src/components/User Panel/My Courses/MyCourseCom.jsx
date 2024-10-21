@@ -37,8 +37,8 @@ const MyCourseCom = () => {
     }, [query, rows, pageNumber, sortType, sortingCol])
 
   return (
-    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-fit' dir='rtl'>
-      <div className='md:hidden flex w-full h-fit justify-between items-center'>
+    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
+      <div className='md:hidden flex w-full h-full justify-between items-center'>
         <h2 className='text-[28px] font-bold'> دوره من </h2>
         <Button className='bg-blue-500 rounded-full text-white text-base font-semibold' onClick={() => setFilterClose(true)}> فیلتر </Button>
       </div>

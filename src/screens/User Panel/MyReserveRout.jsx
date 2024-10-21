@@ -3,7 +3,7 @@ import MyReserveCom from '../../components/User Panel/My Reserves/MyReserveCom'
 
 const MyReserveRout = () => {
   return (
-    <div>
+    <div className='w-full h-full'>
       <MyReserveCom />
     </div>
   )

@@ -10,7 +10,7 @@ const DashboardRout = ({ loadingR }) => {
   }
   
   return (
-    <div className='w-full'>
+    <div className='w-full h-full'>
       <Dashboard />
     </div>
   )
