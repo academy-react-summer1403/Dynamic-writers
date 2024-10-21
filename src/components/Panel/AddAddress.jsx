@@ -58,6 +58,7 @@ const AddAddress = () => {
       <div className='md:w-[90%] md:h-[500px] w-[90%] max-w-[1016px] relative z-10 lg:w-[90%] rounded-[16px] bg-slate-500 overflow-hidden'>
         <MapContainer 
           center={position} 
+          
           zoom={20} 
           style={{ height: '500px', width: '100%' }} 
         >
