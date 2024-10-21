@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SortNews from './Sort/SortNews'
 import FilterNews from './Filter/FilterNews'
-import { Button, Pagination } from '@nextui-org/react'
+import { Button, Card, Pagination } from '@nextui-org/react'
 import NewsItem from './NewsItem/NewsItem'
 import { getNewsList } from '../../../core/services/api/news'
 import jMoment from "jalali-moment";
@@ -56,6 +56,9 @@ const NewsList = () => {
     const response = await getNewsList(pageNum, rowsPage, query, sortingCol , sortType)
     setPages(Math.ceil(response.totalCount / rowsPage))
     setNews(response.news)
+    if(news.length > 0) {
+      setIsLoaded(true)
+    }
 
     const partCounts = response.map((part) => part.newsCatregoryName)
     const uniqueArray = [...new Set(partCounts)]
@@ -86,6 +89,8 @@ const NewsList = () => {
     getNews()
   }, [])
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div className='w-dvw my-10'>
 
@@ -106,7 +111,7 @@ const NewsList = () => {
 
             </div>
 
-            <div className='flex flex-col gap-8'>
+            <Card classNames={{base: 'shadow-none'}} className='bg-transparent flex flex-col gap-8'>
 
               {window.innerWidth < 1058 &&
               
@@ -127,6 +132,7 @@ const NewsList = () => {
                   currentDissLikeCount={item.currentDissLikeCount}
                   keyword={item.keyword}
                   addUserProfileImage={item.addUserProfileImage}
+                  isLoaded={isLoaded}
                 />
 
               })}
@@ -150,11 +156,12 @@ const NewsList = () => {
                   currentDissLikeCount={item.currentDissLikeCount}
                   keyword={item.keyword}
                   addUserProfileImage={item.addUserProfileImage}
+                  isLoaded={isLoaded}
                 />
 
               })}
 
-            </div>
+            </Card>
 
             <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
               <Pagination className='min-w-80 w-fit z-0' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={pages} initialPage={1} />

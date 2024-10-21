@@ -7,7 +7,7 @@ import { Outlet } from 'react-router'
 import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
 import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
 
-const PanelLayout = () => {
+const PanelLayout = ({ darkMode, setDarkMode }) => {
 
   const [editImage, setEditImage] = useState(false)
   const [editImag, setEditImag] = useState(1)
@@ -43,7 +43,7 @@ const PanelLayout = () => {
             
         <div className='flex flex-col items-end h-fit gap-2 relative md:w-full lg:w-[70%] ' style={{maxWidth: '1196px'}}>
 
-            <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
+            <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
             <Outlet />

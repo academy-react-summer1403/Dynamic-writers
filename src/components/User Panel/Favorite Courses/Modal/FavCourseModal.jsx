@@ -108,8 +108,8 @@ const FavCourseModal = ({
                 <div className='w-full h-fit flex justify-between items-center'>
                     <Button className='bg-blue-500 text-white rounded-full'> <Link to={`/CourseDetail/${courseId}`}> صفحه دوره  </Link> </Button>
                     <div className='flex gap-2 items-center h-full w-fit'>
-                        <button className='border-2 flex justify-center items-center bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsDownIcon onClick={Dislike} className='size-6' /> </button>
-                        <button className='border-2 flex justify-center items-center bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsUpIcon onClick={Like} className='size-6' /> </button>
+                        <button className='border-2 flex justify-center items-center dark:bg-slate-600 dark:text-white dark:border-none bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsDownIcon onClick={Dislike} className='size-6' /> </button>
+                        <button className='border-2 flex justify-center items-center dark:bg-slate-600 dark:text-white dark:border-none bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsUpIcon onClick={Like} className='size-6' /> </button>
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>
@@ -121,7 +121,7 @@ const FavCourseModal = ({
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
                     <h2 className='text-base text-[#787878]'> توضیح مختصر </h2>
-                    <span className='text-[16px] text-[#272727] h-[46px] overflow-hidden' dir='rtl'> {course.describe} </span>
+                    <span className='text-[16px] text-[#272727] h-[46px] overflow-hidden dark:text-white' dir='rtl'> {course.describe} </span>
                 </div>
                 <div className='my-2'>
                     <div className='flex gap-2'>

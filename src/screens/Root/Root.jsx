@@ -1,10 +1,10 @@
 import React from 'react'
 import RootCom from '../../components/Root/RootCom'
 
-const Root = () => {
+const Root = ({ darkMode, setDarkMode }) => {
   return (
     <>
-      <RootCom />
+      <RootCom darkMode={darkMode} setDarkMode={setDarkMode} />
     </>
   )
 }

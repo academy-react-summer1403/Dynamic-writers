@@ -4,7 +4,7 @@ import LeftRegister from './LeftRegister'
 
 const RegisterForm = () => {
   return (
-    <div className='flex'>
+    <div className='flex h-full w-full'>
       <LeftRegister />
       <RightRegister />
     </div>

@@ -8,20 +8,7 @@ import { Button, User } from '@nextui-org/react'
 import HamberMenu from './HamberMenu'
 import { getItem, setItem } from '../storage'
 
-const Header = () => {
-    const [darkMode, setDarkMode] = useState(() => {
-      getItem('darkMode') === true
-    })
-
-    useEffect(() => {
-      if(darkMode) {
-        document.documentElement.classList.add('dark')
-        setItem('darkMode', true)
-      } else {
-        document.documentElement.classList.remove('dark')
-        setItem('darkMode', true)
-      }
-    }, [darkMode])
+const Header = ({ darkMode, setDarkMode }) => {
 
     const navigate = useNavigate()
 
@@ -35,9 +22,9 @@ const Header = () => {
   return (
     <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-between items-center md:justify-between px-3 md:px-14 font-semibold'>
       {hamberMenu === true && <HamberMenu closeHamber={closeHamber}/>}
-      <div className='flex gap-3 h-6 w-13'>
+      <div className='flex gap-3 h-6 w-13' onClick={() => navigate('/')}>
         <img src={Bahr2} className='w-full h-full hidden md:inline' />
-        <img src={Bahr} className='size-6 inline' />
+        <img src={Bahr} className='size-6 inline' onClick={() => navigate('/')} />
       </div>
 
       <div className='items-center gap-14 flex-row-reverse hidden md:flex'>

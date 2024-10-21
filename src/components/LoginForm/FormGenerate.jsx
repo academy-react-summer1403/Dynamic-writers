@@ -18,14 +18,14 @@ const FormGenerate = () => {
     <>
       <h2 className='mb-2 font-bold'> شماره یا ایمیل </h2>
       <div className='w-full'>
-        <Field name="phoneOrGmail" type="phone" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+        <Field name="phoneOrGmail" type="phone" className='min-w-80 w-full dark:bg-slate-600 dark:border-none p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
         focus:border-2 font-semibold relative pr-12' placeholder="شماره همراه یا ایمیل خود را وارد کنید" /> 
         <MailOpen01Icon className='absolute right-3 top-10 text-gray-500 focus:hidden' />
       </div>
 
       <h2 className='mb-2 mt-5 font-bold'> رمز عبور </h2>
       <div className='w-full relative flex'>
-        <Field name="password" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+        <Field name="password" className='min-w-80 w-full p-3 rounded-md dark:bg-slate-600 dark:border-none bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
         focus:border-2 font-semibold relative pr-12' placeholder="رمزعبور خود را وارد کنید"
                 type={isVisible ? "password" : "text"} />
 
@@ -48,7 +48,7 @@ const FormGenerate = () => {
         </div>
 
 
-        <Button color="primary" onClick={() => navigate('/forgetPassword')} className='bg-blue-100 text-blue-400 rounded-full font-semibold h-7 min-w-40'>
+        <Button color="primary" onClick={() => navigate('/forgetPassword')} className='bg-blue-100 dark:bg-blue-200 dark:border-none text-blue-400 rounded-full font-semibold h-7 min-w-40'>
         <SecurityCheckIcon /> فراموشی رمز عبور 
         </Button>
 

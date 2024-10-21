@@ -38,7 +38,7 @@ const TableDashboard = () => {
   return (
     <div>
 
-    <Table className="hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'shadow-none'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> نام دوره </TableColumn>
         <TableColumn> درباره دوره </TableColumn>

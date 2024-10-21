@@ -4,7 +4,7 @@ import CoursesView1 from './CoursesView1'
 import { getCourseList } from '../../../core/services/api/cours'
 import jMoment from 'moment-jalaali'
 import { getItem, setItem } from '../../../core/services/common/storage'
-import { Button, Pagination } from '@nextui-org/react'
+import { Button, Card, Pagination, Skeleton } from '@nextui-org/react'
 import FilterCourse from '../FilterCourse/FilterCourse'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -71,7 +71,9 @@ const CourseView1 = () => {
 
     setTotalCount(parseInt(response.totalCount / rowsPage));
     setCourses(response.courseFilterDtos)
-
+    if(courses.length > 0) {
+      setIsLoaded(true)
+    }
   }
 
   const updateParams = (key, value) => {
@@ -107,6 +109,8 @@ const CourseView1 = () => {
   const changeView = (viewO) => {
     setView(viewO)
   }
+
+  const [isLoaded, setIsLoaded] = useState(false);
   
 
   return (
@@ -134,7 +138,7 @@ const CourseView1 = () => {
             getCourses={getCourses}
           />
 
-          <div className='md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
+          <Card classNames={{base: 'bg-transparent shadow-none'}} className='bg-transparent md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
 
             {view === 'view1' && courses.map((item,index) => {
             
@@ -153,6 +157,7 @@ const CourseView1 = () => {
                 tumbImageAddress={item.tumbImageAddress}
                 cost={(parseInt(item.cost).toLocaleString('en-US'))}
                 statusName={item.statusName}
+                isLoaded={isLoaded}
               />
               
             })}
@@ -174,6 +179,7 @@ const CourseView1 = () => {
               tumbImageAddress={item.tumbImageAddress}
               cost={(parseInt(item.cost).toLocaleString('en-US'))}
               statusName={item.statusName}
+              isLoaded={isLoaded}
             />
             
           })}
@@ -199,7 +205,7 @@ const CourseView1 = () => {
 
           })}
 
-          </div>
+          </Card>
 
         </div>
 

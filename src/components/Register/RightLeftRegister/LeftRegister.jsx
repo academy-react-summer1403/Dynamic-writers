@@ -61,7 +61,7 @@ const LeftRegister = () => {
   }
 
   return (
-    <div className='grow-8 bg-white flex flex-col justify-start items-center my-7'>
+    <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6 min-w-96'>
             <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
@@ -82,7 +82,7 @@ const LeftRegister = () => {
                 <h2 className='mb-2 font-bold'> شماره همراه </h2>
                 <div className='w-full'>
                     <Field name="phoneNumber" onChange={(e) => handleChange(e)} value={phone} type="phone" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
-                    focus:border-2 font-semibold pr-12 relative' placeholder=" شماره همراه یا ایمیل خود را وارد کنید" />
+                    focus:border-2 dark:bg-slate-600 dark:border-none font-semibold pr-12 relative' placeholder=" شماره همراه یا ایمیل خود را وارد کنید" />
                     <SmartPhone01Icon className='absolute right-3 top-14 text-gray-500 focus:hidden' />
                 </div>
 
@@ -93,7 +93,7 @@ const LeftRegister = () => {
                 <ToastContainer />
                 
                 <div className='w-full flex justify-center min-w-80'> 
-                    <span> حساب کاربری دارید؟ <Link to='/register' className='underline iranSansBold text-black cursor-pointer' onClick={() => navigate('/login')}> ورود به حساب کاربری </Link> </span>
+                    <span> حساب کاربری دارید؟ <Link to='/register' className='underline iranSansBold text-black cursor-pointer dark:text-white' onClick={() => navigate('/login')}> ورود به حساب کاربری </Link> </span>
                 </div>
 
             </Form>

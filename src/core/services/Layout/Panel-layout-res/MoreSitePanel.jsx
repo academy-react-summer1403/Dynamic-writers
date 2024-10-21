@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const MoreSitePanel = () => {
   return (
-    <div className='flex shadow-2xl flex-col gap-6 p-4 bg-white rounded-2xl absolute bottom-20 left-0' dir='rtl' style={{width: '221px', height: '248px'}}>
+    <div className='flex shadow-2xl flex-col gap-6 p-4 dark:bg-slate-600 dark:text-white bg-white rounded-2xl absolute bottom-20 left-0' dir='rtl' style={{width: '221px', height: '248px'}}>
       <Link to='/layoutPanel/favCourse' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> علاقه‌مندی دوره <BookBookmark01Icon /> </Link>
       <Link to='/layoutPanel/favNews' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> علاقه‌مندی مقاله <FileBookmarkIcon /> </Link>
       <Link to='' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> پرداخت ها <Money02Icon /> </Link>
