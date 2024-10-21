@@ -19,9 +19,13 @@ const AddAddress = () => {
     shadowSize: [41, 41]
   });
 
-  const [position, setPosition] = useState([profile.latitude, profile.longitude]);
-  const [address, setAddress] = useState(`Lat:${profile.latitude},Lng:${profile.longitude}`); 
-  const [popupVisible, setPopupVisible] = useState(false); 
+  const hasCoordinates = profile.latitude !== null && profile.longitude !== null;
+
+  const initialPosition = hasCoordinates ? [profile.latitude, profile.longitude] : [32.0, 53.0];
+  const [position, setPosition] = useState(initialPosition);
+  
+  const [address, setAddress] = useState(hasCoordinates ? `Lat:${profile.latitude},Lng:${profile.longitude}` : '');
+  const [popupVisible, setPopupVisible] = useState(false);   
 
   const updateMarkerPosition =async (event) => {
     const { lat, lng } = event.latlng; 
@@ -51,7 +55,7 @@ const AddAddress = () => {
       <span className='text-[16px] font-[500] text-[#3772FF]'>
         داخل نقشه موقعیت مکانی محل سکونت خود را انتخاب کنید
       </span>
-      <div className='w-[1016px] h-[500px] rounded-[16px] bg-slate-500 overflow-hidden'>
+      <div className='md:w-[90%] md:h-[500px] w-[90%] max-w-[1016px] relative z-10 lg:w-[90%] rounded-[16px] bg-slate-500 overflow-hidden'>
         <MapContainer 
           center={position} 
           zoom={20} 

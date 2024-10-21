@@ -11,10 +11,14 @@ const SitePanel = () => {
   const navigate = useNavigate()
 
   return (
+<<<<<<< HEAD
+    <div className='bg-white rounded-2xl lg:flex flex-col py-7 px-6 justify-between hidden'>
+=======
     <div className='dark:bg-slate-700 dark:text-white bg-white rounded-2xl md:flex flex-col py-7 px-6 justify-between hidden'>
+>>>>>>> 237a49f5cfdfadee0edc01115d7540ed0ac1d852
       <div className='flex flex-col gap-12'>
         <div onClick={() => navigate('/')} className='flex flex-row-reverse justify-between gap-3 items-center'>
-          <img src={Bahr} className='size-10' />
+          <img src={Bahr} className='size-10 ' />
           <img src={Bahr2} className='h-8 w-48' />
         </div>
 

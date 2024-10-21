@@ -22,7 +22,7 @@ const PanelScreen = () => {
     return <Loading/>
   }
   return (
-    <div>
+    <div className='w-full pt-[10px]' >
         <Panel profile={profile} setRerender={setRerender}/>
     </div>
   )
