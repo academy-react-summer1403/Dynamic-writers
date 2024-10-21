@@ -1,12 +1,14 @@
+import { Skeleton } from '@nextui-org/react'
 import { Calendar02Icon, CircleIcon, StudentIcon, TeacherIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount, cost, teacherName, date, currentUserRateNumber, typeName, tumbImageAddress, statusName}) => {
+const CoursesView1 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, likeCount, cost, teacherName, date, currentUserRateNumber, typeName, tumbImageAddress, statusName}) => {
 
   const navigate = useNavigate()
   
   return (
+    <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
     <div onClick={() => navigate('/CourseDetail/' + id)} className='rounded-2xl bg-gray-200 dark:bg-slate-900 dark:text-white dark:border-none iranSans flex flex-col justify-between font-semibold' style={{height: '512px', width: '315px'}}>
         <div className='relative w-full rounded-xl h-56 bg-red-300 border-none'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
@@ -34,6 +36,7 @@ const CoursesView1 = ({levelName, id, title, describe, dissLikeCount, likeCount,
             <div className='text-blue-500 flex flex-row gap-1 items-end my-4 text-sm'> تومان  <span className='text-xl dark:text-white font-semibold text-black'> {cost} </span> </div>
         </div>
     </div>
+    </Skeleton>
   )
 }
 

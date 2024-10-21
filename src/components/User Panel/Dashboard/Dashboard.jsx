@@ -93,7 +93,7 @@ const Dashboard = () => {
           </div>
 
           <div className='flex items-center justify-center size-32 mx-auto'>
-            <CircularProgressbar value={(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"} text={`${(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"}%`} styles={buildStyles({
+            <CircularProgressbar value={(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"} text={`${(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"}%`} className={buildStyles({
               textColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
               textSize: '25px',
               display: 'flex',
@@ -101,13 +101,13 @@ const Dashboard = () => {
               trailColor: 'transparent'
             })} />
           </div>
-          <span className={`${profileInfo.profileCompletionPercentage >= 60 ? 'text-blue-500' : 'text-red-500'} text-sm text-center font-semibold`}> {profileInfo.profileCompletionPercentage === 100 ? ' اطلاعات حساب‌کابری شما تکمیل است' : ` ${100 - profileInfo.profileCompletionPercentage}% از کامل کردن اطلاعات شما مانده است` } </span>
+          <span className={`${profileInfo.profileCompletionPercentage >= 60 ? 'text-blue-500 dark:text-blue-400' : 'text-red-500'} text-sm text-center font-semibold`}> {profileInfo.profileCompletionPercentage === 100 ? ' اطلاعات حساب‌کابری شما تکمیل است' : ` ${100 - profileInfo.profileCompletionPercentage}% از کامل کردن اطلاعات شما مانده است` } </span>
         </div>
       
       </div>
 
-      <div className='bg-white dark:bg-slate-700 dark:text-white w-full rounded-2xl flex flex-col gap-4 py-3 px-4 h-471' dir='rtl'>
-        <div className='w-full h-fit flex justify-between'>
+      <div className='bg-white dark:bg-slate-700 dark:text-white w-full rounded-2xl flex flex-col gap-4 h-471' dir='rtl'>
+        <div className='w-full h-fit flex justify-between px-4 pt-3'>
           <h2 className='text-base font-bold'> جدیدترین دوره ها </h2>
           <Link to='/allNewCourses' className='flex text-blue-500 items-center font-semibold text-sm'> <span> مشاهده همه </span> <ArrowLeft01Icon className='size-4' /> </Link>
         </div>

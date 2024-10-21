@@ -1,13 +1,14 @@
 import React from 'react'
-import { Button } from '@nextui-org/react'
+import { Button, Skeleton } from '@nextui-org/react'
 import { Calendar02Icon, EyeIcon, QuillWrite01Icon, QuillWrite02Icon, StudentIcon, TeacherIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import { useNavigate } from 'react-router-dom'
 
-const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, addUserFullName, currentView, newsCatregoryName, id, currentImageAddressTumb}) => {
+const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLikeCount, addUserFullName, currentView, newsCatregoryName, id, currentImageAddressTumb}) => {
 
   const navigate = useNavigate()
 
   return (
+    <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
     <div className='rounded-2xl min-w-[315px] max-w-[315px] dark:bg-slate-900 dark:text-white bg-gray-200 relative h-fit flex flex-col justify-between' style={{height: '547px'}}>
         <img src={currentImageAddressTumb} className='w-full border rounded-xl h-[225px] bg-red-300' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
@@ -27,6 +28,7 @@ const NewsTop = ({ title, miniDescribe, currentLikeCount, currentDissLikeCount, 
             <div className='flex gap-2'> {currentLikeCount} <ThumbsUpIcon /> </div>
         </div>
     </div>
+    </Skeleton>
   )
 }
 

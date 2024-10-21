@@ -58,7 +58,7 @@ const InformationUser = () => {
       field2:yup.string().required('این فیلد اجباریست'),
       field3:yup.string().required('این فیلد اجباریست').min(11, "تعداد کارکتر های درباره ی من باید از 10 بیشتر باشد"),
       field4:yup.string().required('این فیلد اجباریست').matches(phoneRegex,"شماره تلفن معتبر نیست"),
-      field5:yup.string().required('این فیلد اجباریست').matches(nationalIdRegex,'کد ملی ممعتبر نیست').length(10, "تعداد کاراکتر های کد ملی باید 10 رقم باشد"),
+      field5:yup.string().required('این فیلد اجباریست').length(10, "تعداد کاراکتر های کد ملی باید 10 رقم باشد"),
       field7:yup.string().required('این فیلد اجباریست').email(),
       field8:yup.string().required('این فیلد اجباریست').min(11," تعداد کارکتر های آدرس محل سکونت باید از 10 بیشتر باشد")
     }
