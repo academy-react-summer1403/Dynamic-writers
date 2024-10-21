@@ -28,7 +28,7 @@ import Panel from '../screens/Panel/PanelScreen';
 import InformationUser from '../components/Panel/InformationUser'
 import AddProfileImage from '../components/Panel/AddProfileImage'
 import AddAddress from '../components/Panel/AddAddress'
-import Likes from '../components/Panel/Linkes'
+import Linkes from '../components/Panel/Linkes'
 import Error401 from '../screens/Error/401/Error401';
 import Error400 from '../screens/Error/400/Error400';
 import Error403 from '../screens/Error/403/Error403';
@@ -130,7 +130,7 @@ function App() {
             },
             {
               path:"Linkes",
-              element:<Likes/>
+              element:<Linkes/>
             }
           ]
         },

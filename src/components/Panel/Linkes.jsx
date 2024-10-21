@@ -27,7 +27,7 @@ const Likes = () => {
   return (
     <div  className='flex flex-col h-[500px] p-[40px] w-[100%] items-end'>
       <Formik initialValues={InitialValue} onSubmit={onSubmit} enableReinitialize={true} validationSchema={validation}>
-        <Form className='flex flex-col h-[50%] px-5 gap-8 pt-[100px] items-end justify-center w-[50%]'>
+        <Form className='flex flex-col h-[50%] md:px-5  gap-8 pt-[100px] items-end justify-center md:w-[50%] w-[90%] lg:w-[90%]'>
           <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[100%] relative'>
             <span className='font-[700] text-[16px]'>تلگرام</span>
             <Field className='bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-12 w-[100%] h-[48px]' placeholder="لینک تلگرام خود را وارد کنید" name="telegram"/>

@@ -41,7 +41,7 @@ const PanelLayout = () => {
 
         <SitePanel />
             
-        <div className='flex flex-col items-end h-fit gap-2 relative w-full' style={{maxWidth: '1196px'}}>
+        <div className='flex flex-col items-end h-fit gap-2 relative md:w-full lg:w-[70%] ' style={{maxWidth: '1196px'}}>
 
             <HeaderPanel profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
