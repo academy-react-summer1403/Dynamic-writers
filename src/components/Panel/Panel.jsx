@@ -47,7 +47,7 @@ const Panel = ({profile,setRerender}) => {
             </div>
         </div>
         <div className='w-[100%] gap-4 h-12 flex flex-row-reverse justify-start pr-16'>
-            <NavLink to="/layoutPanel/profile/profileInfo" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
+            <NavLink to="/layoutPanel/profile" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
             <NavLink to="/layoutPanel/profile/AddProfileImage" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF] ":"border-0 text-[#787878] "}whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>عکس پروفایل</NavLink>
             <NavLink to="/layoutPanel/profile/AddAddress" end className={({isActive})=> `${isActive ?  "border-b-5  border-[#3772FF]":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>آدرس سکونت</NavLink>
             <NavLink to="/layoutPanel/profile/Linkes" end className={({isActive})=> `${isActive ?  "border-b-5 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
