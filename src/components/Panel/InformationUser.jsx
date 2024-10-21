@@ -115,21 +115,13 @@ const InformationUser = () => {
                   <span className='font-[700] text-[16px]'>جنسیت</span>
                   <div className='flex flex-row-reverse gap-10'>
                     
-<<<<<<< HEAD
                     <div className='flex flex-row items-center gap-3'>
-                      <Field  type="radio" name="selectedOption" value="false" className="cursor-pointer"/>
-                      <span className='font-[700] text-[18px]'>مرد</span>
-                    </div>
-                    <div className='flex flex-row items-center gap-3'>
-                      <Field type="radio" name="selectedOption" value="true" className="cursor-pointer"/>
-=======
-                    <div className='flex flex-row gap-3'>
                       <Field  type="radio" name="selectedOption" value="false" className="dark:bg-slate-900 cursor-pointer"/>
                       <span className='font-[700] text-[18px]'>مرد</span>
                     </div>
-                    <div className='flex flex-row gap-3'>
+                    <div className='flex flex-row items-center gap-3'>
                       <Field type="radio" name="selectedOption" value="true" className="dark:bg-slate-900 cursor-pointer"/>
->>>>>>> 237a49f5cfdfadee0edc01115d7540ed0ac1d852
+                   
                       <span className='font-[700] text-[18px]'>زن</span>
                     </div>
                     <span className='text-[14px] font-[500] text-[#3772FF] whitespace-nowrap'>انتخاب کنید</span>
@@ -151,28 +143,17 @@ const InformationUser = () => {
               </Form>
 
             </Formik>
-<<<<<<< HEAD
         <div className=' h-[300px] w-[100%] flex justify-center md:pr-16 pr-10 md:h-[500px] lg:pr-0  md:p-0 md:w-[50%]'>
-        <div className='flex flex-col justify-center gap-10 items-center h-[287px] w-[100%] relative rounded-[16px] md:w-[259px] md:border-[1px] md:border-[#E4E4E4]'>
+        <div className='flex flex-col justify-center gap-10 items-center h-[287px] w-[100%] relative dark:border-gray-500 rounded-[16px] md:w-[259px] md:border-[1px] md:border-[#E4E4E4]'>
             <span className='absolute top-3 right-3 font-[700] whitespace-nowrap'>وضعیت اطلاعات حساب</span>
-=======
-        <div className=' h-[500px] w-[50%] flex justify-center'>
-          <div className='flex flex-col justify-center gap-10 items-center border-[1px] dark:border-gray-500 rounded-[16px] h-[287px] w-[259px] relative'>
-            <span className='absolute top-3 right-3 font-[700]'>وضعیت اطلاعات حساب</span>
->>>>>>> 237a49f5cfdfadee0edc01115d7540ed0ac1d852
             <div className='w-[140px] h-[140px] mt-10'>
               <CircularProgressbar
                 value={profile.profileCompletionPercentage}
                 text={`${profile.profileCompletionPercentage}%`}
                 strokeWidth={5}
-                styles={buildStyles({textColor:`${profile.profileCompletionPercentage >= 80 ? "#57b4f3":"#FFC619"}`,textSize:"30px",pathColor:`${profile.profileCompletionPercentage >= 80 ? "#467ccd":"#FFC619"}`,trailColor:"#f0f0f0",TextAlignment:"Center" })}
-              />
+                styles={buildStyles({textColor:`${profile.profileCompletionPercentage >= 80 ? "#57b4f3":"#FFC619"}`,textSize:"30px",pathColor:`${profile.profileCompletionPercentage >= 80 ? "#467ccd":"#FFC619"}`,trailColor:"#f0f0f0",TextAlignment:"Center" })}/>
             </div>
-<<<<<<< HEAD
-            <span className={`${profile.profileCompletionPercentage==100 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px] whitespace-nowrap`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
-=======
-            <span className={`${profile.profileCompletionPercentage >= 80 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px]`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
->>>>>>> 237a49f5cfdfadee0edc01115d7540ed0ac1d852
+            <span className={`${profile.profileCompletionPercentage >= 80 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px] whitespace-nowrap`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
           </div>
         </div>
         <ToastContainer/>
