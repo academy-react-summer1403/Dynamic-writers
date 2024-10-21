@@ -116,7 +116,7 @@ function App() {
           element:<PanelScreen/>,
           children:[
             {
-              path:"profileInfo",
+              path:"",
               element:<InformationUser/>,
               index:true
             },
