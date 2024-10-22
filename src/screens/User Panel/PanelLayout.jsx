@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from 'react'
 import HeaderPanel from '../../core/services/Layout/Panel-layout/HeaderPanel'
 import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
 import { Outlet } from 'react-router'
 import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
 import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
+import { setItem } from '../../core/services/common/storage'
 
 const PanelLayout = ({ darkMode, setDarkMode }) => {
+
+  const location = useLocation()
+
+  useEffect(() => {
+
+    if(darkMode) {
+      document.documentElement.classList.add('dark')
+      setItem('darkMode', true)
+    } else {
+      document.documentElement.classList.remove('dark')
+      setItem('darkMode', false)
+    }
+  }, [location])
 
   const [editImage, setEditImage] = useState(false)
   const [editImag, setEditImag] = useState(1)

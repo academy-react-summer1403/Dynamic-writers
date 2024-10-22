@@ -24,13 +24,13 @@ const FormGenerate = () => {
       </div>
 
       <h2 className='mb-2 mt-5 font-bold'> رمز عبور </h2>
-      <div className='w-full relative flex'>
+      <div className='min-w-80 relative flex'>
         <Field name="password" className='min-w-80 w-full p-3 rounded-md dark:bg-slate-600 dark:border-none bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
         focus:border-2 font-semibold relative pr-12' placeholder="رمزعبور خود را وارد کنید"
-                type={isVisible ? "password" : "text"} />
+                type={isVisible ? "text" : "password"} />
 
 
-        <button className="focus:outline-none w-0 translate-x-10" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
+        <button className="focus:outline-none absolute top-2 left-3" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
           {isVisible ? (
             <EyeIcon className="text-2xl text-default-400 pointer-events-none" />
           ) : (

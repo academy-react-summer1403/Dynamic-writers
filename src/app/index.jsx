@@ -7,7 +7,7 @@ import RegisterStep3 from '../screens/Register/RegisterStep3';
 import ForgetPassword from '../screens/ResetPassword/ForgetPassword';
 import ResetPassword from '../screens/ResetPassword/ResetPassword';
 import NotFoundPage from '../screens/NotFoundPage';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useLocation, useSearchParams } from 'react-router-dom';
 import Root from '../screens/Root/Root';
 import Landing from '../screens/Landing/Landing';
 import { NewDetail } from '../screens/NewsDetail/NewDetail';
@@ -43,17 +43,17 @@ function App() {
   const [darkMode, setDarkMode] = useState(() => {
     getItem('darkMode') === true
   })
-
+  
   useEffect(() => {
     if(darkMode) {
       document.documentElement.classList.add('dark')
       setItem('darkMode', true)
     } else {
       document.documentElement.classList.remove('dark')
-      setItem('darkMode', true)
+      setItem('darkMode', false)
     }
   }, [darkMode])
-
+  
 
   const router = createBrowserRouter([
     {
@@ -196,6 +196,7 @@ function App() {
     },
 
   ])
+
 
   return <NextUIProvider>
             <RouterProvider router={router}/>
