@@ -47,12 +47,12 @@ const Panel = ({profile,setRerender}) => {
             </div>
         </div>
 
-        <div className='w-full border overflow-auto md:overflow-hidden' dir='rtl'>  
+        <div className='w-full overflow-auto md:overflow-hidden' dir='rtl'>  
             <div className='w-full gap-4 h-12 flex justify-start pr-10 scrollbar-hide md:pr-[60px]'>
-                <NavLink to="/layoutPanel/profile" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5 border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
-                <NavLink to="/layoutPanel/profile/AddProfileImage" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5  border-[#3772FF] ":"border-0 text-[#787878] "}whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>عکس پروفایل</NavLink>
-                <NavLink to="/layoutPanel/profile/AddAddress" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5  border-[#3772FF]":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>آدرس سکونت</NavLink>
-                <NavLink to="/layoutPanel/profile/Linkes" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
+                <NavLink to="/layoutPanel/profile" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5 md:border-t-0 border-b-0  border-[#3772FF] ":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px] p-1`}>اطلاعات شخصی</NavLink>
+                <NavLink to="/layoutPanel/profile/AddProfileImage" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5 md:border-t-0 border-b-0  border-[#3772FF] ":"border-0 text-[#787878] "}whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>عکس پروفایل</NavLink>
+                <NavLink to="/layoutPanel/profile/AddAddress" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5 md:border-t-0 border-b-0  border-[#3772FF]":"border-0 text-[#787878]"} whitespace-nowrap h-full border-solid  text-center font-[700] text-[20px]  p-1`}>آدرس سکونت</NavLink>
+                <NavLink to="/layoutPanel/profile/Linkes" end className={({isActive})=> `${isActive ?  "border-t-5 md:border-b-5 md:border-t-0 border-b-0 border-[#3772FF]":"border-0 text-[#787878] "} whitespace-nowrap h-full border-solid text-center font-[700] text-[20px]  p-1`}>لینک ها</NavLink>
             </div>
         </div>
         <div className='border-t-1 dark:border-gray-500'>

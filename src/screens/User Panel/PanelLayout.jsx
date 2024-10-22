@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import HeaderPanel from '../../core/services/Layout/Panel-layout/HeaderPanel'
 import SitePanel from '../../core/services/Layout/Panel-layout/SitePanel'
 import EditImage from '../../core/services/Layout/Panel-layout/EditImage'
-import { getProfileInfo } from '../../core/services/api/Panel/GetProfile/getProfileInfo'
 import { Outlet } from 'react-router'
 import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelRes'
 import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
-import Loading from '../../core/services/common/Loading/loading'
 
 const PanelLayout = ({ darkMode, setDarkMode }) => {
 
@@ -14,8 +12,8 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
   const [editImag, setEditImag] = useState(1)
 
   const [profileInfo, setProfileInfo] = useState([])
-  const[loading,setLoading]=useState(false)
-  const [Rerender,setRerender]=useState(false)
+  const[loading,setLoading] = useState(true)
+  const [Rerender,setRerender] = useState(false)
 
   const editingImage = () => {
     if(editImag === 1){
@@ -32,7 +30,9 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
     const Prof=await GetProfileInfo()
     
     setProfileInfo(Prof)
-    // setLoading(true)
+    if(profileInfo !== null){
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
             <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
 
-            <Outlet loadingR={loading} />
+            <Outlet context={[loading]} />
 
 
         </div>

@@ -10,13 +10,19 @@ const MyReserveCom = () => {
 
     const [myCourse, setMyCourse] = useState([])
     const [searchCourse, setSearchCourse] = useState('')
-    const [filteredData, setFilteredData] = useState([])    
+    const [filteredData, setFilteredData] = useState([])  
+    
+    const [isLoading, setIsLoading] = useState(true)
 
     const getReserve = async () => {
   
         const response = await getMyReserves()
         setMyCourse(response)
         setFilteredData(response)
+
+        if(response) {
+          setIsLoading(false)
+        }
       }
 
       useEffect(() => {
@@ -29,6 +35,12 @@ const MyReserveCom = () => {
         )
         setFilteredData(results)
       }, [searchCourse])
+
+      useEffect(() => {
+        if(myCourse.length > 0) {
+          setIsLoading(false)
+        }
+      }, [myCourse])
 
   return (
     <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
@@ -57,6 +69,7 @@ const MyReserveCom = () => {
       </div>
       <MyReserveTable
         myCourse={filteredData}
+        isLoading={isLoading}
       />
     </div>
   )

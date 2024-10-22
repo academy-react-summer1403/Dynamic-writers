@@ -10,13 +10,13 @@ import React, { useEffect, useState } from 'react'
 import jMoment from 'moment-jalaali'
 import { Cancel01Icon, ViewIcon } from "hugeicons-react";
 import { NavLink, useNavigate, } from "react-router-dom";
-import { Pagination, useDisclosure } from "@nextui-org/react";
+import { Pagination, Spinner, useDisclosure } from "@nextui-org/react";
 import { deleteFavNews } from "../../../../core/services/api/Panel/FavNews/deleteFavNews";
 import { toast } from "react-toastify";
 import FavNewsModal from "../Modal/FavNewsModal";
 import DeleteFavoriteNews from "../../../../core/services/api/News/DeleteFavoriteNews";
 
-const FavNewsTable = ({ myNews }) => {
+const FavNewsTable = ({ myNews, isLoading }) => {
 
   const navigate = useNavigate()
   
@@ -55,7 +55,7 @@ const FavNewsTable = ({ myNews }) => {
         navigate('/layoutPanel/favNews')
       }, 100)
 
-      navigate('/')
+      navigate('/layoutPanel')
     }
     else {
       NotifyError(' عملیات ناموفق بود ')
@@ -69,7 +69,7 @@ const FavNewsTable = ({ myNews }) => {
 
   return (
     <div>
-    <Table className="hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
         <TableColumn> عنوان </TableColumn>
@@ -78,7 +78,7 @@ const FavNewsTable = ({ myNews }) => {
         <TableColumn> تاریخ انتشار </TableColumn>
         <TableColumn> </TableColumn>
       </TableHeader>
-      <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
+      <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"دوره ای برای نمایش وجود ندارد."}>
 
         {paginationData.map((item, index) => {
           return <TableRow key={index} className="h-10">
@@ -106,12 +106,12 @@ const FavNewsTable = ({ myNews }) => {
       
       </TableBody>
     </Table>
-    <Table className="w-full md:hidden block" hideHeader>
+    <Table isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} classNames={{wrapper: 'dark:bg-slate-700'}} className="w-full md:hidden block" hideHeader>
       <TableHeader>
         <TableColumn>IMG</TableColumn>
         <TableColumn>INFO</TableColumn>
       </TableHeader>
-        <TableBody className="">
+        <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"دوره ای برای نمایش وجود ندارد."} className="">
             {paginationData.map((item, index) => {
                 return <TableRow className="border-t-1" key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src={item.currentImageAddressTumb} /> </TableCell>

@@ -11,11 +11,17 @@ const FavNewsCom = () => {
   const [searchCourse, setSearchCourse] = useState('')
   const [filteredData, setFilteredData] = useState([])    
 
+  const [isLoading, setIsLoading] = useState(true)
+
   const getCourse = async () => {
 
       const response = await getFavNews()
       setMyNews(response.myFavoriteNews)
       setFilteredData(response.myFavoriteNews)
+
+      if(response.myFavoriteNews) {
+        setIsLoading(false)
+      }
     }
 
     useEffect(() => {
@@ -28,6 +34,12 @@ const FavNewsCom = () => {
       )
       setFilteredData(results)
     }, [searchCourse])
+
+    useEffect(() => {
+      if(myNews.length > 0) {
+        setIsLoading(false)
+      }
+    }, [myNews])
 
   
   return (
@@ -57,6 +69,7 @@ const FavNewsCom = () => {
       </div>
       <FavNewsTable
         myNews={filteredData}
+        isLoading={isLoading}
       />
     </div>
   )

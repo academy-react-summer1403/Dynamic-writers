@@ -12,10 +12,10 @@ import {
   import { NavLink, } from "react-router-dom";
 import { getMyCourse } from "../../../core/services/api/Panel/MyCourse/getMyCourse";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
-import { useDisclosure } from "@nextui-org/react";
+import { Spinner, useDisclosure } from "@nextui-org/react";
 import MyCourseModal from "./MyCourseModal";
 
-const MyCourseTable = ({ myCourse }) => {
+const MyCourseTable = ({ myCourse, isLoading }) => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
     
@@ -46,7 +46,7 @@ const MyCourseTable = ({ myCourse }) => {
 
   return (
     <>
-    <Table className="hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
         <TableColumn> نام دوره </TableColumn>
@@ -57,7 +57,7 @@ const MyCourseTable = ({ myCourse }) => {
         <TableColumn> </TableColumn>
         <TableColumn> </TableColumn>
       </TableHeader>
-      <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
+      <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."} isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />}>
 
         {myCourses.map((item, index) => {
           return <TableRow key={index} className="h-10">
@@ -103,12 +103,12 @@ const MyCourseTable = ({ myCourse }) => {
       
       </TableBody>
     </Table>
-    <Table className="md:hidden block" hideHeader>
+    <Table isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} classNames={{wrapper: 'dark:bg-slate-700'}} className="md:hidden block" hideHeader>
       <TableHeader>
         <TableColumn>IMG</TableColumn>
         <TableColumn>INFO</TableColumn>
       </TableHeader>
-        <TableBody>
+        <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
             {myCourses.map((item, index) => {
                 return <TableRow onClick={() => handleOpenModal(item.courseId)} key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>

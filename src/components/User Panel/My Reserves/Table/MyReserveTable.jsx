@@ -10,10 +10,10 @@ import {
   import jMoment from 'moment-jalaali'
   import { MoneyAdd02Icon, ViewIcon } from "hugeicons-react";
   import { NavLink, } from "react-router-dom";
-import { Pagination, useDisclosure } from "@nextui-org/react";
+import { Pagination, Spinner, useDisclosure } from "@nextui-org/react";
 import MyReserveModal from "../Modal/MyReserveModal";
 
-const MyReserveTable = ({ myCourse }) => {
+const MyReserveTable = ({ myCourse, isLoading }) => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -38,7 +38,7 @@ const MyReserveTable = ({ myCourse }) => {
 
   return (
     <div>
-    <Table className="hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
         <TableColumn> نام دوره </TableColumn>
@@ -77,12 +77,12 @@ const MyReserveTable = ({ myCourse }) => {
       
       </TableBody>
     </Table>
-    <Table className="w-full md:hidden block" hideHeader>
+    <Table isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} classNames={{wrapper: 'dark:bg-slate-700'}} className="w-full md:hidden block" hideHeader>
       <TableHeader>
         <TableColumn>IMG</TableColumn>
         <TableColumn>INFO</TableColumn>
       </TableHeader>
-        <TableBody className="">
+        <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"دوره ای برای نمایش وجود ندارد."} className="">
             {paginationData.map((item, index) => {
                 return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-t-1" key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src='' /> </TableCell>

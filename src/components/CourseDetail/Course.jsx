@@ -9,6 +9,9 @@ import AllCourse from '../../core/services/api/Course/AllCourse'
 import CoursesView1 from '../Course/CourseView1/CoursesView1'
 import { AddReserve } from '../../core/services/api/Reserve/addReserve'
 import { toast, ToastContainer } from 'react-toastify'
+import { Card } from '@nextui-org/react'
+import jMoment from 'jalali-moment'
+
 const Course = () => {
   const [Course, setCourse] = useState([])
   const [allCourse, setAllCourse] = useState([])
@@ -20,6 +23,8 @@ const Course = () => {
 
     toast.error(message)
   }
+
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const {id}=useParams();
   const[loading,setLoading]=useState(false)
@@ -41,7 +46,6 @@ const Course = () => {
   }, [])
 
   const addReserve = async (id) => {
-    console.log(id)
     const params = {
       courseId : id
     }
@@ -53,6 +57,12 @@ const Course = () => {
       notifyError(' این کورس یکبار رزو شده و نمیتواند دوباره رزرو شود.')
     }
   }
+
+  useEffect(() => {
+    if(allCourse.length > 0) {
+      setIsLoaded(true)
+    }
+  }, [Course])
 
   useEffect(() => {
     if(Flag === true){
@@ -73,11 +83,11 @@ const Course = () => {
         </div>
         <div className='w-[100%]'>
           <div className='w-[95%] text-[48px] font-[800] text-right p-5'>دوره های دیگر</div>
-          <div className='w-[95%] p-6 flex flex-row items-center justify-end gap-5 flex-wrap'>
+          <Card classNames={{base: 'shadow-none'}} className='w-[95%] bg-transparent p-6 flex flex-row items-center justify-end gap-5 flex-wrap'>
           {allCourse.slice(0,4).map((value,index)=>{
-              return <CoursesView1 key={index} levelName={value.levelName} id={value.courseId} title={value.title} describe={value.describe} dissLikeCount={value.dissLikeCount} likeCount={value.likeCount} cost={value.cost} teacherName={value.teacherName} date={value.lastUpdate} currentRegistrants={value.currentRegistrants} technologyList={value.technologyList} tumbImageAddress={value.tumbImageAddress} statusName={value.statusName}/>
+              return <CoursesView1 key={index} isLoaded={isLoaded} levelName={value.levelName} id={value.courseId} title={value.title} describe={value.describe} dissLikeCount={value.dissLikeCount} likeCount={value.likeCount} cost={(value.cost).toLocaleString('en-US')} teacherName={value.teacherName} date={jMoment(value.lastUpdate).locale('fa').format('jD jMMMM jYYYY')} currentRegistrants={value.currentRegistrants} technologyList={value.technologyList} tumbImageAddress={value.tumbImageAddress} statusName={value.statusName}/>
           })}
-          </div>
+          </Card>
         </div>
         <ToastContainer />
     </Fragment>
