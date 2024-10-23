@@ -3,7 +3,7 @@ import SecurityCom from '../../components/User Panel/Secutiry/SecurityCom'
 
 const SecurityPanel = () => {
   return (
-    <div>
+    <div className='w-full h-full'>
       <SecurityCom />
     </div>
   )

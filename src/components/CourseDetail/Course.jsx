@@ -46,14 +46,11 @@ const Course = () => {
   }, [])
 
   const addReserve = async (id) => {
-    const params = {
-      courseId : id
-    }
-    const response = await AddReserve(params)
-    if(response.status === true){
+    const response = await AddReserve(id)
+    if(response.state === true){
       setIsFlag(true)
     }
-    else{
+    else if(response.status === 422){
       notifyError(' این کورس یکبار رزو شده و نمیتواند دوباره رزرو شود.')
     }
   }

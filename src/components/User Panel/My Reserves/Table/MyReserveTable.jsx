@@ -47,7 +47,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
         <TableColumn> وضعیت ثبت نام </TableColumn>
         <TableColumn> </TableColumn>
       </TableHeader>
-      <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
+      <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."} isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />}>
 
         {paginationData.map((item, index) => {
           return <TableRow key={index} className="h-10">

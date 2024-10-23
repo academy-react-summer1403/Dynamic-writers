@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik, Form } from 'formik';
 import FormGenerate from '../../FormGenerate';
 import { postLogin } from '../../../../core/services/api/auth';
@@ -9,6 +9,7 @@ import { setItem } from '../../../../core/services/common/storage';
 import { toast, ToastContainer } from 'react-toastify'
 import { Button } from '@nextui-org/react';
 import 'react-toastify/dist/ReactToastify.css';
+import { getSecurityInfo } from '../../../../core/services/api/SecurityAPI/getSecurityInfo';
 
 const LeftLogin = () => {
     
@@ -19,6 +20,10 @@ const LeftLogin = () => {
     const userObj = {
         phoneOrGmail: values.phoneOrGmail, password: values.password, rememberMe: values.rememberMe
     }
+
+    setItem('phoneOrGmail', userObj.phoneOrGmail)
+    setItem('password', userObj.password)
+    setItem('rememberMe', userObj.rememberMe)
 
     const user = await postLogin(userObj);
 
@@ -47,12 +52,17 @@ const LeftLogin = () => {
         autoClose: 5000,
         })
     }
-
+    
     if(user.success === true){
-        setItem('token', user.token)
-        setItem('userId', user.id)    
-        navigate('/layoutPanel/dashboard')
-        notifySuccess()
+        if(user.message === "ارسال پیامک انجام شد."){
+            navigate('/verify')
+        }
+        else{
+            setItem('token', user.token)
+            setItem('userId', user.id)    
+            notifySuccess()
+            navigate('/layoutPanel/dashboard')
+        }
     }
     else if(user.success === false){
         if(user.message != null){
@@ -65,7 +75,6 @@ const LeftLogin = () => {
             notifyPassword()
         }
     }
-
 
   }
 

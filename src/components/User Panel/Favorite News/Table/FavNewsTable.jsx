@@ -15,12 +15,14 @@ import { deleteFavNews } from "../../../../core/services/api/Panel/FavNews/delet
 import { toast } from "react-toastify";
 import FavNewsModal from "../Modal/FavNewsModal";
 import DeleteFavoriteNews from "../../../../core/services/api/News/DeleteFavoriteNews";
+import DeleteModal from "../../../../core/services/common/Modal/DeleteModal";
 
 const FavNewsTable = ({ myNews, isLoading }) => {
 
   const navigate = useNavigate()
   
   const [openCourseId, setOpenCourseId] = useState(null)
+  const [openDelete, setOpenDelete] = useState(null)
 
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 5;
@@ -43,6 +45,15 @@ const FavNewsTable = ({ myNews, isLoading }) => {
     }
     else {
         setOpenCourseId(newsId)
+    }
+  }
+
+  const handleOpenModalDelete = (favoriteId) => {
+    if(openDelete === favoriteId) {
+        setOpenDelete(null)
+    }
+    else {
+        setOpenDelete(favoriteId)
     }
   }
 
@@ -90,7 +101,7 @@ const FavNewsTable = ({ myNews, isLoading }) => {
             <TableCell> 
                 <div className="flex gap-2 items-center">
                   <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.newsId)} className="size-4 cursor-pointer"/> </NavLink>    
-                  <NavLink to={``}> <Cancel01Icon onClick={() => DeleteFav(item.newsId)} className="size-5 text-red-500 cursor-pointer"/></NavLink> 
+                  <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.favoriteId)} className="size-5 text-red-500 cursor-pointer"/></NavLink> 
                 </div>            
                 { openCourseId === item.newsId && <FavNewsModal
                     isOpen={true}
@@ -98,6 +109,7 @@ const FavNewsTable = ({ myNews, isLoading }) => {
                     onOpenChange={handleOpenModal}
                     newsId={item.newsId}
                 /> }
+                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteFav} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.newsId} /> }
 
             </TableCell>
           </TableRow>

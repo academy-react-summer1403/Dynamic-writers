@@ -32,9 +32,9 @@ const FormGenerate = () => {
 
         <button className="focus:outline-none absolute top-2 left-3" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
           {isVisible ? (
-            <EyeIcon className="text-2xl text-default-400 pointer-events-none" />
+            <EyeIcon className="dark:text-white text-2xl text-default-400 pointer-events-none" />
           ) : (
-            <ViewIcon className="text-2xl text-default-400 pointer-events-none" />
+            <ViewIcon className="dark:text-white text-2xl text-default-400 pointer-events-none" />
           )}
         </button>
         <LockPasswordIcon className='absolute right-3 top-2 text-gray-500 focus:hidden' />
@@ -48,7 +48,7 @@ const FormGenerate = () => {
         </div>
 
 
-        <Button color="primary" onClick={() => navigate('/forgetPassword')} className='bg-blue-100 dark:bg-blue-200 dark:border-none text-blue-400 rounded-full font-semibold h-7 min-w-40'>
+        <Button color="primary" onClick={() => navigate('/forgetPassword')} className='bg-blue-100 dark:bg-slate-800 dark:border-none text-blue-400 rounded-full font-semibold h-7 min-w-40'>
         <SecurityCheckIcon /> فراموشی رمز عبور 
         </Button>
 

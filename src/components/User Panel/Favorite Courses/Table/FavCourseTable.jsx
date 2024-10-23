@@ -15,10 +15,12 @@ import { deleteFavCourse } from "../../../../core/services/api/Panel/FavCourse/d
 import FavCourseModal from "../Modal/FavCourseModal";
 import { toast } from "react-toastify";
 import DeleteFavoriteCourse from "../../../../core/services/api/Course/DeleteFavoriteCourse";
+import DeleteModal from "../../../../core/services/common/Modal/DeleteModal";
 
 const FavCourseTable = ({ myCourse, isLoading }) => {
   
   const [openCourseId, setOpenCourseId] = useState(null)
+  const [openDelete, setOpenDelete] = useState(null)
 
   const navigate = useNavigate()
 
@@ -63,6 +65,15 @@ const FavCourseTable = ({ myCourse, isLoading }) => {
     }
   }
 
+  const handleOpenModalDelete = (favoriteId) => {
+    if(openDelete === favoriteId) {
+        setOpenDelete(null)
+    }
+    else {
+        setOpenDelete(favoriteId)
+    }
+  }
+
   const paginationData = myCourse.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -92,12 +103,12 @@ const FavCourseTable = ({ myCourse, isLoading }) => {
             <TableCell>
             <div className="flex gap-2 items-center"> 
               <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-5 cursor-pointer"/></NavLink>                         
-              <NavLink to={``}> <Cancel01Icon onClick={() => DeleteFav(item.courseId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>             
+              <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.favoriteId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>             
             </div> 
                 { openCourseId === item.courseId && <FavCourseModal
-                    isOpen={true}
-                    onOpen={() => handleOpenModal(item.courseId)}
-                    onOpenChange={handleOpenModal}
+                    isOpenD={true}
+                    onOpenD={() => handleOpenModal(item.courseId)}
+                    onOpenChangeD={handleOpenModal}
                     courseId={item.courseId}
                     reserveId={item.reserveId}
                     courseName={item.courseName}
@@ -106,7 +117,8 @@ const FavCourseTable = ({ myCourse, isLoading }) => {
                     reserverDate={item.reserverDate}
                     accept={item.accept}
                 /> }
-
+                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteFav} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.courseId} /> }
+                
             </TableCell>
           </TableRow>
           
