@@ -18,7 +18,7 @@ const isClick=()=>{
            
             <h1 className='text-[40px] dark:text-white font-[600] text-right flex flex-row items-center justify-end leading-[50.73px] text-[#272727] max-lg:text-[28px] max-sm:text-[36px] '> <span className=' flex flex-row text-right text-[16px] mb-3 items-center'>
                 (<StarIcon color='yellow' size={16}/>{Course.currentRate})
-            </span>{Course.title}</h1>
+            </span><div className='max-w-[400px] truncate' dir='rtl'>{Course.title}</div></h1>
         </div>
         <div className='flex justify-end gap-2'>
             <Tags name={Course.courseLevelName}/>
