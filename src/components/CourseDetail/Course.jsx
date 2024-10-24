@@ -10,19 +10,12 @@ import CoursesView1 from '../Course/CourseView1/CoursesView1'
 import { toast, ToastContainer } from 'react-toastify'
 import { Card } from '@nextui-org/react'
 import jMoment from 'jalali-moment'
-
+import {useDisclosure} from "@nextui-org/react";
 const Course = () => {
   const [Course, setCourse] = useState([])
   const [allCourse, setAllCourse] = useState([])
   const[tecknologyList,setTecknologyList]=useState('')
-  const[number,setNumber]=useState(0)
-
-  const notifyError = (message) => {
-    toast.dismiss()
-
-    toast.error(message)
-  }
-
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [isLoaded, setIsLoaded] = useState(false)
 
   const {id}=useParams();
@@ -50,23 +43,15 @@ const Course = () => {
     }
   }, [Course])
 
-  // useEffect(() => {
-  //   console.log(id)
-  //   alert(Flag)
-  //   if(Flag === true){
-  //     addReserve(id)
-  //   }
-  // }, 
-  // [Flag])
 
   if(loading==false){
     return <Loading/>
   }
   return (
     <Fragment>
-        {isFlag && <div className='absolute top-0 w-[100%] h-[100%] z-30 flex justify-center  bg-opacity-80 bg-[#000000] transition-opacity duration-300 ease-in-out'><CourseReserve Flags={setFlag}/></div>}
+        {isFlag && <CourseReserve open={isOpen} openChange={onOpenChange}/>}
         <div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
-        <RightDiv Course={Course}/>
+        <RightDiv Course={Course} FlagModal={setIsFlag} open={onOpen}/>
         <LeftDiv Course={Course}/>
         </div>
         <div className='w-[100%]'>
