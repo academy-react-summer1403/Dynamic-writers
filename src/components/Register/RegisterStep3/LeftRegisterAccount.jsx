@@ -6,9 +6,9 @@ import { Button } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import '../../../index.css'
 import { toast, ToastContainer } from 'react-toastify';
-import { RegisterAPI } from '../../../core/services/api/register/registerAPI';
 import 'react-toastify/dist/ReactToastify.css';
 import { setItem } from '../../../core/services/common/storage';
+import { RegisterAPI } from '../../../core/services/api/register/RegisterAPI';
 
 const LeftRegisterAccount = () => {
 
@@ -47,7 +47,7 @@ const LeftRegisterAccount = () => {
     if(response.success === true){
         setItem('token', response.token)
         setItem('userId', response.id)    
-        navigate('/layoutPanel/dashboard')
+        navigate('/')
     }
     else if(values.gmail === ""){
         notifyGmail()

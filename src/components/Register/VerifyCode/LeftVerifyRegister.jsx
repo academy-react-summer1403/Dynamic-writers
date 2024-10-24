@@ -28,7 +28,7 @@ const LeftVerifyRegister = () => {
     const onSubmit = async () => {
         handleSubmit()
     
-        const userVerify = await VerifyMessage()
+        const userVerify = await VerifyMessage(verificationCode)
 
         const notify = () => {
             toast.error("کد تایید صحیح نیست یا از زمان کد گذشته", {

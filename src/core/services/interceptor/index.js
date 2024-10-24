@@ -25,9 +25,9 @@ const onError = (err) => {
          window.location.pathname = '/Error403'
       }
 
-      if(status === 400) {
-         window.location.pathname = '*'
-      }
+      // if(status === 400) {
+      //    window.location.pathname = '*'
+      // }
       
       if(status === 408) {
          window.location.pathname = '/Error408'
