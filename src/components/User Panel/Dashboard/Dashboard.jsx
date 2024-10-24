@@ -21,6 +21,8 @@ const Dashboard = () => {
   const [commentsCourse, setCommentsCourse] = useState([])
   const [commentsNew, setCommentsNew] = useState([])
 
+  const [hello, setHello] = useState()
+
   const getProfile = async () => {
 
     const response = await getProfileInfo()
@@ -48,7 +50,7 @@ const Dashboard = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
-    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
+    <div className='flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
     <div className='h-full w-full flex flex-col gap-5 iranSans'>
       <div className='flex-col md:flex-row flex w-full h-full' dir='rtl'>
         <div className='grow items-center py-5'>
@@ -68,7 +70,7 @@ const Dashboard = () => {
 
       <div className='w-full flex gap-5 flex-col-reverse md:flex-row md:h-72 h-full' dir='rtl'>
         
-        <div className='md:h-full md:w-[730px] overflow-hidden bg-white dark:bg-slate-700 dark:text-white rounded-2xl py-3 px-4'>
+        <div className='md:h-full md:w-[522px] overflow-hidden bg-white dark:bg-slate-700 dark:text-white rounded-2xl py-3 px-4'>
           <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <button onClick={onOpen} className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </button> </div>
         
           <MyComment
@@ -84,11 +86,11 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className='h-full dark:bg-slate-700 w-[380px] dark:text-white bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
+        <div className='h-full dark:bg-slate-700 w-[295px] dark:text-white bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
         <div className='bg-red-500 whitespace-nowrap text-yellow-300 text-sm font-semibold flex justify-center items-center rotate-12 translate-x-6 w-[160%] xl:w-[120%] my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
-        <div className='md:h-full h-72 md:w-[400px] dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
+        <div className='md:h-full h-72 md:w-[359px] dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>
@@ -108,7 +110,7 @@ const Dashboard = () => {
       
       </div>
 
-      <div className='bg-white dark:bg-slate-700 dark:text-white w-full rounded-2xl flex flex-col gap-4 h-471' dir='rtl'>
+      <div className='bg-white dark:bg-slate-700 dark:text-white w-full rounded-2xl flex flex-col gap-4 h-fit' dir='rtl'>
         <div className='w-full h-full flex justify-between px-4 pt-3'>
           <h2 className='text-base font-bold'> جدیدترین دوره ها </h2>
           <Link to='/allNewCourses' className='flex text-blue-500 items-center font-semibold text-sm'> <span> مشاهده همه </span> <ArrowLeft01Icon className='size-4' /> </Link>

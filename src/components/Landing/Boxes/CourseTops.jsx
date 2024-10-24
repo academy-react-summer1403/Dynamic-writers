@@ -9,7 +9,7 @@ const CoursesView1 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
   
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-    <div onClick={() => navigate('/CourseDetail/' + id)} className='rounded-2xl bg-gray-200 dark:bg-slate-900 dark:text-white dark:border-none iranSans flex flex-col justify-between font-semibold' style={{height: '512px', width: '315px'}}>
+    <div onClick={() => navigate('/CourseDetail/' + id)} className='rounded-2xl bg-gray-200 dark:bg-slate-900 dark:text-white w-[550px] dark:border-none iranSans flex flex-col justify-between font-semibold' style={{height: '512px', width: '315px'}}>
         <div className='relative w-full rounded-xl h-56 bg-red-300 border-none'>
          <img src={tumbImageAddress} className='w-full h-full border-none rounded-xl' />
           <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>

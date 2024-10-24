@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 function BoxFirst() {
   return (
-    <div className='flex my-12 justify-center flex-col gap-6 iranSans md:flex-row w-5/6 mx-auto'>
+    <div className='flex my-12 justify-center flex-col gap-6 iranSans md:flex-row w-full mx-auto'>
       
       <div className='border-3 rounded-xl grow h-64 flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
         <div className='flex flex-row-reverse justify-between h-2/12 items-center p-2'>

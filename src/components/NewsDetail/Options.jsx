@@ -51,13 +51,13 @@ const Options = ({News}) => {
   return (
     <div className='flex flex-row gap-2'>
        <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.dislike ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('dislike')}>
-            <ThumbsDownIcon className={`${checkClick.dislike ? "text-red-500":"text-black dark:text-white"}`} />
+            <ThumbsDownIcon className={`${checkClick.dislike ? "text-white dark:text-red-500":"text-black dark:text-white"}`} />
         </div>
         <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] ${checkClick.like ? "bg-black":""} border-2 flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('like')}>
-            <ThumbsUpIcon className={`${checkClick.like ? "text-red-500":"text-black dark:text-white"}`}/>
+            <ThumbsUpIcon className={`${checkClick.like ? "text-white dark:text-red-500":"text-black dark:text-white"}`}/>
         </div>
         <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('save')}>
-            <BookmarkAdd02Icon className={`${checkClick.save ? "text-red-500":"text-black dark:text-white"}`}/>
+            <BookmarkAdd02Icon className={`${checkClick.save ? "text-white dark:text-red-500":"text-black dark:text-white"}`}/>
         </div>
         <ToastContainer/>
     </div>

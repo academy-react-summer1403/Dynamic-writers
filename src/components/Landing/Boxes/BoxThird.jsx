@@ -38,7 +38,7 @@ const BoxThird = () => {
 
   return (
     <>
-    <Card classNames={{base: 'shadow-none'}} className={`bg-transparent my-20 w-5/6 mx-auto flex flex-col gap-5 justify-center items-center md:flex-row md:h-fit overflow-hidden md:overflow-visible`} style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
+    <Card classNames={{base: 'shadow-none'}} className={`bg-transparent my-20 w-full justify-between mx-auto flex flex-col items-center md:flex-row md:h-fit overflow-hidden md:overflow-visible`} style={viewBetter ? {height: 'fit-content'} : {height: '800px'}}>
       {course.map((item, index) => {
 
         return <CourseTops 

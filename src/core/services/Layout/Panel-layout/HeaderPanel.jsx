@@ -17,8 +17,8 @@ const HeaderPanel = ({ editingImage, profileInfo, darkMode, setDarkMode }) => {
   }, [])
 
   return (
-    <div className='md:dark:bg-slate-700 dark:bg-slate-950 md:bg-white rounded-2xl flex justify-between flex-row-reverse md:px-3 w-full' style={{height: '80px'}}>
-      <div className='md:flex gap-4 h-full w-fit flex-row-reverse items-center hidden'>
+    <div dir='ltr' className='md:dark:bg-slate-700 dark:bg-slate-950 md:bg-white rounded-2xl h-[80px] flex justify-between flex-row-reverse md:px-3 w-full'>
+      <div className='md:flex gap-4 h-[80px] w-fit flex-row-reverse items-center hidden'>
         <div className='size-14 flex items-center rounded-full relative'>
             <img src={profileInfo.currentPictureAddress} className='rounded-full size-14 border bg-red-300' />
         </div>

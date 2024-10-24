@@ -27,7 +27,7 @@ const BoxFourth = () => {
   }, [teachers])
 
   return (
-    <Card classNames={{base: 'shadow-none overflow-visible'}} className='bg-transparent my-20 flex w-5/6 mx-auto gap-20 md:gap-40 md:flex-row flex-col'>
+    <Card classNames={{base: 'shadow-none overflow-visible'}} className='bg-transparent my-20 flex w-full mx-auto gap-20 md:gap-40 md:flex-row flex-col'>
       {teachers.map((teacher, index) => {
         return (
             <div key={index} className={`${index === 1 ? 'md:w-[570px] md:h-[341px] border-[#3772FF]' : 'md:w-[450px] md:h-[297px] border-[#E4E4E4] dark:border-none'} dark:text-white dark:bg-slate-900 py-5 h-[297px] border-3 rounded-xl relative p-2 flex flex-col justify-between items-center`}>

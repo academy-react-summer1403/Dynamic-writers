@@ -27,7 +27,7 @@ const Panel = ({profile,setRerender}) => {
     // }, [])
     
     return (
-    <div className='md:w-[100%] lg:w-[100%] dark:bg-slate-950 rounded-[16px] border-4 border-blue-500 dark:border-blue-900 bg-white h-auto mx-auto mt-[30px] overflow-hidden '>
+    <div dir='ltr' className='md:w-[100%] lg:w-[100%] dark:bg-slate-950 rounded-[16px] border-4 border-blue-500 dark:border-blue-900 bg-white h-auto mx-auto mt-[30px] overflow-hidden '>
         <div className='w-[100%] md:h-[113px] dark:bg-blue-900 h-[100px] bg-[#2A67F9]'></div>
         <div className='rounded-[100%] w-[128px] h-[128px] border-[7px] dark:bg-blue-900 bg-[#2A67F9] absolute md:top-[85px] top-[70px] right-8 overflow-hidden'>
             <img className='w-[100%] h-[100%] bg-purple-400 dark:bg-blue-800' src={profile.currentPictureAddress}/>
