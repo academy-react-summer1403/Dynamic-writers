@@ -22,7 +22,7 @@ const CourseList = () => {
     }, [])
 
   return (
-    <div className='my-5 iranSans'>
+    <div className='my-5 iranSans w-dvw max-w-[3000px]'>
         <div className='flex flex-col items-center gap-5'>
 
             <div className='flex flex-col gap-5 items-center'>

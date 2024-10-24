@@ -4,9 +4,11 @@ import LeftRegister from './LeftRegister'
 
 const RegisterForm = () => {
   return (
-    <div className='flex h-full w-full'>
-      <LeftRegister />
-      <RightRegister />
+    <div className='w-dvw flex justify-center'>
+      <div className='flex w-[1540px] font-sans iranSans'>
+        <LeftRegister />
+        <RightRegister />
+      </div>
     </div>
   )
 }

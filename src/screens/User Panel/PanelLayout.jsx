@@ -60,24 +60,26 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
   
 
   return (
-    <div className='w-dvw h-dvh flex justify-center p-6 fixed bg-gray-100 dark:bg-black gap-4' dir='rtl'>
+    <div className='w-dvw flex justify-center max-w-[3000px]'>
+      <div className='flex h-full justify-center p-6 fixed bg-gray-100 dark:bg-black gap-4' dir='rtl'>
 
-          <SitePanel />
-            
+        <SitePanel />
+          
         <div className='flex flex-col items-end h-full gap-2 relative w-full' dir='rtl'>
 
-            <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
-            { editImage && <EditImage /> }
+          <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
+          { editImage && <EditImage /> }
 
-            <div className='overflow-y-scroll over overflow-x-hidden w-full'>
-              <Outlet context={[loading]} />
-            </div>
+          <div className='overflow-y-scroll over overflow-x-hidden w-[1196px]'>
+            <Outlet context={[loading]} />
+          </div>
 
 
         </div>
 
         <SitePanelRes />
 
+      </div>
     </div>
   )
 

@@ -4,9 +4,11 @@ import RightRegisterAccount from './RightRegisterAccount'
 
 const RegisterAccount = () => {
   return (
-    <div className='flex'>
-      <LeftRegisterAccount />
-      <RightRegisterAccount />
+    <div className='w-dvw flex justify-center'>
+      <div className='flex w-[1540px] font-sans iranSans'>
+        <LeftRegisterAccount />
+        <RightRegisterAccount />
+      </div>
     </div>
   )
 }

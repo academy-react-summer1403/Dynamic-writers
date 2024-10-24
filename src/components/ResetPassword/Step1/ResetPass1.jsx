@@ -4,9 +4,11 @@ import RightResetPass1 from './RightResetPass1'
 
 const ResetPass1 = () =>  {
   return (
-    <div className='flex'>
-      <LeftResetPass1 />
-      <RightResetPass1 />
+    <div className='w-dvw flex justify-center'>
+      <div className='flex w-[1540px] font-sans iranSans'>
+        <LeftResetPass1 />
+        <RightResetPass1 />
+      </div>
     </div>
   )
 }

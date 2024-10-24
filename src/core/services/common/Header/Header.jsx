@@ -20,7 +20,8 @@ const Header = ({ darkMode, setDarkMode }) => {
     }
 
   return (
-    <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-between items-center md:justify-between px-3 md:px-14 font-semibold'>
+    <div className='grid w-dvw max-w-[3000px]'>
+      <div className='iranSans h-20 flex flex-row-reverse justify-between items-center md:justify-between px-3 md:px-14 font-semibold'>
       {hamberMenu === true && <HamberMenu closeHamber={closeHamber}/>}
       <div className='flex gap-3 h-8 items-center' onClick={() => navigate('/')}>
         <img src={Bahr2} className='w-full h-full hidden md:inline' />
@@ -41,6 +42,7 @@ const Header = ({ darkMode, setDarkMode }) => {
         {token && <Link to='/layoutPanel/dashboard' className='hover:bg-gray-300 cursor-pointer bg-blue-500 text-white rounded-full flex justify-center items-center size-[46px]'> <UserIcon className='size-7' /> </Link>}
         <Menu02Icon onClick={() => setHamberMenu(true)} className='md:hidden block cursor-pointer' />
       </div>
+    </div>
     </div>
   )
 }

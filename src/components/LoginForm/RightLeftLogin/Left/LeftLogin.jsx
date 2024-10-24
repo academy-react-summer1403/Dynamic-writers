@@ -79,7 +79,7 @@ const LeftLogin = () => {
   }
 
   return (
-    <div className='grow-8 h-dvh bg-white dark:bg-black flex flex-col md:justify-start justify-center items-center my-7'>
+    <div className='w-[70%] h-dvh bg-white dark:bg-black flex flex-col md:justify-start justify-center items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6'>
             <div onClick={() => navigate('/')} className='cursor-pointer w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 

@@ -136,7 +136,7 @@ const CourseView1 = () => {
             getCourses={getCourses}
           />
 
-          {view === 'view1' && <Card classNames={{base: 'bg-transparent shadow-none'}} className='bg-transparent lg:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center lg:justify-normal' style={window.innerWidth < 1024 ? {height: '1600px'} : {height: 'fit-content'}}>
+          {view === 'view1' && <Card classNames={{base: 'bg-transparent shadow-none'}} className='bg-transparent px-8 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center lg:justify-normal' style={window.innerWidth < 1024 ? {height: '1600px'} : {height: 'fit-content'}}>
 
             {courses.map((item,index) => {
             

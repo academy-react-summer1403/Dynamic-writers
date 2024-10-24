@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik';
 import BahrLogo from '../../../assets/Bahr.png'
 import { EyeIcon, LockPasswordIcon, MailEdit02Icon, MailOpen01Icon, PasswordValidationIcon, UserAccountIcon, ViewIcon } from 'hugeicons-react'
 import { Button } from '@nextui-org/react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../../index.css'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,9 +69,9 @@ const LeftRegisterAccount = () => {
     <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6 min-w-96'>
-            <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
+            <Link to='/' className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
-            </div>
+            </Link>
             <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap' style={{direction: 'rtl'}}> 😍!به آکادمی بحر خوش اومدی </h2>
             <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> لطفا اطلاعات شخصی حساب کاربری خود را وارد کنید  </span>
 

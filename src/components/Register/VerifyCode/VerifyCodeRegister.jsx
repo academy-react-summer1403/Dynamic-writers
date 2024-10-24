@@ -4,9 +4,11 @@ import RightVerifyRegister from './RightVerifyRegister'
 
 const VerifyCodeRegister = () => {
   return (
-    <div className='flex'>
-      <LeftVerifyRegister />
-      <RightVerifyRegister />
+    <div className='w-dvw flex justify-center'>
+      <div className='flex w-[1540px] font-sans iranSans'>
+        <LeftVerifyRegister />
+        <RightVerifyRegister />
+      </div>
     </div>
   )
 }

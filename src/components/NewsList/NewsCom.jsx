@@ -21,7 +21,7 @@ const NewsCom = () => {
   }, [])
 
   return (
-    <div className='my-10 iranSans'>
+    <div className='my-5 iranSans w-dvw max-w-[3000px]'>
 
       <div className='flex flex-col items-center justify-center relative w-fit mx-auto gap-6'>
         <h2 className='text-3xl iranSansBold'> اخبار و مقالات آکادمی </h2>

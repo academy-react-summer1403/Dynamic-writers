@@ -6,9 +6,11 @@ import LeftLogin from './RightLeftLogin/Left/LeftLogin';
 
 const LoginForm = () => {
   return (
-    <div className='w-full h-full flex font-sans iranSans'>
+    <div className='w-dvw flex justify-center'>
+      <div className='flex w-[1540px] font-sans iranSans'>
         <LeftLogin />
         <RightLogin />
+      </div>
     </div>
   )
 }

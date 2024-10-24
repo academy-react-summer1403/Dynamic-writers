@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <div className='w-dvw'>
+    <div className='w-dvw max-w-[3020px]'>
     <div className='iranSans font-semibold flex flex-col justify-between p-10 w-11/12 gap-10 lg:gap-0 my-10 lg:w-11/12 mx-auto pb-24 dark:bg-slate-800 bg-gray-100 rounded-xl h-fit lg:flex-row-reverse'>
       <div className='flex flex-row-reverse lg:justify-center justify-between items-center gap-4 h-full px-2 lg:flex-col'>
         <div className='flex flex-col-reverse'>
