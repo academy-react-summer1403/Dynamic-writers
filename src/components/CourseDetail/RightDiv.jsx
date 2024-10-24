@@ -7,27 +7,26 @@ import { Calendar03Icon,StarIcon,Calendar02Icon,ViewIcon,StudentsIcon } from 'hu
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AddReserve } from '../../core/services/api/Reserve/addReserve'
+import DeleteReserveCourse from '../../core/services/api/Course/DeleteReserveCourse'
+import GetCourseById from '../../core/services/api/Course/GetCourseById'
+import {Button} from "@nextui-org/react";
+const RightDiv = ({Course,FlagModal,open}) => {
 
-const RightDiv = ({Course}) => {
-
-    const[Flag,setFlag]=useState(Number(Course.isCourseReseve))
-    const notifyError = (massage) => toast.warn(massage,{position:"top-center",theme:"dark"});
     const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
+    const[Flag,setFlag]=useState(Number(Course.isCourseReseve))
 
-    // const addReserve = async (id) => {
-  //   console.log(response)
-  //   if(response.state === true){
-  //     setIsFlag(true)
-  //   }
-  //   else if(response.status === 422){
-  //   }
-  // }
     const isClick=async()=>{
         if(Flag==0){
-            const response = await AddReserve(Course.courseId)
-            console.log(response)
-            notifySuccess(response.message)
+            await AddReserve(Course.courseId)
             setFlag(1)
+            FlagModal(true)
+        }else{
+            setFlag(0)
+            FlagModal(false)
+            let course =await GetCourseById(Course.courseId)
+            let response=await DeleteReserveCourse(course.courseReseveId)
+            notifySuccess(response.message)
+
         }
     }
     
@@ -73,7 +72,7 @@ const RightDiv = ({Course}) => {
         </div>
         <div className='flex flex-col gap-6 w-[100%]'>
             <div className='flex flex-row-reverse justify-between'>
-                <div className={`w-[50%] h-[100%]  ${Flag==0 ? "bg-[#3772FF] cursor-pointer":"bg-red-500 "} rounded-[28px]  font-[800] text-[20px] text-center leading-[60px] text-[#FFFFFF] `} onClick={isClick}>{Flag==0 ? "رزرو دوره":"دوره رزرو شده است"} </div>
+                <Button onPress={open} className={`w-[50%] h-[100%]  ${Flag==0 ? "bg-[#3772FF] cursor-pointer":"bg-red-500 "} rounded-[28px]  font-[800] text-[20px] text-center leading-[60px] text-[#FFFFFF] `} onClick={isClick}>{Flag==0 ? "رزرو دوره":"دوره رزرو شده است"} </Button>
                 <Options Course={Course}/>
             </div>
         </div>

@@ -13,7 +13,17 @@ import UpdateInformation from '../../core/services/api/Panel/UpdateInformation'
 const InformationUser = () => {
   const [profile]=useOutletContext();
   
-  const [InitialValue, setInitialValue] = useState({field1:profile.fName,field2:profile.lName,selectedOption:profile.gender.toString(),field3:profile.userAbout,field4:profile.phoneNumber,field5:profile.nationalCode,birthDate:profile.birthDay,field7:profile.email,field8:profile.homeAdderess})
+  const [InitialValue, setInitialValue] = useState({
+    field1:profile.fName || "",
+    field2:profile.lName || "",
+    selectedOption:profile.gender.toString(),
+    field3:profile.userAbout,
+    field4:profile.phoneNumber,
+    field5:profile.nationalCode,
+    birthDate:profile.birthDay,
+    field7:profile.email,
+    field8:profile.homeAdderess
+  })
   const nationalIdRegex = "^[0-9]{10}$";
   const phoneRegex = "^09[0-9]{9}$";
   const [selectedDate, setSelectedDate] = useState(`${profile.birthDay ? jMoment(profile.birthDay).locale('fa').format('jYYYY jMMMM jD') : ''}`);
@@ -22,16 +32,13 @@ const InformationUser = () => {
 
   const onSubmit= async(el)=>{
     let valueOption=el.selectedOption
-    if (profile.latitude==null){
-      profile.latitude=32.0
-      profile.longitude=53.0
-    }
+    
     if (el.selectedOption=="false")
       valueOption=false
     else
       valueOption=true
-    console.log(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
-    let massage=await UpdateInformation(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
+
+      let massage=await UpdateInformation(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
     if(Array.isArray(massage)){
       notifyError(massage[0])
     }else{
@@ -89,13 +96,13 @@ const InformationUser = () => {
                   <ErrorMessage name='field3' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
-                <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-3 w-[286px]'>
+                <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[260px]'>
                   <span className='font-[700] text-[16px]'>شماره همراه</span>
                   <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="شماره همراه خود را وارد کنید" name="field4" />
                   <ErrorMessage name='field4' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
-                <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[286px]'>
+                <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[260px]'>
                   <span className='font-[700] text-[16px]'>کد ملی</span>
                   <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="کد ملی خود را وارد کنید" name="field5" />
                   <ErrorMessage name='field5' className='text-red-700 text-[14px]' component={"p"}/>
