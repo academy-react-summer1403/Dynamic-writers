@@ -78,9 +78,13 @@ const FavCourseModal = ({
         onOpenChangeD(false)
         NotifySuccess(response.message)
       }
-      else{
+      else if(response.status === 422){
         NotifyError('شما قبلا این دوره را رزرو کرده اید ')
         onOpenChange(false)
+      }
+      else{
+        onOpenChange(false)
+        NotifyError(' شما به این دوره دسترسی ندارید ')
       }
     }
     

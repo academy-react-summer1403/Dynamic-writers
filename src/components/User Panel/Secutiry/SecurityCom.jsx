@@ -31,7 +31,8 @@ const SecurityCom = () => {
     else{
       const response = await editSecurity(recoveryEmail, isSelected)
       if(response.success === true) {
-        notifySuccess(response.message)
+        // notifySuccess(response.message)
+        notifySuccess(' عملیات با موفقیت انجام شد! ')
       }
       else{
         notifyError(' خطا ')
