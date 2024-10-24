@@ -4,12 +4,32 @@ import Profile from './Profile'
 import Options from './Options'
 import jMoment from 'moment-jalaali'
 import { Calendar03Icon,StarIcon,Calendar02Icon,ViewIcon,StudentsIcon } from 'hugeicons-react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AddReserve } from '../../core/services/api/Reserve/addReserve'
 
-const RightDiv = ({Course,Flags}) => {
+const RightDiv = ({Course}) => {
 
-const isClick=()=>{
-    Flags(true);
-}
+    const[Flag,setFlag]=useState(Number(Course.isCourseReseve))
+    const notifyError = (massage) => toast.warn(massage,{position:"top-center",theme:"dark"});
+    const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
+
+    // const addReserve = async (id) => {
+  //   console.log(response)
+  //   if(response.state === true){
+  //     setIsFlag(true)
+  //   }
+  //   else if(response.status === 422){
+  //   }
+  // }
+    const isClick=async()=>{
+        if(Flag==0){
+            const response = await AddReserve(Course.courseId)
+            console.log(response)
+            notifySuccess(response.message)
+            setFlag(1)
+        }
+    }
     
   return (
     <div className='h-[550px] w-[500px] border-4 border-solid dark:text-white border-[#E4E4E4] rounded-[24px] items-end  flex flex-col  gap-8 p-5 max-sm:w-[100%] max-md:w-[100%] max-xl:w-[50%]  xl:sticky  max-lg:w-[80%] relative top-[-10px] lg:sticky top-10 max-2xl:w-[500px]' >
@@ -53,7 +73,7 @@ const isClick=()=>{
         </div>
         <div className='flex flex-col gap-6 w-[100%]'>
             <div className='flex flex-row-reverse justify-between'>
-                <div className='w-[50%] h-[100%] bg-[#3772FF] rounded-[28px] font-[800] text-[20px] text-center leading-[60px] text-[#FFFFFF] cursor-pointer' onClick={isClick}> رزرو دوره</div>
+                <div className={`w-[50%] h-[100%]  ${Flag==0 ? "bg-[#3772FF] cursor-pointer":"bg-red-500 "} rounded-[28px]  font-[800] text-[20px] text-center leading-[60px] text-[#FFFFFF] `} onClick={isClick}>{Flag==0 ? "رزرو دوره":"دوره رزرو شده است"} </div>
                 <Options Course={Course}/>
             </div>
         </div>

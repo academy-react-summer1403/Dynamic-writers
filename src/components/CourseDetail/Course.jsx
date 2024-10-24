@@ -7,7 +7,6 @@ import LeftDiv from '../../components/CourseDetail/LeftDiv'
 import CourseReserve from '../CourseReserve/CourseReserve'
 import AllCourse from '../../core/services/api/Course/AllCourse'
 import CoursesView1 from '../Course/CourseView1/CoursesView1'
-import { AddReserve } from '../../core/services/api/Reserve/addReserve'
 import { toast, ToastContainer } from 'react-toastify'
 import { Card } from '@nextui-org/react'
 import jMoment from 'jalali-moment'
@@ -28,7 +27,6 @@ const Course = () => {
 
   const {id}=useParams();
   const[loading,setLoading]=useState(false)
-  const[Flag,setFlag]=useState(false)
   const[isFlag,setIsFlag]=useState(false)
 
   const GetCourse=async(id)=>{
@@ -36,24 +34,15 @@ const Course = () => {
     let Courses=await AllCourse()
     const point=Courses.filter((value)=>{return value.courseId==id})
     setTecknologyList(point.technologyList)
-
     setAllCourse(Courses)
     setLoading(true)
     setCourse(course)
   }
   useEffect(() => {
     GetCourse(id)
+
   }, [])
 
-  const addReserve = async (id) => {
-    const response = await AddReserve(id)
-    if(response.state === true){
-      setIsFlag(true)
-    }
-    else if(response.status === 422){
-      notifyError(' این کورس یکبار رزو شده و نمیتواند دوباره رزرو شود.')
-    }
-  }
 
   useEffect(() => {
     if(allCourse.length > 0) {
@@ -61,12 +50,14 @@ const Course = () => {
     }
   }, [Course])
 
-  useEffect(() => {
-    if(Flag === true){
-      addReserve(id)
-    }
-  }, 
-  [Flag])
+  // useEffect(() => {
+  //   console.log(id)
+  //   alert(Flag)
+  //   if(Flag === true){
+  //     addReserve(id)
+  //   }
+  // }, 
+  // [Flag])
 
   if(loading==false){
     return <Loading/>
@@ -75,7 +66,7 @@ const Course = () => {
     <Fragment>
         {isFlag && <div className='absolute top-0 w-[100%] h-[100%] z-30 flex justify-center  bg-opacity-80 bg-[#000000] transition-opacity duration-300 ease-in-out'><CourseReserve Flags={setFlag}/></div>}
         <div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
-        <RightDiv Course={Course} Flags={setFlag}/>
+        <RightDiv Course={Course}/>
         <LeftDiv Course={Course}/>
         </div>
         <div className='w-[100%]'>
