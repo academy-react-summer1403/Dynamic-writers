@@ -25,7 +25,7 @@ const CoursesView1 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
         </div>
         <div className='p-2 flex flex-col gap-2 text-base font-semibold'>
               <div className='flex flex-row-reverse gap-3'> <TeacherIcon className='text-slate-700'/> <span className=''> {teacherName} </span> </div>
-              <div className='flex flex-row-reverse gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex flex-row-reverse gap-1'> <span className=''> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
+              <div className='flex flex-row-reverse gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex flex-row-reverse gap-1'> <span className='' dir='rtl'> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
               <div className='flex flex-row-reverse gap-3'> <StudentIcon className='text-slate-700'/> <div className='flex flex-row-reverse gap-2'> <span className=''> {currentUserRateNumber} </span> <span className=''> دانشجو </span> </div> </div>
         </div>
         <div className='w-full flex justify-around items-center'>
