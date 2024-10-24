@@ -76,9 +76,9 @@ const FavCourseModal = ({
         setFlags(true)
         onOpenChange(false)
         onOpenChangeD(false)
+        NotifySuccess(response.message)
       }
-
-      if(response.status === 422){
+      else{
         NotifyError('شما قبلا این دوره را رزرو کرده اید ')
         onOpenChange(false)
       }

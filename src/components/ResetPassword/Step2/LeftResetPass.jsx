@@ -36,9 +36,9 @@ const LeftResetPass2 = () => {
 
     const passwordObj = {newPassword: values.NewPassword}
 
-    // console.log(respone)
-
     const response = await ResetPassword(passwordObj)
+    
+    console.log(passwordObj)
 
     if(values.NewPassword === "") {
         notifyEmpty()

@@ -22,9 +22,9 @@ const Header = ({ darkMode, setDarkMode }) => {
   return (
     <div className='iranSans h-20 w-dvw flex flex-row-reverse justify-between items-center md:justify-between px-3 md:px-14 font-semibold'>
       {hamberMenu === true && <HamberMenu closeHamber={closeHamber}/>}
-      <div className='flex gap-3 h-6 w-13' onClick={() => navigate('/')}>
+      <div className='flex gap-3 h-8 items-center' onClick={() => navigate('/')}>
         <img src={Bahr2} className='w-full h-full hidden md:inline' />
-        <img src={Bahr} className='size-6 inline' onClick={() => navigate('/')} />
+        <img src={Bahr} className='size-8 inline' onClick={() => navigate('/')} />
       </div>
 
       <div className='items-center gap-14 flex-row-reverse hidden md:flex'>

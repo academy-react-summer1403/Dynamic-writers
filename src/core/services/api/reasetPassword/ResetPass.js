@@ -4,7 +4,7 @@ import http from '../../interceptor'
 export const ResetPassword = async (password) => {
   try {
 
-  const result = await http.post('/Sign/Reset' , { userId: getItem('userId'), newPassword: password.newPassword, resetValue: getItem('resetValue')});
+  const result = await http.post('/Sign/Reset' , { userId: getItem('userId'), newPassword: password.newPassword, resetValue: JSON.parse(getItem('resetValue'))});
 
   return result
   

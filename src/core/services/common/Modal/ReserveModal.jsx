@@ -19,7 +19,7 @@ const ReserveModal = ({isOpen, onOpen, onOpenChange, addReserve}) => {
 
                     <div className='flex gap-4 items-center flex-row-reverse'>
                         <Button onClick={() => addReserve()} className='bg-[#3772FF] w-[169px] h-[56px] rounded-[64px] text-white text-[18px] font-[700]'> رزرو دوره </Button>
-                        <Button className='bg-[#F0F0F0] w-[108px] h-[56px] rounded-[64px] text-black text-[16px] font-[700]'> انصراف </Button>
+                        <Button onClick={onOpenChange} className='bg-[#F0F0F0] w-[108px] h-[56px] rounded-[64px] text-black text-[16px] font-[700]'> انصراف </Button>
                     </div>
                 </div>
               </ModalBody>

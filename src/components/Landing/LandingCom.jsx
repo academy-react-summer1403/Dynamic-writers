@@ -21,7 +21,7 @@ function LandingCom() {
     }
 
   return (
-    <div className='w-dvw'>
+    <div className='w-dvw overflow-hidden'>
     <div className='iranSans my-10 flex flex-col dark:bg-black px-16'>
       <div className=' flex text-xl iranSansBold justify-center items-center md:text-3xl text-center flex-col'>
         <span className='tracking-normal md:tracking-wider flex flex-row break-world whitespace-nowrap'> کدنویسی؛  <div className='rounded-full p-1 border border-gray-200 shadow-md mx-2 size-8'> <CodeCircleIcon /> </div>   تجربه‌ای بی‌نظیر در یادگیری  </span>
@@ -38,7 +38,7 @@ function LandingCom() {
 
       <BoxFirst />
 
-      <div className='bg-blue-500 -translate-x-[400px] w-[150%] justify-center h-10 text-white flex flex-row-reverse items-center gap-10 -rotate-2'>
+      <div className='bg-blue-500 -translate-x-[100px] w-[150%] justify-center h-10 text-white flex flex-row-reverse items-center gap-10 -rotate-2'>
         <span className='font-semibold text-sm whitespace-nowrap'> خدماتی که ما به شما ارائه میدیم </span>
         <div className='min-w-2 min-h-2 bg-white rounded-full'>  </div>
         <span className='font-semibold text-sm whitespace-nowrap'> خدماتی که ما به شما ارائه میدیم </span>

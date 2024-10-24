@@ -23,7 +23,7 @@ const CoursesView2 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
                 <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {technologyList} </div>
                 <div className='bg-blue-500 text-white rounded-full px-3 shadow-lg py-1'> {levelName} </div>
               </div>
-              <div className='bg-stone-100 bg-opacity-80 text-red-500 rounded-xl px-2 py-0.5 text-xs flex items-center gap-2 absolute bottom-2 right-2'> {statusName} <CircleIcon className='size-1.5 bg-red-500 rounded-full' /> </div>
+              <div className={`${statusName === "شروع ثبت نام" ? 'text-blue-500' : 'text-red-500'} bg-stone-50 bg-opacity-80 rounded-xl px-2 py-0.5 text-sm flex items-center gap-2 absolute bottom-2 right-2`}> {statusName} <CircleIcon className={`${statusName === "شروع ثبت نام" ? 'bg-blue-500' : 'bg-red-500'} size-1.5 rounded-full`} /> </div>
           </div>
           <div className='w-7/12 h-full flex flex-col justify-between p-5 gap-2' dir='rtl'>
               <div className='flex flex-col gap-3'>

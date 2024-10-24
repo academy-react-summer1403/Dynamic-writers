@@ -38,6 +38,7 @@ import SecurityPanel from '../screens/User Panel/SecurityPanel';
 import { useEffect, useState } from 'react';
 import { getItem, setItem } from '../core/services/common/storage';
 import PanelScreen from '../screens/Panel/PanelScreen';
+import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -85,6 +86,10 @@ function App() {
     {
       path: '/resetPassword/:configValue',
       element: <ResetPassword />
+    },
+    {
+      path: '/resetPass/:configValue',
+      element: <ResetPass2 />
     },
 
     {

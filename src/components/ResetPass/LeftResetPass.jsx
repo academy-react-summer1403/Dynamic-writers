@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Formik, Form, Field } from 'formik';
-import BahrLogo from '../../../assets/Bahr.png'
+import BahrLogo from '../../assets/Bahr.png'
 import { EyeIcon, LockPasswordIcon, Mail01Icon, MailEdit02Icon, PasswordValidationIcon, SecurityCheckIcon, ViewIcon,  } from 'hugeicons-react'
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '@nextui-org/react';
-import { ResetPassword } from '../../../core/services/api/reasetPassword/ResetPass';
-import { ResetConfirmPass } from '../../../core/services/api/reasetPassword/ResetConfirmPass';
-import { getItem, setItem } from '../../../core/services/common/storage';
+import { ResetPassword } from '../../core/services/api/reasetPassword/ResetPass';
+import { ResetConfirmPass } from '../../core/services/api/reasetPassword/ResetConfirmPass';
+import { getItem, setItem } from '../../core/services/common/storage';
 
 const LeftResetPass2 = () => {
     
@@ -71,8 +71,8 @@ const LeftResetPass2 = () => {
             <Link to='/' className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </Link>
-            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap'> 🔐فراموشی رمزعبور؟ </h2>
-            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> اگر رمزعبور خود را فراموش کرده‌اید ایمیل خود را وارد کنید تا لینک صفحه تغییر رمزعبور برای شما ارسال شود </span>
+            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap'> دو مرحله ای🗝️ </h2>
+            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> برای تایید دو مرحله ای پسورد خود را وارد کنید </span>
 
         </div>
 
@@ -82,10 +82,10 @@ const LeftResetPass2 = () => {
         >
             <Form className='w-8/12 mt-20 relative' style={{direction: 'rtl'}}>
 
-                <h2 className='mb-2 mt-5 font-bold'>  رمز عبور جدید </h2>
+                <h2 className='mb-2 mt-5 font-bold'>  رمز عبور </h2>
                 <div className='min-w-80 flex relative'>
                     <Field name="NewPassword" type={isVisible ? "text" : "password"} className='dark:bg-slate-600 dark:border-none dark:text-white min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
-                    focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور جدید خود را وارد کنید" />
+                    focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور خود را وارد کنید" />
 
                     <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
                         {isVisible ? (
@@ -98,10 +98,10 @@ const LeftResetPass2 = () => {
                     <LockPasswordIcon className='absolute right-3 top-2 text-gray-500 focus:hidden' />
                 </div>
 
-                <h2 className='mb-2 mt-5 font-bold'> تکرار رمز عبور جدید  </h2>
+                <h2 className='mb-2 mt-5 font-bold'> تکرار رمز عبور   </h2>
                 <div className='min-w-80 flex relative'>
                     <Field name="NewPassword2" type={isVisible2 ? "text" : "password"} className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
-                    focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور جدید خود را دوباره وارد کنید" />
+                    focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور خود را دوباره وارد کنید" />
 
                     <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility2} aria-label="toggle password visibility">
                         {isVisible2 ? (

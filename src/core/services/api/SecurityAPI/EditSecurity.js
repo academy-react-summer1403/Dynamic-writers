@@ -5,7 +5,7 @@ export const editSecurity = async (recoveryEmail, isSelected) => {
   const result = await http.put(`/SharePanel/EditSecurity`, {
     twoStepAuth: isSelected,
     recoveryEmail: recoveryEmail,
-    baseUrl: "http://localhost:5173/"
+    baseUrl: "http://localhost:5173/resetPass"
   });
 
   return result;

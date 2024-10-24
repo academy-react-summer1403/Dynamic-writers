@@ -21,7 +21,32 @@ const Dashboard = () => {
   const [commentsCourse, setCommentsCourse] = useState([])
   const [commentsNew, setCommentsNew] = useState([])
 
-  const [hello, setHello] = useState()
+  const [hello, setHello] = useState('')
+
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(new Date());
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+
+  }, []);
+
+  const hours = time.getHours().toString().padStart(2, "0");
+
+  useEffect(() => {
+    if(hours >= 6) {
+      setHello(' صبح بخیر ')
+    }
+    if(hours >= 12 && hours < 16) {
+      setHello(' ظهر بخیر ')
+    }
+    if(hours >= 16) {
+      setHello(' شب بخیر ')
+    }
+  }, [])
 
   const getProfile = async () => {
 
@@ -54,7 +79,7 @@ const Dashboard = () => {
     <div className='h-full w-full flex flex-col gap-5 iranSans'>
       <div className='flex-col md:flex-row flex w-full h-full' dir='rtl'>
         <div className='grow items-center py-5'>
-          <h2 className='font-bold text-2xl'> سلام , صبح بخیر {profileInfo.lName} 😍 </h2>
+          <h2 className='font-bold text-2xl'> سلام , {hello}  {profileInfo.fName} 😍 </h2>
         </div>
         <div className='md:grow flex md:justify-start justify-between grow-0 md:gap-24 items-center'>
           <div className='flex gap-4'>
@@ -68,7 +93,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='w-full grid grid-cols-4 gap-5 border md:h-[288px] h-full' dir='rtl'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-4 gap-5 md:h-[288px] h-full' dir='rtl'>
         
         <div className='md:h-full overflow-hidden col-span-2 bg-white dark:bg-slate-700 dark:text-white rounded-2xl py-3 px-4'>
           <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <button onClick={onOpen} className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </button> </div>
@@ -86,11 +111,11 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className='h-full dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 text-center hidden md:block'>
-        <div className=''> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
+        <div className='h-full dark:bg-slate-700 dark:text-white bg-white overflow-hidden rounded-2xl py-3 px-4 text-center hidden md:block'>
+          <div className='bg-red-500 text-yellow-300 text-sm truncate font-semibold flex justify-center items-center rotate-12 translate-x-[60px] md:w-[150%] w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
-        <div className='md:h-full h-72 dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
+        <div className='md:h-full h-72 dark:bg-slate-700 md:col-auto col-span-2 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>

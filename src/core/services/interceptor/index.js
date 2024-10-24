@@ -15,13 +15,18 @@ const onError = (err) => {
 
    if(err.response) {
       const status = err.response.status
+
       if(status === 401) {
          removeItem('token')
          window.location.pathname = '/Error401'
       }
-   
+      
       if(status === 403) {
          window.location.pathname = '/Error403'
+      }
+
+      if(status === 400) {
+         window.location.pathname = '*'
       }
       
       if(status === 408) {
