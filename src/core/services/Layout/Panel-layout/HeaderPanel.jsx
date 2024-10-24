@@ -23,7 +23,7 @@ const HeaderPanel = ({ editingImage, profileInfo, darkMode, setDarkMode }) => {
             <img src={profileInfo.currentPictureAddress} className='rounded-full size-14 border bg-red-300' />
         </div>
         <div className='flex flex-col'>
-            <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.lName , ' ' , profileInfo.fName] : "نامشخص"}  </h2>
+            <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.fName , ' ' , profileInfo.lName] : "نامشخص"}  </h2>
             <span className='text-gray-500 text-right flex gap-1 flex-row-reverse'>
 
             </span>

@@ -39,7 +39,7 @@ const Panel = ({profile,setRerender}) => {
          <div className='flex flex-col pr-10 items-end justify-center gap-4 h-[500px] md:flex-row-reverse md:flex-wrap md:h-[300px]'>
             <div className='w-[50%] h-[200px] flex flex-col items-end gap-5'>
                 <div className='font-[700] text-[32px] text-[#272727] dark:text-white text-right'><span className='font-[500] text-[16px] dark:text-white text-[#787878]'> </span>{profile.lName} {profile.fName}</div>
-                <div className='flex flex-row-reverse gap-3 w-[100%] flex-wrap items-end justify-start'><div className='flex flex-row gap-2'>{profile.phoneNumber} <SmartPhone01Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.nationalCode}<AccountSetting03Icon color='gray'/></div><div className='flex flex-row-reverse gap-3'><div className='flex flex-row gap-2'>{profile.email}<Mail01Icon color='gray'/></div><span className='cursor-pointer'><PencilEdit01Icon color='blue' onClick={()=>navigate("profileInfo")}/></span></div></div>
+                <div className='flex flex-row-reverse gap-3 w-[100%] flex-wrap items-end justify-start'><div className='flex flex-row gap-2'>{profile.phoneNumber} <SmartPhone01Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.nationalCode}<AccountSetting03Icon color='gray'/></div><div className='flex flex-row-reverse gap-3'><div className='flex flex-row gap-2'>{profile.email}<Mail01Icon color='gray'/></div><span className='cursor-pointer'><PencilEdit01Icon color='blue' onClick={()=>navigate("")}/></span></div></div>
             </div>
             <div className='w-[40%] h-[200px] flex flex-col items-end gap-5'>
                 <div className='font-[700] text-[16px] text-[#787878]'>درباره من</div>
