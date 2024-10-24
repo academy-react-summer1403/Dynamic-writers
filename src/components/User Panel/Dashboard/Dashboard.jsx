@@ -68,9 +68,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='w-full flex gap-5 flex-col-reverse md:flex-row md:h-72 h-full' dir='rtl'>
+      <div className='w-full grid grid-cols-4 gap-5 border md:h-[288px] h-full' dir='rtl'>
         
-        <div className='md:h-full md:w-[522px] overflow-hidden bg-white dark:bg-slate-700 dark:text-white rounded-2xl py-3 px-4'>
+        <div className='md:h-full overflow-hidden col-span-2 bg-white dark:bg-slate-700 dark:text-white rounded-2xl py-3 px-4'>
           <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <button onClick={onOpen} className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </button> </div>
         
           <MyComment
@@ -86,11 +86,11 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className='h-full dark:bg-slate-700 w-[295px] dark:text-white bg-white rounded-2xl py-3 px-4 overflow-hidden text-center hidden md:block'>
-        <div className='bg-red-500 whitespace-nowrap text-yellow-300 text-sm font-semibold flex justify-center items-center rotate-12 translate-x-6 w-[160%] xl:w-[120%] my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
+        <div className='h-full dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 text-center hidden md:block'>
+        <div className=''> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
         </div>
         
-        <div className='md:h-full h-72 md:w-[359px] dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
+        <div className='md:h-full h-72 dark:bg-slate-700 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>

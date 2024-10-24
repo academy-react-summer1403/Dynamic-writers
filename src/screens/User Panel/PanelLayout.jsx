@@ -64,7 +64,7 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
 
           <SitePanel />
             
-        <div className='flex flex-col items-end h-full gap-2 relative md:w-full' dir='rtl'>
+        <div className='flex flex-col items-end h-full gap-2 relative w-full' dir='rtl'>
 
             <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
             { editImage && <EditImage /> }
