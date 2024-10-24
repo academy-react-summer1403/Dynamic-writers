@@ -13,7 +13,7 @@ import UpdateInformation from '../../core/services/api/Panel/UpdateInformation'
 const InformationUser = () => {
   const [profile]=useOutletContext();
   
-  const [InitialValue, setInitialValue] = useState({field1:profile.lName,field2:profile.fName,selectedOption:profile.gender.toString(),field3:profile.userAbout,field4:profile.phoneNumber,field5:profile.nationalCode,birthDate:profile.birthDay,field7:profile.email,field8:profile.homeAdderess})
+  const [InitialValue, setInitialValue] = useState({field1:profile.fName,field2:profile.lName,selectedOption:profile.gender.toString(),field3:profile.userAbout,field4:profile.phoneNumber,field5:profile.nationalCode,birthDate:profile.birthDay,field7:profile.email,field8:profile.homeAdderess})
   const nationalIdRegex = "^[1-9]{10}$";
   const phoneRegex = "^09[0-9]{9}$";
   const [selectedDate, setSelectedDate] = useState(`${profile.birthDay ? jMoment(profile.birthDay).locale('fa').format('jYYYY jMMMM jD') : ''}`);
@@ -22,11 +22,15 @@ const InformationUser = () => {
 
   const onSubmit= async(el)=>{
     let valueOption=el.selectedOption
+    if (profile.latitude==null){
+      profile.latitude=32.0
+      profile.longitude=53.0
+    }
     if (el.selectedOption=="false")
       valueOption=false
     else
       valueOption=true
-
+    console.log(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
     let massage=await UpdateInformation(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
     if(massage.message=="تاریخ تولد نامعتبر می باشد"){
       notifyError()

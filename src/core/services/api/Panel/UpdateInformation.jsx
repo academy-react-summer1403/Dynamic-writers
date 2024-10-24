@@ -21,7 +21,6 @@ const UpdateInformation =async (profile,lName,fName,userAbout,homeAdderess,natio
             headers: {
               'Content-Type': 'multipart/form-data'
             }})
-    
         return response
     
       }catch(error){
@@ -29,6 +28,8 @@ const UpdateInformation =async (profile,lName,fName,userAbout,homeAdderess,natio
           if(error.response.status==422){
             return {"message":"تاریخ تولد نامعتبر می باشد"}
           }
+        }else{
+          return error
         }
       }
 }
