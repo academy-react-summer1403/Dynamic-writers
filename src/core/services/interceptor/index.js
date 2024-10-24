@@ -15,7 +15,6 @@ const onError = (err) => {
 
    if(err.response) {
       const status = err.response.status
-
       if(status === 401) {
          removeItem('token')
          window.location.pathname = '/Error401'
@@ -32,7 +31,9 @@ const onError = (err) => {
       if(status === 500) {
          window.location.pathname = '/Error500'
       }
-   
+      if(status == 422){
+         return err.response.data.ErrorMessage
+      }
    }
 
    else {

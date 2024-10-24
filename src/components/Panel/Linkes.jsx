@@ -8,9 +8,12 @@ import UpdateLinkInProf from '../../core/services/api/Panel/UpdateLinkInProf'
 import * as yup from 'yup'
 const Likes = () => {
   const [profile]=useOutletContext();
-  const [InitialValue, setInitialValue] = useState({telegram:profile.telegramLink,linkdin:profile.linkdinProfile})
-  const telegramRegex = "^https:\\/\\/t\\.me(\\/[a-zA-Z0-9_]{5,32})?$";
-  const linkdinRegex = "^https:\\/\\/(www\\.)?linkedin\\.com(\\/(in|company)\\/[a-zA-Z0-9_-]+)?\\/?$";
+  const [InitialValue, setInitialValue] = useState({
+    telegram: profile.telegramLink || "", 
+    linkdin: profile.linkdinProfile || ""
+  });  
+  const telegramRegex = "^(https?:\/\/)?(www\.)?(t(elegram)?\.(me|org))(\/[a-zA-Z0-9_-]{5,32})?\/?$";
+  const linkdinRegex = "^(https?:\/\/)?(www\.)?linkedin\.com\/(in|company|school)\/[a-zA-Z0-9_-]+\/?$";
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
 
   const onSubmit= async(el)=>{

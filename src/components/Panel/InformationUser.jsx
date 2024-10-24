@@ -14,11 +14,11 @@ const InformationUser = () => {
   const [profile]=useOutletContext();
   
   const [InitialValue, setInitialValue] = useState({field1:profile.fName,field2:profile.lName,selectedOption:profile.gender.toString(),field3:profile.userAbout,field4:profile.phoneNumber,field5:profile.nationalCode,birthDate:profile.birthDay,field7:profile.email,field8:profile.homeAdderess})
-  const nationalIdRegex = "^[1-9]{10}$";
+  const nationalIdRegex = "^[0-9]{10}$";
   const phoneRegex = "^09[0-9]{9}$";
   const [selectedDate, setSelectedDate] = useState(`${profile.birthDay ? jMoment(profile.birthDay).locale('fa').format('jYYYY jMMMM jD') : ''}`);
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
-  const notifyError = () => toast.warn("تاریخ تولد نامعتبر می باشد",{position:"top-center",theme:"dark"});
+  const notifyError = (massage) => toast.warn(massage,{position:"top-center",theme:"dark"});
 
   const onSubmit= async(el)=>{
     let valueOption=el.selectedOption
@@ -32,8 +32,8 @@ const InformationUser = () => {
       valueOption=true
     console.log(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
     let massage=await UpdateInformation(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
-    if(massage.message=="تاریخ تولد نامعتبر می باشد"){
-      notifyError()
+    if(Array.isArray(massage)){
+      notifyError(massage[0])
     }else{
       notifySuccess(massage.message)
     }
@@ -62,7 +62,7 @@ const InformationUser = () => {
       field2:yup.string().required('این فیلد اجباریست'),
       field3:yup.string().required('این فیلد اجباریست').min(11, "تعداد کارکتر های درباره ی من باید از 10 بیشتر باشد"),
       field4:yup.string().required('این فیلد اجباریست').matches(phoneRegex,"شماره تلفن معتبر نیست"),
-      field5:yup.string().required('این فیلد اجباریست').length(10, "تعداد کاراکتر های کد ملی باید 10 رقم باشد"),
+      field5:yup.string().required('این فیلد اجباریست').matches(nationalIdRegex,"کد ملی معتبر نیست").length(10, "تعداد کاراکتر های کد ملی باید 10 رقم باشد"),
       field7:yup.string().required('این فیلد اجباریست').email(),
       field8:yup.string().required('این فیلد اجباریست').min(11," تعداد کارکتر های آدرس محل سکونت باید از 10 بیشتر باشد")
     }
@@ -133,7 +133,7 @@ const InformationUser = () => {
                 </div>
                 <div className='flex flex-col items-end gap-2 h-[80px] flex-grow-3 w-[90%]'>
                   <span className='font-[700] text-[16px]'>ایمیل</span>
-                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="ایمیل خود را وارد کنید" name="field7" />
+                  <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] select-none' placeholder="ایمیل خود را وارد کنید" name="field7" readOnly onClick={() => notifyError("شما نمیتوانید ایمیل خود را تغییر دهید")}/>
                   <ErrorMessage name='field7' className='text-red-700 text-[14px]' component={"p"}/>
                 </div>
                 
