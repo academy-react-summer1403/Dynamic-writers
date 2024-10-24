@@ -107,7 +107,7 @@ const FilterCourse = ({ updateParams }) => {
     }, [])
 
   return (
-    <div className='bg-gray-50 rounded-3xl dark:text-white w-80 p-5 md:flex flex-col gap-5 font-semibold hidden dark:bg-slate-900' style={{height: '620px'}}>
+    <div className='bg-gray-50 rounded-3xl dark:text-white w-80 p-5 lg:flex flex-col gap-5 font-semibold hidden dark:bg-slate-900' style={{height: '620px'}}>
 
     <div className='flex flex-col gap-2'>
     <div className='flex items-center flex-row-reverse gap-2'>

@@ -26,8 +26,6 @@ const CourseView1 = () => {
   const initialView = getItem('view') || "view1"
   const [view, setView] = useState(initialView)
 
-  
-  const [windowWidth , setWindowWidth] = useState(window.innerWidth)
   const [costTop , setCostTop] = useState()
 
   const [searchParams] = useSearchParams()
@@ -54,13 +52,13 @@ const CourseView1 = () => {
   }, [pageNumber, idLevel, query, rowsPage, idTeacher, costUp , costDown, techCount, techList, sortType, sortingCol, startDate, endDate])
 
   useEffect(() => {
-    if(windowWidth < 768) {
+    if(window.innerWidth < 768) {
       updateParams('RowsOfPage', 3)
     }
-    else if(windowWidth > 768) {
+    else if(window.innerWidth > 768) {
       updateParams('RowsOfPage', 9)
     }
-  }, [windowWidth])
+  }, [window.innerWidth])
 
   const navigate = useNavigate()
 
@@ -126,8 +124,8 @@ const CourseView1 = () => {
         />
 
         <div className='flex justify-between w-full items-center px-2'>
-          <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 md:hidden block' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>
-          {!searchDiv && searchDiv === false && <Search01Icon className='size-6 cursor-pointer mx-3 md:hidden block' onClick={() => {setSearchDiv(true)}} />}
+          <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 lg:hidden block' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>
+          {!searchDiv && searchDiv === false && <Search01Icon className='size-6 cursor-pointer mx-3 lg:hidden block' onClick={() => {setSearchDiv(true)}} />}
           {searchDiv && <SearchRes updateParams={updateParams} />}
         </div>
 
@@ -138,9 +136,9 @@ const CourseView1 = () => {
             getCourses={getCourses}
           />
 
-          <Card classNames={{base: 'bg-transparent shadow-none'}} className='bg-transparent md:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center md:justify-normal' style={windowWidth < 768 ? {height: '1600px'} : {height: 'fit-content'}}>
+          {view === 'view1' && <Card classNames={{base: 'bg-transparent shadow-none'}} className='bg-transparent lg:w-9/12 w-full overflow-hidden flex flex-wrap gap-6 flex-row-reverse py-5 justify-center lg:justify-normal' style={window.innerWidth < 1024 ? {height: '1600px'} : {height: 'fit-content'}}>
 
-            {view === 'view1' && courses.map((item,index) => {
+            {courses.map((item,index) => {
             
               return <CoursesView1
                 key={index}
@@ -162,7 +160,12 @@ const CourseView1 = () => {
               
             })}
 
-            {view === 'view2' && courses.map((item,index) => {
+            </Card>
+          }
+
+          {view === 'view2' && <Card classNames={{base: 'bg-transparent shadow-none'}} className='bg-transparent items-center lg:items-stretch w-full overflow-hidden flex gap-6 flex-col px-5 lg:py-5'>
+
+            {courses.map((item,index) => {
             
             return <CoursesView2
               key={index}
@@ -184,7 +187,7 @@ const CourseView1 = () => {
             
           })}
 
-          {windowWidth < 768 && courses.map((item,index) => {
+          {window.innerWidth < 1024 && courses.map((item,index) => {
 
             return <CoursesView1
               key={index}
@@ -201,11 +204,14 @@ const CourseView1 = () => {
               tumbImageAddress={item.tumbImageAddress}
               cost={(parseInt(item.cost).toLocaleString('en-US'))}
               statusName={item.statusName}
+              isLoaded={isLoaded}
             />
 
-          })}
+            })}
 
           </Card>
+
+          }
 
         </div>
 

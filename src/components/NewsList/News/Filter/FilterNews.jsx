@@ -6,7 +6,7 @@ import { Form } from 'react-router-dom'
 
 const FilterNews = ({ updateParams, partCount }) => {
   return (
-    <div className='bg-gray-50 xl:flex flex-col gap-6 p-2.5 rounded-3xl w-80 h-32 m-2 hidden dark:text-white dark:bg-slate-900' dir='rtl'>
+    <div className='bg-gray-50 2xl:flex flex-col gap-6 p-2.5 rounded-3xl w-80 h-32 m-2 hidden dark:text-white dark:bg-slate-900' dir='rtl'>
         <div className='flex flex-col gap-2.5 w-full'>
             <div className='flex items-center gap-2'>
             <Search01Icon />

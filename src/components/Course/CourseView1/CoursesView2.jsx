@@ -16,7 +16,7 @@ const CoursesView2 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
   
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-      <div onClick={() => callCourse()} className='md:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white' style={{height: '288px', width: '985px'}}>
+      <div onClick={() => callCourse()} className='lg:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white w-full' style={{height: '288px'}}>
           <div className='w-5/12 h-full bg-red-300 rounded-3xl relative border dark:border-none'>
               <img className='w-full h-full rounded-3xl dark:border-none' src={tumbImageAddress} />
               <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
