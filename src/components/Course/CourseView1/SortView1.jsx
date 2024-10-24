@@ -17,7 +17,7 @@ const SortView1 = ({ changeView }) => {
   }
 
   return (
-    <div className='hidden gap-5 items-center flex-row-reverse px-9 py-2 iranSans md:flex'>
+    <div className='hidden gap-5 items-center flex-row-reverse px-9 py-2 iranSans lg:flex'>
         <div className='flex gap-2 flex-row-reverse'>
           <input type='radio' name='view' id='view1' defaultChecked className='hidden inputView'/>
           <label htmlFor='view1' className='labelView' onClick={() => {changeView('view1')}} > <GridViewIcon className='size-5' /> </label>

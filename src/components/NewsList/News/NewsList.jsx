@@ -103,11 +103,11 @@ const NewsList = () => {
 
       <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between dark:border-gray-600'>
         
-        <div className='flex flex-col gap-5 xl:w-9/12 w-full xl:items-end items-center'>
+        <div className='flex flex-col gap-5 2xl:w-9/12 w-full 2xl:items-end items-center'>
 
             <SortNews />
 
-            <div className='flex justify-between items-center xl:hidden w-full'>
+            <div className='flex justify-between items-center 2xl:hidden w-full'>
 
               <Button onClick={() => setCloseFilter(true)} className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
 
