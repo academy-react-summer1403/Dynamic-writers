@@ -36,7 +36,7 @@ const LeftVerifyRegister = () => {
         }
 
         const notifySuccess = () => {
-            toast.success(user.message, {
+            toast.success(userVerify.message, {
             autoClose: 5000,
             })
         }

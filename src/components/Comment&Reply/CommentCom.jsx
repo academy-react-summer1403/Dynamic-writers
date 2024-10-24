@@ -8,15 +8,22 @@ import { addLikeComment } from '../../core/services/api/Comments/Like&DissLike/l
 import { addDissLikeComment } from '../../core/services/api/Comments/Like&DissLike/disslikeComment'
 import { ToastContainer, toast } from 'react-toastify'
 import AddReply from './AddReply'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { addLikeCommentNew } from '../../core/services/api/Comments/New/Lile&DissLike/LikeCommentNew'
 
 const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount, dissLikeCount, insertDate, author, acceptReplysCount, id, Oid, currentUserIsLike, currentUserIsDissLike, currentUserEmotion }) => {
 
     const [replyVisible, setVisibleReply] = useState(false)
     const [checkAdd, setCheckAdd] = useState(false)
+    const [like, setLike] = useState(window.location.pathname.includes('NewDetail') && currentUserIsLike ? true : false || window.location.pathname.includes('CourseDetail') && currentUserEmotion === 'LIKED' ? true : false)
+    const [dislike, setDislike] = useState(window.location.pathname.includes('NewDetail') && currentUserIsDissLike ? true : false || window.location.pathname.includes('CourseDetail') && currentUserEmotion === 'DISSLIKED' ? true : false)
 
-    const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
+    const [likeCounted, setLikeCounted] = useState(likeCount)
+    const [dislikeCounted, setDislikeCounted] = useState(window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount)
+
+    const navigate = useNavigate()
+
+    // const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
     const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
 
     const setVisible = () => {
@@ -31,7 +38,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const likeComment = async () => {
         const response = await addLikeComment(id)
         if(response.success) {
-            notifySuccess(response.message)
+            // notifySuccess(response.message)
         }
         else{
             notifyError()
@@ -41,7 +48,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const dissLikeComment = async () => {
         const response = await addDissLikeComment(id)
         if(response.success) {
-            notifySuccess(response.message)
+            // notifySuccess(response.message)
         }
         else{
             notifyError()
@@ -51,12 +58,36 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const likeNew = async (likeType) => {
         const response = await addLikeCommentNew(id, likeType)
         if(response.success) {
-            notifySuccess(' نظر شما با موفقیت ثبت شد ')
+            // notifySuccess(' نظر شما با موفقیت ثبت شد ')
         }
         else{
             notifyError()
         }
     }
+
+    const liking = () => {
+        setLike(true)
+        setDislike(false)
+    }
+
+    const disliking = () => {
+        setLike(false)
+        setDislike(true)
+    }
+
+    const countingLike = () => {
+       setLikeCounted(likeCounted + 1) 
+       if(dislikeCounted > 0){
+        setDislikeCounted(dislikeCounted - 1) 
+       }
+    }
+    
+    const countingDislike = () => {
+        setDislikeCounted(dislikeCounted + 1)
+        if(likeCounted > 0) {
+            setLikeCounted(likeCounted - 1)  
+        }
+     }
 
   return (
     <ul className='w-full h-fit flex flex-col gap-4'>
@@ -73,9 +104,9 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
         </div>
         <div className='flex gap-6 flex-col md:flex-row items-start md:items-center'>
             <div className='flex gap-4'>
-                <div className='flex gap-2 flex-row-reverse font-[500] dark:text-white text-[#2F2F2F] text-[16px]'> {likeCount} <ThumbsUpIcon className={`${window.location.pathname.includes('NewDetail') ? currentUserIsLike ? 'text-red-500' : 'text-black dark:text-white' : currentUserEmotion === 'LIKED' ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(true) : likeComment()} /> </div>
+                <div className='flex gap-2 flex-row-reverse font-[500] dark:text-white text-[#2F2F2F] text-[16px]'> {likeCounted} <ThumbsUpIcon className={`${like ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => {window.location.pathname.includes('NewDetail') ? likeNew(true) : likeComment(), liking(), countingLike()}} /> </div>
 
-                <div className='flex gap-2 flex-row-reverse font-[500] dark:text-white text-[#2F2F2F] text-[16px]'> {window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount} <ThumbsDownIcon className={`${window.location.pathname.includes('NewDetail') ? currentUserIsDissLike ? 'text-red-500' : 'text-black dark:text-white'  : currentUserEmotion === 'DISSLIKED' ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => window.location.pathname.includes('NewDetail') ? likeNew(false) : dissLikeComment()} /> </div>
+                <div className='flex gap-2 flex-row-reverse font-[500] dark:text-white text-[#2F2F2F] text-[16px]'> {dislikeCounted} <ThumbsDownIcon className={`${dislike ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => {window.location.pathname.includes('NewDetail') ? likeNew(false) : dissLikeComment(), disliking(), countingDislike()}} /> </div>
             </div>
             <div className='flex gap-4'>
                 {!checkAdd && <Button onClick={() => {setCheckAdd(true)}} className='bg-white text-blue-500 border rounded-full border-blue-500 text-base font-semibold dark:bg-slate-700 dark:border-none dark:text-white'> جواب دادن </Button>}

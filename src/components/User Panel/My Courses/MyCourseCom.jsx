@@ -19,11 +19,17 @@ const MyCourseCom = () => {
     const [totalCount, setTotalCount] = useState()
     const [filterClose, setFilterClose] = useState(false)
 
+    const [isLoading, setIsLoading] = useState(true)
+
     const getCourses = async () => {
   
       const response = await getMyCourse(query, rows, pageNumber, sortingCol , sortType)
       setMyCourse(response.listOfMyCourses)
       setTotalCount(Number(response.totalCount % rows))
+
+      if(response.listOfMyCourses) {
+        setIsLoading(false)
+      }
     }
     useEffect(() => {
       getCourses()
@@ -36,9 +42,16 @@ const MyCourseCom = () => {
         getCourses()
     }, [query, rows, pageNumber, sortType, sortingCol])
 
+    useEffect(() => {
+      if(myCourse.length > 0) {
+        setIsLoading(false)
+      }
+    }, [myCourse])
+    
+
   return (
-    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-fit' dir='rtl'>
-      <div className='md:hidden flex w-full h-fit justify-between items-center'>
+    <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
+      <div className='md:hidden flex w-full h-full justify-between items-center'>
         <h2 className='text-[28px] font-bold'> دوره من </h2>
         <Button className='bg-blue-500 rounded-full text-white text-base font-semibold' onClick={() => setFilterClose(true)}> فیلتر </Button>
       </div>
@@ -87,6 +100,7 @@ const MyCourseCom = () => {
       </div>
         <MyCourseTable
             myCourse={myCourse}
+            isLoading={isLoading}
         />
         <div className='w-full flex justify-center'>
         <Pagination className='w-fit z-0 float-start' classNames={{wrapper: 'bg-white'}} dir='ltr' onChange={(e) => setPageNumber(e)} isCompact showControls total={totalCount} initialPage={1} />

@@ -56,6 +56,7 @@ const NewsList = () => {
     const response = await getNewsList(pageNum, rowsPage, query, sortingCol , sortType)
     setPages(Math.ceil(response.totalCount / rowsPage))
     setNews(response.news)
+    
     if(news.length > 0) {
       setIsLoaded(true)
     }
@@ -89,6 +90,10 @@ const NewsList = () => {
     getNews()
   }, [])
 
+  useEffect(() => {
+    getNews()
+  }, [news])
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -98,11 +103,11 @@ const NewsList = () => {
 
       <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between dark:border-gray-600'>
         
-        <div className='flex flex-col gap-5 md:w-9/12 w-full items-end'>
+        <div className='flex flex-col gap-5 xl:w-9/12 w-full xl:items-end items-center'>
 
             <SortNews />
 
-            <div className='flex justify-between items-center md:hidden w-full'>
+            <div className='flex justify-between items-center xl:hidden w-full'>
 
               <Button onClick={() => setCloseFilter(true)} className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
 

@@ -12,13 +12,13 @@ const onSuccess = (response) => {
 }
 
 const onError = (err) => {
-   console.log(err);
 
    if(err.response) {
       const status = err.response.status
-      
-      if(status === 400) {
-         window.location.pathname = '/Error400'
+
+      if(status === 401) {
+         removeItem('token')
+         window.location.pathname = '/Error401'
       }
    
       if(status === 403) {
@@ -32,17 +32,17 @@ const onError = (err) => {
       if(status === 500) {
          window.location.pathname = '/Error500'
       }
+   
    }
-   else if(err.request && err.request.status === 401) {
-      window.location.pathname = '/Error401'
-   }
-   else if(err.request && err.request.status === 403) {
-      window.location.pathname = '/Error403'
-   }
+
    else {
-      // window.location.pathname = '/Error500'
-      console.log(err.request)
+      // if(err.request.status === 0) {
+      //    removeItem('token')
+      //    window.location.pathname = '/Error401'
+      // }
    }
+
+   return Promise.reject(err);
 }
 
 instance.interceptors.response.use(onSuccess, onError)

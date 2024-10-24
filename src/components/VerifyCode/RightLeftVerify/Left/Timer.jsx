@@ -22,7 +22,7 @@ const Timer = () => {
     return (
         <div>
             <div style={{ fontSize: '0.75em', color: 'blue', backgroundColor: 'light-blue',
-
+                
                }}>
                 {formatTime(timeLeft)}
             </div>

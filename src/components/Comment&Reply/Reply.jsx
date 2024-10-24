@@ -24,8 +24,6 @@ const Reply = ({ commentId, Oid }) => {
   
       const response = await getRepliesNew(commentId)
       setReply(response)
-      console.log(response)
-      console.log(commentId)
     }
   
     useEffect(() => {
@@ -45,7 +43,8 @@ const Reply = ({ commentId, Oid }) => {
                 insertDate={jMoment(reply.insertDate).locale('fa').format('jD jMMMM jYYYY')}
                 accept={reply.accept}
                 acceptReplysCount={reply.acceptReplysCount}
-                disslikeCount={reply.disslikeCount}
+                dislikeCount={reply.dislikeCount && reply.dislikeCount}
+                disslikeCount={reply.disslikeCount && reply.disslikeCount}
                 likeCount={reply.likeCount}
                 currentUserEmotion={reply.currentUserEmotion}
                 pictureAddress={reply.pictureAddress}

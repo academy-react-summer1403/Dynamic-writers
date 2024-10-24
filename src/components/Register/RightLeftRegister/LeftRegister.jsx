@@ -46,16 +46,30 @@ const LeftRegister = () => {
         })
     }
 
-    const phoneNumber = (JSON.stringify(phone)).replace(/-/g, "")
+    const notifyError = (message) => {
+        toast.dismiss()
 
+        toast.error(message)
+    }
+
+    const phoneNumber = (JSON.stringify(phone)).replace(/-/g, "")
     
-    if (phoneNumber === ''){
+    if (phone === ''){
         notify()
     }
     else {
         setItem('phoneNumber', JSON.parse(phoneNumber))
-        SendVerifyMessage()
-        navigate('/verifyRegister')
+        const response = await SendVerifyMessage()
+        console.log(response)
+        if(response.message === 'درخواست نامعتبر') {
+            notifyError(' درخواست نامعتبر است ')
+        }
+        else if(response.message === 'لطفا  کد تایید را وارد نمایید') {
+            navigate('/verifyRegister')
+        }
+        else{
+            notifyError(' درخواست نامعتبر است ')
+        }
     }
     
   }
@@ -64,9 +78,9 @@ const LeftRegister = () => {
     <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6 min-w-96'>
-            <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
+            <Link to='/' div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
-            </div>
+            </Link>
             <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap' style={{direction: 'rtl'}}> 😍!به آکادمی بحر خوش اومدی </h2>
             <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> لطفا برای ثبت نام شماره همراه خود را وارد کنید تا برای شما کد تایید ارسال شود </span>
 

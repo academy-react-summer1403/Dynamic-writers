@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CourseTops from './CourseTops'
-import moment from 'moment-jalaali'
+import jMoment from 'jalali-moment'
 import { Button, Card } from '@nextui-org/react'
 import { getCourserList } from '../../../core/services/api/courseToper'
 
@@ -46,7 +46,7 @@ const BoxThird = () => {
           id={item.courseId}
           title={item.title}
           describe={item.describe}
-          date={(moment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
+          date={(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))}
           levelName={item.levelName}
           dissLikeCount={item.dissLikeCount}
           likeCount={item.likeCount}

@@ -2,6 +2,7 @@ import { ArrowDown01Icon, StarIcon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
 import Round from '../../../assets/round.png'
 import CourseView1 from './CourseView1'
+import Loading from '../../../core/services/common/Loading/loading'
 
 const CourseList = () => {
 

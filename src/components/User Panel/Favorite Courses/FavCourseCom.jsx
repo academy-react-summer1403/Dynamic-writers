@@ -10,11 +10,17 @@ const FavCourseCom = () => {
   const [searchCourse, setSearchCourse] = useState('')
   const [filteredData, setFilteredData] = useState([])    
 
+  const [isLoading, setIsLoading] = useState(true)
+
   const getCourse = async () => {
 
       const response = await getFavCourse()
       setMyCourse(response.favoriteCourseDto)
       setFilteredData(response.favoriteCourseDto)
+
+      if(response.favoriteCourseDto) {
+        setIsLoading(false)
+      }
     }
 
     useEffect(() => {
@@ -27,6 +33,12 @@ const FavCourseCom = () => {
       )
       setFilteredData(results)
     }, [searchCourse])
+
+    useEffect(() => {
+      if(myCourse.length > 0) {
+        setIsLoading(false)
+      }
+    }, [myCourse])
 
   
   return (
@@ -56,6 +68,7 @@ const FavCourseCom = () => {
       </div>
       <FavCourseTable
         myCourse={filteredData}
+        isLoading={isLoading}
       />
     </div>
   )

@@ -51,12 +51,12 @@
     }
     
       return (
-        <div className='grow-8 bg-white flex flex-col justify-start items-center my-7'>
+        <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
     
             <div className='flex flex-col items-end w-4/6'>
-                <div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
+                <Link to='/' className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                     <img src={BahrLogo} className='w-10 inline' /> 
-                </div>
+                </Link>
                 <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold'> 🔐فراموشی رمزعبور؟ </h2>
                 <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> اگر رمزعبور خود را فراموش کرده‌اید ایمیل خود را وارد کنید تا لینک صفحه تغییر رمزعبور برای شما ارسال شود </span>
     
@@ -70,7 +70,7 @@
     
                     <h2 className='mb-2 mt-5 font-bold'>  ایمیل </h2>
                     <div className='w-full relative'>
-                        <Field name="email" type='email' className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                        <Field name="email" type='email' className='min-w-80 w-full p-3 rounded-md dark:bg-slate-600 dark:border-none dark:text-white bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                         focus:border-2 font-semibold relative pr-12' placeholder="ایمیل خود را وارد کنید" />
 
                         <Mail01Icon className='absolute right-3 top-2 text-gray-500 focus:hidden' />    

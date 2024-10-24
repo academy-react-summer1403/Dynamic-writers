@@ -1,11 +1,12 @@
-import { Button } from '@nextui-org/react'
-import { Skeleton } from 'antd'
+import { Button, Skeleton } from '@nextui-org/react'
 import { Calendar01Icon, QuillWrite01Icon, QuillWrite02Icon, ThumbsDownIcon, ThumbsUpIcon, ViewIcon } from 'hugeicons-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NewsItem = ({isLoaded ,id, title, miniDescribe, currentImageAddressTumb, currentView, addUserFullName, insertDate, currentDissLikeCount, currentLikeCount, keyword, newsCatregoryName }) => {
+  
   return (
+    <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
       <div className='flex bg-gray-100 rounded-3xl h-72 flex-row-reverse dark:text-white dark:bg-slate-900' style={{width: '985px'}}>
         <div className='bg-red-300 h-full w-5/12 rounded-3xl relative'>
           <img src={currentImageAddressTumb} className='w-full h-full rounded-3xl' />
@@ -42,6 +43,7 @@ const NewsItem = ({isLoaded ,id, title, miniDescribe, currentImageAddressTumb, c
           </div>
         </div>
       </div>
+      </Skeleton>
   )
 }
 

@@ -13,7 +13,7 @@ const CoursesView1 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
       navigate('/CourseDetail/' + id)
     }, 100)
   }
-  
+
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
       <div onClick={() => callCourse()} className='rounded-3xl bg-gray-100 dark:text-white dark:bg-slate-900 iranSans flex flex-col justify-between font-semibold min-w-72' style={{height: '512px', width: '315px'}}>

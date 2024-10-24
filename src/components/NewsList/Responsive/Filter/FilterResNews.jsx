@@ -14,10 +14,8 @@ const FilterResNews = ({ closeFil }) => {
     setSearchParams(searchParams)
   }  
 
-  const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
-
   return (
-    <div className={`bg-white z-50 flex-col gap-6 p-2.5 px-5 rounded-t-3xl w-dvw h-fit m-2 dark:text-white dark:bg-slate-900 flex fixed bottom-${scrollPosition.y} right-0 backdrop-grayscale`} dir='rtl'>
+    <div className={`bg-white z-50 flex-col gap-6 p-2.5 px-5 rounded-t-3xl w-dvw h-fit m-2 dark:text-white dark:bg-slate-900 flex fixed bottom-0 right-0 backdrop-grayscale`} dir='rtl'>
 
         <div className='flex justify-between item-center'>
             <h2 className='font-extrabold'> ترتیب و فیلتر </h2>

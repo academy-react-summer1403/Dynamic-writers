@@ -1,4 +1,4 @@
-import { Button, Modal, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
+import { Button, Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { Calendar01Icon, StudentsIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
@@ -11,15 +11,18 @@ import { toast, ToastContainer } from 'react-toastify'
 import GetCourseById from '../../../../core/services/api/Course/GetCourseById'
 import { AddReserve } from '../../../../core/services/api/Reserve/addReserve'
 import CourseReserve from '../../../CourseReserve/CourseReserve'
+import ReserveModal from '../../../../core/services/common/Modal/ReserveModal'
 
 const FavCourseModal = ({ 
     courseId,
-    isOpen, 
-    onOpenChange,   
+    isOpenD, 
+    onOpenChangeD,   
 }) => {
 
     const [course, setCourse] = useState([])
     const [Flags, setFlags] = useState(false)
+
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
   
     const NotifySuccess = (message) => {
         toast.dismiss()
@@ -71,9 +74,13 @@ const FavCourseModal = ({
 
       if(response.success === true) {
         setFlags(true)
+        onOpenChange(false)
+        onOpenChangeD(false)
       }
-      else{
-        NotifyError(' شما قبلا این دوره را رزرو کرده اید ')
+
+      if(response.status === 422){
+        NotifyError('شما قبلا این دوره را رزرو کرده اید ')
+        onOpenChange(false)
       }
     }
     
@@ -83,7 +90,7 @@ const FavCourseModal = ({
     
         
   return (
-    <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top' size={'lg'}>
+    <Modal dir='rtl' isOpen={isOpenD} onOpenChange={onOpenChangeD} scrollBehavior='outside' placement='top' size={'lg'}>
       <ModalContent>
       {(onClose) => (
         <>
@@ -117,7 +124,8 @@ const FavCourseModal = ({
                     <span className='text-[24px] font-bold'> {course.title} </span>
                 </div>
                 <div className='flex flex-col gap-4 my-5'>
-                    <Button className='bg-blue-500 text-white font-semibold text-sm rounded-full w-fit' onClick={() => {addReserve()}}> رزرو دوره </Button>
+                    <Button className='bg-blue-500 text-white font-semibold text-sm rounded-full w-fit' onClick={onOpen}> رزرو دوره </Button>
+                    <ReserveModal addReserve={addReserve} isOpen={isOpen} onOpenChange={onOpenChange} />
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
                     <h2 className='text-base text-[#787878]'> توضیح مختصر </h2>
