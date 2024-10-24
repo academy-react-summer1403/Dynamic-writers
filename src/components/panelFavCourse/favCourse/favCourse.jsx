@@ -50,7 +50,7 @@ const FavCourses = () => {
               type='range'
               id='reRange'
               min={0}
-              max={100}
+              max={1000}
               value={rengeIs}
               onChange={(e) => setRengeIs(e.target.value)}
               className='mt-2 rounded-2xl bg-gray-300 outline-none'
