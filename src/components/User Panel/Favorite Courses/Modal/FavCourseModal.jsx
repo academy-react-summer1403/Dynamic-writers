@@ -21,6 +21,9 @@ const FavCourseModal = ({
 
     const [course, setCourse] = useState([])
     const [Flags, setFlags] = useState(false)
+    const [like, setLike] = useState(course.currentUserLike === '1' ? true : false)
+    const [dislike, setDislike] = useState(course.currentUserDissLike === '0' ? true : false)
+
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
   
@@ -91,6 +94,11 @@ const FavCourseModal = ({
     useEffect(() => {
         getCourse()
     }, [])
+
+    useEffect(() => {
+        setDislike(course.currentUserDissLike === '0' ? true : false)
+        setLike(course.currentUserLike === '1' ? true : false)
+    }, [course])
     
         
   return (
@@ -119,8 +127,8 @@ const FavCourseModal = ({
                 <div className='w-full h-fit flex justify-between items-center'>
                     <Button className='bg-blue-500 text-white rounded-full'> <Link to={`/CourseDetail/${courseId}`}> صفحه دوره  </Link> </Button>
                     <div className='flex gap-2 items-center h-full w-fit'>
-                        <button className='border-2 flex justify-center items-center dark:bg-slate-600 dark:text-white dark:border-none bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsDownIcon onClick={Dislike} className='size-6' /> </button>
-                        <button className='border-2 flex justify-center items-center dark:bg-slate-600 dark:text-white dark:border-none bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsUpIcon onClick={Like} className='size-6' /> </button>
+                        <button className='border-2 flex justify-center items-center dark:bg-slate-600 dark:text-white dark:border-none bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsDownIcon onClick={Dislike}  className={`${dislike ? 'text-red-500' : 'text-black dark:text-white'} size-6`} /> </button>
+                        <button className='border-2 flex justify-center items-center dark:bg-slate-600 dark:text-white dark:border-none bg-white rounded-full size-14 min-w-14 min-h-14 hover:bg-blue-300'> <ThumbsUpIcon onClick={Like}  className={`${like ? 'text-red-500' : 'text-black dark:text-white'} size-6`} /> </button>
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>

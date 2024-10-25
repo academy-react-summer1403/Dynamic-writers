@@ -22,8 +22,8 @@ const FavNewsModal = ({
 }) => {
 
     const [News, setNews] = useState([])
-    const [like, setLike] = useState(false)
-    const [dislike, setDislike] = useState(false)
+    const [like, setLike] = useState(News.currentUserIsLike ? true : false)
+    const [dislike, setDislike] = useState(News.currentUserIsDissLike ? true : false)
 
     const NotifySuccess = (message) => {
         toast.dismiss()
@@ -76,6 +76,11 @@ const FavNewsModal = ({
     useEffect(() => {
         getNews()
     }, [])
+
+    useEffect(() => {
+        setDislike(News.currentUserIsDissLike ? true : false)
+        setLike(News.currentUserIsLike ? true : false)
+    }, [News])
     
         
   return (
@@ -87,7 +92,7 @@ const FavNewsModal = ({
         <ModalHeader className="flex flex-row-reverse items-center gap-1 justify-end">
 
             <div className='flex gap-7 items-center'>
-                <h2 className='font-[700] text-[24px] flex flex-row-reverse w-full justify-end gap-1'> دوره </h2>
+                <h2 className='font-[700] text-[24px] flex flex-row-reverse w-full justify-end gap-1'> مقاله </h2>
             </div>
 
             <ToastContainer />
