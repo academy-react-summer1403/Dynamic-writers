@@ -55,8 +55,14 @@ instance.interceptors.response.use(onSuccess, onError)
 
 instance.interceptors.request.use((opt) => {
    const token = getItem('token')
+   if(token === 'undefined') {
+      removeItem('token')
+   }
+   if(token === null){
+      removeItem('token')
+   }
 
-   if (token && token !== undefined && token !== null) opt.headers.Authorization = 'Bearer ' + JSON.parse(token);
+   if (token) opt.headers.Authorization = 'Bearer ' + JSON.parse(token);
    return opt
 })
 

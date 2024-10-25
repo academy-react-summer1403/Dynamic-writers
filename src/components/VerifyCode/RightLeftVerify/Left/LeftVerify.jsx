@@ -50,7 +50,7 @@ const LeftVerify = () => {
 
     const phone = JSON.parse(getItem('phoneOrGmail'))
     const pass = JSON.parse(getItem('password'))
-    const remember = getItem('rememberMe')
+    const remember = JSON.parse(getItem('rememberMe'))
 
     const userObj = {
         phoneOrGmail: phone,
