@@ -41,6 +41,7 @@ import PanelScreen from '../screens/Panel/PanelScreen';
 import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 
 function App() {
+  const [reloadImage, setreloadImage] = useState(false)
   const [darkMode, setDarkMode] = useState(() => {
     getItem('darkMode') === true
   })
@@ -54,6 +55,7 @@ function App() {
       setItem('darkMode', false)
     }
   }, [darkMode])
+
   
 
   const router = createBrowserRouter([
@@ -94,7 +96,7 @@ function App() {
 
     {
       path: '/layoutPanel',
-      element: <PrivateRoute element={<PanelLayout darkMode={darkMode} setDarkMode={setDarkMode} />} />,
+      element: <PrivateRoute element={<PanelLayout darkMode={darkMode} setDarkMode={setDarkMode} reloadImagePic={reloadImage}/>} />,
       children: [
         {
           path: 'dashboard',
@@ -127,7 +129,7 @@ function App() {
             },
             {
               path:"AddProfileImage",
-              element:<AddProfileImage/>
+              element:<AddProfileImage reload={setreloadImage} reloadValue={reloadImage}/>
             },
             {
               path:"AddAddress",

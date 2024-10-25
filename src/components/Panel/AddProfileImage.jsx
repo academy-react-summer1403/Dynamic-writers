@@ -6,7 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ChooseProfilePic from '../../core/services/api/Panel/ChooseProfilePic';
 import DeleteImage from '../../core/services/api/Panel/DeleteImage';
-const AddProfileImage = () => {
+import { getItem, setItem } from '../../core/services/common/storage';
+
+const AddProfileImage = ({reload,reloadValue}) => {
   
   const [profile,setRerender]=useOutletContext();
   const [keyNum, setkeyNum] = useState(-1)
@@ -36,12 +38,16 @@ const AddProfileImage = () => {
     setRerender(prev => !prev); 
   }
   const chooseProfile=async(ImageId)=>{
+
     setkeyNum(-1)
     setFlag(false)
+
     const massage=await ChooseProfilePic(ImageId)
     notifySuccess(massage.message)
     setImageProf(ImageId)
     setRerender(prev => !prev); 
+    reload(!reloadValue)
+
   }
  
   

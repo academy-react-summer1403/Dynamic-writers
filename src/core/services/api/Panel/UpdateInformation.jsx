@@ -24,8 +24,8 @@ const UpdateInformation =async (profile,fName,lName,userAbout,homeAdderess,natio
         formData.append('NationalCode', nationalCode);
         formData.append('Gender',gender);
         formData.append('BirthDay', birthDay);
-        // formData.append('Latitude', profile.latitude);
-        // formData.append('Longitude', profile.longitude);
+        formData.append('Latitude', profile.latitude);
+        formData.append('Longitude', profile.longitude);
     
         let response=await http.put('/SharePanel/UpdateProfileInfo',formData, {
             headers: {

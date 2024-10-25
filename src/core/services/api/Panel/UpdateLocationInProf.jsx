@@ -8,10 +8,10 @@ const UpdateLocationInProf =async (profile,latitude,longitude) => {
     if(profile.telegramLink==null){
       profile.telegramLink=""
     }
-    // if (profile.latitude==null){
-    //   profile.latitude=32.0
-    //   profile.longitude=53.0
-    // }
+    if (profile.latitude==null){
+      profile.latitude=32.0
+      profile.longitude=53.0
+    }
     
     const formData = new FormData();
     formData.append('LName',profile.lName);
@@ -24,8 +24,8 @@ const UpdateLocationInProf =async (profile,latitude,longitude) => {
     formData.append('NationalCode', profile.nationalCode);
     formData.append('Gender',profile.gender);
     formData.append('BirthDay', profile.birthDay);
-    // formData.append('Latitude', latitude);
-    // formData.append('Longitude', longitude);
+    formData.append('Latitude', latitude);
+    formData.append('Longitude', longitude);
 
     let response=await http.put('/SharePanel/UpdateProfileInfo',formData, {
         headers: {

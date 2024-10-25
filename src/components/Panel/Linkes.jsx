@@ -13,7 +13,7 @@ const Likes = () => {
     linkdin: profile.linkdinProfile || ""
   });  
   const telegramRegex = "^(https?:\/\/)?(www\.)?(t(elegram)?\.(me|org))(\/[a-zA-Z0-9_-]{5,32})?\/?$";
-  const linkdinRegex = "^(https?:\/\/)?(www\.)?linkedin\.com\/(in|company|school)\/[a-zA-Z0-9_-]+\/?$";
+  const linkdinRegex = "^https?:?\/\/(www\.)?linkedin\.com(\/.*)?$";
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
 
   const onSubmit= async(el)=>{
