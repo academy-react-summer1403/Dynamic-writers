@@ -123,14 +123,14 @@ const Dashboard = () => {
 
           <div className='flex items-center justify-center size-32 mx-auto'>
             <CircularProgressbar value={(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"} text={`${(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"}%`} className={buildStyles({
-              textColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
+              textColor: `${profileInfo.profileCompletionPercentage >= 80 ? 'blue' : 'orange'}`,
               textSize: '25px',
               display: 'flex',
-              pathColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
+              pathColor: `${profileInfo.profileCompletionPercentage >= 80 ? 'blue' : 'orange'}`,
               trailColor: 'transparent'
             })} />
           </div>
-          <span className={`${profileInfo.profileCompletionPercentage >= 60 ? 'text-blue-500 dark:text-blue-400' : 'text-red-500'} text-sm text-center font-semibold`}> {profileInfo.profileCompletionPercentage === 100 ? ' اطلاعات حساب‌کابری شما تکمیل است' : ` ${100 - profileInfo.profileCompletionPercentage}% از کامل کردن اطلاعات شما مانده است` } </span>
+          <span className={`${profileInfo.profileCompletionPercentage >= 80 ? 'text-blue-500 dark:text-blue-400' : 'text-red-500'} text-sm text-center font-semibold`}> {profileInfo.profileCompletionPercentage === 100 ? ' اطلاعات حساب‌کابری شما تکمیل است' : ` ${100 - profileInfo.profileCompletionPercentage}% از کامل کردن اطلاعات شما مانده است` } </span>
         </div>
       
       </div>

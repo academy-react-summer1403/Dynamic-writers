@@ -4,8 +4,6 @@ export const postLogin = async (user) => {
   try {
   const result = await http.post('/Sign/Login' , user);
 
-  // alert(result.message)
-
   return result
   
   } catch (error) {

@@ -45,22 +45,22 @@ const SecurityCom = () => {
   }, [])
 
   return (
-    <div className='p-2 dark:bg-slate-700 bg-white w-full h-[220px] rounded-2xl my-5 flex flex-row-reverse justify-between items-start gap-2' dir='rtl'>
-        <div className='md:flex w-[692px] hidden flex-row-reverse justify-center h-full items-center gap-16'>
+    <div className='p-2 dark:bg-slate-700 bg-white w-full h-[220px] rounded-2xl my-5 flex flex-row-reverse justify-center md:justify-around items-start gap-2' dir='rtl'>
+        <div className='md:flex hidden mx-10 flex-row-reverse justify-center h-full items-center gap-16 w-[50%]'>
           <div className='relative flex flex-col justify-center items-center gap-4'>
             <h1 className='text-blue-500 font-[800] text-[30px]'> دو مرحله ای </h1>
-            <h2 className='text-[12px] text-center w-[200px] text-blue-500 font-600'>  پس از دو مرحله ای کردن اکانت خود می توانید از امنیت بیشتری بهره مند شوید و توسعه ما به شما این است </h2>
+            <h2 className='text-[12px] text-center max-w-[200px] text-blue-500 font-600'>  پس از دو مرحله ای کردن اکانت خود می توانید از امنیت بیشتری بهره مند شوید و توسعه ما به شما این است </h2>
             <img className='size-[20px] absolute top-0 -right-5' src={round2} />
             <div className='bg-blue-500 rounded-full size-2 absolute top-0 -left-3'></div>
             <img className='size-[30px] absolute bottom-0 -left-10' src={round3} />
           </div>
           <ArrowRight02Icon className='text-blue-500' />
         </div>
-        <div className='flex flex-col gap-5 w-[500px]'>
+        <div className='flex flex-col gap-5 w-full lg:w-[50%]'>
             <Switch isSelected={isSelected} onValueChange={setIsSelected} classNames={{
                 wrapper: 'md:bg-gray-100 bg-white dark:bg-slate-800', 
                 }}>
-                <div className='bg-blue-300 text-white dark:bg-slate-800 rounded-full p-1 flex gap-1 text-sm items-center px-2'>
+                <div className='truncate bg-blue-300 text-white dark:bg-slate-800 rounded-full p-1 flex gap-1 text-sm items-center px-2'>
                     <SecurityLockIcon className='size-4' />
                    حساب دو مرحله ای
                 </div>
@@ -68,7 +68,7 @@ const SecurityCom = () => {
             <div className=' w-full flex flex-col gap-2 my-2'>
                 <span className='text-base font-[700]'> ایمیل </span>
                 <Input type='email' onChange={(e) => setRecoveryEmail(e.target.value)} className='w-full' placeholder=' لطفا ایمیل را وارد فرمایید' startContent={<ComputerIcon className='text-gray-500' />} />
-                <Button onClick={EditSecurity} className='cursor-pointer items-center text-sm font-[600] w-full max-w-[500px] bg-blue-500 text-white rounded-xl px-2 py-1 flex gap-2'> تایید تغییرات <SecurityCheckIcon className='size-5' /> </Button>
+                <Button onClick={EditSecurity} className='cursor-pointer items-center text-sm font-[600] w-full  bg-blue-500 text-white rounded-xl px-2 py-1 flex gap-2'> تایید تغییرات <SecurityCheckIcon className='size-5' /> </Button>
             </div>
         </div>
         <ToastContainer />

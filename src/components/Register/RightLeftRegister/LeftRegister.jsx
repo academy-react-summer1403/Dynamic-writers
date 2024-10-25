@@ -96,7 +96,7 @@ const LeftRegister = () => {
                 <h2 className='mb-2 font-bold'> شماره همراه </h2>
                 <div className='w-full'>
                     <Field name="phoneNumber" onChange={(e) => handleChange(e)} value={phone} type="phone" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
-                    focus:border-2 dark:bg-slate-600 dark:border-none font-semibold pr-12 relative' placeholder=" شماره همراه یا ایمیل خود را وارد کنید" />
+                    focus:border-2 dark:bg-slate-600 dark:border-none font-semibold pr-12 relative' placeholder=" شماره همراه خود را وارد کنید" />
                     <SmartPhone01Icon className='absolute right-3 top-14 text-gray-500 focus:hidden' />
                 </div>
 

@@ -23,7 +23,7 @@ const CommentModal = ({onOpen, isOpen, onOpenChange, Oid, title, comments }) => 
               <ModalBody>
               {!checkAdd && <Button onClick={() => setCheckAdd(true)} className='bg-blue-500 h-[40px] w-fit text-white md:flex hidden rounded-3xl text-base font-semibold'>  نظر شما <Comment01Icon /> </Button>}
               {checkAdd && <AddComment Oid={Oid} setCheckAdd={setCheckAdd} />}
-                <div className='w-full h-fit flex flex-col overflow-hidden gap-8 bg-gradient-to-b from-white to-transparent'>
+                <div className='w-full h-fit flex flex-col overflow-hidden gap-8'>
                     {comments.map((item) => {
 
                         return <CommentCom
