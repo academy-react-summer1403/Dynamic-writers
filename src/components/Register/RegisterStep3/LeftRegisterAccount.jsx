@@ -47,7 +47,7 @@ const LeftRegisterAccount = () => {
     if(response.success === true){
         setItem('token', response.token)
         setItem('userId', response.id)    
-        navigate('/')
+        navigate('/login')
     }
     else if(values.gmail === ""){
         notifyGmail()

@@ -9,7 +9,7 @@ import { Login2Step } from '../../../../core/services/api/SecurityAPI/login2step
 import { postLogin } from '../../../../core/services/api/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router';
-import { setItem } from '../../../../core/services/common/storage';
+import { getItem, setItem } from '../../../../core/services/common/storage';
 
 const LeftVerify = () => {
 
@@ -47,8 +47,19 @@ const LeftVerify = () => {
   }
 
   const verifyAgain = async () => {
-    const user = await postLogin();
-    navigate('/') 
+
+    const phone = JSON.parse(getItem('phoneOrGmail'))
+    const pass = JSON.parse(getItem('password'))
+    const remember = JSON.parse(getItem('rememberMe'))
+
+    const userObj = {
+        phoneOrGmail: phone,
+        password: pass,
+        rememberMe: remember
+      }
+
+    const user = await postLogin(userObj);
+    navigate('/layoutPanel/dashboard') 
     setTimeout(() => {navigate('/verify')}, 100)
   }
 
@@ -60,7 +71,7 @@ const LeftVerify = () => {
                 <img src={BahrLogo} className='w-10 inline' /> 
             </Link>
             <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold'> 👋!خوش برگشتی </h2>
-            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}>   لطفا کد ارسال شده به شماره  <span>  </span>  را وارد کنید  </span>
+            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}>  لطفا کد ارسال شده     <span className='text-blue-500 font-medium'> {JSON.parse(getItem("phoneNumber"))} </span>  را وارد کنید  </span>
 
         </div>
 

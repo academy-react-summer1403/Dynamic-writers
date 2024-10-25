@@ -125,13 +125,13 @@ const FavNewsTable = ({ myNews, isLoading }) => {
       </TableHeader>
         <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"دوره ای برای نمایش وجود ندارد."} className="">
             {paginationData.map((item, index) => {
-                return <TableRow className="border-t-1" key={index}>
+                return <TableRow className="border-b-1 cursor-pointer" key={index} onClick={() => handleOpenModal(item.newsId)}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src={item.currentImageAddressTumb} /> </TableCell>
                     <TableCell>
                         <div className="flex flex-col gap-2">
-                            <div className="max-w-40 font-bold text-xl truncate"> {item.title} </div>
+                            <div className="max-w-40 font-bold text-xl truncate h-6"> {item.title} </div>
                             <div className="flex flex-col justify-center gap-1">
-                                <div className="max-w-56 truncate text-[#787878]"> {item.updateDate} </div> 
+                                <div className="max-w-56 truncate text-[#787878]"> {(jMoment(item.updateDate).locale('fa').format('jD jMMMM jYYYY'))} </div> 
                             </div>
                         </div>
                     </TableCell>

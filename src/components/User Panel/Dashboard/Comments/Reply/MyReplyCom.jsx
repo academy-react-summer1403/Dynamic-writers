@@ -42,7 +42,7 @@ const MyReplyCom = ({
         //   notifySuccess(response.message)
       }
       else{
-          notifyError()
+        //   notifyError()
       }
       }
   
@@ -52,7 +52,7 @@ const MyReplyCom = ({
             //   notifySuccess(response.message)
           }
           else{
-              notifyError()
+            //   notifyError()
           }
       }
 
@@ -66,18 +66,30 @@ const MyReplyCom = ({
         setDislike(true)
     }
 
+    const [ban, setBan] = useState(true)
+    const [ban2, setBan2] = useState(true)
+
+
     const countingLike = () => {
-        setLikeCounted(likeCounted + 1) 
-        if(dislikeCounted > 0){
-         setDislikeCounted(dislikeCounted - 1) 
+        if(ban) {
+            setLikeCounted(likeCounted + 1) 
+            if(dislikeCounted > 0){
+             setDislikeCounted(dislikeCounted - 1) 
+            }
+            setBan(false)
+            setBan2(true)
         }
      }
      
      const countingDislike = () => {
-         setDislikeCounted(dislikeCounted + 1)
-         if(likeCounted > 0) {
-             setLikeCounted(likeCounted - 1)  
-         }
+        if(ban2) {
+            setDislikeCounted(dislikeCounted + 1)
+            if(likeCounted > 0) {
+                setLikeCounted(likeCounted - 1)  
+            }
+            setBan2(false)
+            setBan(true)
+        }
       }
 
   return (

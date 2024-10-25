@@ -40,8 +40,11 @@ const Dashboard = () => {
     if(hours >= 6) {
       setHello(' صبح بخیر ')
     }
-    if(hours >= 12 && hours < 16) {
+    if(hours >= 12) {
       setHello(' ظهر بخیر ')
+    }
+    if(hours >= 14) {
+      setHello('بعد از ظهرت بخیر ')
     }
     if(hours >= 16) {
       setHello(' شب بخیر ')
@@ -79,7 +82,7 @@ const Dashboard = () => {
     <div className='h-full w-full flex flex-col gap-5 iranSans'>
       <div className='flex-col md:flex-row flex w-full h-full' dir='rtl'>
         <div className='grow items-center py-5'>
-          <h2 className='font-bold text-2xl'> سلام , {hello}  {profileInfo.fName} 😍 </h2>
+          <h2 className='font-bold text-2xl'> سلام , {hello} {profileInfo.fName} 😍 </h2>
         </div>
         <div className='md:grow flex md:justify-start justify-between grow-0 md:gap-24 items-center'>
           <div className='flex gap-4'>
@@ -123,14 +126,14 @@ const Dashboard = () => {
 
           <div className='flex items-center justify-center size-32 mx-auto'>
             <CircularProgressbar value={(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"} text={`${(profileInfo.profileCompletionPercentage) ? profileInfo.profileCompletionPercentage : "0"}%`} className={buildStyles({
-              textColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
+              textColor: `${profileInfo.profileCompletionPercentage >= 80 ? 'blue' : 'orange'}`,
               textSize: '25px',
               display: 'flex',
-              pathColor: `${profileInfo.profileCompletionPercentage >= 70 ? 'blue' : 'orange'}`,
+              pathColor: `${profileInfo.profileCompletionPercentage >= 80 ? 'blue' : 'orange'}`,
               trailColor: 'transparent'
             })} />
           </div>
-          <span className={`${profileInfo.profileCompletionPercentage >= 60 ? 'text-blue-500 dark:text-blue-400' : 'text-red-500'} text-sm text-center font-semibold`}> {profileInfo.profileCompletionPercentage === 100 ? ' اطلاعات حساب‌کابری شما تکمیل است' : ` ${100 - profileInfo.profileCompletionPercentage}% از کامل کردن اطلاعات شما مانده است` } </span>
+          <span className={`${profileInfo.profileCompletionPercentage >= 80 ? 'text-blue-500 dark:text-blue-400' : 'text-red-500'} text-sm text-center font-semibold`}> {profileInfo.profileCompletionPercentage === 100 ? ' اطلاعات حساب‌کابری شما تکمیل است' : ` ${100 - profileInfo.profileCompletionPercentage}% از کامل کردن اطلاعات شما مانده است` } </span>
         </div>
       
       </div>

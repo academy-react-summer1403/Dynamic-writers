@@ -10,6 +10,7 @@ import { getItem, setItem } from '../../../core/services/common/storage';
 import { VerifyMessage } from '../../../core/services/api/register/verifyMessage';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SendVerifyMessage } from '../../../core/services/api/register/sendVerifyMessage';
 
 const LeftVerifyRegister = () => {
 
@@ -50,7 +51,9 @@ const LeftVerifyRegister = () => {
         }
     }
 
-    const verifyAgain = () => {
+    const verifyAgain = async () => {
+        const response = await SendVerifyMessage()
+
         setTimeout(() => {
             navigate('/verifyRegister')
         }, 100)

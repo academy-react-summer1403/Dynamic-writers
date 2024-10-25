@@ -64,7 +64,7 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadImagePic}) => {
 
   return (
     <div className='w-dvw flex justify-center max-w-[3000px]'>
-      <div className='flex h-full justify-center p-6 fixed bg-gray-100 dark:bg-black gap-4' dir='rtl'>
+      <div className='flex w-full h-full justify-center p-6 fixed bg-gray-100 dark:bg-black gap-4' dir='rtl'>
 
         <SitePanel />
           
@@ -73,7 +73,7 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadImagePic}) => {
           <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
           { editImage && <EditImage /> }
 
-          <div className='overflow-y-scroll over overflow-x-hidden w-[1196px]'>
+          <div className='overflow-y-scroll over overflow-x-hidden w-full'>
             <Outlet context={[loading]} />
           </div>
 

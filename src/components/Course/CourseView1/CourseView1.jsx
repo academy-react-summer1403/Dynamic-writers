@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import SortView1 from './SortView1'
 import CoursesView1 from './CoursesView1'
 import { getCourseList } from '../../../core/services/api/cours'
@@ -216,7 +216,7 @@ const CourseView1 = () => {
         </div>
 
         <div className='w-full flex justify-center md:justify-end md:px-10 py-5'>
-          <Pagination className='min-w-80 w-fit z-0 float-start' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={totalCount} initialPage={1} />
+          <Pagination className='min-w-80 w-fit z-0 float-start' onChange={(pageNumber) => {updateParams('PageNumber', pageNumber), window.scrollTo({top: 300})}} isCompact showControls total={totalCount} initialPage={1} />
         </div>
           
       </div>

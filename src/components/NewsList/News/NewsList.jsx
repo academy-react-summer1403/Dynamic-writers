@@ -169,7 +169,7 @@ const NewsList = () => {
             </Card>
 
             <div className='w-full flex justify-center md:justify-end md:px-3 py-5'>
-              <Pagination className='min-w-80 w-fit z-0' onChange={(pageNumber) => updateParams('PageNumber', pageNumber)} isCompact showControls total={pages} initialPage={1} />
+              <Pagination className='min-w-80 w-fit z-0' onChange={(pageNumber) => {updateParams('PageNumber', pageNumber), window.scrollTo({top: 300})}} isCompact showControls total={pages} initialPage={1} />
             </div>
 
         </div>
