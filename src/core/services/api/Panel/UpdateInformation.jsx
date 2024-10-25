@@ -1,7 +1,7 @@
 import React from 'react'
 import http from '../../interceptor'
 
-const UpdateInformation =async (profile,lName,fName,userAbout,homeAdderess,nationalCode,gender,birthDay) => {
+const UpdateInformation =async (profile,fName,lName,userAbout,homeAdderess,nationalCode,gender,birthDay) => {
     try{
         if(profile.linkdinProfile==null){
           profile.linkdinProfile=""
