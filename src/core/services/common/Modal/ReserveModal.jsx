@@ -4,7 +4,7 @@ import React from 'react'
 
 const ReserveModal = ({isOpen, onOpen, onOpenChange, addReserve}) => {
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='center'>
         <ModalContent>
           {(onClose) => (
             <>
