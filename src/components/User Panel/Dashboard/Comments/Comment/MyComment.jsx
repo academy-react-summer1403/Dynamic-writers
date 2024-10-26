@@ -4,7 +4,6 @@ import MyCommentNewCom from './MyCommentNewCom'
 import MyCommentCourseCom from './MyCommentCourseCom'
 
 const MyComment = ({  comments, commentsNew }) => {
-  console.log(comments)
   return (
     <div className='w-full h-[300px] gap-10 justify-between flex p-6 iranSans' dir='rtl'>
        <div className='max-w-3/6 h-[750px] flex flex-col overflow-hidden gap-8 dark:bg-slate-700 dark:text-white'>

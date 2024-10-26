@@ -24,7 +24,7 @@ function LandingCom() {
 
   return (
     <div className='iranSans my-10 grid grid-cols-1 overflow-hidden max-w-[3000px] dark:bg-black px-16'>
-      <div className=' flex text-xl iranSansBold justify-center items-center md:text-3xl text-center flex-col'>
+      <div className=' flex text-xl iranSansBold md:w-[none] justify-center items-center md:text-3xl text-center flex-col'>
         <span className='tracking-normal md:tracking-wider flex flex-row break-world whitespace-nowrap'> کدنویسی؛  <div className='rounded-full p-1 border border-gray-200 shadow-md mx-2 size-8'> <CodeCircleIcon /> </div>   تجربه‌ای بی‌نظیر در یادگیری  </span>
   
         <div className='flex text-xl iranSansBold flex-row-reverse justify-center gap-2 mt-3 md:text-3xl'>

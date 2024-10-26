@@ -7,7 +7,7 @@ const ProtectedRoute = ({ Children }) => {
     const token = getItem('token')
 
     if (!token) {
-        return <Navigate to='/login' />
+        return <Navigate to='/Error401' />
     }
 
     return Children
