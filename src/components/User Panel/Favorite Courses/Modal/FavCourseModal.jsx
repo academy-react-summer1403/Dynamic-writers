@@ -22,8 +22,8 @@ const FavCourseModal = ({
 
     const [course, setCourse] = useState([])
     const [Flags, setFlags] = useState(false)
-    const [like, setLike] = useState(course.currentUserLike === '1' ? true : false)
-    const [dislike, setDislike] = useState(course.currentUserDissLike === '0' ? true : false)
+    const [like, setLike] = useState()
+    const [dislike, setDislike] = useState()
 
     const[Flag,setFlag]=useState(course.isCourseReseve)
 
@@ -45,7 +45,9 @@ const FavCourseModal = ({
         const like = await CourseLike(courseId)
 
         if(like.success === true) {
-            NotifySuccess(like.message)
+            // NotifySuccess(like.message)
+            setLike(true)
+            setDislike(false)
         }
         else if(like.success === false){
             NotifyError(' دوره ای یافت نشد ')
@@ -59,7 +61,9 @@ const FavCourseModal = ({
         const dislike = await CourseDisLike(courseId)
 
         if(dislike.success === true) {
-            NotifySuccess(dislike.message)
+            // NotifySuccess(dislike.message)
+            setDislike(true)
+            setLike(false)
         }
         else if(dislike.success === false){
             NotifyError(' دوره ای یافت نشد ')
@@ -103,8 +107,8 @@ const FavCourseModal = ({
     }, [])
 
     useEffect(() => {
-        setDislike(course.currentUserDissLike === '0' ? true : false)
-        setLike(course.currentUserLike === '1' ? true : false)
+        setDislike(course.currentUserDissLike == 1 ? true : false)
+        setLike(course.currentUserLike == 1 ? true : false)
 
         setFlag(course.isCourseReseve)
     }, [course])
