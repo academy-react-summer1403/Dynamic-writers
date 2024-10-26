@@ -6,9 +6,9 @@ import SitePanelRes from '../../core/services/Layout/Panel-layout-res/SitePanelR
 import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
-import { setItem } from '../../core/services/common/storage'
+import { getItem, setItem } from '../../core/services/common/storage';
 
-const PanelLayout = ({ darkMode, setDarkMode }) => {
+const PanelLayout = ({ darkMode, setDarkMode ,reloadImagePic}) => {
 
   const location = useLocation()
 
@@ -57,7 +57,10 @@ const PanelLayout = ({ darkMode, setDarkMode }) => {
   useEffect(() => {
     getProfile()
   }, [Rerender])
-  
+
+  useEffect(() => {
+    getProfile()
+  }, [reloadImagePic])
 
   return (
     <div className='w-dvw flex justify-center max-w-[3000px]'>

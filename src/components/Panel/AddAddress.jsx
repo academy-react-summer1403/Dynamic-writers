@@ -10,6 +10,7 @@ import UpdateLocationInProf from '../../core/services/api/Panel/UpdateLocationIn
 const AddAddress = () => {
   const [profile] = useOutletContext();
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
+  const notifyError = (massage) => toast.error(massage,{position:"top-center",theme:"dark"});
 
   const markerIcon = new L.Icon({
     iconUrl: markerIconUrl,
@@ -29,6 +30,9 @@ const AddAddress = () => {
 
   const updateMarkerPosition =async (event) => {
     const { lat, lng } = event.latlng; 
+    if (Math.abs(lat.toFixed(5)) >120 || Math.abs(lng.toFixed(5)) >120){
+      return notifyError("موقعیت مکانی نا معتبر است")
+    }
     setPosition([lat, lng]);
     const newAddress = `Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`; 
     setAddress(newAddress);
@@ -59,7 +63,7 @@ const AddAddress = () => {
         <MapContainer 
           center={position} 
           
-          zoom={20} 
+          zoom={15} 
           style={{ height: '500px', width: '100%' }} 
         >
           <TileLayer
