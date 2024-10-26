@@ -10,8 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Options = ({News}) => {
     const [checkClick, setcheckClick] = useState({like:News.detailsNewsDto.currentUserIsLike,dislike:News.detailsNewsDto.currentUserIsDissLike,save:News.detailsNewsDto.isCurrentUserFavorite})
-    const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
-    const notifyError = () => toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"});
+    const notifySuccess = (massage) => {toast.dismiss() ,toast.success(massage,{position:"top-center",theme:"dark"})};
+    const notifyError = () => {toast.dismiss() ,toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"})};
 
     async function CheckClick(Name){
       if(Name=='dislike'){
@@ -20,18 +20,18 @@ const Options = ({News}) => {
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
           let message=await NewsDisLike(News.detailsNewsDto.id)
-          notifySuccess(message.message)
+          // notifySuccess(message.message)
         }
       }
       else if(Name=='like'){
           if(checkClick.like==true){
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
             let message=await DeleteNewsLike(News.detailsNewsDto.id)
-            notifySuccess(message.message)
+            // notifySuccess(message.message)
           }else{
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
             let message=await NewsLike(News.detailsNewsDto.id)
-            notifySuccess(message.message)
+            // notifySuccess(message.message)
           }
          
       }
@@ -43,7 +43,7 @@ const Options = ({News}) => {
         }else{
           setcheckClick({...checkClick,save:!checkClick.save})
           let message=await AddFavoriteNews(News.detailsNewsDto.id)
-          notifySuccess(message.message)
+          // notifySuccess(message.message)
         }
       }
     }

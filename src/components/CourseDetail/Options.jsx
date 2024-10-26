@@ -9,8 +9,8 @@ import DeleteFavoriteCourse from '../../core/services/api/Course/DeleteFavoriteC
 import AddFavoriteCourse from '../../core/services/api/Course/AddFavoriteCourse'
 const Options = ({Course}) => {
     const [checkClick, setcheckClick] = useState({like:Course.currentUserLike,dislike:Course.currentUserDissLike,save:Course.isUserFavorite})
-    const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
-    const notifyError = () => toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"});
+    const notifySuccess = (massage) => {toast.dismiss() ,toast.success(massage,{position:"top-center",theme:"dark"})};
+    const notifyError = () => {toast.dismiss() ,toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"})};
 
     async function CheckClick(Name){
       if(Name=='dislike'){
@@ -19,18 +19,18 @@ const Options = ({Course}) => {
         }else{
           setcheckClick({...checkClick,dislike:"1",like:"0"})
           let message=await CourseDisLike(Course.courseId)
-          notifySuccess(message.message)
+          // notifySuccess(message.message)
         }
       }
       else if(Name=='like'){
           if(checkClick.like=="1"){
             setcheckClick({...checkClick,like:"0",dislike:"0"})
             let message=await DeleteCourseLike(Course.courseId)
-            notifySuccess(message.message)
+            // notifySuccess(message.message)
           }else{
             setcheckClick({...checkClick,like:"1",dislike:"0"})
             let message=await CourseLike(Course.courseId)
-            notifySuccess(message.message)
+            // notifySuccess(message.message)
           }
          
       }
@@ -42,7 +42,7 @@ const Options = ({Course}) => {
         }else{
           setcheckClick({...checkClick,save:!checkClick.save})
           let message=await AddFavoriteCourse(Course.courseId)
-          notifySuccess(message.message)
+          // notifySuccess(message.message)
         }
       }
     }
