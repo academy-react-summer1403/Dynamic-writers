@@ -12,6 +12,7 @@ import GetCourseById from '../../../../core/services/api/Course/GetCourseById'
 import { AddReserve } from '../../../../core/services/api/Reserve/addReserve'
 import CourseReserve from '../../../CourseReserve/CourseReserve'
 import ReserveModal from '../../../../core/services/common/Modal/ReserveModal'
+import { getMyReserves } from '../../../../core/services/api/Panel/MyReserve/getMyReserves'
 
 const FavCourseModal = ({ 
     courseId,
@@ -24,6 +25,7 @@ const FavCourseModal = ({
     const [like, setLike] = useState(course.currentUserLike === '1' ? true : false)
     const [dislike, setDislike] = useState(course.currentUserDissLike === '0' ? true : false)
 
+    const[Flag,setFlag]=useState(course.isCourseReseve)
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
   
@@ -81,14 +83,19 @@ const FavCourseModal = ({
         onOpenChangeD(false)
         NotifySuccess(response.message)
       }
-      else if(response.status === 422){
+      else {
         NotifyError('شما قبلا این دوره را رزرو کرده اید ')
         onOpenChange(false)
       }
-      else{
-        onOpenChange(false)
-        NotifyError(' شما به این دوره دسترسی ندارید ')
-      }
+    }
+
+    const onOpening = () => {
+        if(Flag == 0){
+            onOpen(true)
+        }
+        else{
+            toast.error(' شما نمی توانید این دوره را برای دومین بار رزرو کنید ')
+        }
     }
     
     useEffect(() => {
@@ -98,8 +105,10 @@ const FavCourseModal = ({
     useEffect(() => {
         setDislike(course.currentUserDissLike === '0' ? true : false)
         setLike(course.currentUserLike === '1' ? true : false)
+
+        setFlag(course.isCourseReseve)
     }, [course])
-    
+
         
   return (
     <Modal dir='rtl' isOpen={isOpenD} onOpenChange={onOpenChangeD} scrollBehavior='outside' placement='top' size={'lg'}>
@@ -136,7 +145,7 @@ const FavCourseModal = ({
                     <span className='text-[24px] font-bold'> {course.title} </span>
                 </div>
                 <div className='flex flex-col gap-4 my-5'>
-                    <Button className='bg-blue-500 text-white font-semibold text-sm rounded-full w-fit' onClick={onOpen}> رزرو دوره </Button>
+                    <Button className={`${Flag==0 ? 'bg-blue-500 cursor-pointer' : 'bg-red-500 cursor-auto'} text-white font-semibold text-sm rounded-full w-fit`} onClick={onOpening}> {Flag == 0 ? ' رزرو دوره ' : 'این دوره رزرو شده است' } </Button>
                     <ReserveModal addReserve={addReserve} isOpen={isOpen} onOpenChange={onOpenChange} />
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
