@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import UpdateLinkInProf from '../../core/services/api/Panel/UpdateLinkInProf'
 import * as yup from 'yup'
 const Likes = () => {
-  const [profile]=useOutletContext();
+  const [profile,setRerender]=useOutletContext();
   const [InitialValue, setInitialValue] = useState({
     telegram: profile.telegramLink || "", 
     linkdin: profile.linkdinProfile || ""
@@ -17,18 +17,10 @@ const Likes = () => {
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
 
   const onSubmit= async(el)=>{
-    if (profile.latitude==null){
-      profile.latitude=32.0
-      profile.longitude=53.0
-    }
-    if(profile.telegramLink==null){
-      profile.telegramLink=""
-    }
-    if(profile.linkdinProfile==null){
-      profile.linkdinProfile=""
-    }
+    
     let massage=await UpdateLinkInProf(profile,el.linkdin,el.telegram)
     notifySuccess(massage.message)
+    setRerender(prev => !prev); 
   }
   const validation=yup.object().shape(
     {

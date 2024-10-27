@@ -8,9 +8,9 @@ const UpdateLinkInProf =async (profile,linkdinLink,telegramLink) => {
     if(profile.telegramLink==null){
       profile.telegramLink=""
     }
-    if (profile.latitude==null){
-      profile.latitude=32.0
-      profile.longitude=53.0
+    if (profile.latitude==null || (profile.latitude==0 && profile.longitude==0)){
+      profile.latitude=""
+      profile.longitude=""
     }
     const formData = new FormData();
     formData.append('LName',profile.lName);

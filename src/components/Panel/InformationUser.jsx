@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import UpdateInformation from '../../core/services/api/Panel/UpdateInformation'
 
 const InformationUser = () => {
-  const [profile]=useOutletContext();
+  const [profile,setRerender]=useOutletContext();
   
   const [InitialValue, setInitialValue] = useState({
     field1:profile.fName || "",
@@ -46,6 +46,7 @@ const InformationUser = () => {
       notifyError(massage[0])
     }else{
       notifySuccess(massage.message)
+      setRerender(prev => !prev); 
     }
   }
 
