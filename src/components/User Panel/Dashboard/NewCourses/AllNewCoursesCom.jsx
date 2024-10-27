@@ -99,7 +99,7 @@ const AllNewCoursesCom = () => {
     <div className='w-dvw h-full bg-white dark:text-white dark:bg-slate-900 rounded-2xl flex gap-4 flex-col p-6' dir='rtl'>
       <div className='flex justify-between w-full h-fit items-center my-2'>
         <span className='md:text-2xl text-xl font-semibold'> جدیدترین دوره ها </span>
-       <Link to='/layoutPanel/dashboard'> <Button className='bg-white dark:border-none dark:bg-red-500 dark:text-white border-red-500 border text-red-500 rounded-3xl text-base flex flex-row-reverse items-center'> بستن <Cancel01Icon className='size-5' /> </Button> </Link>
+       <Button onClick={() => navigate('/layoutPanel/dashboard')} className='bg-white dark:border-none dark:bg-red-500 dark:text-white border-red-500 border text-red-500 rounded-3xl text-base flex flex-row-reverse items-center'> بستن <Cancel01Icon className='size-5' /> </Button>
       </div>
 
       <AllnewCoursesComFilter teachers={teachers} setquery={setquery} handleSubmit={handleSubmit} handleChange={handleChange} priceFrom={priceFrom} priceTo={priceTo} setTeacher={setTeacher} handlePriceFrom={handlePriceFrom} handlePriceTo={handlePriceTo} setCostDown={setCostDown} setCostUp={setCostUp}/>
