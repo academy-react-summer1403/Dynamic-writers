@@ -2,7 +2,6 @@ import React from 'react'
 import http from '../../interceptor'
 const UpdateLinkInProf =async (profile,linkdinLink,telegramLink) => {
   try{
-    console.log(profile)
     if(profile.linkdinProfile==null){
       profile.linkdinProfile=""
     }
