@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateLocationInProf from '../../core/services/api/Panel/UpdateLocationInProf';
 const AddAddress = () => {
-  const [profile] = useOutletContext();
+  const [profile,setRerender] = useOutletContext();
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
   const notifyError = (massage) => toast.error(massage,{position:"top-center",theme:"dark"});
 
@@ -22,7 +22,7 @@ const AddAddress = () => {
 
   const hasCoordinates = profile.latitude !== null && profile.longitude !== null;
 
-  const initialPosition = hasCoordinates ? [profile.latitude, profile.longitude] : [32.0, 53.0];
+  const initialPosition = hasCoordinates ? [profile.latitude, profile.longitude] : [0, 0];
   const [position, setPosition] = useState(initialPosition);
   
   const [address, setAddress] = useState(hasCoordinates ? `Lat:${profile.latitude},Lng:${profile.longitude}` : '');
@@ -38,6 +38,8 @@ const AddAddress = () => {
     setAddress(newAddress);
     let massage=await UpdateLocationInProf(profile,lat.toString(),lng.toString())
     notifySuccess(massage.message)
+    setRerender(prev => !prev); 
+
   };
 
   const MapEventHandler = () => {
