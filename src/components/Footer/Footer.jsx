@@ -28,7 +28,7 @@ const Footer = () => {
 
       <div className='md:flex hidden flex-col justify-center items-end gap-10 h-full px-2'>
         <h2 className='text-xl iranSansBold'> آکادمی کدنویسی بحر </h2>
-        <span style={{direction: 'rtl'}} className='w-72 text-right text-sm text-gray-500'> +13 سال سابقه فعالیت در زمینه آموزش کدنویسی از سنین کودکی تا بزرگسال. هدف ما همیشه این بوده که دانشجویان را با مهارت های لازم برای موفقیت در دنیای فناوری و برنامه نویسی مجهز کنیم. </span>
+        <span style={{direction: 'rtl'}} className='max-w-72 text-right text-sm text-gray-500'> +13 سال سابقه فعالیت در زمینه آموزش کدنویسی از سنین کودکی تا بزرگسال. هدف ما همیشه این بوده که دانشجویان را با مهارت های لازم برای موفقیت در دنیای فناوری و برنامه نویسی مجهز کنیم. </span>
       </div>
 
       <div className='flex gap-20 justify-between md:justify-normal md:flex-row flex-row-reverse'>

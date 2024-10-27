@@ -43,7 +43,7 @@ import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 function App() {
   const [reloadImage, setreloadImage] = useState(false)
   const [darkMode, setDarkMode] = useState(() => {
-    getItem('darkMode') === true
+    JSON.parse(getItem('darkMode')) === true
   })
   
   useEffect(() => {
@@ -56,7 +56,6 @@ function App() {
     }
   }, [darkMode])
 
-  
 
   const router = createBrowserRouter([
     {
@@ -152,10 +151,6 @@ function App() {
       element: <AllNewCourses darkMode={darkMode} setDarkMode={setDarkMode} />
     },
     {
-      path: '*',
-      element: <NotFoundPage />
-    },
-    {
       path: '/',
       element: <Root darkMode={darkMode} setDarkMode={setDarkMode} />,
       children: [
@@ -198,6 +193,10 @@ function App() {
         {
           path: 'Error408',
           element: <Error408 />
+        },
+        {
+          path: '*',
+          element: <NotFoundPage />
         },
       ]
     },

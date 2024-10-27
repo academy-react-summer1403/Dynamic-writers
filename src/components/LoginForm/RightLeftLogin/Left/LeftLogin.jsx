@@ -5,7 +5,7 @@ import { postLogin } from '../../../../core/services/api/auth';
 import BahrLogo from '../../../../assets/Bahr.png'
 import { MailEdit02Icon, PasswordValidationIcon,  } from 'hugeicons-react'
 import { Link, useNavigate } from 'react-router-dom';
-import { setItem } from '../../../../core/services/common/storage';
+import { getItem, setItem } from '../../../../core/services/common/storage';
 import { toast, ToastContainer } from 'react-toastify'
 import { Button } from '@nextui-org/react';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,18 @@ import { getSecurityInfo } from '../../../../core/services/api/SecurityAPI/getSe
 const LeftLogin = () => {
     
   const navigate = useNavigate()
+
+  const loginToast = JSON.parse(getItem('loginToast'))
+
+  useEffect(() => {
+    if(loginToast === true){
+        toast.dismiss()
+        toast.warn(' شما باید ابتدا به حساب کاربری خود وارد شید! ', {
+            position: 'bottom-center',
+            rtl: true
+        })
+      }
+  }, [])
 
   const onSubmit = async (values) => {
 
@@ -28,29 +40,31 @@ const LeftLogin = () => {
     const user = await postLogin(userObj);
 
     const notify = () => {
+        toast.dismiss()
         toast.error(user.message, {
           autoClose: 5000,
         })
       }
 
     const notifySuccess = () => {
+        toast.dismiss()
         toast.success(user.message, {
             autoClose: 3000,
             })
     }
 
     const notifyGmail = () => {
-
-    toast.error(" ایمیل یا شماره همراه خود را وارد کنید ", {
-        autoClose: 5000,
-        })
+        toast.dismiss()
+        toast.error(" ایمیل یا شماره همراه خود را وارد کنید ", {
+            autoClose: 5000,
+            })
     }
     
     const notifyPassword = () => {
-
-    toast.error(" رمزعبور خود را وارد کنید ", {
-        autoClose: 5000,
-        })
+        toast.dismiss()
+        toast.error(" رمزعبور خود را وارد کنید ", {
+            autoClose: 5000,
+            })
     }
     
     if(user.success === true){
@@ -61,6 +75,7 @@ const LeftLogin = () => {
             setItem('token', user.token)
             setItem('userId', user.id)    
             notifySuccess()
+            setItem('loginToast', false)
             navigate('/layoutPanel/dashboard')
         }
     }
