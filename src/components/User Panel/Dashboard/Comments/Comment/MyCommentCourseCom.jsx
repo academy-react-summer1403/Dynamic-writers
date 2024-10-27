@@ -5,7 +5,6 @@ import jMoment from 'jalali-moment'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify'
 import MyReply from '../Reply/MyReply';
-import AddReply from '../../../../Comment&Reply/AddReply';
 import AddReplyCourse from '../Reply/AddReplyCourse';
 
 const MyCommentCourseCom = ({                

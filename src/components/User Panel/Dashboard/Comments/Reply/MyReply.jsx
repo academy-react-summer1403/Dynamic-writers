@@ -23,8 +23,6 @@ const MyReply = ({ commentId, Oid }) => {
   
       const response = await getRepliesNew(commentId)
       setReply(response)
-      console.log(response)
-      console.log(commentId)
     }
   
     useEffect(() => {

@@ -26,7 +26,6 @@ const RightDiv = ({Course,FlagModal,open}) => {
             let course =await GetCourseById(Course.courseId)
             let response=await DeleteReserveCourse(course.courseReseveId)
             notifySuccess(response.message)
-
         }
     }
     
