@@ -26,7 +26,7 @@ const InformationUser = () => {
   })
   const nationalIdRegex = "^[0-9]{10}$";
   const phoneRegex = "^09[0-9]{9}$";
-  const [selectedDate, setSelectedDate] = useState(`${profile.birthDay ? jMoment(profile.birthDay).locale('fa').format('jYYYY jMMMM jD') : ''}`);
+  const [selectedDate, setSelectedDate] = useState(`${profile.birthDay!='0001-01-01T00:00:00' ? jMoment(profile.birthDay).locale('fa').format('jYYYY jMMMM jD') : 'تاریخ تولد خود را وارد کنید'}`);
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
   const notifyError = (massage) => toast.warn(massage,{position:"top-center",theme:"dark"});
 
@@ -40,6 +40,9 @@ const InformationUser = () => {
 
       let massage=await UpdateInformation(profile,el.field1,el.field2,el.field3,el.field8,el.field5,valueOption,el.birthDate)
     if(Array.isArray(massage)){
+      if(massage[0]=="'تاریخ تولد' must not be empty."){
+        return notifyError("تاریخ تولد خود را وارد کنید")
+      }
       notifyError(massage[0])
     }else{
       notifySuccess(massage.message)
@@ -117,7 +120,7 @@ const InformationUser = () => {
                         id='DateBirth'
                         onChange={handleDateChange}
                         placeholder='تاریخ تولد خود را وارد کنید'
-                        className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] flex-grow-2'
+                        className={`${selectedDate!='تاریخ تولد خود را وارد کنید' ? "text-black " :"text-gray-500 " }dark:bg-slate-900 bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] flex-grow-2`}
                         value={selectedDate}
                       />
                     
