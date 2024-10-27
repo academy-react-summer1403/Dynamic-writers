@@ -1,13 +1,18 @@
 import React from 'react'
-import { getItem } from '../../core/services/common/storage'
+import { getItem, setItem } from '../../core/services/common/storage'
 import { Navigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const ProtectedRoute = ({ Children }) => {
   
-    const token = getItem('token')
+    const expire = JSON.parse(getItem('expire'))
 
-    if (!token) {
+    if(expire === false) {
+        setItem('loginToast', true)
         return <Navigate to='/login' />
+    }
+    else{
+        setItem('loginToast', false)
     }
 
     return Children
