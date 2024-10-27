@@ -5,9 +5,11 @@
     import { Link, useNavigate } from 'react-router-dom';
     import { toast, ToastContainer } from 'react-toastify'
     import 'react-toastify/dist/ReactToastify.css';
-    import { Button } from '@nextui-org/react';
+    import { Button, Spinner } from '@nextui-org/react';
     import { ForgetPass } from '../../../core/services/api/reasetPassword/ForgetPass';
     import { setItem } from '../../../core/services/common/storage';
+import { ToastError } from '../../../core/services/common/Toast/ToastError';
+import { ToastWarn } from '../../../core/services/common/Toast/ToastWarn';
     
     const LeftResetPass1 = () => {
         
@@ -15,37 +17,25 @@
 
     const onSubmit = async (values) => {
 
-        const notifyGmail = () => {
-            toast.error(" ایمیل خود را وارد کنید ", {
-                autoClose: 5000
-            })
-        }
-
-        const notify = () => {
-            toast.error(" ایمیل وارد شده صحیح نمی باشد ", {
-                autoClose: 5000
-            })
-        }
-
         const WaitingEmail = () => {
+            toast.dismiss()
             toast("ایمیل فرستاده شد لطفا چک کنید", {
-                autoClose: 20000
+                autoClose: 20000,
+                isLoading: <Spinner classNames={{wrapper: 'text-blue-500'}} />,
             })
         }
 
         const respone = await ForgetPass(values.email)
 
-        console.log(respone)
-
         if(values.email === "") {
-            notifyGmail()
+            ToastWarn(" ایمیل خود را وارد کنید ")
         }
         else if(respone ? respone.success === true : respone) {
             WaitingEmail()
             setItem('userId', respone.id) 
         }
         else {
-            notify()
+            ToastError(" ایمیل وارد شده صحیح نمی باشد ")
         }
 
     }

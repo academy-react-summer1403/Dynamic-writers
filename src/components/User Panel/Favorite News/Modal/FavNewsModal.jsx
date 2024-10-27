@@ -40,7 +40,7 @@ const FavNewsModal = ({
     const Like = async () => {
         const like = await NewsLike(newsId)
         if(like.success === true) {
-            NotifySuccess(like.message)
+            // NotifySuccess(like.message)
             setLike(true)
             setDislike(false)
         }
@@ -56,7 +56,7 @@ const FavNewsModal = ({
         const dislike = await NewsDisLike(newsId)
 
         if(dislike.success === true) {
-            NotifySuccess(dislike.message)
+            // NotifySuccess(dislike.message)
             setDislike(true)
             setLike(false)
         }

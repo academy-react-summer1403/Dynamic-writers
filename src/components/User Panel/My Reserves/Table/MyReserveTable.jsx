@@ -8,19 +8,44 @@ import {
   } from "@nextui-org/table";
   import React, { useEffect, useState } from 'react'
   import jMoment from 'moment-jalaali'
-  import { MoneyAdd02Icon, ViewIcon } from "hugeicons-react";
-  import { NavLink, } from "react-router-dom";
+  import { Cancel01Icon, MoneyAdd02Icon, ViewIcon } from "hugeicons-react";
+  import { NavLink, useNavigate, } from "react-router-dom";
 import { Pagination, Spinner, useDisclosure } from "@nextui-org/react";
 import MyReserveModal from "../Modal/MyReserveModal";
+import DeleteModal from "../../../../core/services/common/Modal/DeleteModal";
+import GetCourseById from "../../../../core/services/api/Course/GetCourseById";
+import DeleteReserveCourse from "../../../../core/services/api/Course/DeleteReserveCourse";
+import { ToastError } from "../../../../core/services/common/Toast/ToastError";
+import { ToastContainer } from "react-toastify";
 
 const MyReserveTable = ({ myCourse, isLoading }) => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   const [openCourseId, setOpenCourseId] = useState(null)
+  const [openDelete, setOpenDelete] = useState(null)
+
+  const navigate = useNavigate()
 
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 5;
+
+  const DeleteRes = async (courseId) => {
+    const res = await GetCourseById(courseId)
+    const response = await DeleteReserveCourse(res.courseReseveId)
+  
+    if(response.success === true) {
+      setTimeout(() => {
+        navigate('/layoutPanel/myReserve')
+      }, 100)
+
+      navigate('/layoutPanel')
+    }
+    else {
+      ToastError(' عملیات ناموفق بود ')
+    }
+
+  } 
 
   const handleOpenModal = (courseId) => {
     if(openCourseId === courseId) {
@@ -28,6 +53,15 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
     }
     else {
         setOpenCourseId(courseId)
+    }
+  }
+
+  const handleOpenModalDelete = (favoriteId) => {
+    if(openDelete === favoriteId) {
+        setOpenDelete(null)
+    }
+    else {
+        setOpenDelete(favoriteId)
     }
   }
 
@@ -56,7 +90,11 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
             <TableCell className="invisible md:visible"> <div className="max-w-56 h-10 truncate leading-8"> {item.studentName.replace('-', ' ')} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.reserverDate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
             <TableCell className="invisible md:visible"> <span className={`${item.accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full`}> {item.accept ? 'تایید شده' : 'تایید نشده'} </span> </TableCell>
-            <TableCell> <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>             
+            <TableCell>
+            <div className="flex gap-2 items-center"> 
+              <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>   
+              <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.favoriteId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>           
+            </div>
                 { openCourseId === item.courseId && <MyReserveModal
                     isOpen={true}
                     onOpen={() => handleOpenModal(item.courseId)}
@@ -69,6 +107,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
                     reserverDate={item.reserverDate}
                     accept={item.accept}
                 /> }
+                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteRes} Reserve={true} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.courseId} /> }
 
             </TableCell>
           </TableRow>
@@ -99,6 +138,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
             })}
         </TableBody>
     </Table>
+    <ToastContainer />
     <div className="w-full flex justify-start">
         <Pagination
             dir="ltr"

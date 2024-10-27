@@ -10,6 +10,9 @@ import { Field, Form, Formik } from 'formik'
 import { useNavigate } from 'react-router'
 import { message } from 'antd'
 import { ResetPass } from '../../../core/services/api/reasetPassword/ResetPassAcc'
+import { ToastError } from '../../../core/services/common/Toast/ToastError'
+import { ToastSuccess } from '../../../core/services/common/Toast/ToastSucces'
+import { ToastWarn } from '../../../core/services/common/Toast/ToastWarn'
 
 const SecurityCom = () => {
 
@@ -17,11 +20,6 @@ const SecurityCom = () => {
 
   const [recoveryEmail, setRecoveryEmail] = useState('')
   const [isSelected, setIsSelected] = useState(false);
-
-  const notifySuccess = (message) => {toast.dismiss() , toast(message, {autoClose: '20000'})}
-  const notifyError = (message) => {toast.dismiss() , toast.error(message)}
-
-  const navigate = useNavigate()
 
   const [isVisible, setIsVisible] = useState(false);
   const [isVisible2, setIsVisible2] = useState(false);
@@ -38,27 +36,21 @@ const SecurityCom = () => {
 
   const EditSecurity = async () => {
     if(recoveryEmail === '') {
-      notifyError(' لطفا ایمیل خود را وارد کنید ')
+      ToastError(' لطفا ایمیل خود را وارد کنید ')
     }
     else{
       const response = await editSecurity(recoveryEmail, isSelected)
       if(response.success === true) {
         // notifySuccess(response.message)
-        notifySuccess(' عملیات با موفقیت انجام شد! ')
+        ToastSuccess(' عملیات با موفقیت انجام شد! ')
       }
       else{
-        notifyError(' خطا ')
+        ToastError(' خطا ')
       }
     }
   }
 
   const onSubmitPassword = async (values) => {
-
-    const notifyEmpty = () => {
-        toast.error(" رمز عبور خود را وارد کنید ", {
-            autoClose: 5000
-        })
-    }
 
     const passwordObj = {oldPassword: values.oldPassword, newPassword: values.newPassword}
 
@@ -66,13 +58,13 @@ const SecurityCom = () => {
     const response = await ResetPass(passwordObj)
 
     if(values.newPassword === "" || values.oldPassword === "") {
-        notifyEmpty()
+        ToastWarn(" رمز عبور خود را وارد کنید ")
     }
     else if(response ? response.success === true : response) {
-        notifySuccess(response.message)
+        ToastSuccess(response.message)
     }
     else{
-      notifyError(' رمز شما صحیح نمی باشد ')
+      ToastError(' رمز شما صحیح نمی باشد ')
     }
 
     }
@@ -83,7 +75,7 @@ const SecurityCom = () => {
 
   return (
     <div className='p-2 dark:bg-slate-700 bg-white w-full h-full rounded-2xl my-5 flex flex-row-reverse justify-center md:justify-around items-start gap-2' dir='rtl'>
-        <div className='flex flex-col w-full h-full justify-around'>
+        <div className='flex-col w-full h-full justify-around md:flex hidden'>
         <div className='md:flex hidden mx-10 flex-row-reverse justify-center items-center gap-16 w-full'>
           <div className='relative flex flex-col justify-center items-center gap-4'>
             <h1 className='text-blue-500 font-[800] text-[30px]'> دو مرحله ای </h1>
@@ -108,9 +100,9 @@ const SecurityCom = () => {
         <div className='flex flex-col w-full'>
         <div className='flex flex-col gap-5 w-full border-b-2 dark:border-gray-400 pb-10'>
             <Switch isSelected={isSelected} onValueChange={setIsSelected} classNames={{
-                wrapper: 'md:bg-gray-100 bg-white dark:bg-slate-800', 
+                wrapper: `${isSelected ? 'bg-blue-500' : ''}`
                 }}>
-                <div className='truncate bg-blue-300 text-white dark:bg-slate-800 rounded-full p-1 flex gap-1 text-sm items-center px-2'>
+                <div className={`${isSelected ? 'bg-blue-600' : 'bg-slate-500 dark:bg-slate-800'} truncate text-white rounded-full p-1 flex gap-1 text-sm items-center px-2`}>
                     <SecurityLockIcon className='size-4' />
                    حساب دو مرحله ای
                 </div>
@@ -127,9 +119,9 @@ const SecurityCom = () => {
         >
             <Form className='w-full relative' style={{direction: 'rtl'}}>
 
-                <h2 className='mb-2 mt-5 font-bold'>  رمز عبور </h2>
-                <div className='min-w-80 flex relative'>
-                    <Field name="oldPassword" type={isVisible ? "text" : "password"} className='dark:bg-slate-900 dark:border-none dark:text-white min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                <h2 className='mb-2 w-full mt-5 font-bold'>  رمز عبور </h2>
+                <div className='w-full flex relative'>
+                    <Field name="oldPassword" type={isVisible ? "text" : "password"} className='dark:bg-slate-900 dark:border-none dark:text-white w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور جدید خود را وارد کنید" />
 
                     <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
@@ -144,8 +136,8 @@ const SecurityCom = () => {
                 </div>
 
                 <h2 className='mb-2 mt-5 font-bold'> رمز عبور جدید  </h2>
-                <div className='min-w-80 flex relative'>
-                    <Field name="newPassword" type={isVisible2 ? "text" : "password"} className='min-w-80 dark:bg-slate-900 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                <div className='w-full flex relative'>
+                    <Field name="newPassword" type={isVisible2 ? "text" : "password"} className=' dark:bg-slate-900 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور جدید خود را دوباره وارد کنید" />
 
                     <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility2} aria-label="toggle password visibility">
@@ -159,7 +151,7 @@ const SecurityCom = () => {
                     <LockPasswordIcon className='absolute right-3 top-2 text-gray-500 focus:hidden' />
                 </div>
 
-                <Button type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3 min-w-80'>
+                <Button type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3'>
                     تایید رمز عبور
                 </Button>
 

@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import AddReply from './AddReply'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { addLikeCommentNew } from '../../core/services/api/Comments/New/Lile&DissLike/LikeCommentNew'
+import { ToastError } from '../../core/services/common/Toast/ToastError'
 
 const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount, dissLikeCount, insertDate, author, acceptReplysCount, id, Oid, currentUserIsLike, currentUserIsDissLike, currentUserEmotion }) => {
 
@@ -22,9 +23,6 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const [dislikeCounted, setDislikeCounted] = useState(window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount)
 
     const navigate = useNavigate()
-
-    // const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
-    const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
 
     const setVisible = () => {
       if(replyVisible === false){
@@ -41,7 +39,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
             // notifySuccess(response.message)
         }
         else{
-            // notifyError()
+            ToastError(' نظر شما ثبت نشد ')
         }
     }
 
@@ -51,7 +49,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
             // notifySuccess(response.message)
         }
         else{
-            // notifyError()
+            ToastError(' نظر شما ثبت نشد ')
         }
     }
 
@@ -61,7 +59,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
             // notifySuccess(' نظر شما با موفقیت ثبت شد ')
         }
         else{
-            // notifyError()
+            ToastError(' نظر شما ثبت نشد ')
         }
     }
 

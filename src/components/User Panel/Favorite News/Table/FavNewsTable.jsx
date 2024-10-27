@@ -109,7 +109,7 @@ const FavNewsTable = ({ myNews, isLoading }) => {
                     onOpenChange={handleOpenModal}
                     newsId={item.newsId}
                 /> }
-                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteFav} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.newsId} /> }
+                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteFav} New={true} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.newsId} /> }
 
             </TableCell>
           </TableRow>

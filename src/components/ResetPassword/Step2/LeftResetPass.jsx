@@ -9,6 +9,8 @@ import { Button } from '@nextui-org/react';
 import { ResetPassword } from '../../../core/services/api/reasetPassword/ResetPass';
 import { ResetConfirmPass } from '../../../core/services/api/reasetPassword/ResetConfirmPass';
 import { getItem, setItem } from '../../../core/services/common/storage';
+import { ToastWarn } from '../../../core/services/common/Toast/ToastWarn';
+import { ToastError } from '../../../core/services/common/Toast/ToastError';
 
 const LeftResetPass2 = () => {
     
@@ -22,29 +24,15 @@ const LeftResetPass2 = () => {
 
   const onSubmit = async (values) => {
 
-    const notifyEmpty = () => {
-        toast.error(" رمز عبور جدید خود را وارد کنید ", {
-            autoClose: 5000
-        })
-    }
-
-    const notifyPass = () => {
-        toast.error(" تکرار رمز عبور را به درستی وارد کنید ", {
-            autoClose: 5000
-        })
-    }
-
     const passwordObj = {newPassword: values.NewPassword}
 
     const response = await ResetPassword(passwordObj)
-    
-    console.log(passwordObj)
 
     if(values.NewPassword === "") {
-        notifyEmpty()
+        ToastWarn(" رمز عبور جدید خود را وارد کنید ")
     }
     else if(values.NewPassword !== values.NewPassword2) {
-        notifyPass()
+        ToastWarn(" تکرار رمز عبور را به درستی وارد کنید ")
     }
     else if(response ? response.success === true : response) {
         navigate('/login')  
@@ -54,8 +42,6 @@ const LeftResetPass2 = () => {
 
     const configValue = async () => {
         const config = await ResetConfirmPass()
-
-        console.log(config)
 
         setItem('resetValue', config.message)
     }
@@ -68,9 +54,9 @@ const LeftResetPass2 = () => {
     <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6'>
-            <Link to='/' className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
+            <div onClick={() => ToastError('شما باید رمز جدید خود را وارد کنید')} className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
-            </Link>
+            </div>
             <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap'> 🔐فراموشی رمزعبور؟ </h2>
             <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> اگر رمزعبور خود را فراموش کرده‌اید ایمیل خود را وارد کنید تا لینک صفحه تغییر رمزعبور برای شما ارسال شود </span>
 

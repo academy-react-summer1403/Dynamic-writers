@@ -10,6 +10,8 @@ import { SendVerifyMessage } from '../../../core/services/api/register/sendVerif
 import { toast, ToastContainer,  } from 'react-toastify';
 import { setItem } from '../../../core/services/common/storage';
 import 'react-toastify/dist/ReactToastify.css'
+import { ToastError } from '../../../core/services/common/Toast/ToastError';
+import { ToastWarn } from '../../../core/services/common/Toast/ToastWarn';
 
 const LeftRegister = () => {
 
@@ -40,35 +42,23 @@ const LeftRegister = () => {
 
   const onSubmit = async (values) => {
 
-    const notify = () => {
-        toast.error(" موارد خواسته شده را وارد کنید ", {
-          autoClose: 3000,
-        })
-    }
-
-    const notifyError = (message) => {
-        toast.dismiss()
-
-        toast.error(message)
-    }
-
     const phoneNumber = (JSON.stringify(phone)).replace(/-/g, "")
     
     if (phone === ''){
-        notify()
+        ToastWarn(" موارد خواسته شده را وارد کنید ")
     }
     else {
         setItem('phoneNumber', JSON.parse(phoneNumber))
         const response = await SendVerifyMessage()
         console.log(response)
         if(response.message === 'درخواست نامعتبر') {
-            notifyError(' درخواست نامعتبر است ')
+            ToastError(' درخواست نامعتبر است ')
         }
         else if(response.message === 'لطفا  کد تایید را وارد نمایید') {
             navigate('/verifyRegister')
         }
         else{
-            notifyError(' درخواست نامعتبر است ')
+            ToastError(' درخواست نامعتبر است ')
         }
     }
     

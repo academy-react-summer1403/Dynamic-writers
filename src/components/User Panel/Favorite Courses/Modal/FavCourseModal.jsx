@@ -2,7 +2,7 @@ import { Button, Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } fr
 import { Calendar01Icon, StudentsIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { getDetailIdTeacher } from '../../../../core/services/api/Teacher/getDetailTeacherWithId'
 import jMoment from 'jalali-moment'
 import CourseLike from '../../../../core/services/api/Course/CourseLike'
@@ -13,6 +13,7 @@ import { AddReserve } from '../../../../core/services/api/Reserve/addReserve'
 import CourseReserve from '../../../CourseReserve/CourseReserve'
 import ReserveModal from '../../../../core/services/common/Modal/ReserveModal'
 import { getMyReserves } from '../../../../core/services/api/Panel/MyReserve/getMyReserves'
+import { ToastSuccess } from '../../../../core/services/common/Toast/ToastSucces'
 
 const FavCourseModal = ({ 
     courseId,
@@ -28,6 +29,8 @@ const FavCourseModal = ({
     const[Flag,setFlag]=useState(course.isCourseReseve)
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
+    const navigate = useNavigate()
   
     const NotifySuccess = (message) => {
         toast.dismiss()
@@ -85,7 +88,7 @@ const FavCourseModal = ({
         setFlags(true)
         onOpenChange(false)
         onOpenChangeD(false)
-        NotifySuccess(response.message)
+        navigate('/layoutPanel/myReserve')
       }
       else {
         NotifyError('شما قبلا این دوره را رزرو کرده اید ')

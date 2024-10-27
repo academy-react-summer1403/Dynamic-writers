@@ -8,20 +8,11 @@ import { getItem } from '../../core/services/common/storage'
 import { useNavigate } from 'react-router'
 import { addReplyComment } from '../../core/services/api/Comments/Add/AddReplyComment'
 import { addReplyNew } from '../../core/services/api/Comments/New/Add/AddReplyCommentNew'
+import { ToastError } from '../../core/services/common/Toast/ToastError'
+import { ToastSuccess } from '../../core/services/common/Toast/ToastSucces'
+import { ToastWarn } from '../../core/services/common/Toast/ToastWarn'
 
 const AddReply = ({ commentId, Oid, setCheckAdd }) => {
-
-  const notifySuccess = (message) => {
-    toast.dismiss()
-
-    toast.success(message)
-  }
-  
-  const notifyError = (message) => {
-    toast.dismiss()
-
-    toast.error(message)
-  }
 
   const addReply = async (value) => {
 
@@ -36,15 +27,15 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
       // console.log(response)
   
         if(value.title.length < 10 || value.describe.length < 10){
-          notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
+          ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
         }
   
         if(response.success == true) {
-            notifySuccess(response.message)
+            ToastSuccess(response.message)
             setCheckAdd(false)
         }
         else{
-            notifyError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+            ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
         }
     }
     else if(window.location.pathname.includes('NewDetail')) {
@@ -57,15 +48,15 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
       const response = await addReplyNew(raw)
   
         if(value.title.length < 10 || value.describe.length < 10){
-          notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
+          ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
         }
   
         if(response.success === true) {
-            notifySuccess(response.message)
+            ToastSuccess(response.message)
             setCheckAdd(false)
         }
         else{
-            notifyError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+            ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
         }
     }
 

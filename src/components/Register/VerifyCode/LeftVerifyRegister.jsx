@@ -11,6 +11,8 @@ import { VerifyMessage } from '../../../core/services/api/register/verifyMessage
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SendVerifyMessage } from '../../../core/services/api/register/sendVerifyMessage';
+import { ToastSuccess } from '../../../core/services/common/Toast/ToastSucces';
+import { ToastError } from '../../../core/services/common/Toast/ToastError';
 
 const LeftVerifyRegister = () => {
 
@@ -31,23 +33,12 @@ const LeftVerifyRegister = () => {
     
         const userVerify = await VerifyMessage(verificationCode)
 
-        const notify = () => {
-            toast.error("کد تایید صحیح نیست یا از زمان کد گذشته", {
-            })
-        }
-
-        const notifySuccess = () => {
-            toast.success(userVerify.message, {
-            autoClose: 5000,
-            })
-        }
-
         if(userVerify.success === true) {
             navigate('/registerAccount')
-            notifySuccess()
+            ToastSuccess(userVerify.message)
         }
         else{
-            notify()
+            ToastError("کد تایید صحیح نیست یا از زمان کد گذشته")
         }
     }
 

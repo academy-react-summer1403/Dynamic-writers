@@ -7,22 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getItem } from '../../core/services/common/storage'
 import { useNavigate } from 'react-router'
 import { addCommentNew } from '../../core/services/api/Comments/New/Add/AddCommentNew'
+import { ToastError } from '../../core/services/common/Toast/ToastError'
+import { ToastSuccess } from '../../core/services/common/Toast/ToastSucces'
+import { ToastWarn } from '../../core/services/common/Toast/ToastWarn'
 
 const AddComment = ({ Oid, setCheckAdd }) => {
 
   const navigate = useNavigate()
-
-  const notifySuccess = (message) => {
-    toast.dismiss()
-
-    toast.success(message)
-  }
-  
-  const notifyError = (message) => {
-    toast.dismiss()
-
-    toast.error(message)
-  }
 
   const addComment = async (value) => {
 
@@ -35,15 +26,15 @@ const AddComment = ({ Oid, setCheckAdd }) => {
       const response = await addCommentCourse(formData)
 
       if(value.title.length < 10 || value.describe.length < 10){
-        notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
+        ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
       }
 
       if(response.success === true) {
-          notifySuccess(response.message)
+          ToastSuccess(response.message)
           setCheckAdd(false)
       }
       else{
-          notifyError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+          ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
       }
     }
     else if(window.location.pathname.includes('NewDetail')) {
@@ -55,15 +46,15 @@ const AddComment = ({ Oid, setCheckAdd }) => {
       const response2 = await addCommentNew(raw)
     
       if(value.title.length < 10 || value.describe.length < 10){
-        notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
+        ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
       }
 
       if(response2.success === true) {
-        notifySuccess('درخواست شما با موفقیت ثبت شد')
+        ToastSuccess('درخواست شما با موفقیت ثبت شد')
         setCheckAdd(false)
       }
       else{
-        notifyError(" مشکلی وجود دارد ")
+        ToastError(" مشکلی وجود دارد ")
       }
     }
 

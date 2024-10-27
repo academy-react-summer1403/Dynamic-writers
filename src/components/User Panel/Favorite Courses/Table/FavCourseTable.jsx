@@ -117,7 +117,7 @@ const FavCourseTable = ({ myCourse, isLoading }) => {
                     reserverDate={item.reserverDate}
                     accept={item.accept}
                 /> }
-                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteFav} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.courseId} /> }
+                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteFav} Course={true} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.courseId} /> }
                 
             </TableCell>
           </TableRow>
@@ -152,8 +152,10 @@ const FavCourseTable = ({ myCourse, isLoading }) => {
         <Pagination
             dir="ltr"
             className="z-0 my-5"
-            isCompact showControls
+            isCompact 
+            showControls
             total={Math.ceil(myCourse.length / itemsPerPage)}
+            initialPage={1}
             onChange={(page) => setCurrentPage(page)}
         />
     </div>

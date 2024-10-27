@@ -9,6 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setItem } from '../../../core/services/common/storage';
 import { RegisterAPI } from '../../../core/services/api/register/RegisterAPI';
+import { ToastWarn } from '../../../core/services/common/Toast/ToastWarn';
 
 const LeftRegisterAccount = () => {
 
@@ -22,41 +23,19 @@ const LeftRegisterAccount = () => {
     
     const response = await RegisterAPI(registerObg)
 
-
-
-    const notify = () => {
-
-    toast.error("اطلاعات وارد شده صحیح نیست", {
-        autoClose: 5000,
-        })
-    }
-
-    const notifyGmail = () => {
-
-    toast.error(" ایمیل را وارد کنید ", {
-        autoClose: 5000,
-        })
-    }
-
-    const notifyPassword = () => {
-
-    toast.error(" رمزعبور خود را وارد کنید ", {
-        autoClose: 5000,
-        })
-    }
     if(response.success === true){
         setItem('token', response.token)
         setItem('userId', response.id)    
         navigate('/login')
     }
     else if(values.gmail === ""){
-        notifyGmail()
+        ToastWarn(" ایمیل را وارد کنید ")
     }
     else if(values.password === ""){
-        notifyPassword()
+        ToastWarn(" رمزعبور خود را وارد کنید ")
     }
     else{
-        notify()
+        ToastWarn("اطلاعات وارد شده صحیح نیست")
     }
 
   }

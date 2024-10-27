@@ -6,6 +6,7 @@ import AddReply from './AddReply'
 import { addLikeComment } from '../../core/services/api/Comments/Like&DissLike/likeComment'
 import { addDissLikeComment } from '../../core/services/api/Comments/Like&DissLike/disslikeComment'
 import { toast, ToastContainer } from 'react-toastify'
+import { ToastError } from '../../core/services/common/Toast/ToastError'
 
 const ReplyCom = ({                 
     id,
@@ -33,17 +34,14 @@ const ReplyCom = ({
   const [likeCounted, setLikeCounted] = useState(likeCount)
   const [dislikeCounted, setDislikeCounted] = useState(window.location.pathname.includes('NewDetail') ? dislikeCount : disslikeCount)
 
-//   const notifySuccess = (message) => { toast.dismiss(), toast.success(message) }
-  const notifyError = () => { toast.dismiss(), toast.error(' شما یک بار نظر خود را اعلام کرده اید ') }
-
   const likeComment = async () => {
     const response = await addLikeComment(id)
-    if(response.success) {
-        // notifySuccess(response.message)
-    }
-    else{
-        // notifyError()
-    }
+        if(response.success) {
+            // notifySuccess(response.message)
+        }
+        else{
+            ToastError(' نظر شما ثبت نشد ')
+        }
     }
 
     const dissLikeComment = async () => {
@@ -52,7 +50,7 @@ const ReplyCom = ({
             // notifySuccess(response.message)
         }
         else{
-            // notifyError()
+            ToastError(' نظر شما ثبت نشد ')
         }
     }
     

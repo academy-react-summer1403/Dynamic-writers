@@ -9,7 +9,8 @@ import { getItem, setItem } from '../../../../core/services/common/storage';
 import { toast, ToastContainer } from 'react-toastify'
 import { Button } from '@nextui-org/react';
 import 'react-toastify/dist/ReactToastify.css';
-import { getSecurityInfo } from '../../../../core/services/api/SecurityAPI/getSecurityInfo';
+import { ToastSuccess } from '../../../../core/services/common/Toast/ToastSucces';
+import { ToastError } from '../../../../core/services/common/Toast/ToastError';
 
 const LeftLogin = () => {
     
@@ -38,34 +39,6 @@ const LeftLogin = () => {
     setItem('rememberMe', userObj.rememberMe)
 
     const user = await postLogin(userObj);
-
-    const notify = () => {
-        toast.dismiss()
-        toast.error(user.message, {
-          autoClose: 5000,
-        })
-      }
-
-    const notifySuccess = () => {
-        toast.dismiss()
-        toast.success(user.message, {
-            autoClose: 3000,
-            })
-    }
-
-    const notifyGmail = () => {
-        toast.dismiss()
-        toast.error(" ایمیل یا شماره همراه خود را وارد کنید ", {
-            autoClose: 5000,
-            })
-    }
-    
-    const notifyPassword = () => {
-        toast.dismiss()
-        toast.error(" رمزعبور خود را وارد کنید ", {
-            autoClose: 5000,
-            })
-    }
     
     if(user.success === true){
         if(user.message === "ارسال پیامک انجام شد."){
@@ -74,20 +47,19 @@ const LeftLogin = () => {
         else{
             setItem('token', user.token)
             setItem('userId', user.id)    
-            notifySuccess()
             setItem('loginToast', false)
             navigate('/layoutPanel/dashboard')
         }
     }
     else if(user.success === false){
         if(user.message != null){
-           notify() 
+           ToastError(user.message)
         }
         else if(values.phoneOrGmail == ""){
-            notifyGmail()
+            ToastError(" ایمیل یا شماره همراه خود را وارد کنید ")
         }
         else if(values.password == ""){
-            notifyPassword()
+            ToastError(" رمزعبور خود را وارد کنید ")
         }
     }
 

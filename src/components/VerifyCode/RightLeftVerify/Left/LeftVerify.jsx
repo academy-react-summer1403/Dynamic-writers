@@ -10,6 +10,7 @@ import { postLogin } from '../../../../core/services/api/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { getItem, setItem } from '../../../../core/services/common/storage';
+import { ToastError } from '../../../../core/services/common/Toast/ToastError';
 
 const LeftVerify = () => {
 
@@ -25,24 +26,19 @@ const LeftVerify = () => {
       setItem('verifyCode', verificationCode)
   };
 
-    const notify = () => {
-        toast.error("کد تایید صحیح نیست یا از زمان کد گذشته", {
-        })
-    }   
-
   const onSubmit = async () => {
     handleSubmit()
     
     const user = await Login2Step()
 
     if(user.success === true) {
-        console.log(user)
-        navigate('/layoutPanel/dashboard')
+        setItem('loginToast', false)
         setItem('token', user.token)
         setItem('userId', user.id)
+        navigate('/layoutPanel/dashboard')
     }
     else{
-        notify()
+        ToastError("کد تایید صحیح نیست یا از زمان کد گذشته")
     }
   }
 
