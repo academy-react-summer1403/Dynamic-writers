@@ -21,14 +21,14 @@ const Header = ({ darkMode, setDarkMode }) => {
 
   return (
     <div className='grid w-dvw max-w-[3000px]'>
-      <div className='iranSans h-20 flex flex-row-reverse justify-between items-center lg:justify-between px-3 lg:px-14 font-semibold'>
+      <div className='iranSans h-20 flex flex-row-reverse justify-between items-center px-3 lg:px-14 font-semibold'>
       {hamberMenu === true && <HamberMenu closeHamber={closeHamber}/>}
-      <div className='flex gap-3 h-8 items-center' onClick={() => navigate('/')}>
-        <img src={Bahr2} className='w-full h-full hidden lg:inline' />
+      <div className='flex gap-3 h-8 items-center justify-end w-[25%]' onClick={() => navigate('/')}>
+        <img src={Bahr2} className='w-[180px] h-full hidden lg:inline' />
         <img src={Bahr} className='size-8 inline' onClick={() => navigate('/')} />
       </div>
 
-      <div className='items-center gap-14 flex-row-reverse hidden lg:flex'>
+      <div className='items-center gap-14 flex-row-reverse hidden lg:flex w-[50%] justify-center'>
         <Link to='/' className='hover:text-gray-600'> خانه </Link>
         <Link to='/courseList' className='hover:text-gray-600'> دوره ها </Link>
         <Link to='/newsList' className='hover:text-gray-600'> اخبار و مقالات </Link>
@@ -36,7 +36,7 @@ const Header = ({ darkMode, setDarkMode }) => {
       </div>
 
 
-      <div className='flex flex-row-reverse items-center gap-2'>
+      <div className='flex flex-row-reverse items-center gap-2 w-[25%] justify-end'>
         <div className='border border-slate-300 rounded-full p-2 cursor-pointer hidden lg:block dark:bg-gray-800' onClick={() => setDarkMode(!darkMode)}>  { darkMode ? <Sun02Icon className='size-4 text-gray-300' /> : <Moon02Icon className='text-black size-4' /> } </div>
         {!token && <Button onClick={() => navigate('/Login')} className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold cursor-pointer'> ورود یا ثبت نام </Button>}
         {token && <Link to='/layoutPanel/dashboard' className='hover:bg-gray-300 cursor-pointer bg-blue-500 text-white rounded-full flex justify-center items-center size-[46px]'> <UserIcon className='size-7' /> </Link>}

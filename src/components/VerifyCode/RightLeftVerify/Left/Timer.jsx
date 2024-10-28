@@ -21,9 +21,7 @@ const Timer = () => {
 
     return (
         <div>
-            <div style={{ fontSize: '0.75em', color: 'blue', backgroundColor: 'light-blue',
-                
-               }}>
+            <div className='text-[13px] text-blue-500'>
                 {formatTime(timeLeft)}
             </div>
             {timeLeft <= 0 && <div> </div>}
