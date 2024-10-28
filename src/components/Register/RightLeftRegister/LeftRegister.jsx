@@ -65,14 +65,14 @@ const LeftRegister = () => {
   }
 
   return (
-    <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
+    <div className='md:w-[70%] w-full bg-white dark:bg-black flex flex-col justify-center md:justify-start items-center my-7'>
 
-        <div className='flex flex-col items-end w-4/6 min-w-96'>
+        <div className='flex flex-col items-end w-4/6'>
             <Link to='/' div className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </Link>
-            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap' style={{direction: 'rtl'}}> 😍!به آکادمی بحر خوش اومدی </h2>
-            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> لطفا برای ثبت نام شماره همراه خود را وارد کنید تا برای شما کد تایید ارسال شود </span>
+            <h2 className='my-2 md:text-3xl text-2xl font-extrabold iranSansBold' style={{direction: 'rtl'}}> 😍!به آکادمی بحر خوش اومدی </h2>
+            <span className='my-4 text-gray-500 w-4/6' style={{direction: 'rtl'}}> لطفا برای ثبت نام شماره همراه خود را وارد کنید تا برای شما کد تایید ارسال شود </span>
 
         </div>
 
@@ -85,19 +85,19 @@ const LeftRegister = () => {
           
                 <h2 className='mb-2 font-bold'> شماره همراه </h2>
                 <div className='w-full'>
-                    <Field name="phoneNumber" onChange={(e) => handleChange(e)} value={phone} type="phone" className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                    <Field name="phoneNumber" onChange={(e) => handleChange(e)} value={phone} type="phone" className='w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 dark:bg-slate-600 dark:border-none font-semibold pr-12 relative' placeholder=" شماره همراه خود را وارد کنید" />
                     <SmartPhone01Icon className='absolute right-3 top-14 text-gray-500 focus:hidden' />
                 </div>
 
-                <Button type='submit' className='bg-blue-600 text-white w-full rounded-full min-w-80'>
+                <Button type='submit' className='bg-blue-600 text-white w-full rounded-full'>
                     ارسال کد تایید
                 </Button> 
 
                 <ToastContainer />
                 
-                <div className='w-full flex justify-center min-w-80'> 
-                    <span> حساب کاربری دارید؟ <Link to='/register' className='underline iranSansBold text-black cursor-pointer dark:text-white' onClick={() => navigate('/login')}> ورود به حساب کاربری </Link> </span>
+                <div className='w-full flex justify-center whitespace-nowrap'> 
+                    <span className='sm:text-base text-sm'> حساب کاربری دارید؟ <Link to='/register' className='sm:text-base text-sm underline iranSansBold text-black cursor-pointer dark:text-white' onClick={() => navigate('/login')}> ورود به حساب کاربری </Link> </span>
                 </div>
 
             </Form>
@@ -108,15 +108,15 @@ const LeftRegister = () => {
         <div className='w-4/6 flex flex-col items-end md:hidden mt-10'>
         <div className='w-5/6 h-16 my-8 flex items-center' style={{direction : 'rtl'}}> 
             <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
-            <span className='inline text-xl font-semibold mr-5 whitespace-nowrap'> وارد کردن شماره همراه   </span>
+            <span className='inline text-xl font-semibold mr-5 min-w-40'> وارد کردن شماره همراه   </span>
         </div>
         <div className='flex items-center w-4/6 h-14' style={{direction : 'rtl'}} >
             <div className='block size-12 min-w-14 min-h-14 bg-gray-200 rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-gray-700'/> </div>
-            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-52' style={{direction: 'rtl'}} >  تایید کد ارسال شده به شماره هماره </span>
+            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-40' style={{direction: 'rtl'}} >  تایید کد ارسال شده به شماره هماره </span>
         </div>
         <div className='flex items-center w-4/6 h-14 my-6' style={{direction : 'rtl'}} >
             <div className='block size-12 min-w-14 min-h-14 bg-gray-200 rounded-full flex items-center'> <UserAccountIcon className='m-auto text-gray-700'/> </div>
-            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-52' style={{direction: 'rtl'}} >  وارد کردن اطلاعات حساب کاربری </span>
+            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-40' style={{direction: 'rtl'}} >  وارد کردن اطلاعات حساب کاربری </span>
         </div>
         </div>
 

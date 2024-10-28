@@ -57,8 +57,8 @@ const LeftResetPass2 = () => {
             <div onClick={() => ToastError('شما باید رمز جدید خود را وارد کنید')} className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </div>
-            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap'> 🔐فراموشی رمزعبور؟ </h2>
-            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}> اگر رمزعبور خود را فراموش کرده‌اید ایمیل خود را وارد کنید تا لینک صفحه تغییر رمزعبور برای شما ارسال شود </span>
+            <h2 className='my-2 text-2xl whitespace-nowrap md:text-3xl font-extrabold iranSansBold whitespace-nowrap'> 🔐فراموشی رمزعبور؟ </h2>
+            <span className='my-4 text-gray-500 w-4/6' style={{direction: 'rtl'}}> اگر رمزعبور خود را فراموش کرده‌اید ایمیل خود را وارد کنید تا لینک صفحه تغییر رمزعبور برای شما ارسال شود </span>
 
         </div>
 
@@ -69,11 +69,11 @@ const LeftResetPass2 = () => {
             <Form className='w-8/12 mt-20 relative' style={{direction: 'rtl'}}>
 
                 <h2 className='mb-2 mt-5 font-bold'>  رمز عبور جدید </h2>
-                <div className='min-w-80 flex relative'>
-                    <Field name="NewPassword" type={isVisible ? "text" : "password"} className='dark:bg-slate-600 dark:border-none dark:text-white min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                <div className='flex relative'>
+                    <Field name="NewPassword" type={isVisible ? "text" : "password"} className='dark:bg-slate-600 dark:border-none dark:text-white w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور جدید خود را وارد کنید" />
 
-                    <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
+                    <button className="focus:outline-none absolute left-3 top-2 fixed" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
                         {isVisible ? (
                             <EyeIcon className="text-2xl text-default-400 pointer-events-none" />
                         ) : (
@@ -85,11 +85,11 @@ const LeftResetPass2 = () => {
                 </div>
 
                 <h2 className='mb-2 mt-5 font-bold'> تکرار رمز عبور جدید  </h2>
-                <div className='min-w-80 flex relative'>
-                    <Field name="NewPassword2" type={isVisible2 ? "text" : "password"} className='min-w-80 w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
+                <div className='flex relative'>
+                    <Field name="NewPassword2" type={isVisible2 ? "text" : "password"} className='w-full p-3 rounded-md bg-gray-100 text-sm focus:outline-none focus:border focus:border-blue-500
                     focus:border-2 font-semibold pr-12 relative' placeholder="رمزعبور جدید خود را دوباره وارد کنید" />
 
-                    <button className="focus:outline-none absolute left-3 top-2" type="button" onClick={toggleVisibility2} aria-label="toggle password visibility">
+                    <button className="focus:outline-none absolute left-3 top-2 fixed" type="button" onClick={toggleVisibility2} aria-label="toggle password visibility">
                         {isVisible2 ? (
                             <EyeIcon className="text-2xl text-default-400 pointer-events-none" />
                         ) : (
@@ -100,7 +100,7 @@ const LeftResetPass2 = () => {
                     <LockPasswordIcon className='absolute right-3 top-2 text-gray-500 focus:hidden' />
                 </div>
 
-                <Button type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3 min-w-80'>
+                <Button type='submit' color="primary" className='block w-full rounded-full font-semibold relative top-3'>
                     تایید رمز عبور
                 </Button>
 
@@ -117,7 +117,7 @@ const LeftResetPass2 = () => {
         </div>
         <div className='flex items-center w-4/6 h-14' style={{direction : 'rtl'}} >
             <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-white'/> </div>
-            <span className='inline text-xl font-semibold mr-5 min-w-52' style={{direction: 'rtl'}} > وارد کردن رمزعبور جدید </span>
+            <span className='inline text-xl font-semibold mr-5 min-w-40' style={{direction: 'rtl'}} > وارد کردن رمزعبور جدید </span>
         </div>
         </div>
 

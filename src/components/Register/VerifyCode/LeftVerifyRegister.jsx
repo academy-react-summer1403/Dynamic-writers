@@ -54,14 +54,14 @@ const LeftVerifyRegister = () => {
 
 
   return (
-    <div className='grow-8 bg-white dark:bg-black flex flex-col justify-start items-center my-7'>
+    <div className='md:w-[70%] w-full bg-white dark:bg-black flex flex-col justify-center md:justify-start items-center my-7'>
 
         <div className='flex flex-col items-end w-4/6'>
             <Link to='/' className='w-4/6 h-10 my-2 leading-10 overflow-hidden block md:hidden mb-10' style={{direction : 'rtl'}}> 
                 <img src={BahrLogo} className='w-10 inline' /> 
             </Link>
-            <h2 className='my-2 font-medium text-3xl font-extrabold iranSansBold whitespace-nowrap' style={{direction : 'rtl'}}>  😍!به آکادمی بحر خوش اومدی  </h2>
-            <span className='my-4 text-gray-500 w-4/6 min-w-60' style={{direction: 'rtl'}}>   لطفا کد ارسال شده به شماره  <span className='text-blue-500 font-medium'> {JSON.parse(getItem("phoneNumber"))} </span>  را وارد کنید  </span>
+            <h2 className='my-2 md:text-3xl text-2xl font-extrabold iranSansBold' style={{direction : 'rtl'}}>  😍!به آکادمی بحر خوش اومدی  </h2>
+            <span className='my-4 text-gray-500 w-4/6' style={{direction: 'rtl'}}>   لطفا کد ارسال شده به شماره  <span className='text-blue-500 font-medium'> {JSON.parse(getItem("phoneNumber"))} </span>  را وارد کنید  </span>
 
         </div>
 
@@ -75,7 +75,7 @@ const LeftVerifyRegister = () => {
                 <div className='w-full flex flex-col gap-4'>
                     <span className='iranSansBold'> کد تایید </span>
                     <VerificationInput name='verifyCode' length={5} onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
-                            container: "flex flex-row-reverse gap-5 iranSans w-4/6 min-w-80",
+                            container: "flex flex-row-reverse gap-5 iranSans w-full",
                             character: "rounded-xl border-none outline-none dark:bg-slate-600 dark:text-white bg-gray-100 text-sm p-1 size-12",
                             characterInactive: "bg-gray-100 text-2xl outline-none border-none text-sm",
                             characterSelected: "border-none outline-blue-500 text-black",
@@ -83,19 +83,21 @@ const LeftVerifyRegister = () => {
                     }} />
                 </div>
 
-                <Button type='submit' className='bg-blue-600 w-4/6 my-5 text-white rounded-full min-w-80'> تایید </Button>
+                <Button type='submit' className='bg-blue-600 w-4/6 my-5 text-white rounded-full w-full'> تایید </Button>
 
                 <ToastContainer />
 
-                <div className='w-full flex flex-row-reverse gap-5 items-center justify-end min-w-80'>
-                    <div onClick={() => navigate('/register')} className='bg-blue-100 flex dark:bg-slate-300 rounded-full flex-row-reverse p-1 cursor-pointer gap-2 items-center'>
+                <div className='w-full flex flex-row-reverse gap-5 items-center justify-between'>
+                    <div onClick={() => navigate('/register')} className='bg-blue-100 dark:bg-slate-800 flex rounded-full flex-row-reverse p-1 cursor-pointer gap-2 items-center'>
                         <ArrowMoveUpLeftIcon className='text-blue-500 size-4'/>
-                        <span className='text-blue-500 text-sm whitespace-nowrap'> تغییر شماره همراه </span>
+                        <span className='text-blue-500 text-sm whitespace-nowrap'> تغییر شماره </span>
                     </div>
 
-                    <Link onClick={verifyAgain} className='underline iranSans text-small cursor-pointer ml-4 whitespace-nowrap'> ارسال مجدد کد </Link>
-                    <div className='flex w-28 bg-blue-100 dark:bg-slate-300 flex-row-reverse justify-center items-center rounded-full
-                    h-5 p-3 gap-3'> <Timer /> <TimeQuarterPassIcon className='text-blue-600 size-5'/> </div>
+                    <div className='flex gap-2 items-center flex-row-reverse'>
+                        <Link onClick={verifyAgain} className='underline iranSans text-small cursor-pointer ml-4 whitespace-nowrap'> ارسال مجدد کد </Link>
+                        <div className='md:flex hidden bg-blue-100 dark:bg-slate-800 flex-row-reverse justify-center items-center rounded-full
+                        h-5 p-3 gap-3'> <Timer /> <TimeQuarterPassIcon className='text-blue-600 size-5'/> </div>
+                    </div>
                 </div>
 
             </Form>
@@ -106,15 +108,15 @@ const LeftVerifyRegister = () => {
         <div className='w-4/6 flex flex-col items-end md:hidden mt-10'>
         <div className='w-5/6 h-16 my-8 flex items-center' style={{direction : 'rtl'}}> 
             <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
-            <span className='inline text-small text-gray-500 font-semibold mr-5 whitespace-nowrap'> وارد کردن شماره همراه   </span>
+            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-40'> وارد کردن شماره همراه   </span>
         </div>
         <div className='flex items-center w-4/6 h-14' style={{direction : 'rtl'}} >
             <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-white'/> </div>
-            <span className='inline text-xl font-semibold mr-5 whitespace-nowrap' style={{direction: 'rtl'}} >  تایید کد ارسال شده به شماره هماره </span>
+            <span className='inline text-xl font-semibold mr-5 min-w-40' style={{direction: 'rtl'}} >  تایید کد ارسال شده به شماره هماره </span>
         </div>
         <div className='flex items-center w-4/6 h-14 my-6' style={{direction : 'rtl'}} >
             <div className='block size-12 min-w-14 min-h-14 bg-gray-200 rounded-full flex items-center'> <UserAccountIcon className='m-auto text-gray-700'/> </div>
-            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-52' style={{direction: 'rtl'}} >  وارد کردن اطلاعات حساب کاربری </span>
+            <span className='inline text-small text-gray-500 font-semibold mr-5 min-w-40' style={{direction: 'rtl'}} >  وارد کردن اطلاعات حساب کاربری </span>
         </div>
         </div>
 

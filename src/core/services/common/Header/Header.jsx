@@ -38,9 +38,9 @@ const Header = ({ darkMode, setDarkMode }) => {
 
       <div className='flex flex-row-reverse items-center gap-2 w-[25%] justify-end'>
         <div className='border border-slate-300 rounded-full p-2 cursor-pointer hidden lg:block dark:bg-gray-800' onClick={() => setDarkMode(!darkMode)}>  { darkMode ? <Sun02Icon className='size-4 text-gray-300' /> : <Moon02Icon className='text-black size-4' /> } </div>
-        {!token && <Button onClick={() => navigate('/Login')} className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold cursor-pointer'> ورود یا ثبت نام </Button>}
+        {!token && <Button onClick={() => navigate('/Login')} className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold lg:text-base md:text-[14px] text-[10px] cursor-pointer'> ورود یا ثبت نام </Button>}
         {token && <Link to='/layoutPanel/dashboard' className='hover:bg-gray-300 cursor-pointer bg-blue-500 text-white rounded-full flex justify-center items-center size-[46px]'> <UserIcon className='size-7' /> </Link>}
-        <Menu02Icon onClick={() => setHamberMenu(true)} className='lg:hidden block cursor-pointer' />
+        <Menu02Icon onClick={() => setHamberMenu(true)} className='lg:hidden block cursor-pointer min-w-[30px]' />
       </div>
     </div>
     </div>

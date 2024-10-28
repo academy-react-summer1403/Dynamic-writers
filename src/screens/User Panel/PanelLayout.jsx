@@ -80,7 +80,7 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
 
         </div>
 
-        <SitePanelRes />
+        <SitePanelRes profileInfo={profileInfo} />
 
       </div>
     </div>

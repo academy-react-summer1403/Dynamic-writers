@@ -13,9 +13,9 @@ const SitePanel = () => {
   return (
     <div className='dark:bg-slate-700 dark:text-white bg-white rounded-2xl gap-5 lg:flex flex-col min-w-[276px] h-dvh py-7 px-6 justify-between hidden'>
       <div className='flex flex-col gap-12'>
-        <div onClick={() => navigate('/')} className='flex gap-2 items-end'>
+        <div onClick={() => navigate('/')} className='flex gap-2 items-end cursor-pointer'>
           <img src={Bahr} className='size-[40px] ' />
-          <img src={Bahr2} className='h-[28px] w-[149px]' />
+          <img src={Bahr2} className='h-[32px] w-[170px]' />
         </div>
 
         <div className='flex flex-col w-full h-fit gap-10 justify-center' dir='rtl'>
