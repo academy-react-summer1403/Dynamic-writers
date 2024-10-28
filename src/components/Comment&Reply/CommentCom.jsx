@@ -46,7 +46,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const dissLikeComment = async () => {
         const response = await addDissLikeComment(id)
         if(response.success) {
-            notifySuccess(response.message)
+            // notifySuccess(response.message)
         }
         else{
             ToastError(' نظر شما ثبت نشد ')
@@ -57,7 +57,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
         const response = await addLikeCommentNew(id, likeType)
         console.log(id)
         if(response.success) {
-            notifySuccess(' نظر شما با موفقیت ثبت شد ')
+            // notifySuccess(' نظر شما با موفقیت ثبت شد ')
         }
         else{
             ToastError(' نظر شما ثبت نشد ')
