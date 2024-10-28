@@ -41,7 +41,7 @@ import PanelScreen from '../screens/Panel/PanelScreen';
 import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 
 function App() {
-  const [reloadImage, setreloadImage] = useState(false)
+  const [reloadProf, setreloadProf] = useState(false)
   const [darkMode, setDarkMode] = useState(() => {
     JSON.parse(getItem('darkMode')) === true
   })
@@ -95,7 +95,7 @@ function App() {
 
     {
       path: '/layoutPanel',
-      element: <PrivateRoute element={<PanelLayout darkMode={darkMode} setDarkMode={setDarkMode} reloadImagePic={reloadImage}/>} />,
+      element: <PrivateRoute element={<PanelLayout darkMode={darkMode} setDarkMode={setDarkMode} reloadProf={reloadProf}/>} />,
       children: [
         {
           path: 'dashboard',
@@ -123,12 +123,12 @@ function App() {
           children:[
             {
               path:"",
-              element:<InformationUser/>,
+              element:<InformationUser reload={setreloadProf}/>,
               index:true
             },
             {
               path:"AddProfileImage",
-              element:<AddProfileImage reload={setreloadImage} reloadValue={reloadImage}/>
+              element:<AddProfileImage reload={setreloadProf}/>
             },
             {
               path:"AddAddress",

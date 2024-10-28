@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateInformation from '../../core/services/api/Panel/UpdateInformation'
 
-const InformationUser = () => {
+const InformationUser = ({reload}) => {
   const [profile,setRerender]=useOutletContext();
   
   const [InitialValue, setInitialValue] = useState({
@@ -47,6 +47,7 @@ const InformationUser = () => {
     }else{
       notifySuccess(massage.message)
       setRerender(prev => !prev); 
+      reload(prev => !prev)
     }
   }
 
