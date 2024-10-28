@@ -9,7 +9,6 @@ import { getItem, setItem } from '../../../../core/services/common/storage';
 import { toast, ToastContainer } from 'react-toastify'
 import { Button } from '@nextui-org/react';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastSuccess } from '../../../../core/services/common/Toast/ToastSucces';
 import { ToastError } from '../../../../core/services/common/Toast/ToastError';
 
 const LeftLogin = () => {
@@ -20,6 +19,7 @@ const LeftLogin = () => {
 
   useEffect(() => {
     if(loginToast === true){
+        setItem('loginToast', false)
         toast.dismiss()
         toast.warn(' شما باید ابتدا به حساب کاربری خود وارد شید! ', {
             position: 'bottom-center',
@@ -42,12 +42,13 @@ const LeftLogin = () => {
     
     if(user.success === true){
         if(user.message === "ارسال پیامک انجام شد."){
+            setItem('expire', true)
             navigate('/verify')
         }
         else{
+            setItem('expire', true)
             setItem('token', user.token)
             setItem('userId', user.id)    
-            setItem('loginToast', false)
             navigate('/layoutPanel/dashboard')
         }
     }

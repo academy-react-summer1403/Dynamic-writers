@@ -20,13 +20,17 @@ const PrivateRoute = ({ element }) => {
 
   }
 
+  if(!token) {
+    setItem('loginToast', true)
+    return <Navigate to='/login' />
+  }
+
   useEffect(() => {
     getProfile()
   }, [])
 
   return (
     <>
-      {token ? element : <Navigate to='/login' />}
       <ProtectedRoute Children={element} />
     </>
   )

@@ -32,7 +32,6 @@ const LeftVerify = () => {
     const user = await Login2Step()
 
     if(user.success === true) {
-        setItem('loginToast', false)
         setItem('token', user.token)
         setItem('userId', user.id)
         navigate('/layoutPanel/dashboard')
