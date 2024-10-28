@@ -8,6 +8,7 @@ import { getTechList } from '../../../core/services/api/tech'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import jalaali, { toGregorian } from 'jalaali-js'
 
+
 const convertJalaliToGregorian = (jalaliDate) => {
 
     const jalaaliDateShams = (jalaliDate.split('/'))
@@ -122,8 +123,8 @@ const FilterCourse = ({ updateParams }) => {
     >
            
         <Form>
-            <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 dark:bg-gray-800 dark:text-white text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
-            <button type='submit' className='text-white bg-blue-500 dark:bg-gray-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
+            <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 dark:bg-gray-700 text-sm dark:text-white text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+            <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
         </Form>
     </Formik>
 
@@ -136,7 +137,7 @@ const FilterCourse = ({ updateParams }) => {
         <span className='text-base font-semibold'> دسته بندی </span>
     </div>
     <div className='relative flex flex-col gap-3'>
-        <Select placeholder='انتخاب کنید' onChange={(e) => {techCounting(e)}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl' selectionMode="multiple">
+        <Select placeholder='انتخاب کنید' onChange={(e) => {techCounting(e)}} classNames={{trigger: 'dark:bg-slate-700 dark:text-white'}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl' selectionMode="multiple">
             
             {techs.map((item, index) => {
 
@@ -154,7 +155,7 @@ const FilterCourse = ({ updateParams }) => {
         <span className='text-base font-semibold'> سطح اموزش </span>
     </div>
     <div className='relative flex flex-col gap-3'>
-        <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
+        <Select placeholder='انتخاب کنید' classNames={{trigger: 'dark:bg-slate-700 dark:text-white'}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
 
             {levels.map((item,index) => {
                 return <SelectItem onClick={() => updateParams('courseLevelId', item.id)} textValue={item.levelName}> {item.levelName} </SelectItem>
@@ -171,7 +172,7 @@ const FilterCourse = ({ updateParams }) => {
         <span className='text-base font-semibold'> اساتید </span>
     </div>
     <div className='relative flex flex-col gap-3'>
-        <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
+        <Select placeholder='انتخاب کنید' classNames={{trigger: 'dark:bg-slate-700 dark:text-white'}} className=' w-full my-2 rounded-xl text-gray-100' dir='rtl'>
             {teachers.map((item, index) => {
                 return <SelectItem onClick={() => updateParams('TeacherId', item.teacherId)} textValue={item.fullName}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
             })}
@@ -208,7 +209,7 @@ const FilterCourse = ({ updateParams }) => {
         </div>
         <div className='flex flex-col gap-3'>
             <form className='relative items-center flex' onSubmit={handleSubmit}>
-               <Input placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
+               <Input placeholder='1403/5/20 - 1403/6/20' classNames={{inputWrapper: 'dark:bg-slate-700 dark:text-white'}} format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
                <button type='submit' className='text-white bg-gray-500 absolute rounded-xl h-10 w-10 right-0 bottom-2 text-center flex justify-center items-center hover:bg-gray-600'> <Calendar02Icon className='size-5' /> </button>
             </form>
         </div>

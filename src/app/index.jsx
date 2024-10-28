@@ -56,7 +56,6 @@ function App() {
     }
   }, [darkMode])
 
-
   const router = createBrowserRouter([
     {
       path: '/login',

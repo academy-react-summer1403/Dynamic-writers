@@ -5,11 +5,11 @@ import React from 'react'
 
 const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChange, handleSubmit, closeFilter}) => {
   return (
-    <div className='w-full bg-white z-50 items-center rounded-t-3xl shadow-2xl p-5 h-fit my-4 gap-6 flex bottom-0 right-0 flex-col fixed '>
+    <div className='w-full bg-white z-50 dark:bg-slate-950 items-center rounded-t-3xl shadow-2xl p-5 h-fit gap-6 flex bottom-0 right-0 flex-col fixed '>
 
     <div className='flex justify-between w-full'>
         <h2> فیلتر </h2>
-        <Button onClick={closeFilter} className='rounded-full text-red-500 flex items-center bg-white border-red-500 border'> بستن <Cancel01Icon /> </Button>
+        <Button onClick={closeFilter} className='rounded-full text-red-500 flex items-center bg-white dark:border-none dark:bg-red-500 dark:text-white border-red-500 border'> بستن <Cancel01Icon /> </Button>
     </div>
 
     <div className='flex flex-col gap-4 w-full'>
@@ -24,7 +24,7 @@ const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChang
           >
                 
               <Form>
-                  <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                  <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 text-gray-700 dark:bg-slate-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
                   <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
               </Form>
           </Formik>
@@ -38,7 +38,7 @@ const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChang
         </div>
         <div className='relative gap-3 flex flex-col'>
         <form className='relative items-center flex' onSubmit={handleSubmit}>
-           <Input data-jdp placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
+           <Input placeholder='1403/5/20 - 1403/6/20' classNames={{inputWrapper: 'dark:bg-slate-700 dark:text-white'}} format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
            <button type='submit' className='text-white bg-gray-500 absolute rounded-xl h-10 w-10 right-0 bottom-2 text-center flex justify-center items-center hover:bg-gray-600'> <Calendar02Icon className='size-5' /> </button>
         </form>
         </div>
@@ -50,9 +50,9 @@ const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChang
             <span className='text-base font-semibold'> اساتید </span>
         </div>
         <div className='relative flex flex-col gap-3'>
-            <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
+            <Select placeholder='انتخاب کنید' classNames={{trigger: 'dark:bg-slate-700 dark:text-white'}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
               {teachers.map((item, index) => {
-                  return <SelectItem onClick={() => setTeacher(item.teacherId)} textValue={item.fullName}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
+                  return <SelectItem onClick={() => setTeacher(item.teacherId)} textValue={item.fullName.replace('-', ' ')}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
               })}
               <SelectItem onClick={() => setTeacher('')}> هیچ کدام </SelectItem>
             </Select>

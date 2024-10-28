@@ -20,7 +20,7 @@ const FilterNews = ({ updateParams, partCount }) => {
             >
                     
                 <Form>
-                    <Field type='search' name='Query' className='w-full font-bold text-sm h-10 rounded-xl dark:bg-gray-800 dark:text-white bg-gray-100 text-gray-700 px-2 outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                    <Field type='search' name='Query' className='w-full font-bold text-sm h-10 rounded-xl dark:bg-gray-700 dark:text-white bg-gray-100 text-gray-700 px-2 outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
                     <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
                 </Form>
             </Formik>

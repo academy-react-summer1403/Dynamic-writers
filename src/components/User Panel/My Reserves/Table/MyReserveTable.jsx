@@ -123,7 +123,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
       </TableHeader>
         <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"دوره ای برای نمایش وجود ندارد."} className="">
             {paginationData.map((item, index) => {
-                return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-t-1" key={index}>
+                return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-b-1" key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src='' /> </TableCell>
                     <TableCell>
                         <div className="flex flex-col gap-2">
