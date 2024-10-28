@@ -8,7 +8,7 @@ import ChooseProfilePic from '../../core/services/api/Panel/ChooseProfilePic';
 import DeleteImage from '../../core/services/api/Panel/DeleteImage';
 import { getItem, setItem } from '../../core/services/common/storage';
 
-const AddProfileImage = ({reload,reloadValue}) => {
+const AddProfileImage = ({reload}) => {
   
   const [profile,setRerender]=useOutletContext();
   const [keyNum, setkeyNum] = useState(-1)
@@ -31,25 +31,31 @@ const AddProfileImage = ({reload,reloadValue}) => {
     const massage=await DeleteImage(ImageId)
     notifySuccess(massage.message)
     setRerender(prev => !prev); 
+    reload(prev => !prev)
+
   }
   const AddImage=async (image)=>{
     const massage=await UpdateImageProf(image)
     notifySuccess(massage.message)
-    setRerender(prev => !prev); 
+    setRerender(prev => !prev);
+    reload(prev => !prev)
   }
-  const chooseProfile=async(ImageId)=>{
+  const chooseProfile=async(ImageId,puctureAddress)=>{
 
     setkeyNum(-1)
     setFlag(false)
 
     const massage=await ChooseProfilePic(ImageId)
     notifySuccess(massage.message)
-    setImageProf(ImageId)
+    setImageProf(puctureAddress)
     setRerender(prev => !prev); 
-    reload(!reloadValue)
+    reload(prev => !prev)
 
   }
- 
+  useEffect(() => {
+    setImageProf(profile.currentPictureAddress)
+  }, [profile])
+  
   
   return (
     <div className='flex flex-row flex-wrap gap-5 justify-end overflow-y-scroll max-h-[1000px] p-[40px]'>
@@ -69,7 +75,7 @@ const AddProfileImage = ({reload,reloadValue}) => {
                   <div className='absolute top-11 md:right-2 right-0'>
                     {keyNum==index && <ul className='md:w-[200px] h-[112px] w-[85%] dark:bg-slate-900 dark:border-none bg-white z-30 rounded-[16px] p-[10px] m-0 list-none relative border-[#E4E4E4] overflow-hidden border-[3px]'>
                       <CheckmarkCircle02Icon color='green' className='md:w-[24px] w-[15px] md:h-[24px] h-[15px] absolute md:top-4 top-5 md:right-2 right-0'/>
-                      <li className='w-[100%] h-[50%] md:text-[16px] text-[12px] whitespace-nowrap leading-9 text-right pr-7 cursor-pointer' onClick={()=>chooseProfile(value.id)}>انتخاب عکس اصلی</li>
+                      <li className='w-[100%] h-[50%] md:text-[16px] text-[12px] whitespace-nowrap leading-9 text-right pr-7 cursor-pointer' onClick={()=>chooseProfile(value.id,value.puctureAddress)}>انتخاب عکس اصلی</li>
                       <Delete02Icon color='red' className='md:w-[24px] w-[15px] md:h-[24px] h-[15px] absolute md:top-[69px] top-[72px] md:right-2 right-0' />
                       <li className='w-[100%] h-[50%]  md:text-[16px] dark:text-red-500 text-[12px]  border-t-1 border-[#E4E4E4] leading-[45px] text-right md:pr-7 pr-4 cursor-pointer' onClick={()=>DeleteImageProf(value.id)}>حذف عکس</li>
 

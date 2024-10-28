@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { getItem, setItem } from '../../core/services/common/storage';
 
-const PanelLayout = ({ darkMode, setDarkMode ,reloadImagePic}) => {
+const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
 
   const location = useLocation()
 
@@ -60,7 +60,7 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadImagePic}) => {
 
   useEffect(() => {
     getProfile()
-  }, [reloadImagePic])
+  }, [reloadProf])
 
   return (
     <div className='w-dvw flex justify-center max-w-[3000px]'>
