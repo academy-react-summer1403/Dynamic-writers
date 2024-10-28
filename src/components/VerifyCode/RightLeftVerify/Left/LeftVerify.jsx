@@ -80,7 +80,7 @@ const LeftVerify = () => {
                 <div className='flex flex-col gap-4'>
                     <span className='iranSansBold'> کد تایید </span>
                     <VerificationInput name='verifyCode' length={5} onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
-                            container: "flex flex-row-reverse gap-5 iranSans w-full max-w-[360px]",
+                            container: "flex flex-row-reverse gap-5 iranSans w-full max-w-[400px]",
                             character: "rounded-xl border-none outline-none dark:bg-slate-800 dark:text-white bg-gray-100 text-sm p-1 size-12",
                             characterInactive: "bg-gray-100 text-2xl outline-none border-none text-sm",
                             characterSelected: "border-none outline-blue-500 text-black",
@@ -88,7 +88,7 @@ const LeftVerify = () => {
                     }} />
                 </div>
 
-                <Button type='submit' className='bg-blue-600 w-full max-w-[360px] my-5 text-white rounded-full'> تایید </Button>
+                <Button type='submit' className='bg-blue-600 w-full max-w-[400px] my-5 text-white rounded-full'> تایید </Button>
 
                 <div className='w-full flex flex-row-reverse gap-5 justify-end'>
                     <Link onClick={verifyAgain} className='underline iranSansBold cursor-pointer whitespace-nowrap'> ارسال مجدد کد </Link>

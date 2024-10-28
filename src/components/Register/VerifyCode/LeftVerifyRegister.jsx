@@ -72,10 +72,10 @@ const LeftVerifyRegister = () => {
 
             <Form className='w-4/6 mt-20 relative' style={{direction: 'rtl'}}>
 
-                <div className='w-full flex flex-col gap-4'>
+                <div className='flex flex-col gap-4'>
                     <span className='iranSansBold'> کد تایید </span>
                     <VerificationInput name='verifyCode' length={5} onChange={(value) => handleInputChange(value)} value={verificationCode} classNames={{
-                            container: "flex flex-row-reverse gap-5 iranSans w-full",
+                            container: "flex flex-row-reverse gap-5 iranSans w-full max-w-[400px]",
                             character: "rounded-xl border-none outline-none dark:bg-slate-600 dark:text-white bg-gray-100 text-sm p-1 size-12",
                             characterInactive: "bg-gray-100 text-2xl outline-none border-none text-sm",
                             characterSelected: "border-none outline-blue-500 text-black",
@@ -83,11 +83,11 @@ const LeftVerifyRegister = () => {
                     }} />
                 </div>
 
-                <Button type='submit' className='bg-blue-600 w-4/6 my-5 text-white rounded-full w-full'> تایید </Button>
+                <Button type='submit' className='bg-blue-600 w-full my-5 text-white rounded-full max-w-[400px]'> تایید </Button>
 
                 <ToastContainer />
 
-                <div className='w-full flex flex-row-reverse gap-5 items-center justify-between'>
+                <div className='w-full max-w-[400px] flex flex-row-reverse gap-5 items-center justify-between'>
                     <div onClick={() => navigate('/register')} className='bg-blue-100 dark:bg-slate-800 flex rounded-full flex-row-reverse p-1 cursor-pointer gap-2 items-center'>
                         <ArrowMoveUpLeftIcon className='text-blue-500 size-4'/>
                         <span className='text-blue-500 text-sm whitespace-nowrap'> تغییر شماره </span>
