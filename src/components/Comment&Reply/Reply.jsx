@@ -43,7 +43,7 @@ const Reply = ({ commentId, Oid }) => {
                 insertDate={jMoment(reply.insertDate).locale('fa').format('jD jMMMM jYYYY')}
                 accept={reply.accept}
                 acceptReplysCount={reply.acceptReplysCount}
-                dislikeCount={reply.dislikeCount && reply.dislikeCount}
+                dissLikeCount={reply.dissLikeCount && reply.dissLikeCount}
                 disslikeCount={reply.disslikeCount && reply.disslikeCount}
                 likeCount={reply.likeCount}
                 currentUserEmotion={reply.currentUserEmotion}

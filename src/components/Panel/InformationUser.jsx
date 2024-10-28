@@ -122,7 +122,7 @@ const InformationUser = ({reload}) => {
                         id='DateBirth'
                         onChange={handleDateChange}
                         placeholder='تاریخ تولد خود را وارد کنید'
-                        className={`${selectedDate!='تاریخ تولد خود را وارد کنید' ? "text-black " :"text-gray-500 " }dark:bg-slate-900 bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] flex-grow-2`}
+                        className={`${selectedDate!='تاریخ تولد خود را وارد کنید' ? "text-black " :"text-gray-500 " }dark:bg-slate-900 dark:text-white bg-[#e8e7e7] rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px] flex-grow-2`}
                         value={selectedDate}
                       />
                     

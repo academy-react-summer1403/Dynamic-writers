@@ -18,7 +18,7 @@ const ReplyCom = ({
     accept,
     acceptReplysCount,
     disslikeCount,
-    dislikeCount,
+    dissLikeCount,
     likeCount,
     currentUserEmotion,
     pictureAddress,
@@ -32,7 +32,7 @@ const ReplyCom = ({
   const [dislike, setDislike] = useState(currentUserEmotion === 'DISSLIKED' ? true : false)
   
   const [likeCounted, setLikeCounted] = useState(likeCount)
-  const [dislikeCounted, setDislikeCounted] = useState(window.location.pathname.includes('NewDetail') ? dislikeCount : disslikeCount)
+  const [dislikeCounted, setDislikeCounted] = useState(window.location.pathname.includes('NewDetail') ? dissLikeCount : disslikeCount)
 
   const likeComment = async () => {
     const response = await addLikeComment(id)
