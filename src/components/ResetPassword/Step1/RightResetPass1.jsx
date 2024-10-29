@@ -12,11 +12,11 @@ import { Link } from 'react-router-dom';
               <img src={BahrLogo2} className='w-30 h-6 inline mr-2' /> 
           </Link>
           <div className='w-5/6 h-16 my-8 flex items-center' style={{direction : 'rtl'}}> 
-              <div className='block size-14 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
+              <div className='block size-14 min-w-14 min-h-14 bg-blue-600 rounded-full flex items-center'> <MailEdit02Icon className='m-auto text-white'/> </div>
               <span className='inline text-xl font-semibold mr-5'> وارد کردن ایمیل </span>
           </div>
           <div className='flex items-center w-4/6 h-14' style={{direction : 'rtl'}} >
-              <div className='block size-12 bg-white rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-gray-500'/> </div>
+              <div className='block size-12 min-w-14 min-h-14 bg-white rounded-full flex items-center'> <PasswordValidationIcon className='m-auto text-gray-500'/> </div>
               <span className='inline text-sm font-semibold mr-5 text-gray-600 w-52' style={{direction: 'rtl'}} > وارد کردن رمزعبور جدید </span>
           </div>
       </div>

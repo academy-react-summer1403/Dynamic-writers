@@ -34,14 +34,14 @@ function BoxFirst() {
       <div className='rounded-xl bg-blue-500 text-white h-64 grow-2'>
         <div className='flex flex-row-reverse justify-between h-2/12 items-center p-4'>
             <div className='flex flex-col items-end'>
-                <h2 className='text-xl font-extrabold whitespace-nowrap' style={{direction: 'rtl'}}> دوره‌های جدید تابستانه! </h2>
+                <h2 className='text-base md:text-xl font-extrabold whitespace-nowrap' style={{direction: 'rtl'}}> دوره‌های جدید تابستانه! </h2>
                 <div className='w-40 text-sm' style={{direction: 'rtl'}}> شروع دوره های جدید مبتدی و پیشرفته برای همین تابستان </div>
             </div>
             <Link to='/courseList' className='mb-8 bg-white text-black rounded-full min-w-10 min-h-10 cursor-pointer flex justify-center items-center'> <ArrowUpLeft01Icon /> </Link>
         </div>
         <div className='w-3/6 h-fit flex justify-end relative'>
-          <img src={Icon1} className='size-32 -rotate-12 translate-x-16' />
-          <img src={Icon2} className='size-32 rotate-12 translate-x-5' />
+          <img src={Icon1} className='size-32 -rotate-12 absolute left-20 top-0' />
+          <img src={Icon2} className='size-32 rotate-12 absolute left-0 top-0' />
           <img src={Icon3} className='size-32 -rotate-12 absolute left-0 top-12' />
           <img src={Icon4} className='size-28 rotate-12 absolute left-20 top-12' />
           <img src={Icon5} className='size-20 rotate-12 absolute left-36 top-20' />
@@ -50,7 +50,7 @@ function BoxFirst() {
     
       <div className='border-3 rounded-xl grow-3 h-64 overflow-hidden flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
         <div className='flex w-full h-fit justify-end flex-col p-4' style={{direction: 'rtl'}}>
-          <h2 className='iranSansBold text-2xl tracking-wider whitespace-nowrap'> پنل اختصاصی دانشجو </h2>
+          <h2 className='iranSansBold text-base md:text-2xl tracking-wider whitespace-nowrap'> پنل اختصاصی دانشجو </h2>
           <span className='w-56 text-sm font-semibold mt-1 tracking-wider'> پنل های اختصاصی دانشجویی برای مدیریت دوره ها و تمرین ها </span>
         </div>
 

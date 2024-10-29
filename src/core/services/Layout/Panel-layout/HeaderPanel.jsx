@@ -29,7 +29,7 @@ const HeaderPanel = ({ editingImage, profileInfo, darkMode, setDarkMode }) => {
             </span>
         </div>
       </div>
-      <Link to='' className='flex md:hidden flex-row-reverse justify-between gap-3 items-center'>
+      <Link to='/' className='flex md:hidden flex-row-reverse justify-between gap-3 items-center'>
           <img src={Bahr} className='size-10' />
       </Link>
       <div className='flex h-full w-fit gap-3 items-center'>

@@ -123,11 +123,11 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
       </TableHeader>
         <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"دوره ای برای نمایش وجود ندارد."} className="">
             {paginationData.map((item, index) => {
-                return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-t-1" key={index}>
+                return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-b-1" key={index}>
                     <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src='' /> </TableCell>
                     <TableCell>
                         <div className="flex flex-col gap-2">
-                            <div className="max-w-40 font-bold text-xl truncate"> {item.courseName} </div>
+                            <div className="max-w-40 font-bold text-xl h-6 truncate"> {item.courseName} </div>
                             <div className="flex flex-col justify-center gap-1">
                                 <div className="max-w-56 truncate text-[#787878]"> {item.studentName.replace('-', ' ')} </div> 
                                 <span className={`${item.accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full w-fit`}> {item.accept ? 'تایید شده' : 'تایید نشده'} </span>

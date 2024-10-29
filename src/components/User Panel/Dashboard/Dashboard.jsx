@@ -87,11 +87,11 @@ const Dashboard = () => {
         <div className='md:grow flex md:justify-start justify-between grow-0 md:gap-24 items-center'>
           <div className='flex gap-4'>
             <div className='rounded-full size-12 bg-white dark:bg-slate-700 dark:text-white flex justify-center items-center'> <Clock01Icon className='size-6' /> </div>
-            <div className='flex flex-col'> <h5 className='text-gray-600 text-base'> ساعت </h5> <CurrentTime /> </div>
+            <div className='flex flex-col'> <h5 className='text-gray-600 dark:text-slate-400 text-base'> ساعت </h5> <CurrentTime /> </div>
           </div>
           <div className='flex gap-4'>
             <div className='rounded-full size-12 bg-white dark:bg-slate-700 dark:text-white flex justify-center items-center'> <Calendar03Icon className='size-6' /> </div>
-            <div className='flex flex-col'> <h5 className='text-gray-600 text-base'> تاریخ </h5> <CurrentShamsiDate /> </div>
+            <div className='flex flex-col'> <h5 className='text-gray-600 dark:text-slate-400 text-base'> تاریخ </h5> <CurrentShamsiDate /> </div>
           </div>
         </div>
       </div>

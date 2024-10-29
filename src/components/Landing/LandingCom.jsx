@@ -24,22 +24,22 @@ function LandingCom() {
 
   return (
     <div className='iranSans my-10 grid grid-cols-1 overflow-hidden max-w-[3000px] dark:bg-black px-16'>
-      <div className=' flex text-xl iranSansBold md:w-[none] justify-center items-center md:text-3xl text-center flex-col'>
-        <span className='tracking-normal md:tracking-wider flex flex-row break-world whitespace-nowrap'> کدنویسی؛  <div className='rounded-full p-1 border border-gray-200 shadow-md mx-2 size-8'> <CodeCircleIcon /> </div>   تجربه‌ای بی‌نظیر در یادگیری  </span>
+      <div className=' flex text-2xl iranSansBold md:w-[none] justify-center items-center sm:text-3xl text-center flex-col'>
+        <span className='tracking-normal sm:tracking-wider flex sm:flex-row break-world gap-2 flex-col-reverse'> <span>  کدنویسی؛  </span> <div className='rounded-full p-1 sm:block hidden border border-gray-200 shadow-md mx-2 size-8'> <CodeCircleIcon /> </div> <span className='whitespace-nowrap'>  تجربه‌ای بی‌نظیر در یادگیری  </span>  </span>
   
-        <div className='flex text-xl iranSansBold flex-row-reverse justify-center gap-2 mt-3 md:text-3xl'>
+        <div className='flex text-2xl iranSansBold flex-row-reverse justify-center gap-2 mt-3 sm:text-3xl whitespace-nowrap'>
           <span> از </span> <span className='text-blue-500'> مبتدی </span> <span> تا </span> <span className='text-red-500'> !حرفه ای </span>
         </div>
       </div>
 
       <div className='items-center gap-5 flex flex-col my-6'>
-        <span className='text-gray-400 iranSansBold text-sm text-center'> آکادمی فوق تخصصی کدنویسی و برنامه‌نویسی از سنین کودکی تا بزرگسالی </span>
+        <span className='text-gray-400 iranSansBold text-sm min-w-[250px] text-center'> آکادمی فوق تخصصی کدنویسی و برنامه‌نویسی از سنین کودکی تا بزرگسالی </span>
         <Button onClick={() => navigate('/courseList')} className='cursor-pointer bg-blue-500 text-white rounded-full flex items-baseline items-center text-sm iranSansBold'> شروع یادگیری </Button>
       </div>
 
       <BoxFirst />
 
-      <div className='bg-blue-500 -translate-x-[100px] w-[150%] justify-center h-10 text-white flex flex-row-reverse items-center gap-10 -rotate-2'>
+      <div className='bg-blue-500 -translate-x-[100px] w-[250%] justify-center h-10 text-white flex flex-row-reverse items-center gap-10 -rotate-2'>
         {count.map(item => {
           return <>
           <span className='font-semibold text-sm whitespace-nowrap'> خدماتی که ما به شما ارائه میدیم </span>

@@ -9,7 +9,7 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
 
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-    <div className='rounded-2xl min-w-[315px] max-w-[315px] dark:bg-slate-900 dark:text-white bg-gray-200 relative h-fit flex flex-col justify-between' style={{height: '547px'}}>
+    <div className='rounded-2xl cursor-pointer bg-gray-200 dark:bg-slate-900 dark:text-white h-[512px] w-full md:w-[315px] dark:border-none iranSans flex flex-col justify-between font-semibold'>
         <img src={currentImageAddressTumb} className='w-full border rounded-xl h-[225px] bg-red-300' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
             <div className={`bg-blue-500 text-white rounded-xl px-2`}> {newsCatregoryName} </div>
@@ -22,7 +22,7 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
             <div className='flex flex-row-reverse gap-3 my-2'> <QuillWrite02Icon className='text-slate-700'/> <span className='text-base font-semibold'> {(addUserFullName).replace('-', ' ')} </span> </div>
             <div className='flex flex-row-reverse gap-3 my-2'> <EyeIcon className='text-slate-700'/> <span className='text-base font-semibold'> {currentView} </span> </div>
         </div>
-        <div className='w-full flex px-3 gap-10 items-center my-3'>
+        <div className='w-full flex px-3 justify-between items-center my-3'>
             <Button onClick={() => navigate('/NewDetail/' + id)} className='bg-blue-500 text-white rounded-full'> بیشتر بخوانید </Button>
             <div className='flex gap-2'> {currentDissLikeCount} <ThumbsDownIcon /> </div>
             <div className='flex gap-2'> {currentLikeCount} <ThumbsUpIcon /> </div>

@@ -19,7 +19,7 @@ const AllnewCoursesComFilter = ({ teachers, setquery, setTeacher, handleChange, 
           >
                 
               <Form>
-                  <Field type='search' name='Query' className='w-full h-10 rounded-xl dark:text-white dark:bg-gray-700 bg-gray-100 text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                  <Field type='search' name='Query' className='w-full h-10 rounded-xl text-sm dark:text-white dark:bg-gray-700 bg-gray-100 text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
                   <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
               </Form>
           </Formik>
@@ -33,7 +33,7 @@ const AllnewCoursesComFilter = ({ teachers, setquery, setTeacher, handleChange, 
         </div>
         <div className='relative gap-3 flex flex-col'>
         <form className='relative items-center flex' onSubmit={handleSubmit}>
-           <Input data-jdp placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
+           <Input placeholder='1403/5/20 - 1403/6/20' format='YYYY-MM-DD' classNames={{inputWrapper: 'dark:bg-slate-700 dark:text-white'}} onChange={handleChange} className='w-full my-2 rounded-xl' dir='ltr' />
            <button type='submit' className='text-white bg-gray-500 absolute rounded-xl h-10 w-10 right-0 bottom-2 text-center flex justify-center items-center hover:bg-gray-600'> <Calendar02Icon className='size-5' /> </button>
         </form>
         </div>
@@ -45,7 +45,7 @@ const AllnewCoursesComFilter = ({ teachers, setquery, setTeacher, handleChange, 
             <span className='text-base font-semibold'> اساتید </span>
         </div>
         <div className='relative flex flex-col gap-3'>
-            <Select placeholder='انتخاب کنید' className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
+            <Select placeholder='انتخاب کنید' classNames={{trigger: 'dark:bg-slate-700 dark:text-white'}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
               {teachers.map((item, index) => {
                   return <SelectItem onClick={() => setTeacher(item.teacherId)} textValue={item.fullName}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
               })}
