@@ -42,7 +42,7 @@ const Panel = ({profile,setRerender}) => {
         <div className='border-[3px] border-white bg-[#2A67F9] w-[24px] h-[24px] absolute md:top-[50px] top-[50px] right-12 flex justify-center items-center cursor-pointer rounded-[100%]' >
                 <ImageAdd02Icon color='white' size={15} onClick={()=>{navigate("AddProfileImage");scrollToSection();}}/>
          </div>
-         <div className='flex flex-col pr-10 items-end justify-center gap-4 h-[500px] md:flex-row-reverse md:flex-wrap md:h-[300px]'>
+         <div className='flex flex-col pr-10 md:pr-4 items-end justify-center gap-4 h-[500px] md:flex-row-reverse md:flex-wrap md:h-[300px]'>
             <div className='md:w-[50%] w-[90%] h-[200px] flex flex-col items-end gap-5'>
                 <div className='font-[700] text-[32px] text-[#272727] dark:text-white text-right'><span className='font-[500] text-[16px] dark:text-white text-[#787878]'> </span>{profile.fName} {profile.lName}</div>
                 <div className='flex flex-row-reverse gap-3 w-[100%] flex-wrap items-end justify-start'><div className='flex flex-row gap-2'>{profile.phoneNumber} <SmartPhone01Icon color='gray'/></div><div className='flex flex-row gap-2'>{profile.nationalCode}<AccountSetting03Icon color='gray'/></div><div className='flex flex-row-reverse gap-3'><div className='flex flex-row gap-2'>{profile.email}<Mail01Icon color='gray'/></div><span className='cursor-pointer'><PencilEdit01Icon color='blue' onClick={()=>{navigate(""),scrollToSection()}}/></span></div></div>
