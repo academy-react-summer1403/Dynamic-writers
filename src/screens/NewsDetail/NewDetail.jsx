@@ -23,11 +23,14 @@ const NewDetail = () => {
     return <Loading/>
   }
   return (
-<div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse max-lg:flex-row-reverse max-md:flex-col max-xl:justify-evenly max-2xl:justify-evenly'>
-      <RightDiv New={News}/>
-      <LeftDiv New={News}/>
-    </div>
+    <div className=' w-dvw max-w-[3000px] '>
+      <div className='w-[100%] flex justify-between px-3 lg:px-14 pt-20 gap-5 flex-row-reverse max-lg:flex-row-reverse max-md:flex-col max-xl:justify-evenly max-2xl:justify-evenly'>
+            <RightDiv New={News}/>
+            <LeftDiv New={News}/>
+      </div>
    
+    </div>
+    
     
   )
 }

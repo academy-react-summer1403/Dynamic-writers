@@ -54,9 +54,9 @@ const Course = () => {
         <RightDiv Course={Course} FlagModal={setIsFlag} open={onOpen}/>
         <LeftDiv Course={Course}/>
         </div>
-        <div className='w-[100%]'>
-          <div className='w-[95%] text-[48px] font-[800] text-right p-5'>دوره های دیگر</div>
-          <Card classNames={{base: 'shadow-none'}} className='w-[95%] bg-transparent p-6 flex flex-row items-center justify-end gap-5 flex-wrap'>
+        <div className='w-[100%] px-3 lg:px-14'>
+          <div className='w-[100%] text-[48px] font-[800] text-right p-5'>دوره های دیگر</div>
+          <Card classNames={{base: 'shadow-none'}} className='w-[100%] bg-transparent p-6 flex flex-row items-center justify-between gap-5 flex-wrap'>
           {allCourse.slice(0,4).map((value,index)=>{
               return <CoursesView1 key={index} isLoaded={isLoaded} levelName={value.levelName} id={value.courseId} title={value.title} describe={value.describe} dissLikeCount={value.dissLikeCount} likeCount={value.likeCount} cost={(value.cost).toLocaleString('en-US')} teacherName={value.teacherName} date={jMoment(value.lastUpdate).locale('fa').format('jD jMMMM jYYYY')} currentRegistrants={value.currentRegistrants} technologyList={value.technologyList} tumbImageAddress={value.tumbImageAddress} statusName={value.statusName}/>
           })}
