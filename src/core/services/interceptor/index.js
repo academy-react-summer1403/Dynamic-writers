@@ -11,8 +11,8 @@ const onSuccess = (response) => {
    return response.data;
 }
 
-const onError = (err) => {
 
+const onError = (err) => {
    if(err.response) {
       const status = err.response.status
 
@@ -52,7 +52,6 @@ const onError = (err) => {
 }
 
 instance.interceptors.response.use(onSuccess, onError)
-
 instance.interceptors.request.use((opt) => {
    const token = getItem('token')
    if(token === 'undefined') {
