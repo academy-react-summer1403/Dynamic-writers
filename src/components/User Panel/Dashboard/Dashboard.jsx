@@ -43,10 +43,10 @@ const Dashboard = () => {
     if(hours >= 12) {
       setHello(' ظهر بخیر ')
     }
-    if(hours >= 14) {
+    if(hours >= 15) {
       setHello('بعد از ظهرت بخیر ')
     }
-    if(hours >= 16) {
+    if(hours >= 19) {
       setHello(' شب بخیر ')
     }
   }, [])
