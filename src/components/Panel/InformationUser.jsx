@@ -159,7 +159,7 @@ const InformationUser = ({reload}) => {
               </Form>
 
             </Formik>
-        <div className=' h-[300px] w-[100%] flex justify-center md:pr-16 pr-10 md:h-[500px] lg:pr-0  md:p-0 md:w-[50%]'>
+        <div className=' h-[300px] w-[100%] flex justify-center md:pr-16 md:h-[500px] lg:pr-0  md:p-0 md:w-[50%]'>
         <div className='flex flex-col justify-center gap-10 items-center h-[287px] w-[100%] relative dark:border-gray-500 rounded-[16px] md:w-[259px] md:border-[1px] md:border-[#E4E4E4]'>
             <span className='absolute top-3 right-3 font-[700] whitespace-nowrap'>وضعیت اطلاعات حساب</span>
             <div className='w-[140px] h-[140px] mt-10'>

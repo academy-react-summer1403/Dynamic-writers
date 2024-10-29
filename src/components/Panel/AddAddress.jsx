@@ -58,7 +58,7 @@ const AddAddress = () => {
 
   return (
     <div className='w-[100%] h-[800px] flex flex-col justify-start items-end p-[40px] pr-[60px] gap-8'>
-      <span className='text-[16px] font-[500] text-[#3772FF]'>
+      <span className='text-[16px] font-[500] text-[#3772FF] text-right'>
         داخل نقشه موقعیت مکانی محل سکونت خود را انتخاب کنید
       </span>
       <div className='md:w-[90%] md:h-[500px] w-[90%] max-w-[1016px] relative z-10 lg:w-[90%] rounded-[16px] bg-slate-500 overflow-hidden'>

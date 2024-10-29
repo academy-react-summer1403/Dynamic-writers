@@ -40,6 +40,7 @@ const AddProfileImage = ({reload}) => {
     setRerender(prev => !prev);
     reload(prev => !prev)
   }
+
   const chooseProfile=async(ImageId,puctureAddress)=>{
 
     setkeyNum(-1)
@@ -58,7 +59,7 @@ const AddProfileImage = ({reload}) => {
   
   
   return (
-    <div className='flex flex-row flex-wrap gap-5 justify-end overflow-y-scroll max-h-[1000px] p-[40px]'>
+    <div className='flex flex-row flex-wrap gap-2 justify-center md:justify-end overflow-y-scroll max-h-[1000px] p-[40px]'>
         
       
       {profile.userImage.map((value,index)=>{
