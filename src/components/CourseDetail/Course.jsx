@@ -50,7 +50,7 @@ const Course = () => {
   return (
     <Fragment>
         {isFlag && <CourseReserve open={isOpen} openChange={onOpenChange}/>}
-        <div className='flex w-[100%] justify-evenly p-5 pt-20 gap-5 flex-row-reverse  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
+        <div className='flex w-[100%] justify-evenly pt-20 gap-5 flex-row-reverse  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
         <RightDiv Course={Course} FlagModal={setIsFlag} open={onOpen}/>
         <LeftDiv Course={Course}/>
         </div>
