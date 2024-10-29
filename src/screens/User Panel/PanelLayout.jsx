@@ -7,6 +7,7 @@ import GetProfileInfo from '../../core/services/api/User/GetProfileInfo'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { getItem, setItem } from '../../core/services/common/storage';
+import { motion } from "framer-motion"
 
 const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
 
@@ -63,7 +64,10 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
   }, [reloadProf])
 
   return (
-    <div className='w-dvw flex justify-center max-w-[3000px]'>
+    <motion.div    
+    initial={{ opacity: 0, x: 1000 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.5 }}  className='w-dvw flex justify-center max-w-[3000px]'>
       <div className='flex w-full h-full justify-center p-6 fixed bg-gray-100 dark:bg-black gap-4' dir='rtl'>
 
         <SitePanel />
@@ -73,9 +77,9 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
           <HeaderPanel darkMode={darkMode} setDarkMode={setDarkMode} profileInfo={profileInfo} editingImage={editingImage} />
           { editImage && <EditImage /> }
 
-          <div className='overflow-y-scroll over overflow-x-hidden w-full'>
+          <motion.div initial={{scale: 0}} animate={{scale: 1}} transition={{duration: 1}} className='overflow-y-scroll over overflow-x-hidden w-full'>
             <Outlet context={[loading]} />
-          </div>
+          </motion.div>
 
 
         </div>
@@ -83,7 +87,7 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
         <SitePanelRes profileInfo={profileInfo} />
 
       </div>
-    </div>
+    </motion.div>
   )
 
 }

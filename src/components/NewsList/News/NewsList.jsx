@@ -116,7 +116,7 @@ const NewsList = () => {
 
             </div>
 
-            <Card classNames={{base: 'shadow-none'}} className='bg-transparent flex flex-col gap-8'>
+            <Card classNames={{base: 'shadow-none'}} className='bg-transparent flex flex-col overflow-visible gap-8'>
 
               {window.innerWidth < 1058 &&
               

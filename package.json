@@ -29,7 +29,7 @@
     "axios": "^1.7.7",
     "dayjs": "^1.11.13",
     "formik": "^2.4.6",
-    "framer-motion": "^11.11.9",
+    "framer-motion": "^11.11.10",
     "hugeicons-react": "^0.3.0",
     "jalaali-js": "^1.2.7",
     "jalali-moment": "^3.3.11",

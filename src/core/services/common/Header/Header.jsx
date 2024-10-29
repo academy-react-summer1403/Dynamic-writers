@@ -7,6 +7,7 @@ import { Menu02Icon, Moon02Icon, Profile02Icon, ProfileIcon, Sun02Icon, UserIcon
 import { Button, User } from '@nextui-org/react'
 import HamberMenu from './HamberMenu'
 import { getItem, setItem } from '../storage'
+import { motion } from "framer-motion"
 
 const Header = ({ darkMode, setDarkMode }) => {
 
@@ -38,8 +39,12 @@ const Header = ({ darkMode, setDarkMode }) => {
 
       <div className='flex flex-row-reverse items-center gap-2 w-[25%] justify-end'>
         <div className='border border-slate-300 rounded-full p-2 cursor-pointer hidden lg:block dark:bg-gray-800' onClick={() => setDarkMode(!darkMode)}>  { darkMode ? <Sun02Icon className='size-4 text-gray-300' /> : <Moon02Icon className='text-black size-4' /> } </div>
-        {!token && <Button onClick={() => navigate('/Login')} className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold lg:text-base md:text-[14px] text-[10px] cursor-pointer'> ورود یا ثبت نام </Button>}
-        {token && <Link to='/layoutPanel/dashboard' className='hover:bg-gray-300 cursor-pointer bg-blue-500 text-white rounded-full flex justify-center items-center size-[46px]'> <UserIcon className='size-7' /> </Link>}
+        {!token && <Button onClick={() => navigate('/Login')}  className='bg-blue-500 rounded-full py-2 px-4 text-center text-white font-semibold lg:text-base md:text-[14px] text-[10px] cursor-pointer'> ورود یا ثبت نام </Button>}
+        {token && <motion.div animate={{
+      scale: [1, 1.3, 1.3, 1, 1],
+      rotate: [0, 0, 270, 270, 0],
+      borderRadius: ["100%", "20%", "50%", "50%", "100%"],
+    }} transition={{duration: 1.2}} onClick={() => navigate('/layoutPanel/dashboard')} className='hover:bg-gray-300 cursor-pointer bg-blue-500 rounded-full text-white flex justify-center items-center size-[46px]'> <UserIcon className='size-7' /> </motion.div>}
         <Menu02Icon onClick={() => setHamberMenu(true)} className='lg:hidden block cursor-pointer min-w-[30px]' />
       </div>
     </div>

@@ -3,6 +3,8 @@ import Rate from '../../components/NewsDetail/Rate'
 import { getCommentsCourse } from '../../core/services/api/Comments/getCommentsCourse';
 import Comment from '../Comment&Reply/Comment';
 import { getCommentsNew } from '../../core/services/api/Comments/New/getCommentsNew';
+import { motion } from "framer-motion"
+
 const LeftDiv = ({New}) => {
   const [text, setText] = useState(New.detailsNewsDto.describe);
   const [firstPart, setFirstPart] = useState('');
@@ -38,7 +40,7 @@ const LeftDiv = ({New}) => {
     }
   }
   return (
-    <div className='w-[60%] flex gap-10 flex-col max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[45%]  max-2xl:w-[700px] max-xl:w-[700px]'>
+    <motion.div whileInView={{x: 0}} initial={{x: -300}} transition={1} className='w-[60%] flex gap-10 flex-col max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[45%]  max-2xl:w-[700px] max-xl:w-[700px]'>
         <img className='w-[100%] h-[460px] bg-[#4DBFFF] rounded-[24px]' src={New.detailsNewsDto.currentImageAddress}/>
         <div className='text-[#272727] dark:text-white font-[500] text-[20px] text-right leading-[30px]' style={{direction:"rtl"}}>
           <p className='text-justify'>{firstPart}</p>
@@ -54,7 +56,7 @@ const LeftDiv = ({New}) => {
             title={New.detailsNewsDto.title}
         />
 
-    </div>
+    </motion.div>
   )
 }
 

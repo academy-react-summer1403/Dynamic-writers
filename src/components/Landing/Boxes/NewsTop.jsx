@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Skeleton } from '@nextui-org/react'
 import { Calendar02Icon, EyeIcon, QuillWrite01Icon, QuillWrite02Icon, StudentIcon, TeacherIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLikeCount, addUserFullName, currentView, newsCatregoryName, id, currentImageAddressTumb}) => {
 
@@ -9,7 +10,7 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
 
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-    <div className='rounded-2xl cursor-pointer bg-gray-200 dark:bg-slate-900 dark:text-white h-[512px] w-full md:w-[315px] dark:border-none iranSans flex flex-col justify-between font-semibold'>
+    <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.05 }} initial={{y: 1000, scale: 1.05}} animate={{y: 0}} className='rounded-2xl cursor-pointer bg-gray-200 dark:bg-slate-900 dark:text-white h-[512px] w-full md:w-[315px] dark:border-none iranSans flex flex-col justify-between font-semibold'>
         <img src={currentImageAddressTumb} className='w-full border rounded-xl h-[225px] bg-red-300' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
             <div className={`bg-blue-500 text-white rounded-xl px-2`}> {newsCatregoryName} </div>
@@ -27,7 +28,7 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
             <div className='flex gap-2'> {currentDissLikeCount} <ThumbsDownIcon /> </div>
             <div className='flex gap-2'> {currentLikeCount} <ThumbsUpIcon /> </div>
         </div>
-    </div>
+    </motion.div>
     </Skeleton>
   )
 }

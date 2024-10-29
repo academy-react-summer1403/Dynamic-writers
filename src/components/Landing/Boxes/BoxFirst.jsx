@@ -8,13 +8,14 @@ import Icon4 from '../../../assets/icon4.png'
 import Icon5 from '../../../assets/icon5.png'
 import ScreenShot from '../../../assets/Screenshot (9).png'
 import { Link } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 function BoxFirst() {
   return (
     <div className='flex my-12 justify-center flex-col gap-6 iranSans lg:flex-row w-full mx-auto'>
       
-      <div className='border-3 rounded-xl grow h-64 flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
-        <div className='flex flex-row-reverse justify-between h-2/12 items-center p-2'>
+      <motion.div whileInView={{scale: 1}} initial={{scale: 0}} className='border-3 rounded-xl grow h-64 flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
+        <div  className='flex flex-row-reverse justify-between h-2/12 items-center p-2'>
             <h2 className='iranSansBold w-3/6  min-w-40 text-xl' style={{direction: 'rtl'}}> درباره ما بیشتر بخوانید </h2>
             <Link to='/about' className='bg-blue-500 text-white rounded-full min-w-10 min-h-10 flex justify-center items-center cursor-pointer'> <ArrowUpLeft01Icon /> </Link>
         </div>
@@ -29,9 +30,9 @@ function BoxFirst() {
                 <span className='text-gray-600 iranSansBold text-sm'> سال سابقه آموزش تخصصی </span>
             </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className='rounded-xl bg-blue-500 text-white h-64 grow-2'>
+      <motion.div whileInView={{scale: 1}} initial={{scale: 0}} className='rounded-xl bg-blue-500 text-white h-64 grow-2'>
         <div className='flex flex-row-reverse justify-between h-2/12 items-center p-4'>
             <div className='flex flex-col items-end'>
                 <h2 className='text-base md:text-xl font-extrabold whitespace-nowrap' style={{direction: 'rtl'}}> دوره‌های جدید تابستانه! </h2>
@@ -46,9 +47,9 @@ function BoxFirst() {
           <img src={Icon4} className='size-28 rotate-12 absolute left-20 top-12' />
           <img src={Icon5} className='size-20 rotate-12 absolute left-36 top-20' />
         </div>
-      </div>
+      </motion.div>
     
-      <div className='border-3 rounded-xl grow-3 h-64 overflow-hidden flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
+      <motion.div whileInView={{scale: 1}} initial={{scale: 0}} className='border-3 rounded-xl grow-3 h-64 overflow-hidden flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
         <div className='flex w-full h-fit justify-end flex-col p-4' style={{direction: 'rtl'}}>
           <h2 className='iranSansBold text-base md:text-2xl tracking-wider whitespace-nowrap'> پنل اختصاصی دانشجو </h2>
           <span className='w-56 text-sm font-semibold mt-1 tracking-wider'> پنل های اختصاصی دانشجویی برای مدیریت دوره ها و تمرین ها </span>
@@ -57,7 +58,7 @@ function BoxFirst() {
         <div className='w-3/6 h-40 dark:hidden'>
           <img src={ScreenShot} className='w-full h-full'></img>
         </div>
-      </div>
+      </motion.div>
     
     </div>
   )

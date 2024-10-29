@@ -2,6 +2,7 @@ import { Skeleton } from '@nextui-org/react'
 import { Calendar02Icon, CircleIcon, StudentIcon, TeacherIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 const CoursesView2 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, likeCount, cost, teacherName, date, currentRegistrants, technologyList, tumbImageAddress, statusName}) => {
 
@@ -16,7 +17,7 @@ const CoursesView2 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
   
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-      <div onClick={() => callCourse()} className='lg:flex rounded-3xl flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white w-full' style={{height: '288px'}}>
+      <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.05 }} initial={{y: 1000, scale: 0.3}} animate={{y: 0}} onClick={() => callCourse()} className='lg:flex rounded-3xl cursor-pointer flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white w-full' style={{height: '288px'}}>
           <div className='w-5/12 h-full bg-red-300 rounded-3xl relative border dark:border-none'>
               <img className='w-full h-full rounded-3xl dark:border-none' src={tumbImageAddress} />
               <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>
@@ -43,7 +44,7 @@ const CoursesView2 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
                   <div className='text-blue-500 flex flex-row-reverse gap-2 items-end my-4'> تومان  <span className='dark:text-white font-semibold text-black text-xl'> {cost} </span> </div>
               </div>
           </div>
-      </div>
+      </motion.div>
     </Skeleton>
   )
 }

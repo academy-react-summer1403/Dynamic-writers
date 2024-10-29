@@ -10,6 +10,8 @@ import { AddReserve } from '../../core/services/api/Reserve/addReserve'
 import DeleteReserveCourse from '../../core/services/api/Course/DeleteReserveCourse'
 import GetCourseById from '../../core/services/api/Course/GetCourseById'
 import {Button} from "@nextui-org/react";
+import { motion } from "framer-motion"
+
 const RightDiv = ({Course,FlagModal,open}) => {
 
     const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
@@ -30,7 +32,7 @@ const RightDiv = ({Course,FlagModal,open}) => {
     }
     
   return (
-    <div className='h-[550px] w-[500px] border-4 border-solid dark:text-white border-[#E4E4E4] rounded-[24px] items-end  flex flex-col md:w-[30%] gap-8 p-5 max-sm:w-[100%] max-md:w-[100%] max-xl:w-[50%]  xl:sticky  max-lg:w-[80%] relative top-[-10px] lg:sticky md:top-10 max-2xl:w-[500px]' >
+    <motion.div whileInView={{x: 0}} initial={{x: 300}} transition={1} className='h-[550px] w-[500px] border-4 border-solid dark:text-white border-[#E4E4E4] rounded-[24px] items-end  flex flex-col md:w-[30%] gap-8 p-5 max-sm:w-[100%] max-md:w-[100%] max-xl:w-[50%]  xl:sticky  max-lg:w-[80%] relative top-[-10px] lg:sticky md:top-10 max-2xl:w-[500px]' >
         <div className={`${Course.courseStatusName=="درحال برگزاری" ? "bg-yellow-300 dark:bg-yellow-600" : Course.courseStatusName=="منقضی شده" ? "bg-red-400 dark:bg-red-600" : "bg-green-400 dark:bg-green-600"} py-1 flex flex-row items-center gap-2 justify-end pr-[7px]  w-[120px] rounded-[30px] text-center text-[14px] font-[500] `}>{Course.courseStatusName}<div className={`${Course.courseStatusName=="درحال برگزاری" ? "bg-yellow-800" : Course.courseStatusName=="منقضی شده" ? "bg-red-800" : "bg-green-800"} rounded-[100%] w-[10px] h-[10px]`}></div></div>
         <div className='w-[100%] flex-row flex-wrap'>
            
@@ -75,7 +77,7 @@ const RightDiv = ({Course,FlagModal,open}) => {
                 <Options Course={Course}/>
             </div>
         </div>
-    </div>
+    </motion.div>
   )
 }
 
