@@ -8,6 +8,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { getItem, setItem } from '../../core/services/common/storage';
 import { motion } from "framer-motion"
+import { reportLanding } from '../../core/services/api/Landing/lanfing'
+import { FourSquare } from 'react-loading-indicators'
 
 const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
 
@@ -53,18 +55,42 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
 
   useEffect(() => {
     getProfile()
-  }, [])
-
-  useEffect(() => {
-    getProfile()
   }, [Rerender])
 
   useEffect(() => {
     getProfile()
   }, [reloadProf])
 
+  const [landingReport, setLandingReport] = useState()
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  const ReportLanding = async () => {
+    const response = await reportLanding()
+    setLandingReport(response)
+  }
+
+  useEffect(() => {
+    ReportLanding()
+    getProfile()
+  }, [])
+
+  useEffect(() => {
+    if(landingReport){
+      setIsLoaded(true)
+    }
+    else{
+      setIsLoaded(false)
+    }
+  }, [landingReport])
+
+
+
   return (
-    <motion.div    
+    <>
+      {!isLoaded &&  <div className='flex h-dvh items-center justify-center'>
+        <FourSquare color="blue" size="medium" />
+      </div>}
+    {isLoaded && <motion.div    
     initial={{ opacity: 0, x: 1000 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}  className='w-dvw flex justify-center max-w-[3000px]'>
@@ -87,7 +113,8 @@ const PanelLayout = ({ darkMode, setDarkMode ,reloadProf}) => {
         <SitePanelRes profileInfo={profileInfo} />
 
       </div>
-    </motion.div>
+    </motion.div>}
+    </>
   )
 
 }

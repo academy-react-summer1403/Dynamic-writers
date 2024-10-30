@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import LandingCom from '../../components/Landing/LandingCom'
 
 function Landing() {
+
   return (
     <>
-     <LandingCom /> 
+      <LandingCom />
     </>
   )
 }
