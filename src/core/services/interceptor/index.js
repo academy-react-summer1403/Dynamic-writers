@@ -24,10 +24,6 @@ const onError = (err) => {
       if(status === 403) {
          window.location.pathname = '/Error403'
       }
-
-      // if(status === 400) {
-      //    window.location.pathname = '*'
-      // }
       
       if(status === 408) {
          window.location.pathname = '/Error408'
@@ -39,13 +35,6 @@ const onError = (err) => {
       if(status == 422){
          return err.response.data.ErrorMessage
       }
-   }
-
-   else {
-      // if(err.request.status === 0) {
-      //    removeItem('token')
-      //    window.location.pathname = '/Error401'
-      // }
    }
 
    return Promise.reject(err);

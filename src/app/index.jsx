@@ -39,8 +39,11 @@ import { useEffect, useState } from 'react';
 import { getItem, setItem } from '../core/services/common/storage';
 import PanelScreen from '../screens/Panel/PanelScreen';
 import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 
 function App() {
+  const client = new QueryClient()
+
   const [reloadProf, setreloadProf] = useState(false)
   const [darkMode, setDarkMode] = useState(() => {
     JSON.parse(getItem('darkMode')) === true
@@ -203,9 +206,11 @@ function App() {
   ])
 
 
-  return <NextUIProvider>
-            <RouterProvider router={router}/>
-        </NextUIProvider>
+  return <QueryClientProvider client={client}>
+            <NextUIProvider>
+                <RouterProvider router={router}/>
+            </NextUIProvider>
+        </QueryClientProvider>
 }
 
 export default App

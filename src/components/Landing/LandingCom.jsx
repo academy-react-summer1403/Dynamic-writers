@@ -16,12 +16,6 @@ function LandingCom() {
 
     const navigate = useNavigate()
 
-    const getTeachers = async () => {
-
-      const response = await GetTeachersList()
-
-    }
-
   return (
     <motion.div    
     initial={{ opacity: 0, scale: 0 }}
