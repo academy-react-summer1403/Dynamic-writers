@@ -9,7 +9,7 @@ const MoreSitePanel = () => {
       <Link to='/layoutPanel/favNews' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> علاقه‌مندی مقاله <FileBookmarkIcon /> </Link>
       <Link to='' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> پرداخت ها <Money02Icon /> </Link>
       <Link to='' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> حساب های کاربری <UserSettings01Icon /> </Link>
-      <Link to='/login' onClick={() => removeItem('token')} className='w-full h-fit font-semibold text-base text-red-500 flex gap-4 justify-end flex-row-reverse'> خروج از حساب <Logout03Icon /> </Link>
+      <Link to='/' onClick={() => removeItem('token')} className='w-full h-fit font-semibold text-base text-red-500 flex gap-4 justify-end flex-row-reverse'> خروج از حساب <Logout03Icon /> </Link>
     </div>
   )
 }

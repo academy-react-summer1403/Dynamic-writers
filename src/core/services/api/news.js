@@ -15,7 +15,7 @@ export const getNewsList = async(
   return result;
   
   } catch (error) {
-  console.log(error);
+  // console.log(error);
     return [];
   }
 }

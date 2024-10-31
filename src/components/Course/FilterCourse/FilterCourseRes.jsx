@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Input, Select, Button, SelectItem, checkbox } from '@nextui-org/react'
+import { Input, Select, Button, SelectItem, checkbox, Modal, ModalHeader, ModalContent, ModalBody } from '@nextui-org/react'
 import { Formik, Form, Field } from 'formik'
 import { Calendar02Icon, Cancel01Icon, CellsIcon, Layers01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -7,7 +7,7 @@ import { getTeacherList } from '../../../core/services/api/teachers'
 import { getTechList } from '../../../core/services/api/tech'
 import { getCourseLevels } from '../../../core/services/api/courseLevel'
 
-const FilterCourseRes = ({ closeFilter, updateParams }) => {
+const FilterCourseRes = ({ updateParams, isOpen, onOpenChange }) => {
 
     const [priceFrom, setPriceFrom] = useState(0)
     const [priceTo, setPriceTo] = useState(1000000000)
@@ -67,15 +67,19 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
     const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
   return (
-    <div className={`bg-white rounded-t-3xl w-dvw p-5 flex flex-col gap-3 dark:text-white dark:bg-slate-900 font-semibold text-sm fixed bottom-${scrollPosition.y} right-0 z-50 h-fit`}>
-    <div className='border-2 w-10 mx-auto cursor-pointer'></div>
-    <div className='flex flex-row-reverse justify-between item-center'>
-        <h2 className='font-extrabold'> ترتیب و فیلتر </h2>
-        <div onClick={closeFilter} className='group dark:border-none dark:text-white dark:bg-red-500 hover:bg-red-500 hover:text-white border py-1.5 px-3 border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
-            <Cancel01Icon className='size-4 group-hover:text-white' />
-            بستن
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
+    <ModalContent>
+
+    <ModalHeader>
+        <div className='flex flex-row-reverse w-full justify-between item-center'>
+            <h2 className='font-extrabold'> ترتیب و فیلتر </h2>
+            <div onClick={onOpenChange} className='group dark:border-none dark:text-white dark:bg-red-500 hover:bg-red-500 hover:text-white border py-1.5 px-3 border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
+                <Cancel01Icon className='size-4 group-hover:text-white' />
+                بستن
+            </div>
         </div>
-    </div>
+    </ModalHeader>
+    <ModalBody className='flex flex-col gap-5'>
 
     <div className='flex flex-col'>
     <div className='flex items-center flex-row-reverse gap-2'>
@@ -170,8 +174,10 @@ const FilterCourseRes = ({ closeFilter, updateParams }) => {
             </Select>
         </div>
     </div>
+    </ModalBody>
+    </ModalContent>
 
-    </div>
+    </Modal>
   )
 }
 

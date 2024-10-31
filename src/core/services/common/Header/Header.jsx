@@ -4,7 +4,7 @@ import Bahr2 from '../../../../assets/Bahr2.png'
 import '../../../../output.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { Menu02Icon, Moon02Icon, Profile02Icon, ProfileIcon, Sun02Icon, UserIcon } from 'hugeicons-react'
-import { Button, User } from '@nextui-org/react'
+import { Button, useDisclosure, User } from '@nextui-org/react'
 import HamberMenu from './HamberMenu'
 import { getItem, setItem } from '../storage'
 import { motion } from "framer-motion"
@@ -20,10 +20,12 @@ const Header = ({ darkMode, setDarkMode }) => {
       setHamberMenu(false)
     }
 
+    const {isOpen, onOpen, onOpenChange} = useDisclosure()
+
   return (
     <div className='grid w-dvw max-w-[3000px]'>
       <div className='iranSans h-20 flex flex-row-reverse justify-between items-center px-3 lg:px-14 font-semibold'>
-      {hamberMenu === true && <HamberMenu closeHamber={closeHamber}/>}
+      <HamberMenu isOpen={isOpen} onOpenChange={onOpenChange} />
       <div className='flex gap-3 h-8 items-center justify-end w-[25%]' onClick={() => navigate('/')}>
         <img src={Bahr2} className='w-[180px] h-full hidden lg:inline' />
         <img src={Bahr} className='size-8 inline' onClick={() => navigate('/')} />
@@ -45,7 +47,7 @@ const Header = ({ darkMode, setDarkMode }) => {
       rotate: [0, 0, 270, 270, 0],
       borderRadius: ["100%", "20%", "50%", "50%", "100%"],
     }} transition={{duration: 1.2}} onClick={() => navigate('/layoutPanel/dashboard')} className='hover:bg-gray-300 cursor-pointer bg-blue-500 rounded-full text-white flex justify-center items-center size-[46px]'> <UserIcon className='size-7' /> </motion.div>}
-        <Menu02Icon onClick={() => setHamberMenu(true)} className='lg:hidden block cursor-pointer min-w-[30px]' />
+        <Menu02Icon onClick={onOpen} className='lg:hidden block cursor-pointer min-w-[30px]' />
       </div>
     </div>
     </div>
