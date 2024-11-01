@@ -2,6 +2,7 @@ import React,{useState,useEffect,useRef} from 'react'
 import { ImageAdd02Icon,SmartPhone01Icon,AccountSetting03Icon,Mail01Icon,PencilEdit01Icon } from 'hugeicons-react'
 import { NavLink, Outlet,useNavigate } from 'react-router-dom'
 import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
+import {motion} from 'framer-motion'
 
 
 const Panel = ({profile,setRerender}) => {
@@ -35,10 +36,13 @@ const Panel = ({profile,setRerender}) => {
     return (
     <div dir='ltr' className='relative md:w-[100%] lg:w-[100%] dark:bg-slate-950 rounded-[16px] border-4 border-blue-500 dark:border-blue-900 bg-white h-auto mx-auto mt-[30px]'>
         <div className='w-[100%] md:h-[113px] dark:bg-blue-900 h-[100px] bg-[#2A67F9]'></div>
-        <div className='rounded-[100%] w-[128px] h-[128px] border-[7px] dark:bg-blue-900 bg-[#2A67F9] absolute md:top-[-45px] top-[-45px] right-8 overflow-hidden'>
+        <motion.div transition={{duration: 3}} animate={{
+            y: [-100, 0],
+            rotate: [360, 0, 0, 360, 0],
+        }} className='rounded-[100%] w-[128px] h-[128px] border-[7px] dark:bg-blue-900 bg-[#2A67F9] absolute md:top-[-45px] top-[-45px] right-8 overflow-hidden'>
             <img className='w-[100%] h-[100%] bg-purple-400 dark:bg-blue-800' src={profile.currentPictureAddress}/>
             
-        </div>
+        </motion.div>
         <div className='border-[3px] border-white bg-[#2A67F9] w-[24px] h-[24px] absolute md:top-[50px] top-[50px] right-12 flex justify-center items-center cursor-pointer rounded-[100%]' >
                 <ImageAdd02Icon color='white' size={15} onClick={()=>{navigate("AddProfileImage");scrollToSection();}}/>
          </div>

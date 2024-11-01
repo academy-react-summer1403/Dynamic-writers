@@ -9,6 +9,7 @@ import jMoment from 'moment-jalaali'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateInformation from '../../core/services/api/Panel/UpdateInformation'
+import {motion} from 'framer-motion'
 
 const InformationUser = ({reload}) => {
   const [profile,setRerender]=useOutletContext();
@@ -80,7 +81,7 @@ const InformationUser = ({reload}) => {
     }
   )
   return (
-        <div className='flex flex-col-reverse p-0 items-center md:gap-8 lg:gap-0 xl:gap-14  md:flex-row-reverse md:p-[40px] md:items-start'>
+        <motion.div animate={{opacity: 1, scale: 1}} initial={{opacity: 0, scale: 0}} transition={{duration: 0.5}} className='flex flex-col-reverse p-0 items-center md:gap-8 lg:gap-0 xl:gap-14  md:flex-row-reverse md:p-[40px] md:items-start'>
             <Formik  initialValues={InitialValue} onSubmit={onSubmit} enableReinitialize={true} validationSchema={validation}>
             <Form className='w-[80%] flex flex-row-reverse flex-wrap gap-12 h-auto px-5 py-5 items-center justify-start '>
                 <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[286px]'>
@@ -173,7 +174,7 @@ const InformationUser = ({reload}) => {
           </div>
         </div>
         <ToastContainer/>
-    </div>
+    </motion.div>
   )
 }
 
