@@ -1,11 +1,12 @@
 @font-face {
   font-family: iranSans;
-  src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-Light.ttf')
+  src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-Light.ttf');
+  src: url('./assets/IranSansX(Pro)/Farsi numerals/IRANSansXFaNum-Medium.ttf');
 }
 
 @font-face {
   font-family: iranSansBold;
-  src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-DemiBold.ttf')
+  src: url('./assets/IranSansX(Pro)/iransansX family/IRANSansX-DemiBold.ttf');
 }
 
 
