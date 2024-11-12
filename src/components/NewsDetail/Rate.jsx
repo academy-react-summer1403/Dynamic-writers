@@ -2,9 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { StarCircleIcon} from 'hugeicons-react'
 import Rating from '@mui/material/Rating';
 import NewsRate from '../../core/services/api/News/NewsRate';
-
 import { ToastContainer, toast } from 'react-toastify';
-
+import './mui_customization.css'
 const Rate = ({RateNews,Flag,id}) => {
 
   const [Rate, setRate] = useState(RateNews)
