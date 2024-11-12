@@ -11,6 +11,8 @@ import { toast, ToastContainer } from 'react-toastify'
 import { Card } from '@nextui-org/react'
 import jMoment from 'jalali-moment'
 import {useDisclosure} from "@nextui-org/react";
+import { motion } from "framer-motion"
+
 const Course = () => {
   const [Course, setCourse] = useState([])
   const [allCourse, setAllCourse] = useState([])
@@ -48,7 +50,9 @@ const Course = () => {
     return <Loading/>
   }
   return (
-    <Fragment>
+    <motion.div initial={{ opacity: 0, scale: 0 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }} >
         {isFlag && <CourseReserve open={isOpen} openChange={onOpenChange}/>}
         <div className='flex w-[100%] px-3 justify-between pt-20 gap-5 flex-row-reverse lg:px-14  max-md:flex-col max-lg:flex-col items-center lg:items-start max-xl:justify-evenly xl:items-start  max-2xl:justify-evenly'>
         <RightDiv Course={Course} FlagModal={setIsFlag} open={onOpen}/>
@@ -63,7 +67,7 @@ const Course = () => {
           </Card>
         </div>
         <ToastContainer />
-    </Fragment>
+    </motion.div>
     
     
   )

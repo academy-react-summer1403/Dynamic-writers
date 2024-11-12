@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 import RootCom from '../../components/Root/RootCom'
 import { useLocation } from 'react-router'
 import { setItem } from '../../core/services/common/storage'
+import { reportLanding } from '../../core/services/api/Landing/landing'
+import { FourSquare } from 'react-loading-indicators'
+import { useQuery } from '@tanstack/react-query'
 
 const Root = ({ darkMode, setDarkMode }) => {
+
+  const { isLoading } = useQuery({queryKey:['reportLanding'], queryFn:reportLanding})
   
   const location = useLocation()
 
@@ -19,7 +24,10 @@ const Root = ({ darkMode, setDarkMode }) => {
 
   return (
     <>
-      <RootCom darkMode={darkMode} setDarkMode={setDarkMode} />
+      {isLoading &&  <div className='flex h-dvh items-center justify-center'>
+        <FourSquare color="blue" size="medium" />
+      </div>}
+      {!isLoading && <RootCom darkMode={darkMode} setDarkMode={setDarkMode} />} 
     </>
   )
 }

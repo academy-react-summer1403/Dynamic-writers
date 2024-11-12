@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SortNews from './Sort/SortNews'
 import FilterNews from './Filter/FilterNews'
-import { Button, Card, Pagination } from '@nextui-org/react'
+import { Button, Card, Pagination, useDisclosure } from '@nextui-org/react'
 import NewsItem from './NewsItem/NewsItem'
 import { getNewsList } from '../../../core/services/api/news'
 import jMoment from "jalali-moment";
@@ -18,7 +18,6 @@ const NewsList = () => {
 
   const [news, setNews] = useState([])
   const [pages, setPages] = useState(0)
-  const [partCount, setPartCount] = useState([])
 
   const pageNum = searchParams.get('PageNumber') || 1
   const rowsPage = searchParams.get('RowsOfPage') || 8
@@ -60,10 +59,6 @@ const NewsList = () => {
     if(news.length > 0) {
       setIsLoaded(true)
     }
-
-    const partCounts = response.map((part) => part.newsCatregoryName)
-    const uniqueArray = [...new Set(partCounts)]
-    setPartCount(uniqueArray)
     
   }
   
@@ -96,10 +91,12 @@ const NewsList = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const {isOpen, onOpen, onOpenChange} = useDisclosure()
+
   return (
     <div className='w-dvw my-10'>
 
-      {closeFilter && <FilterResNews closeFil={closeFil} />}
+      <FilterResNews onOpenChange={onOpenChange} isOpen={isOpen} />
 
       <div className='flex flex-row-reverse border-3 rounded-3xl w-11/12 h-fit mx-auto p-3 justify-between dark:border-gray-600'>
         
@@ -109,14 +106,14 @@ const NewsList = () => {
 
             <div className='flex justify-between items-center 2xl:hidden w-full'>
 
-              <Button onClick={() => setCloseFilter(true)} className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
+              <Button onClick={onOpen} className='rounded-full bg-blue-500 text-white'> ترتیب و فیلتر </Button>
 
               {!closeSearchBol && <Search01Icon onClick={() => setCloseSearchBol(true)} className='size-6 cursor-pointer' />}
               {closeSearchBol && <SearchRes updateParams={updateParams} closeSearch={closeSearch}/>}
 
             </div>
 
-            <Card classNames={{base: 'shadow-none'}} className='bg-transparent flex flex-col gap-8'>
+            <Card classNames={{base: 'shadow-none'}} className='bg-transparent flex flex-col overflow-visible gap-8'>
 
               {window.innerWidth < 1058 &&
               
@@ -175,7 +172,7 @@ const NewsList = () => {
         </div>
 
 
-        <FilterNews updateParams={updateParams} partCount={partCount} />
+        <FilterNews updateParams={updateParams} />
 
 
       </div>

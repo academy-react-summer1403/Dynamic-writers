@@ -2,10 +2,7 @@ import { Moon02Icon, Notification02Icon, PencilEdit01Icon, Sun01Icon } from 'hug
 import React, { useEffect, useState } from 'react'
 import Bahr from '../../../../assets/Bahr.png' 
 import { Link } from 'react-router-dom'
-import { Switch } from '@nextui-org/react'
-import { getSecurityInfo } from '../../api/SecurityAPI/getSecurityInfo'
-import { getItem } from '../../common/storage'
-import UserDetailsWithId from '../../api/User/UserDetailsWithId'
+import { motion } from "framer-motion"
 
 const HeaderPanel = ({ editingImage, profileInfo, darkMode, setDarkMode }) => {
 
@@ -19,9 +16,13 @@ const HeaderPanel = ({ editingImage, profileInfo, darkMode, setDarkMode }) => {
   return (
     <div dir='ltr' className='md:dark:bg-slate-700 dark:bg-slate-950 md:bg-white rounded-2xl h-[80px] flex justify-between flex-row-reverse md:px-3 w-full'>
       <div className='md:flex gap-4 h-[80px] w-fit flex-row-reverse items-center hidden'>
-        <div className='size-14 flex items-center rounded-full relative'>
+        <motion.div animate={{
+      scale: [1, 1.3, 1.3, 1, 1],
+      rotate: [0, 0, 270, 270, 0],
+      borderRadius: ["100%", "20%", "50%", "50%", "100%"],
+    }} transition={{duration: 1.2}} className='size-14 flex items-center rounded-full relative'>
             <img src={profileInfo.currentPictureAddress} className='rounded-full size-14 border bg-red-300' />
-        </div>
+        </motion.div>
         <div className='flex flex-col'>
             <h2 className='font-semibold text-xl text-right'> {profileInfo.fName || profileInfo.lName ? [profileInfo.fName , ' ' , profileInfo.lName] : "نامشخص"}  </h2>
             <span className='text-gray-500 text-right flex gap-1 flex-row-reverse'>

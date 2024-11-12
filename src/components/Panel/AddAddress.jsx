@@ -7,6 +7,8 @@ import markerIconUrl from 'leaflet/dist/images/marker-icon.png';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateLocationInProf from '../../core/services/api/Panel/UpdateLocationInProf';
+import {motion} from 'framer-motion'
+
 const AddAddress = () => {
   const [profile,setRerender] = useOutletContext();
   const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
@@ -57,7 +59,7 @@ const AddAddress = () => {
   };
 
   return (
-    <div className='w-[100%] h-[800px] flex flex-col justify-start items-end p-[40px] pr-[60px] gap-8'>
+    <motion.div animate={{opacity: 1, scale: 1}} initial={{opacity: 0, scale: 0}} transition={{duration: 0.5}} className='w-[100%] h-[800px] flex flex-col justify-start items-end p-[40px] pr-[60px] gap-8'>
       <span className='text-[16px] font-[500] text-[#3772FF] text-right'>
         داخل نقشه موقعیت مکانی محل سکونت خود را انتخاب کنید
       </span>
@@ -91,7 +93,7 @@ const AddAddress = () => {
         </MapContainer>
         <ToastContainer/>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

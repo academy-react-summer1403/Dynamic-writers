@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import round2 from '../../assets/round2.png'
 import { ArrowDown01Icon, CircleIcon, StarIcon } from 'hugeicons-react'
 import NewsList from './News/NewsList'
+import { motion } from "framer-motion"
 
 const NewsCom = () => {
   
@@ -21,7 +22,10 @@ const NewsCom = () => {
   }, [])
 
   return (
-    <div className='my-5 iranSans w-dvw max-w-[3000px]'>
+    <motion.div     
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}   className='my-5 iranSans w-dvw max-w-[3000px]'>
 
       <div className='flex flex-col items-center justify-center relative w-fit mx-auto gap-6'>
         <h2 className='text-3xl iranSansBold'> اخبار و مقالات آکادمی </h2>
@@ -37,7 +41,7 @@ const NewsCom = () => {
       </div>
 
       <NewsList />
-    </div>
+    </motion.div>
   )
 }
 

@@ -14,6 +14,7 @@ import CommentModal from '../../Comment&Reply/CommentModal'
 import { useDisclosure } from '@nextui-org/react'
 import MyCommentModal from './Comments/MyCommentModal'
 import Loading from '../../../core/services/common/Loading/loading'
+import { motion } from 'framer-motion'
 
 const Dashboard = () => {
 

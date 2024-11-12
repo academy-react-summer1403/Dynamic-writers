@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ChooseProfilePic from '../../core/services/api/Panel/ChooseProfilePic';
 import DeleteImage from '../../core/services/api/Panel/DeleteImage';
 import { getItem, setItem } from '../../core/services/common/storage';
+import {motion} from 'framer-motion'
 
 const AddProfileImage = ({reload}) => {
   
@@ -59,7 +60,7 @@ const AddProfileImage = ({reload}) => {
   
   
   return (
-    <div className='flex flex-row flex-wrap gap-2 justify-center md:justify-end overflow-y-scroll max-h-[1000px] p-[40px]'>
+    <motion.div animate={{opacity: 1, scale: 1}} initial={{opacity: 0, scale: 0}} transition={{duration: 0.5}} className='flex flex-row flex-wrap gap-2 justify-center md:justify-end overflow-y-scroll max-h-[1000px] p-[40px]'>
         
       
       {profile.userImage.map((value,index)=>{
@@ -94,7 +95,7 @@ const AddProfileImage = ({reload}) => {
       </label>
 
       <ToastContainer/>
-    </div>
+    </motion.div>
   )
 }
 

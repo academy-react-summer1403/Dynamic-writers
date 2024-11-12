@@ -2,6 +2,7 @@ import React,{useState,useEffect,useRef} from 'react'
 import { ImageAdd02Icon,SmartPhone01Icon,AccountSetting03Icon,Mail01Icon,PencilEdit01Icon } from 'hugeicons-react'
 import { NavLink, Outlet,useNavigate } from 'react-router-dom'
 import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
+import {motion} from 'framer-motion'
 
 
 const Panel = ({profile,setRerender}) => {

@@ -5,6 +5,8 @@ import { TelegramIcon,Linkedin02Icon } from 'hugeicons-react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateLinkInProf from '../../core/services/api/Panel/UpdateLinkInProf'
+import {motion} from 'framer-motion'
+
 import * as yup from 'yup'
 const Likes = () => {
   const [profile,setRerender]=useOutletContext();
@@ -29,7 +31,7 @@ const Likes = () => {
     }
   )
   return (
-    <div  className='flex flex-col h-[500px] p-[40px] w-[100%] items-end'>
+    <motion.div animate={{opacity: 1, scale: 1}} initial={{opacity: 0, scale: 0}} transition={{duration: 0.5}} className='flex flex-col h-[500px] p-[40px] w-[100%] items-end'>
       <Formik initialValues={InitialValue} onSubmit={onSubmit} enableReinitialize={true} validationSchema={validation}>
         <Form className='flex flex-col h-[50%] md:px-5  gap-8 pt-[100px] items-end justify-center md:w-[50%] w-[90%] lg:w-[90%]'>
           <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[100%] relative'>
@@ -48,7 +50,7 @@ const Likes = () => {
         </Form>
       </Formik>
       <ToastContainer/>
-    </div>
+    </motion.div>
   )
 }
 

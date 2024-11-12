@@ -4,7 +4,7 @@ import CoursesView1 from './CoursesView1'
 import { getCourseList } from '../../../core/services/api/cours'
 import jMoment from 'moment-jalaali'
 import { getItem, setItem } from '../../../core/services/common/storage'
-import { Button, Card, Pagination, Skeleton } from '@nextui-org/react'
+import { Button, Card, Pagination, Skeleton, useDisclosure } from '@nextui-org/react'
 import FilterCourse from '../FilterCourse/FilterCourse'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -110,11 +110,11 @@ const CourseView1 = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
   
+  const {isOpen, onOpen, onOpenChange} = useDisclosure()
 
   return (
     <>
-    {filterRes === true && <FilterCourseRes closeFilter={closeFilter} updateParams={updateParams}
-            getCourses={getCourses} />}
+    <FilterCourseRes isOpen={isOpen} onOpenChange={onOpenChange} updateParams={updateParams} getCourses={getCourses} />
     <div className='my-20 h-fit w-dvw iranSans font-semibold'>
       <div className='rounded-3xl mx-auto border-3 dark:border-gray-600 pl-3 h-fit' style={{width: '94%'}}>
 
@@ -124,7 +124,7 @@ const CourseView1 = () => {
         />
 
         <div className='flex justify-between w-full items-center gap-4 px-2'>
-          <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 lg:hidden block' onClick={() => {setFilterRes(true)}}> ترتیب و فیلتر </Button>
+          <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 lg:hidden block' onClick={onOpen}> ترتیب و فیلتر </Button>
           {!searchDiv && searchDiv === false && <Search01Icon className='size-6 cursor-pointer mx-3 lg:hidden block' onClick={() => {setSearchDiv(true)}} />}
           {searchDiv && <SearchRes updateParams={updateParams} />}
         </div>

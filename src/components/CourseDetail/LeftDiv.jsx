@@ -5,6 +5,7 @@ import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
 import Comment from '../Comment&Reply/Comment';
 import { getCommentsCourse } from '../../core/services/api/Comments/getCommentsCourse';
 import jMoment from 'moment-jalaali'
+import { motion } from "framer-motion"
 
 const LeftDiv = ({Course}) => {
   const [text, setText] = useState(Course.describe);
@@ -52,7 +53,7 @@ const LeftDiv = ({Course}) => {
   }
   return (
 
-    <div className='w-[60%] flex gap-10 flex-col dark:text-white max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[80%]  max-2xl:w-[700px] max-xl:w-[700px]'>
+    <motion.div whileInView={{x: 0}} initial={{x: -300}} transition={1} className='w-[60%] flex gap-10 flex-col dark:text-white max-sm:w-[100%] max-md:w-[100%]  max-lg:w-[80%]  max-2xl:w-[700px] max-xl:w-[700px]'>
       <img className='w-[100%] h-[460px] bg-[#4DBFFF] rounded-[24px]' src={Course.imageAddress}/>
         <div className='text-[16px] font-[700] text-[#787878] text-right dark:text-white'>مدرس</div>
         <Teacher image={Image} ability={Course.techs} name={Course.teacherName}/>
@@ -70,7 +71,7 @@ const LeftDiv = ({Course}) => {
           Oid={Course.courseId}
           title={Course.title}
         />
-    </div>
+    </motion.div>
   )
 }
 

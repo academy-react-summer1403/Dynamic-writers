@@ -44,7 +44,7 @@ const BoxFifth = () => {
 
     return (
         <>
-       <Card classNames={{base: 'shadow-none'}} className='bg-transparent my-20 md:justify-between mx-auto flex flex-wrap gap-2 w-full md:items-center justify-center flex-col md:flex-row md:h-fit' >
+       <Card classNames={{base: 'shadow-none'}} className='bg-transparent overflow-visible my-20 md:justify-between mx-auto flex flex-wrap gap-2 w-full md:items-center justify-center flex-col md:flex-row md:h-fit' >
             {newsTop.map((item, index) => {
                 return (
                     <NewsTop 

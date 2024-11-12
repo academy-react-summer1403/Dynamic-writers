@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Round from '../../../assets/round.png'
 import CourseView1 from './CourseView1'
 import Loading from '../../../core/services/common/Loading/loading'
+import { motion } from "framer-motion"
 
 const CourseList = () => {
 
@@ -22,7 +23,10 @@ const CourseList = () => {
     }, [])
 
   return (
-    <div className='my-5 iranSans w-dvw max-w-[3000px]'>
+    <motion.div     
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}  className='my-5 iranSans w-dvw max-w-[3000px]'>
         <div className='flex flex-col items-center gap-5'>
 
             <div className='flex flex-col gap-5 items-center'>
@@ -42,7 +46,7 @@ const CourseList = () => {
 
         <CourseView1 />
 
-    </div>
+    </motion.div>
   )
 }
 

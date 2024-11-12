@@ -2,6 +2,7 @@ import React from 'react'
 import MyReserveCom from '../../components/User Panel/My Reserves/MyReserveCom'
 import Loading from '../../core/services/common/Loading/loading'
 import { useOutletContext } from 'react-router'
+import { motion } from "framer-motion"
 
 const MyReserveRout = () => {
 
@@ -12,9 +13,9 @@ const MyReserveRout = () => {
   }
 
   return (
-    <div className='w-full h-full'>
+    <motion.div initial={{scale: 0}} animate={{scale: 1}} transition={{duration: 0.5}} className='w-full h-full'>
       <MyReserveCom />
-    </div>
+    </motion.div>
   )
 }
 
