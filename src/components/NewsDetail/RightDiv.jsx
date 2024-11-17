@@ -6,6 +6,7 @@ import UserDetailsWithId from '../../core/services/api/User/UserDetailsWithId'
 import { Calendar03Icon,ViewIcon } from 'hugeicons-react'
 import jMoment from 'moment-jalaali'
 import { motion } from "framer-motion"
+import { ToastContainer } from 'react-toastify'
 
 const RightDiv = ({New}) => {
     const [Image, setImage] = useState("")
@@ -43,6 +44,7 @@ const RightDiv = ({New}) => {
                 <Options News={New}/>
             </div>
         </div>
+        <ToastContainer />
     </motion.div>
   )
 }

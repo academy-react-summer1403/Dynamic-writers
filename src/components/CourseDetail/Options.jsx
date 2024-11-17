@@ -18,31 +18,21 @@ const Options = ({Course}) => {
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:"1",like:"0"})
-          let message=await CourseDisLike(Course.courseId)
-          // notifySuccess(message.message)
         }
       }
       else if(Name=='like'){
           if(checkClick.like=="1"){
             setcheckClick({...checkClick,like:"0",dislike:"0"})
-            let message=await DeleteCourseLike(Course.courseId)
-            // notifySuccess(message.message)
           }else{
             setcheckClick({...checkClick,like:"1",dislike:"0"})
-            let message=await CourseLike(Course.courseId)
-            // notifySuccess(message.message)
           }
          
       }
       else{
         if(checkClick.save==true){
           setcheckClick({...checkClick,save:!checkClick.save})
-          let message=await DeleteFavoriteCourse(Course.courseId)
-          notifySuccess(message.message)
         }else{
           setcheckClick({...checkClick,save:!checkClick.save})
-          let message=await AddFavoriteCourse(Course.courseId)
-          // notifySuccess(message.message)
         }
       }
     }

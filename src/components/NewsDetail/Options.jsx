@@ -19,31 +19,21 @@ const Options = ({News}) => {
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
-          let message=await NewsDisLike(News.detailsNewsDto.id)
-          // notifySuccess(message.message)
         }
       }
       else if(Name=='like'){
           if(checkClick.like==true){
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            let message=await DeleteNewsLike(News.detailsNewsDto.id)
-            // notifySuccess(message.message)
           }else{
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            let message=await NewsLike(News.detailsNewsDto.id)
-            // notifySuccess(message.message)
           }
          
       }
       else{
         if(checkClick.save==true){
           setcheckClick({...checkClick,save:!checkClick.save})
-          let message=await DeleteFavoriteNews(News.detailsNewsDto.id)
-          notifySuccess(message.message)
         }else{
           setcheckClick({...checkClick,save:!checkClick.save})
-          let message=await AddFavoriteNews(News.detailsNewsDto.id)
-          // notifySuccess(message.message)
         }
       }
     }
@@ -59,7 +49,7 @@ const Options = ({News}) => {
         <div className={`min-w-[52px] min-h-[52px] rounded-[100%] border-[#E4E4E4] border-2 ${checkClick.save ? "bg-black":""} flex items-center justify-center cursor-pointer hover:scale-110 transition-all max-lg:w-[46px] h-[46px] max-sm:w-[56px] h-[56px]`}  onClick={()=>CheckClick('save')}>
             <BookmarkAdd02Icon className={`${checkClick.save ? "text-white dark:text-red-500":"text-black dark:text-white"}`}/>
         </div>
-        <ToastContainer/>
+        <ToastContainer />
     </div>
     
   )

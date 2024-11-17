@@ -1,20 +1,20 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { getItem, removeItem } from "../common/storage";
 
-const baseURL = import.meta.env.VITE_BASE_URL;
+const baseURL = import.meta.env.VITE_BASE_URL; 
 
 const instance = axios.create({
   baseURL: baseURL,
 });
 
 const onSuccess = (response) => {
-  toast.dismiss("loading");
+//   toast.dismiss("loading");
   return response.data;
 };
 
 const onError = (err) => {
-  toast.dismiss("loading");
+//   toast.dismiss("loading");
   if (err.response) {
     const status = err.response.status;
 
@@ -59,8 +59,8 @@ instance.interceptors.request.use((opt) => {
 
   if (token) opt.headers.Authorization = "Bearer " + JSON.parse(token);
 
-  toast.dismiss('loading')
-  toast.info('در حال باگزاری...', { toastId: "loading", autoClose: false });
+//   toast.dismiss('loading')
+//   toast.info('در حال باگزاری...', { toastId: "loading", autoClose: false });
   return opt;
 });
 

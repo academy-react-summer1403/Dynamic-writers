@@ -4,6 +4,7 @@ import { getCommentsCourse } from '../../core/services/api/Comments/getCommentsC
 import Comment from '../Comment&Reply/Comment';
 import { getCommentsNew } from '../../core/services/api/Comments/New/getCommentsNew';
 import { motion } from "framer-motion"
+import { ToastContainer } from 'react-toastify';
 
 const LeftDiv = ({New}) => {
   const [text, setText] = useState(New.detailsNewsDto.describe);
@@ -56,6 +57,7 @@ const LeftDiv = ({New}) => {
             title={New.detailsNewsDto.title}
         />
 
+        <ToastContainer />
     </motion.div>
   )
 }

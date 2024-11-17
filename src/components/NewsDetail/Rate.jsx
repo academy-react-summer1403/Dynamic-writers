@@ -34,7 +34,7 @@ const Rate = ({RateNews,Flag,id}) => {
           />
          </div>
          
-
+         <ToastContainer />
     </div>
   )
 }

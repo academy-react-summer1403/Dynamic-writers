@@ -40,7 +40,7 @@ const RightDiv = ({Course,FlagModal,open}) => {
                 (<StarIcon color='yellow' size={16}/>{Course.currentRate})
             </span><div className='max-w-[400px] truncate' dir='rtl'>{Course.title}</div></h1>
         </div>
-        <div className='flex justify-end gap-2'>
+        <div className='flex flex-wrap justify-end gap-2'>
             <Tags name={Course.courseLevelName}/>
             {Course.techs.map((value,index)=>{
                return <Tags name={value} key={index}/>
