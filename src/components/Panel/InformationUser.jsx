@@ -83,7 +83,7 @@ const InformationUser = ({reload}) => {
   return (
         <motion.div animate={{opacity: 1, scale: 1}} initial={{opacity: 0, scale: 0}} transition={{duration: 0.5}} className='flex flex-col-reverse p-0 items-center md:gap-8 lg:gap-0 xl:gap-14  md:flex-row-reverse md:p-[40px] md:items-start'>
             <Formik  initialValues={InitialValue} onSubmit={onSubmit} enableReinitialize={true} validationSchema={validation}>
-            <Form className='w-[80%] flex flex-row-reverse flex-wrap gap-12 h-auto px-5 py-5 items-center justify-start '>
+            <Form className='w-[80%] flex flex-row-reverse flex-wrap gap-12 h-auto md:px-5 py-5 items-center justify-start '>
                 <div className='flex flex-col items-end gap-2 h-[120px] flex-grow-2 w-[286px]'>
                   <span className='font-[700] text-[16px]'>نام</span>
                   <Field className='bg-[#e8e7e7] dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3 w-[100%] h-[48px]' placeholder="نام خود را وارد کنید" name="field1" />
@@ -162,7 +162,7 @@ const InformationUser = ({reload}) => {
             </Formik>
         <div className=' h-[300px] w-[100%] flex justify-center md:pr-16 md:h-[500px] lg:pr-0  md:p-0 md:w-[50%]'>
         <div className='flex flex-col justify-center gap-10 items-center h-[287px] w-[100%] relative dark:border-gray-500 rounded-[16px] md:w-[259px] md:border-[1px] md:border-[#E4E4E4]'>
-            <span className='absolute top-3 right-3 font-[700] whitespace-nowrap'>وضعیت اطلاعات حساب</span>
+            <span className='absolute top-3 right-0 pr-10 font-[700] whitespace-nowrap'>وضعیت اطلاعات حساب</span>
             <div className='w-[140px] h-[140px] mt-10'>
               <CircularProgressbar
                 value={profile.profileCompletionPercentage}
