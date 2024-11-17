@@ -31,7 +31,7 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
         }
   
         if(response.success == true) {
-            ToastSuccess(response.message)
+            ToastSuccess(' عملیات با موفقیت انجام شد ')
             setCheckAdd(false)
         }
         else{
@@ -52,7 +52,7 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
         }
   
         if(response.success === true) {
-            ToastSuccess(response.message)
+            ToastSuccess(' عملیات با موفقیت انجام شد ')
             setCheckAdd(false)
         }
         else{

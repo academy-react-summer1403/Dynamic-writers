@@ -26,7 +26,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     <div className='grid w-dvw max-w-[3000px]'>
       <div className='iranSans h-20 flex flex-row-reverse justify-between items-center px-3 lg:px-14 font-semibold'>
       <HamberMenu isOpen={isOpen} onOpenChange={onOpenChange} />
-      <div className='flex gap-3 h-8 items-center justify-end w-[25%]' onClick={() => navigate('/')}>
+      <div className='flex gap-3 h-8 items-center justify-end w-[25%] cursor-pointer' onClick={() => navigate('/')}>
         <h1 className='text-blue-400 text-[20px]'> Dynamic Writers </h1>
         <img src={Bahr} className='size-8 inline' />
       </div>
