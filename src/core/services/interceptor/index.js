@@ -1,57 +1,67 @@
 import axios from "axios";
-import {getItem, removeItem } from "../common/storage";
+import { toast } from "react-toastify";
+import { getItem, removeItem } from "../common/storage";
 
-const baseURL = import.meta.env.VITE_BASE_URL
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 const instance = axios.create({
-   baseURL: baseURL
-})
+  baseURL: baseURL,
+});
 
 const onSuccess = (response) => {
-   return response.data;
-}
-
+  toast.dismiss("loading");
+  return response.data;
+};
 
 const onError = (err) => {
-   if(err.response) {
-      const status = err.response.status
+  toast.dismiss("loading");
+  if (err.response) {
+    const status = err.response.status;
 
-      if(status === 401) {
-         removeItem('token')
-         window.location.pathname = '/Error401'
-      }
-      
-      if(status === 403) {
-         window.location.pathname = '/Error403'
-      }
-      
-      if(status === 408) {
-         window.location.pathname = '/Error408'
-      }
-      
-      if(status === 500) {
-         window.location.pathname = '/Error500'
-      }
-      if(status == 422){
-         return err.response.data.ErrorMessage
-      }
-   }
+    if (status === 401) {
+      removeItem("token");
+      window.location.pathname = "/Error401";
+    }
 
-   return Promise.reject(err);
-}
+    if (status === 403) {
+      window.location.pathname = "/Error403";
+    }
 
-instance.interceptors.response.use(onSuccess, onError)
+    if (status === 408) {
+      window.location.pathname = "/Error408";
+    }
+
+    if (status === 500) {
+      window.location.pathname = "/Error500";
+    }
+
+    if (status === 422) {
+      toast.error(err.response.data.ErrorMessage || "Validation Error");
+      return err.response.data.ErrorMessage;
+    }
+  } else {
+    toast.error("An unexpected error occurred!");
+  }
+
+  return Promise.reject(err);
+};
+
+instance.interceptors.response.use(onSuccess, onError);
+
 instance.interceptors.request.use((opt) => {
-   const token = getItem('token')
-   if(token === 'undefined') {
-      removeItem('token')
-   }
-   if(token === null){
-      removeItem('token')
-   }
+  const token = getItem("token");
+  if (token === "undefined") {
+    removeItem("token");
+  }
+  if (token === null) {
+    removeItem("token");
+  }
 
-   if (token) opt.headers.Authorization = 'Bearer ' + JSON.parse(token);
-   return opt
-})
+  if (token) opt.headers.Authorization = "Bearer " + JSON.parse(token);
+
+  toast.dismiss('loading')
+  toast.info('در حال باگزاری...', { toastId: "loading", autoClose: false });
+  return opt;
+});
 
 export default instance;

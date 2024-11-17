@@ -47,7 +47,7 @@
     "react-modern-calendar-datepicker": "^3.1.6",
     "react-router": "^6.27.0",
     "react-router-dom": "^6.27.0",
-    "react-toastify": "^10.0.5",
+    "react-toastify": "^10.0.6",
     "react-verification-input": "^4.1.2",
     "yarn": "^1.22.22",
     "yup": "^1.4.0"
