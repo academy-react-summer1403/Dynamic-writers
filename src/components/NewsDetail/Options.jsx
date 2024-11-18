@@ -13,7 +13,6 @@ const Options = ({News}) => {
     const notifySuccess = (massage) => {toast.dismiss() ,toast.success(massage,{position:"top-center",theme:"dark"})};
     const notifyError = () => {toast.dismiss() ,toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"})};
 
-    console.log(News)
     async function CheckClick(Name){
       if(Name=='dislike'){
         if(checkClick.dislike==true){
