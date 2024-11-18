@@ -16,11 +16,11 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
             <div className={`bg-blue-500 text-white rounded-xl px-2`}> {newsCatregoryName} </div>
         </div>
         <div className='flex-col flex h-3/6 items-end p-2'>
-            <h2 className='text-base font-semibold' dir='rtl'> {title} </h2>
+            <h2 className='text-base font-semibold flex' dir='rtl'> {title} </h2>
             <div className='w-full h-2/3 my-1 max-h-fit overflow-hidden text-right'>
                 <span className='text-sm font-semibold text-gray-500' dir='rtl'> {miniDescribe} </span>
             </div>
-            <div className='flex flex-row-reverse gap-3 my-2'> <QuillWrite02Icon className='text-slate-700'/> <span className='text-base font-semibold'> {(addUserFullName).replace('-', ' ')} </span> </div>
+            <div className='flex flex-row-reverse gap-3 my-2'> <QuillWrite02Icon className='text-slate-700'/> <span className='text-base font-semibold' dir='rtl'> {(addUserFullName).replace('-', ' ')} </span> </div>
             <div className='flex flex-row-reverse gap-3 my-2'> <EyeIcon className='text-slate-700'/> <span className='text-base font-semibold'> {currentView} </span> </div>
         </div>
         <div className='w-full flex px-3 justify-between items-center my-3'>

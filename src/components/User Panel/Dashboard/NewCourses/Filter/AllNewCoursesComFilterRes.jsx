@@ -1,9 +1,15 @@
 import { Button, Input, Select, SelectItem } from '@nextui-org/react'
 import { Field, Form, Formik } from 'formik'
 import { Calendar02Icon, Cancel01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
-import React from 'react'
+import React, { useState } from 'react'
 
 const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChange, handleSubmit, closeFilter}) => {
+  const [currentQuery, setCurrentQuery] = useState('')   
+
+  const handleQuery = (value) => {
+    setCurrentQuery(value)
+  }
+
   return (
     <div className='w-full bg-white z-50 dark:bg-slate-950 items-center rounded-t-3xl shadow-2xl p-5 h-fit gap-6 flex bottom-0 right-0 flex-col fixed '>
 
@@ -20,11 +26,11 @@ const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChang
         <div className='relative flex flex-col gap-3'>
           <Formik
               initialValues={{Query: ''}}
-              onSubmit={(value) => setquery(value.Query)}
+              onSubmit={(value) => setquery(currentQuery)}
           >
                 
               <Form>
-                  <Field type='search' name='Query' className='w-full h-10 rounded-xl bg-gray-100 text-gray-700 dark:bg-slate-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                  <Field name='Query' className='w-full h-10 rounded-xl bg-gray-100 text-gray-700 dark:bg-slate-700 px-2 text-xs outline-none' value={currentQuery} onChange={(e) => {handleQuery(e.target.value)}} placeholder='جست جو کنید...' dir='rtl'/>
                   <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-10 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
               </Form>
           </Formik>
@@ -52,7 +58,7 @@ const AllNewCoursesComFilterRes = ({ teachers, setquery, setTeacher, handleChang
         <div className='relative flex flex-col gap-3'>
             <Select placeholder='انتخاب کنید' classNames={{trigger: 'dark:bg-slate-700 dark:text-white'}} className='w-full my-2 rounded-xl text-gray-100' dir='rtl'>
               {teachers.map((item, index) => {
-                  return <SelectItem onClick={() => setTeacher(item.teacherId)} textValue={item.fullName.replace('-', ' ')}> {item.fullName ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
+                  return <SelectItem onClick={() => setTeacher(item.teacherId)} textValue={item.fullName !== null ? item.fullName.replace('-', ' ') : 'نامشخص'}> {item.fullName && item.fullName !== null ? item.fullName.replace('-', ' ') : "نامشخص"} </SelectItem>
               })}
               <SelectItem onClick={() => setTeacher('')}> هیچ کدام </SelectItem>
             </Select>

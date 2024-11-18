@@ -100,6 +100,13 @@ const CourseView1 = () => {
     setView('view1')
   }, [])
 
+  const closeSearch = () => {
+
+    setSearchDiv(false)
+
+    updateParams('Query', '')
+  }
+
   useEffect(() => {
     setItem('view', view)
   }, [view])
@@ -126,7 +133,7 @@ const CourseView1 = () => {
         <div className='flex justify-between w-full items-center gap-4 px-2'>
           <Button className='bg-blue-500 rounded-full px-3 h-9 text-white text-sm font-semibold my-4 lg:hidden block' onClick={onOpen}> ترتیب و فیلتر </Button>
           {!searchDiv && searchDiv === false && <Search01Icon className='size-6 cursor-pointer mx-3 lg:hidden block' onClick={() => {setSearchDiv(true)}} />}
-          {searchDiv && <SearchRes updateParams={updateParams} />}
+          {searchDiv && <SearchRes closeSearch={closeSearch} updateParams={updateParams} />}
         </div>
 
         <div className='flex'>

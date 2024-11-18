@@ -1,24 +1,32 @@
 import { Field, Formik } from 'formik'
-import { Search01Icon } from 'hugeicons-react'
+import { Cancel01Icon, Search01Icon } from 'hugeicons-react'
 import React from 'react'
 import { Form } from 'react-router-dom'
 
-const SearchRes = ({ updateParams }) => {
+const SearchRes = ({ updateParams, closeSearch }) => {
   return (
     <div className='md:hidden block'>
-        <div className='relative flex flex-col gap-3'>
+        <div className='flex gap-1 items-center flex-row-reverse'>
 
-        <Formik
-            initialValues={{Query: ''}}
-            onSubmit={(value) => updateParams('Query', value.Query)}
-        >
-            
-            <Form>
-                <Field type='search' name='Query' className='w-full h-8 rounded-xl bg-gray-200 dark:bg-slate-800 text-sm text-gray-700 px-2 text-xs outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
-                <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-8 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
-            </Form>
-        </Formik>
-        </div>
+          <Cancel01Icon className='size-5 cursor-pointer' onClick={closeSearch} />
+
+          <div className='relative flex'>
+
+              <Formik
+                  initialValues={{Query: ''}}
+                  onSubmit={(value) => updateParams('Query', value.Query)}
+              >
+                      
+                  <Form>
+
+                      <Field type='search' name='Query' className='font-bold text-xs h-9 w-40 rounded-xl bg-gray-200 text-sm dark:bg-slate-800 px-2 outline-none'  placeholder='جست جو کنید...' dir='rtl'/>
+                      <button type='submit' className='text-white bg-blue-500 absolute rounded-xl h-9 w-10 left-0 top-0 text-center flex justify-center items-center hover:bg-blue-400'> <Search01Icon className='size-5' /> </button>
+                  </Form>
+              </Formik>
+
+          </div>
+
+          </div>
     </div>
   )
 }
