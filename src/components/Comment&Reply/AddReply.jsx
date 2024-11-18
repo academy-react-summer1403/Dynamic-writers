@@ -1,11 +1,8 @@
 import { Field, Form, Formik } from 'formik'
 import { SentIcon, SmileIcon } from 'hugeicons-react'
 import React from 'react'
-import { addCommentCourse } from '../../core/services/api/Comments/Add/AddCommendCourse'
-import { toast, ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { getItem } from '../../core/services/common/storage'
-import { useNavigate } from 'react-router'
 import { addReplyComment } from '../../core/services/api/Comments/Add/AddReplyComment'
 import { addReplyNew } from '../../core/services/api/Comments/New/Add/AddReplyCommentNew'
 import { ToastError } from '../../core/services/common/Toast/ToastError'
