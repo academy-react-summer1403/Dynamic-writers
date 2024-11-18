@@ -26,10 +26,10 @@ const Options = ({News}) => {
       else if(Name=='like'){
           if(checkClick.like==true){
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            let response = await NewsLike(News.detailsNewsDto.id);
+            let response = await DeleteNewsLike(News.detailsNewsDto.id);
           }else{
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
-            let response = await DeleteNewsLike(News.detailsNewsDto.id);
+            let response = await NewsLike(News.detailsNewsDto.id);
             
           }
          
@@ -37,10 +37,10 @@ const Options = ({News}) => {
       else{
         if(checkClick.save==true){
           setcheckClick({...checkClick,save:!checkClick.save})
-          let response = await AddFavoriteNews(News.detailsNewsDto.id);
+          let response = await DeleteFavoriteNews(News.detailsNewsDto.id);
         }else{
           setcheckClick({...checkClick,save:!checkClick.save})
-          let response = await DeleteFavoriteNews(News.detailsNewsDto.id);
+          let response = await AddFavoriteNews(News.detailsNewsDto.id);
         }
       }
     }
