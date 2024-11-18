@@ -1,6 +1,6 @@
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import { getItem, removeItem } from "../common/storage";
+import { toast } from "react-toastify";
+import { getItem, removeItem, setItem } from "../common/storage";
 
 const baseURL = import.meta.env.VITE_BASE_URL; 
 
@@ -40,6 +40,10 @@ const onError = (err) => {
       return err.response.data.ErrorMessage;
     }
   }
+  else{
+    setItem('loginToast', true);
+    window.location.pathname = '/login';
+  }
 
   return Promise.reject(err);
 };
@@ -58,7 +62,7 @@ instance.interceptors.request.use((opt) => {
   if (token) opt.headers.Authorization = "Bearer " + JSON.parse(token);
 
   toast.dismiss('loading')
-  // toast.loading('در حال باگزاری...', { toastId: "loading", autoClose: false });
+  toast.loading('در حال باگزاری...', { toastId: "loading", autoClose: false });
   return opt;
 });
 
