@@ -61,8 +61,8 @@ instance.interceptors.request.use((opt) => {
 
   if (token) opt.headers.Authorization = "Bearer " + JSON.parse(token);
 
-  toast.dismiss('loading')
-  toast.loading('در حال باگزاری...', { toastId: "loading", autoClose: false });
+  toast.dismiss('loading');
+  // toast.loading('در حال باگزاری...', { toastId: "loading", autoClose: false });
   return opt;
 });
 

@@ -11,6 +11,7 @@ import AddReply from './AddReply'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { addLikeCommentNew } from '../../core/services/api/Comments/New/Lile&DissLike/LikeCommentNew'
 import { ToastError } from '../../core/services/common/Toast/ToastError'
+import { ToastSuccess } from '../../core/services/common/Toast/ToastSucces'
 
 const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount, dissLikeCount, insertDate, author, acceptReplysCount, id, Oid, currentUserIsLike, currentUserIsDissLike, currentUserEmotion }) => {
 
@@ -36,7 +37,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const likeComment = async () => {
         const response = await addLikeComment(id)
         if(response.success) {
-            // notifySuccess(response.message)
+            // ToastSuccess(response.message)
         }
         else{
             ToastError(' نظر شما ثبت نشد ')
@@ -46,7 +47,7 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
     const dissLikeComment = async () => {
         const response = await addDissLikeComment(id)
         if(response.success) {
-            // notifySuccess(response.message)
+            // ToastSuccess(response.message)
         }
         else{
             ToastError(' نظر شما ثبت نشد ')
@@ -55,9 +56,8 @@ const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount,
 
     const likeNew = async (likeType) => {
         const response = await addLikeCommentNew(id, likeType)
-        console.log(id)
         if(response.success) {
-            // notifySuccess(' نظر شما با موفقیت ثبت شد ')
+            // ToastSuccess(' نظر شما با موفقیت ثبت شد ')
         }
         else{
             ToastError(' نظر شما ثبت نشد ')
