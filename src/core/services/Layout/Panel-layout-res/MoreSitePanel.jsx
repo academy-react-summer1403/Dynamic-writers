@@ -1,6 +1,7 @@
 import { BookBookmark01Icon, FileBookmarkIcon, Logout03Icon, Money02Icon, Money03Icon, UserSettings01Icon } from 'hugeicons-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { removeItem } from '../../common/storage'
 
 const MoreSitePanel = () => {
   return (
