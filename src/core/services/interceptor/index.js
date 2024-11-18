@@ -39,8 +39,6 @@ const onError = (err) => {
       toast.error(err.response.data.ErrorMessage || "Validation Error");
       return err.response.data.ErrorMessage;
     }
-  } else {
-    toast.error("An unexpected error occurred!");
   }
 
   return Promise.reject(err);

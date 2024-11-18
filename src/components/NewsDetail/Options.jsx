@@ -13,27 +13,34 @@ const Options = ({News}) => {
     const notifySuccess = (massage) => {toast.dismiss() ,toast.success(massage,{position:"top-center",theme:"dark"})};
     const notifyError = () => {toast.dismiss() ,toast.warn("شما نمیتوانید رای خود را برگردانید",{position:"top-center",theme:"dark"})};
 
+    console.log(News)
     async function CheckClick(Name){
       if(Name=='dislike'){
         if(checkClick.dislike==true){
           notifyError()
         }else{
           setcheckClick({...checkClick,dislike:true,like:false})
+          let response = await NewsDisLike(News.detailsNewsDto.id);
         }
       }
       else if(Name=='like'){
           if(checkClick.like==true){
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
+            let response = await NewsLike(News.detailsNewsDto.id);
           }else{
             setcheckClick({...checkClick,like:!checkClick.like,dislike:false})
+            let response = await DeleteNewsLike(News.detailsNewsDto.id);
+            
           }
          
       }
       else{
         if(checkClick.save==true){
           setcheckClick({...checkClick,save:!checkClick.save})
+          let response = await AddFavoriteNews(News.detailsNewsDto.id);
         }else{
           setcheckClick({...checkClick,save:!checkClick.save})
+          let response = await DeleteFavoriteNews(News.detailsNewsDto.id);
         }
       }
     }
