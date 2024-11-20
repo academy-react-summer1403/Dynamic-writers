@@ -8,7 +8,7 @@ import {
   } from "@nextui-org/table";
   import React, { useEffect, useState } from 'react'
   import jMoment from 'moment-jalaali'
-  import { MoneyAdd02Icon, ViewIcon } from "hugeicons-react";
+  import { MoneyAdd02Icon, ViewIcon,Payment02Icon } from "hugeicons-react";
   import { NavLink, } from "react-router-dom";
 import { getMyCourse } from "../../../core/services/api/Panel/MyCourse/getMyCourse";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
@@ -88,7 +88,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
                 /> }
 
             </TableCell>
-            <TableCell> <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer"/> </NavLink> </TableCell>
+            <TableCell> {item.paymentStatus=="پرداخت نشده" &&<NavLink to={``}> <Payment02Icon className="size-4 cursor-pointer"/> </NavLink> }</TableCell>
           </TableRow>
           
         })}

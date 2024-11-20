@@ -22,6 +22,7 @@ import PanelLayout from '../screens/User Panel/PanelLayout';
 import DashboardRout from '../screens/User Panel/DashboardRout';
 import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
+import MyPaymentRout from '../screens/User Panel/MyPaymentRout'
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import CourseReserve from '../components/CourseReserve/CourseReserve';
 import Panel from '../screens/Panel/PanelScreen';
@@ -111,6 +112,10 @@ function App() {
           path: 'myReserve',
           element: <MyReserveRout />
         },
+        {
+          path: 'myPayment',
+          element: <MyPaymentRout />
+        },        
         {
           path: 'favCourse',
           element: <FavCourseRout />
