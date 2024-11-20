@@ -14,11 +14,22 @@ import { getMyCourse } from "../../../core/services/api/Panel/MyCourse/getMyCour
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { Spinner, useDisclosure } from "@nextui-org/react";
 import MyCourseModal from "./MyCourseModal";
+import GetPaymentById from "../../../core/services/api/Payment/GetPaymentById";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import MyPaymentModalForUser from './MyPaymentModalForUser';
 
-const MyCourseTable = ({ myCourse, isLoading }) => {
+const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [keyOpen, setkeyOpen] = useState(null)
+  const [flag, setflag] = useState(false)
 
   const [openCourseId, setOpenCourseId] = useState(null)
   const [myCourses, setMyCourses] = useState([])
+  const [payments, setPayments] = useState({});
+
+  const [statusLastPayment, setstatusLastPayment] = useState({});
 
   const addCourse = () => {
     if(myCourse !== undefined) {
@@ -41,9 +52,45 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
         setOpenCourseId(courseId)
     }
   }
+  useEffect(() => {
+    const fetchPayments = async () => {
+      const paymentData = {};
+      const laststatus = {};
+      for (const item of myCourses) {
+        const pay = await GetPaymentById(item.courseId);
+        let cost = 0;
+        for (let pricePay in pay) {
+          if(pay[pricePay].accept==true){
+            cost += pay[pricePay].paid;
 
+          }
+          if(pricePay==pay.length-1){
+            laststatus[item.courseId]=pay[pricePay].accept
+          }
+        }
+        paymentData[item.courseId] = cost;
+        
+      }
+      setstatusLastPayment(laststatus)
+      setPayments(paymentData);
+      setflag(true)
+    };
+    if (myCourses.length > 0) {
+      fetchPayments();
+    }
+  }, [myCourses]);
+  
+  const notifyError = () => toast.warn("آخرین فیش واریزی شما هنوز تایید نشده است",{position:"top-center",theme:"dark"});
+
+  const Notif=(index)=>{
+    
+      setkeyOpen(index)
+      setIsModalOpen(true);
+      onOpen(true)
+  }
   return (
-    <>
+    <div>
+    <ToastContainer/>
     <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
@@ -57,22 +104,30 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
       </TableHeader>
       <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."} isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />}>
         {myCourses.map((item, index) => {
+          let costThisCourse= payments[item.courseId]||0;
+          let percentage=0
+          if(costThisCourse!=0){
+            percentage=((costThisCourse/item.cost)*100)
+          }
+
           return <TableRow key={index} className="h-10">
             <TableCell> <img className="w-[104px] h-[72px] rounded-[8px] bg-gray-300" src={item.tumbImageAddress} /> </TableCell>
             <TableCell className="text-base font-bold truncate invisible md:visible"> <div className="max-w-40 h-10 truncate leading-8"> {item.courseTitle} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-56 h-10 truncate leading-8"> {item.fullName.replace('-', ' ')} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
             <TableCell className="text-base font-semibold invisible md:visible"> {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span> </TableCell>
-            <TableCell className="invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5">             
-                <CircularProgressbar className="size-12" value='70' text={70 + '%'} styles={buildStyles({
-                textColor: `#2E8B57       `,
+
+            <TableCell className={`invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5 ${item.paymentStatus=="پرداخت نشده"?"text-red-500":"text-green-600"}`}>             
+                {flag!=false && <CircularProgressbar className="size-12" value={`${percentage!=100? percentage.toFixed(2):"100"}`} text={`${percentage!=100? percentage.toFixed(2):"100"}`+"%"} styles={buildStyles({
+                textColor: percentage >= 50 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
                 textSize: '25px',
                 display: 'flex',
-                pathColor: `#2E8B57       `,
+                pathColor: percentage >= 50 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
                 trailColor: 'transparent'
                 })} /> 
-                {item.paymentStatus}
-                    
+                }
+                {flag==false && <Spinner className='py-[20px] px-[10px]' /> }
+                  {item.paymentStatus}  
             </TableCell>
             <TableCell> <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>             
                 { openCourseId === item.courseId && <MyCourseModal
@@ -93,7 +148,16 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
                 /> }
 
             </TableCell>
-            <TableCell> <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer"/> </NavLink> </TableCell>
+            
+            <TableCell>{percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>{statusLastPayment[item.courseId]==false?notifyError():Notif(index)}}/> </NavLink> }
+             {isModalOpen && keyOpen==index &&
+
+              <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={setIsModalOpen} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
+
+            }
+            
+            </TableCell>
+           
           </TableRow>
           
         })}
@@ -122,7 +186,8 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
             })}
         </TableBody>
     </Table>
-    </>
+
+    </div>
   )
 }
 

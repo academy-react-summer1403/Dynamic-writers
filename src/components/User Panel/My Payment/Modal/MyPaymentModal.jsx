@@ -68,7 +68,7 @@ const MyPaymentModal = ({
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
                     <h2 className='text-base text-[#787878]'> مبلغ پرداخت شده </h2>
-                    <span className='text-[16px] text-[#272727] h-[46px] overflow-hidden dark:text-white' dir='rtl'> {dataPaymentt.paid.toLocaleString('en-US')} </span>
+                    <span className='text-[16px] text-[#272727] h-[46px] overflow-hidden dark:text-white' dir='rtl'> {dataPaymentt.paid.toLocaleString('en-US')} <span className="text-[13px] text-gray-500">  تومان</span> </span>
                 </div>
                 <div className='flex flex-col gap-4 my-5'>
                     <h2 className='text-base text-[#787878]'> وضعیت پرداخت </h2>
