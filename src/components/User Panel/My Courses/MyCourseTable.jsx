@@ -59,7 +59,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
 
         {myCourses.map((item, index) => {
           return <TableRow key={index} className="h-10">
-            <TableCell> <img className="w-[104px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
+            <TableCell> <img className="w-[104px] h-[72px] rounded-[8px] bg-gray-300" src={item.tumbImageAddress} /> </TableCell>
             <TableCell className="text-base font-bold truncate invisible md:visible"> <div className="max-w-40 h-10 truncate leading-8"> {item.courseTitle} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-56 h-10 truncate leading-8"> {item.fullName.replace('-', ' ')} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
