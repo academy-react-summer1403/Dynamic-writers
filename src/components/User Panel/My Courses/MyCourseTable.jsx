@@ -19,10 +19,11 @@ import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyPaymentModalForUser from './MyPaymentModalForUser';
 
-const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
+const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [keyOpen, setkeyOpen] = useState(null)
+  const [flag, setflag] = useState(false)
 
   const [openCourseId, setOpenCourseId] = useState(null)
   const [myCourses, setMyCourses] = useState([])
@@ -59,10 +60,12 @@ const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
         const pay = await GetPaymentById(item.courseId);
         let cost = 0;
         for (let pricePay in pay) {
-          cost += pay[pricePay].paid;
+          if(pay[pricePay].accept==true){
+            cost += pay[pricePay].paid;
+
+          }
           if(pricePay==pay.length-1){
             laststatus[item.courseId]=pay[pricePay].accept
-  
           }
         }
         paymentData[item.courseId] = cost;
@@ -70,6 +73,7 @@ const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
       }
       setstatusLastPayment(laststatus)
       setPayments(paymentData);
+      setflag(true)
     };
     if (myCourses.length > 0) {
       fetchPayments();
@@ -102,7 +106,10 @@ const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
 
         {myCourses.map((item, index) => {
           let costThisCourse= payments[item.courseId]||0;
-          let percentage=((costThisCourse/item.cost)*100)
+          let percentage=0
+          if(costThisCourse!=0){
+            percentage=((costThisCourse/item.cost)*100)
+          }
 
           return <TableRow key={index} className="h-10">
             <TableCell> <img className="w-[104px] h-[72px] rounded-[8px] bg-gray-300" src={item.tumbImageAddress} /> </TableCell>
@@ -111,7 +118,7 @@ const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
             <TableCell className="text-base font-semibold invisible md:visible"> {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span> </TableCell>
             <TableCell className={`invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5 ${item.paymentStatus=="پرداخت نشده"?"text-red-500":"text-green-600"}`}>             
-                {costThisCourse!=0 && <CircularProgressbar className="size-12" value={`${percentage!=100? percentage.toFixed(2):"100"}`} text={`${percentage!=100? percentage.toFixed(2):"100"}`+"%"} styles={buildStyles({
+                {flag!=false && <CircularProgressbar className="size-12" value={`${percentage!=100? percentage.toFixed(2):"100"}`} text={`${percentage!=100? percentage.toFixed(2):"100"}`+"%"} styles={buildStyles({
                 textColor: percentage >= 50 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
                 textSize: '25px',
                 display: 'flex',
@@ -119,7 +126,7 @@ const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
                 trailColor: 'transparent'
                 })} /> 
                 }
-                {costThisCourse==0 && <Spinner className='py-[20px] px-[10px]' /> }
+                {flag==false && <Spinner className='py-[20px] px-[10px]' /> }
                   {item.paymentStatus}  
             </TableCell>
             <TableCell> <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>             
@@ -145,7 +152,7 @@ const MyCourseTable = ({ myCourse, isLoading,setrender }) => {
             <TableCell>{percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>{statusLastPayment[item.courseId]==false?notifyError():Notif(index)}}/> </NavLink> }
              {isModalOpen && keyOpen==index &&
 
-              <MyPaymentModalForUser setrender={setrender} isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={setIsModalOpen} courseID={item.courseId} name={item.courseTitle}/>
+              <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={setIsModalOpen} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
 
             }
             

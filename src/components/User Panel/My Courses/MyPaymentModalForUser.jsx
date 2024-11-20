@@ -18,16 +18,14 @@ const MyPaymentModalForUser = ({
     onOpenChange,
     maxNumber,
     setIsModalOpen,
-    setrender
-}) => {   
+    setreder
+  }) => {   
 
     const onSubmit=async(el)=>{
       console.log(courseID,el.price,jMoment().locale('en').format('YYYY-MM-DD'),el.numberInvoice)
       await Pay(courseID,el.price,jMoment().locale('en').format('YYYY-MM-DD'),el.numberInvoice)
       setIsModalOpen(false)
-      setrender(prev => !prev)
-
-
+      setreder(prev=>!prev)
     }
     const generateRandom10DigitNumber = () => {
         return Math.floor(1000000000 + Math.random() * 9000000000); 
