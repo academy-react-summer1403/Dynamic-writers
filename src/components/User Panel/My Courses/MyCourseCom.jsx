@@ -25,7 +25,7 @@ const MyCourseCom = () => {
   
       const response = await getMyCourse(query, rows, pageNumber, sortingCol , sortType)
       setMyCourse(response.listOfMyCourses)
-      setTotalCount(Number(response.totalCount % rows))
+      setTotalCount(Number(response.totalCount / rows))
 
       if(response.listOfMyCourses) {
         setIsLoading(false)
@@ -98,10 +98,10 @@ const MyCourseCom = () => {
             </div>
         </div>
       </div>
-        <MyCourseTable
+        {myCourse.length > 0 && <MyCourseTable
             myCourse={myCourse}
             isLoading={isLoading}
-        />
+        />}
         <div className='w-full flex justify-center'>
         <Pagination className='w-fit z-0 float-start' classNames={{wrapper: 'bg-white'}} dir='ltr' onChange={(e) => setPageNumber(e)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
