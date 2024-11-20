@@ -12,6 +12,7 @@ import {
   import { NavLink, useNavigate, } from "react-router-dom";
 import { Pagination, Spinner, useDisclosure } from "@nextui-org/react";
 import MyPaymentModal from "../Modal/MyPaymentModal";
+
 import UploadImage from "../Modal/UploadImageForPayment";
 import { ToastContainer } from "react-toastify";
 
@@ -21,11 +22,12 @@ const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [keyOpen, setkeyOpen] = useState(null)
   const {isOpen:isOpenTwo, onOpen:onOpenTwo, onOpenChange:onOpenChangeTwo} = useDisclosure();
+  const {isOpen:isOpenThree, onOpen:onOpenThree, onOpenChange:onOpenChangeThree} = useDisclosure();
 
 
   return (
     <div>
-    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
         <TableColumn> مبلغ پرداخت شده </TableColumn>
@@ -61,28 +63,6 @@ const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
       
       </TableBody>
     </Table>
-    {/* <Table isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} classNames={{wrapper: 'dark:bg-slate-700'}} className="w-full md:hidden block" hideHeader>
-      <TableHeader>
-        <TableColumn>IMG</TableColumn>
-        <TableColumn>INFO</TableColumn>
-      </TableHeader>
-        <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"پرداخت+ ای برای نمایش وجود ندارد."} className="">
-            {paginationData.map((item, index) => {
-                return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-b-1" key={index}>
-                    <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src='' /> </TableCell>
-                    <TableCell>
-                        <div className="flex flex-col gap-2">
-                            <div className="max-w-40 font-bold text-xl h-6 truncate"> {item.courseName} </div>
-                            <div className="flex flex-col justify-center gap-1">
-                                <div className="max-w-56 truncate text-[#787878]"> {item.studentName.replace('-', ' ')} </div> 
-                                <span className={`${item.accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full w-fit`}> {item.accept ? 'تایید شده' : 'تایید نشده'} </span>
-                            </div>
-                        </div>
-                    </TableCell>
-                </TableRow>
-            })}
-        </TableBody>
-    </Table> */}
     <ToastContainer />
     <div className="w-full flex justify-start">
     </div>
