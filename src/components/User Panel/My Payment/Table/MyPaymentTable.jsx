@@ -19,10 +19,9 @@ import { ToastContainer } from "react-toastify";
 const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [keyOpen, setkeyOpen] = useState(null)
   const {isOpen:isOpenTwo, onOpen:onOpenTwo, onOpenChange:onOpenChangeTwo} = useDisclosure();
-  const {isOpen:isOpenThree, onOpen:onOpenThree, onOpenChange:onOpenChangeThree} = useDisclosure();
 
 
   return (
@@ -40,7 +39,7 @@ const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
         {MyPayment.map((item, index) => {
           return <TableRow key={index} className="h-10">
             <TableCell > <img className={`w-[104px] h-[72px] rounded-[8px] ${item.paymentInvoiceImage? " ": "bg-[#D9D9D9]"}`} src={item.paymentInvoiceImage} /> </TableCell>
-            <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {item.paid.toLocaleString('en-US')}</div> </TableCell>
+            <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8">{item.paid.toLocaleString('en-US')}<span className="text-[13px] text-gray-500">  تومان</span> </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.peymentDate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
             <TableCell className="invisible md:visible"> <span className={`${item.accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full`}> {item.accept==true ? 'تایید شده' : 'تایید نشده'} </span> </TableCell>
             <TableCell>

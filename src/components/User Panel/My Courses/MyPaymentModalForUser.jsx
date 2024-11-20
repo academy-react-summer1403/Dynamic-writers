@@ -9,21 +9,26 @@ import * as yup from 'yup'
 import jMoment from 'jalali-moment'
 import { toast, ToastContainer } from 'react-toastify'
 
-import Loading from '../../../core/services/common/Loading/loading';
+import Pay from '../../../core/services/api/Payment/Pay'
 
 const MyPaymentModalForUser = ({ 
     name,
+    courseID,
     isOpen,
-    onOpenChange
-}) => {
+    onOpenChange,
+    maxNumber,
+    setIsModalOpen,
+    setrender
+}) => {   
 
-    const [Loading, setLoading] = useState(false)
-    
+    const onSubmit=async(el)=>{
+      console.log(courseID,el.price,jMoment().locale('en').format('YYYY-MM-DD'),el.numberInvoice)
+      await Pay(courseID,el.price,jMoment().locale('en').format('YYYY-MM-DD'),el.numberInvoice)
+      setIsModalOpen(false)
+      setrender(prev => !prev)
 
-    useEffect(() => {
-      
-    }, [Loading])
 
+    }
     const generateRandom10DigitNumber = () => {
         return Math.floor(1000000000 + Math.random() * 9000000000); 
       };
@@ -41,16 +46,14 @@ const MyPaymentModalForUser = ({
             .number()
             .typeError('قیمت باید یک عدد باشد')
             .min(0, 'قیمت نمی‌تواند کمتر از صفر باشد') 
-            .max(10000, 'قیمت نمی‌تواند بیشتر از 10000 باشد')
+            .max(maxNumber, 'میزان پرداختی از هزینه دوره بیشتر می باشد.')
             .required('لطفاً قیمت را وارد کنید')
         }
     )
   return (
     <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange}  scrollBehavior='outside' placement='top' size={'lg'}>
       <ModalContent>
-      {/* {Loading==true && <Spinner label="در حال بارگزاری..." className='py-[50px] px-[30px]' />   } */}
-      {Loading==false &&
-        <>
+        
         <ModalHeader className="flex flex-row-reverse items-center gap-1 justify-end">
 
             <div className='flex gap-7 items-center'>
@@ -62,7 +65,7 @@ const MyPaymentModalForUser = ({
         </ModalHeader>
 
         <ModalBody>
-                <Formik initialValues={InitialValue} validationSchema={validation} enableReinitialize={true}>
+                <Formik  onSubmit={onSubmit}  initialValues={InitialValue} validationSchema={validation} enableReinitialize={true}>
                     <Form>
                             <div className='flex flex-col gap-4'>
                             <h2 className='text-base text-[#787878]'> نام دوره </h2>
@@ -81,15 +84,13 @@ const MyPaymentModalForUser = ({
                             <h2 className='text-base text-[#787878]'> شماره فاکتور پرداخت</h2>
                             <Field name='numberInvoice' className="bg-[#e8e7e7] cursor-default dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3  w-[100%] h-[48px]" readOnly/>
                         </div>
-                        <button className='bg-blue-500 px-7 py-2 rounded-xl font-bold text-white my-4'>پرداخت </button>
+                        <button type='submit' className='bg-blue-500 px-7 py-2 rounded-xl font-bold text-white my-4'>پرداخت </button>
                     </Form>
                 </Formik>
                 
                
 
         </ModalBody>
-        </>
-        }
       
       </ModalContent>
     </Modal>

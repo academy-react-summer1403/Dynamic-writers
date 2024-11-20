@@ -18,6 +18,7 @@ const MyCourseCom = () => {
 
     const [totalCount, setTotalCount] = useState()
     const [filterClose, setFilterClose] = useState(false)
+    const [render, setrender] = useState(false)
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -34,6 +35,9 @@ const MyCourseCom = () => {
     useEffect(() => {
       getCourses()
     }, [])
+    useEffect(() => {
+      getCourses()
+    }, [render])
 
     useEffect(() => {
         if(query === '') {
@@ -101,6 +105,7 @@ const MyCourseCom = () => {
         {myCourse.length > 0 && <MyCourseTable
             myCourse={myCourse}
             isLoading={isLoading}
+            setrender={setrender}
         />}
         <div className='w-full flex justify-center'>
         <Pagination className='w-fit z-0 float-start' classNames={{wrapper: 'bg-white'}} dir='ltr' onChange={(e) => setPageNumber(e)} isCompact showControls total={totalCount} initialPage={1} />

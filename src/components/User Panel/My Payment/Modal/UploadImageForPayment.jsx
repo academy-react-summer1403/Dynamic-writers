@@ -12,13 +12,11 @@ const UploadImage = ({
   image,
   setrender
 }) => {
-  const notifySuccess = (massage) => toast.success(massage,{position:"top-center",theme:"dark"});
  
   const [UploadImage, setUploadImage] = useState(image)
   
   const AddImage=async (image)=>{
     const massage=await UploadImagePayment(paymentId,image)
-    notifySuccess(massage.message)
     setIsModalOpen(false)
     setrender(prev => !prev)
   }
