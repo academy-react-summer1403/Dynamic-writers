@@ -1,0 +1,93 @@
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    TableColumn,
+    TableRow,
+    TableCell
+  } from "@nextui-org/table";
+  import React, { useEffect, useState } from 'react'
+  import jMoment from 'moment-jalaali'
+  import { Cancel01Icon, MoneyAdd02Icon, ViewIcon,ImageUpload01Icon } from "hugeicons-react";
+  import { NavLink, useNavigate, } from "react-router-dom";
+import { Pagination, Spinner, useDisclosure } from "@nextui-org/react";
+import MyPaymentModal from "../Modal/MyPaymentModal";
+import UploadImage from "../Modal/UploadImageForPayment";
+import { ToastContainer } from "react-toastify";
+
+const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
+
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [keyOpen, setkeyOpen] = useState(null)
+  const {isOpen:isOpenTwo, onOpen:onOpenTwo, onOpenChange:onOpenChangeTwo} = useDisclosure();
+
+
+  return (
+    <div>
+    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
+      <TableHeader>
+        <TableColumn> # </TableColumn>
+        <TableColumn> مبلغ پرداخت شده </TableColumn>
+        <TableColumn> زمان پرداخت </TableColumn>
+        <TableColumn> وضعیت پرداخت </TableColumn>
+        <TableColumn></TableColumn>
+      </TableHeader>
+      <TableBody emptyContent={"پرداخت ای برای نمایش وجود ندارد."} isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />}>
+
+        {MyPayment.map((item, index) => {
+          return <TableRow key={index} className="h-10">
+            <TableCell > <img className={`w-[104px] h-[72px] rounded-[8px] ${item.paymentInvoiceImage? " ": "bg-[#D9D9D9]"}`} src={item.paymentInvoiceImage} /> </TableCell>
+            <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {item.paid.toLocaleString('en-US')}</div> </TableCell>
+            <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.peymentDate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
+            <TableCell className="invisible md:visible"> <span className={`${item.accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full`}> {item.accept==true ? 'تایید شده' : 'تایید نشده'} </span> </TableCell>
+            <TableCell>
+            <div className="flex gap-2 items-center"> 
+              <NavLink to={``}> <ViewIcon onClick={() => {onOpen(true);setkeyOpen(index)}} className="size-4 cursor-pointer"/> </NavLink>   
+             {item.paymentInvoiceImage==null && <NavLink to={``}> <ImageUpload01Icon onClick={() => {setIsModalOpen(true);onOpenTwo(true);setkeyOpen(index)}} className="size-5 text-green-600 cursor-pointer"/></NavLink>}
+            </div>
+                {onOpen && keyOpen==index  && <MyPaymentModal
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    courseId={item.courseId}
+                    dataPaymentt={item}
+                /> }
+                { isModalOpen && keyOpen==index  && <UploadImage paymentId={item.paymentId} setrender={renderMainPage} image={item.paymentInvoiceImage} isOpen={isOpenTwo} setIsModalOpen={setIsModalOpen} onOpenChange={onOpenChangeTwo}/> }
+
+            </TableCell>
+          </TableRow>
+          
+        })}
+      
+      </TableBody>
+    </Table>
+    {/* <Table isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} classNames={{wrapper: 'dark:bg-slate-700'}} className="w-full md:hidden block" hideHeader>
+      <TableHeader>
+        <TableColumn>IMG</TableColumn>
+        <TableColumn>INFO</TableColumn>
+      </TableHeader>
+        <TableBody isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} emptyContent={"پرداخت+ ای برای نمایش وجود ندارد."} className="">
+            {paginationData.map((item, index) => {
+                return <TableRow onClick={() => handleOpenModal(item.courseId)} className="border-b-1" key={index}>
+                    <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-[#D9D9D9]" src='' /> </TableCell>
+                    <TableCell>
+                        <div className="flex flex-col gap-2">
+                            <div className="max-w-40 font-bold text-xl h-6 truncate"> {item.courseName} </div>
+                            <div className="flex flex-col justify-center gap-1">
+                                <div className="max-w-56 truncate text-[#787878]"> {item.studentName.replace('-', ' ')} </div> 
+                                <span className={`${item.accept ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full w-fit`}> {item.accept ? 'تایید شده' : 'تایید نشده'} </span>
+                            </div>
+                        </div>
+                    </TableCell>
+                </TableRow>
+            })}
+        </TableBody>
+    </Table> */}
+    <ToastContainer />
+    <div className="w-full flex justify-start">
+    </div>
+    </div>
+  )
+}
+
+export default MyPaymentTable
