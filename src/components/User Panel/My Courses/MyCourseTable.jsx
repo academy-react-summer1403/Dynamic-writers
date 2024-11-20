@@ -56,7 +56,6 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
         <TableColumn> </TableColumn>
       </TableHeader>
       <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."} isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />}>
-
         {myCourses.map((item, index) => {
           return <TableRow key={index} className="h-10">
             <TableCell> <img className="w-[104px] h-[72px] rounded-[8px] bg-gray-300" src={item.tumbImageAddress} /> </TableCell>
@@ -66,10 +65,10 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
             <TableCell className="text-base font-semibold invisible md:visible"> {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span> </TableCell>
             <TableCell className="invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5">             
                 <CircularProgressbar className="size-12" value='70' text={70 + '%'} styles={buildStyles({
-                textColor: `orange`,
+                textColor: `#2E8B57       `,
                 textSize: '25px',
                 display: 'flex',
-                pathColor: `orange`,
+                pathColor: `#2E8B57       `,
                 trailColor: 'transparent'
                 })} /> 
                 {item.paymentStatus}

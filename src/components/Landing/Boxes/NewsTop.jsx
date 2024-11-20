@@ -9,7 +9,7 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
   const navigate = useNavigate()
 
   return (
-    <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
+    <Skeleton className='rounded-3xl w-full md:w-[315px]' isLoaded={isLoaded}>
     <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.05 }} initial={{y: 1000, scale: 1.05}} animate={{y: 0}} className='rounded-2xl bg-gray-200 dark:bg-slate-900 dark:text-white h-[512px] w-full md:w-[315px] dark:border-none iranSans flex flex-col justify-between font-semibold'>
         <img src={currentImageAddressTumb} className='w-full border rounded-xl h-[225px] bg-red-300' />
         <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2'>
@@ -17,8 +17,8 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
         </div>
         <div className='flex-col flex h-3/6 items-end p-2'>
             <h2 className='text-base font-semibold flex' dir='rtl'> {title} </h2>
-            <div className='w-full h-2/3 my-1 max-h-fit overflow-hidden text-right'>
-                <span className='text-sm font-semibold text-gray-500' dir='rtl'> {miniDescribe} </span>
+            <div className='w-full my-1 max-h-fit overflow-hidden text-right'>
+                <span className='text-sm font-semibold text-gray-500 line-clamp-3 text-ellipsis' dir='rtl'> {miniDescribe} </span>
             </div>
             <div className='flex flex-row-reverse gap-3 my-2'> <QuillWrite02Icon className='text-slate-700'/> <span className='text-base font-semibold' dir='rtl'> {(addUserFullName).replace('-', ' ')} </span> </div>
             <div className='flex flex-row-reverse gap-3 my-2'> <EyeIcon className='text-slate-700'/> <span className='text-base font-semibold'> {currentView} </span> </div>
