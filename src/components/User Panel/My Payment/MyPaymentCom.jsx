@@ -28,9 +28,7 @@ const MyReserveCom = () => {
     }
 
       useEffect(() => {
-        if(myPayment.length > 0) {
-          setIsLoading(false)
-        }
+        setIsLoading(false)
       }, [myPayment])
 
   return (

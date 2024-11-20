@@ -40,10 +40,6 @@ const onError = (err) => {
       return err.response.data.ErrorMessage;
     }
   }
-  else{
-    setItem('loginToast', true);
-    window.location.pathname = '/login';
-  }
 
   return Promise.reject(err);
 };
