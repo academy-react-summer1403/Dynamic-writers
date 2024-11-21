@@ -38,7 +38,7 @@ const SitePanel = () => {
       </div>
 
       <div className='flex w-full h-fit gap-4 flex-col'>
-        <NavLink to={'multiAccounts'} className='hover:bg-blue-700 dark:bg-slate-900 dark:text-white dark:border-none hover:text-white bg-white border w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold flex-row-reverse'>  حساب‌های کابری <UserSettings01Icon /> </NavLink>
+        <NavLink to={'multiAccounts'} className={({isActive}) => isActive ? "bg-blue-500 hover:bg-blue-300 text-white w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" : "bg-white dark:bg-slate-900 dark:text-white hover:bg-gray-200 text-black w-full h-10 flex items-center px-3 rounded-3xl flex-row-reverse gap-3 justify-end" }>  حساب‌های کابری <UserSettings01Icon /> </NavLink>
         <NavLink to='/' onClick={() => removeItem('token')} className='hover:bg-red-500 dark:bg-red-500 dark:border-none dark:text-white hover:text-white bg-white border text-red-500 w-full p-2 rounded-full flex text-right text-lg justify-end gap-4 font-semibold flex-row-reverse'> خروج از حساب <Logout03Icon /> </NavLink>
       </div>
     </div>

@@ -116,7 +116,7 @@ const Dashboard = () => {
         </div>
         
         <div className='h-full dark:bg-slate-700 dark:text-white bg-white overflow-hidden rounded-2xl py-3 px-4 text-center hidden md:block'>
-          <div className='bg-red-500 text-yellow-300 text-sm truncate font-semibold flex justify-center items-center rotate-12 translate-x-[60px] md:w-[150%] w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
+          {/* <div className='bg-red-500 text-yellow-300 text-sm truncate font-semibold flex justify-center items-center rotate-12 translate-x-[60px] md:w-[150%] w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div> */}
         </div>
         
         <div className='md:h-full h-72 dark:bg-slate-700 md:col-auto col-span-2 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
