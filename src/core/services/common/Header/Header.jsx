@@ -8,6 +8,7 @@ import { Button, useDisclosure, User } from '@nextui-org/react'
 import HamberMenu from './HamberMenu'
 import { getItem, setItem } from '../storage'
 import { motion } from "framer-motion"
+import ImageProcessing from '../../../../components/AI/ImageProcessing'
 
 const Header = ({ darkMode, setDarkMode }) => {
 
@@ -37,7 +38,6 @@ const Header = ({ darkMode, setDarkMode }) => {
         <Link to='/newsList' className='hover:text-gray-600'> اخبار و مقالات </Link>
         <Link to='/about' className='hover:text-gray-600'> ارتباط با ما </Link>
       </div>
-
 
       <div className='flex flex-row-reverse items-center gap-2 w-[25%] justify-end'>
         <Button onClick={() => setDarkMode(!darkMode)} radius='full' className='border border-slate-300 bg-white rounded-full cursor-pointer hidden size-[50px] lg:flex justify-center items-center dark:bg-gray-800' isIconOnly>  { darkMode ? <Sun02Icon className='size-5 text-gray-300' /> : <Moon02Icon className='text-black size-5' /> } </Button>
