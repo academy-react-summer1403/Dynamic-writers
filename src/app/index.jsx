@@ -41,6 +41,7 @@ import { getItem, setItem } from '../core/services/common/storage';
 import PanelScreen from '../screens/Panel/PanelScreen';
 import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import Multi from '../screens/User Panel/Multi';
 
 function App() {
   const client = new QueryClient()
@@ -150,6 +151,10 @@ function App() {
         {
           path: 'security',
           element: <SecurityPanel />
+        },
+        {
+          path: 'multiAccounts',
+          element: <Multi />
         },
       ]
     },
