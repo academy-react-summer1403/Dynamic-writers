@@ -48,11 +48,13 @@ const LeftLogin = () => {
         else{
             setItem('expire', true)
             setItem('token', user.token)
+            setItem('apiKey', user.apiKey)
             setItem('userId', user.id)
             const userOb = {
                 id: user.id,
                 token: user.token,
-                phoneNumber: user.phoneNumber
+                phoneNumber: user.phoneNumber,
+                apiKey: user.apiKey
               };
 
               let existingUsers = JSON.parse(JSON.parse(getItem('users'))) || [];

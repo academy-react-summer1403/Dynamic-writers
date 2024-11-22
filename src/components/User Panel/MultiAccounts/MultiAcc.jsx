@@ -29,16 +29,18 @@ const MultiAcc = () => {
                 </div>
               </div>
               <div className='flex gap-2 items-center'>
-                <Delete01Icon color='red' size={26} className='cursor-pointer' onClick={() => {
+                {activeAccountId !== user.id && <Delete01Icon color='red' size={26} className='cursor-pointer' onClick={() => {
                   const updatedItems = usersObj.filter(item => item.id !== user.id);
                   setItem('users', JSON.stringify(updatedItems))
                   navigate('/layoutPanel/dashboard')
-                }} />
+                }} />}
                 {activeAccountId === user.id ? <Logout03Icon color='red' className='cursor-pointer' onClick={() => {
                   removeItem('token')
+                  removeItem('apiKey')
                   navigate('/login')
                 }} size={32} /> : <Login03Icon color='blue' className='cursor-pointer' onClick={() => {
                   setItem('token', user.token)
+                  setItem('apiKey', user.apiKey)
                   setItem('userId', user.id)
                   navigate('/')
                 }} size={32} />}
