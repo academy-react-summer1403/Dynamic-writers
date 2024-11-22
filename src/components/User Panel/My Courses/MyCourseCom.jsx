@@ -4,7 +4,7 @@ import { Calendar02Icon, Search01Icon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
 import MyCourseTable from './MyCourseTable';
 import { getMyCourse } from '../../../core/services/api/Panel/MyCourse/getMyCourse';
-import { Button, Pagination, Select, SelectItem } from '@nextui-org/react';
+import { Button, Pagination, Select, SelectItem, Spinner } from '@nextui-org/react';
 import MyCourseFilterRes from './FilterRes/MyCourseFilterRes';
 
 const MyCourseCom = () => {
@@ -24,7 +24,10 @@ const MyCourseCom = () => {
     const getCourses = async () => {
   
       const response = await getMyCourse(query, rows, pageNumber, sortingCol , sortType)
-      setMyCourse(response.listOfMyCourses)
+      if(response) {
+        setIsLoading(false)
+        setMyCourse(response.listOfMyCourses)
+      }
       setTotalCount(Number(response.totalCount / rows))
 
       if(response.listOfMyCourses) {
@@ -34,6 +37,7 @@ const MyCourseCom = () => {
     useEffect(() => {
       getCourses()
     }, [])
+    
     useEffect(() => {
       getCourses()
     }, [reder])
@@ -44,13 +48,6 @@ const MyCourseCom = () => {
         }
         getCourses()
     }, [query, rows, pageNumber, sortType, sortingCol])
-
-    useEffect(() => {
-      if(myCourse.length > 0) {
-        setIsLoading(false)
-      }
-    }, [myCourse])
-    
 
   return (
     <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
@@ -101,7 +98,7 @@ const MyCourseCom = () => {
             </div>
         </div>
       </div>
-        {myCourse.length > 0 && <MyCourseTable
+        {isLoading ? <div className='flex justify-center w-full items-center flex-col gap-1 my-[100px]'> <Spinner color='blue' /> در حال بارگزاری... </div> : <MyCourseTable
             myCourse={myCourse}
             isLoading={isLoading}
             setreder={setreder}

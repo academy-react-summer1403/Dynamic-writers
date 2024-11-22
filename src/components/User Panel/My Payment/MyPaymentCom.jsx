@@ -23,13 +23,12 @@ const MyReserveCom = () => {
     }, [render])
     
     const getData=async()=>{
-      const data=await GetAllPayment()
-      setMyPayment(data)
-    }
-
-      useEffect(() => {
+      const data = await GetAllPayment()
+      if(data) {
+        setMyPayment(data)
         setIsLoading(false)
-      }, [myPayment])
+      }
+    }
 
   return (
     <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
