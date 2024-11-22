@@ -100,7 +100,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className='w-full grid grid-cols-1 md:grid-cols-4 gap-5 md:h-[288px] h-full' dir='rtl'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-4 gap-8 md:h-[288px] h-full' dir='rtl'>
         
         <div className='md:h-full overflow-hidden col-span-2 bg-white dark:bg-slate-700 dark:text-white rounded-2xl py-3 px-4'>
           <div className='flex w-full justify-between'> <h2 className='text-base font-semibold'> نظرات شما </h2> <button onClick={onOpen} className='flex items-center text-blue-500 text-sm font-semibold'> مشاهده همه <ArrowLeft01Icon className='size-4'/> </button> </div>
@@ -117,8 +117,8 @@ const Dashboard = () => {
             commentsNew={commentsNew}
           />
         </div>
-        
-       <I18nProvider locale='fa-IR'> <Calendar aria-label="Date (Uncontrolled)" className='shadow-none h-full md:block hidden' value={today(getLocalTimeZone())}  classNames={{
+
+       <I18nProvider locale='fa-IR'> <Calendar visibleMonths={1}  aria-label="Date (Uncontrolled)" className='shadow-none h-full md:block hidden' value={today(getLocalTimeZone())}  classNames={{
           gridHeader: 'text-white bg-blue-500',
           headerWrapper: 'text-white bg-blue-500',
           gridHeaderRow: 'text-white bg-blue-500',
@@ -132,8 +132,8 @@ const Dashboard = () => {
           gridBody: 'bg-white',
         }} />
         </I18nProvider>
-        
-        <div className='md:h-full h-72 dark:bg-slate-700 md:col-auto col-span-2 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
+
+        <div className='md:h-full h-72 dark:bg-slate-700 md:col-span-1 col-span-2 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>
             <h2 className='font-bold text-base'> وضعیت اطلاعات حساب </h2>
             <NavLink to='/layoutPanel/profile'> <PencilEdit01Icon className='text-blue-500 size-6 cursor-pointer' /> </NavLink>
