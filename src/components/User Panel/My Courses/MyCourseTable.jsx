@@ -168,20 +168,36 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
       <TableHeader>
         <TableColumn>IMG</TableColumn>
         <TableColumn>INFO</TableColumn>
+        <TableColumn></TableColumn>
       </TableHeader>
         <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
             {myCourses.map((item, index) => {
-                return <TableRow onClick={() => handleOpenModal(item.courseId)} key={index}>
-                    <TableCell> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
-                    <TableCell>
+              let costThisCourse= payments[item.courseId]||0;
+              let percentage=0
+              if(costThisCourse!=0){
+                percentage=((costThisCourse/item.cost)*100)
+              }
+
+                return <TableRow key={index}>
+                    <TableCell onClick={() => handleOpenModal(item.courseId)}> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
+                    <TableCell onClick={() => handleOpenModal(item.courseId)}>
                         <div className="flex flex-col gap-2">
-                            <div className="max-w-40 font-bold text-xl truncate"> {item.courseTitle} </div>
+                            <div className="max-w-40 font-bold text-xl h-6 truncate"> {item.courseTitle} </div>
                             <div className="flex flex-col justify-center gap-1">
                                 <div className="max-w-56 truncate text-[#787878]"> {item.fullName.replace('-', ' ')} </div> 
                                 <div className="max-w-32 truncate text-[#787878]"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div>
                             </div>
                         </div>
                     </TableCell>
+                    <TableCell>
+                    {percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>{statusLastPayment[item.courseId]==false?notifyError():Notif(index)}}/> </NavLink> }
+                      {isModalOpen && keyOpen==index &&
+
+                        <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={setIsModalOpen} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
+
+                      }
+                      
+                      </TableCell>
                 </TableRow>
             })}
         </TableBody>

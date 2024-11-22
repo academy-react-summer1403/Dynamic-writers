@@ -26,8 +26,8 @@ const MyReserveCom = () => {
       const data = await GetAllPayment()
       if(data) {
         setMyPayment(data)
-        setIsLoading(false)
       }
+      setIsLoading(false)
     }
 
   return (
