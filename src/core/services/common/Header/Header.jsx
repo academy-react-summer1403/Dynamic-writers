@@ -8,7 +8,6 @@ import { Button, useDisclosure, User } from '@nextui-org/react'
 import HamberMenu from './HamberMenu'
 import { getItem, setItem } from '../storage'
 import { motion } from "framer-motion"
-import ImageProcessing from '../../../../components/AI/ImageProcessing'
 
 const Header = ({ darkMode, setDarkMode }) => {
 

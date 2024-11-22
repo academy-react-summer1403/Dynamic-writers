@@ -11,10 +11,11 @@ import MyComment from './Comments/Comment/MyComment'
 import { getMyCommentsCourse } from '../../../core/services/api/MyComments/getMyCommentCourse'
 import { getMyCommentsNew } from '../../../core/services/api/MyComments/getMyCommentsNew'
 import CommentModal from '../../Comment&Reply/CommentModal'
-import { useDisclosure } from '@nextui-org/react'
+import { Calendar, useDisclosure } from '@nextui-org/react'
 import MyCommentModal from './Comments/MyCommentModal'
-import Loading from '../../../core/services/common/Loading/loading'
-import { motion } from 'framer-motion'
+import {getLocalTimeZone, parseDate, today} from '@internationalized/date';
+import {I18nProvider} from "@react-aria/i18n";
+
 
 const Dashboard = () => {
 
@@ -78,6 +79,8 @@ const Dashboard = () => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
+  const date = new Date()
+
   return (
     <div className='flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
     <div className='h-full w-full flex flex-col gap-5 iranSans'>
@@ -115,9 +118,20 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className='h-full dark:bg-slate-700 dark:text-white bg-white overflow-hidden rounded-2xl py-3 px-4 text-center hidden md:block'>
-          <div className='bg-red-500 text-yellow-300 text-sm truncate font-semibold flex justify-center items-center rotate-12 translate-x-[60px] md:w-[150%] w-96 my-28 h-10 gap-3'> <WifiError01Icon />  این باکس ار ماتریکس خارج شده است <WifiError01Icon /> </div>
-        </div>
+       <I18nProvider locale='fa-IR'> <Calendar aria-label="Date (Uncontrolled)" className='shadow-none h-full md:block hidden' value={today(getLocalTimeZone())}  classNames={{
+          gridHeader: 'text-white bg-blue-500',
+          headerWrapper: 'text-white bg-blue-500',
+          gridHeaderRow: 'text-white bg-blue-500',
+          gridHeaderCell: 'text-white bg-blue-500',
+          header: 'text-white',
+          prevButton: 'text-white',
+          nextButton: 'text-white',
+          title: 'text-white',
+          base: 'bg-white',
+          cell: 'bg-white',
+          gridBody: 'bg-white',
+        }} />
+        </I18nProvider>
         
         <div className='md:h-full h-72 dark:bg-slate-700 md:col-auto col-span-2 dark:text-white bg-white rounded-2xl py-3 px-4 flex flex-col justify-between'>
           <div className='w-full h-fit flex justify-between items-center'>

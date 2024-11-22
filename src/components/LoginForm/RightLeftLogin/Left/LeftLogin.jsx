@@ -4,7 +4,7 @@ import FormGenerate from '../../FormGenerate';
 import { postLogin } from '../../../../core/services/api/auth';
 import BahrLogo from '../../../../assets/Bahr.png'
 import { MailEdit02Icon, PasswordValidationIcon,  } from 'hugeicons-react'
-import { Link, useNavigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 import { getItem, setItem } from '../../../../core/services/common/storage';
 import { toast, ToastContainer } from 'react-toastify'
 import { Button } from '@nextui-org/react';
@@ -48,7 +48,27 @@ const LeftLogin = () => {
         else{
             setItem('expire', true)
             setItem('token', user.token)
-            setItem('userId', user.id)    
+            setItem('apiKey', user.apiKey)
+            setItem('userId', user.id)
+            const userOb = {
+                id: user.id,
+                token: user.token,
+                phoneNumber: user.phoneNumber,
+                apiKey: user.apiKey
+              };
+
+              let existingUsers = JSON.parse(JSON.parse(getItem('users'))) || [];
+
+              if (!Array.isArray(existingUsers)) {
+                existingUsers = [];
+              }
+
+              existingUsers = existingUsers.filter(user => user.id !== userOb.id);
+
+              existingUsers.push(userOb);
+
+              setItem('users', JSON.stringify(existingUsers));
+              
             navigate('/layoutPanel/dashboard')
         }
     }

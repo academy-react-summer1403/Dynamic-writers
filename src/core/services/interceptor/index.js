@@ -55,7 +55,10 @@ instance.interceptors.request.use((opt) => {
     removeItem("token");
   }
 
+  const apiKey = getItem('apiKey')
+
   if (token) opt.headers.Authorization = "Bearer " + JSON.parse(token);
+  if (apiKey) opt.headers['x-api-key'] = JSON.parse(apiKey);
 
   toast.dismiss('loading');
   // toast.loading('در حال باگزاری...', { toastId: "loading", autoClose: false });
