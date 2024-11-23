@@ -78,7 +78,7 @@ const FaceDetection = () => {
     }
 
     if (isRunning) {
-      requestAnimationFrame(detect); // ادامه تشخیص فقط اگر isRunning فعال باشد
+      requestAnimationFrame(detect);
     }
   };
 
