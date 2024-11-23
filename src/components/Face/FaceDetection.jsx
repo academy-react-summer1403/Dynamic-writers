@@ -14,24 +14,33 @@ const FaceDetection = () => {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     videoRef.current.srcObject = stream;
     videoRef.current.play();
-    loadModel();
+  
+    await loadModel();
+  
+    if (detector) {
+      detectFaces();
+    }
+  
     setIsRunning(true);
   };
+  
   
   const stopVideo = () => {
     if (videoRef.current) {
       const stream = videoRef.current.srcObject;
       if (stream) {
         const tracks = stream.getTracks();
-        tracks.forEach((track) => track.stop()); // متوقف کردن استریم
+        tracks.forEach((track) => {
+          track.stop();
+        });
       }
-      videoRef.current.srcObject = null; // پاک کردن منبع ویدیو
+      videoRef.current.srcObject = null;
     }
-    setIsRunning(false); // تنظیم حالت غیرفعال
-  };
+    setIsRunning(false);
+    }
   
 
-  let detector = null; // ذخیره مدل در متغیری خارج از تابع
+  let detector = null;
 
     const loadModel = async () => {
     if (!detector) {
@@ -42,36 +51,40 @@ const FaceDetection = () => {
             solutionPath: `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection`,
         }
         );
-        setIsModelLoaded(true); // مدل بارگذاری شده است
+        setIsModelLoaded(true);
     }
     };
 
 
-  const detectFaces = async (model) => {
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+  const detectFaces = async () => {
+  const video = videoRef.current;
+  const canvas = canvasRef.current;
+  const ctx = canvas.getContext("2d");
 
-    const detect = async () => {
-      if (video.readyState === 4) {
-        const faces = await model.estimateFaces(video);
+  const detect = async () => {
+    if (isRunning && video.readyState === 4) {
+      const faces = await detector.estimateFaces(video);
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
 
-        faces.forEach((face) => {
-          const { xMin, yMin, width, height } = face.boundingBox;
-          ctx.strokeStyle = "red";
-          ctx.lineWidth = 2;
-          ctx.strokeRect(xMin, yMin, width, height);
-        });
-      }
-      requestAnimationFrame(detect);
-    };
+      faces.forEach((face) => {
+        const { xMin, yMin, width, height } = face.boundingBox;
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(xMin, yMin, width, height);
+      });
+    }
 
-    detect();
+    if (isRunning) {
+      requestAnimationFrame(detect); // ادامه تشخیص فقط اگر isRunning فعال باشد
+    }
   };
+
+  detect();
+};
+
 
   return (
     <div className="flex justify-center flex-col w-full">
@@ -81,7 +94,7 @@ const FaceDetection = () => {
       {isRunning && <Button className="rounded-full bg-red-500 mx-auto text-white" onClick={stopVideo}>
             توقف
       </Button>}
-      <div className="my-2 rounded-full">
+      {!isModelLoaded ? <p className="text-center text-gray-500">در حال بارگذاری مدل...</p> : <div className="my-2 rounded-full">
         <video
           ref={videoRef}
           className={`block w-full ${isRunning ? 'h-full' : 'h-0'} rounded-xl relative`}
@@ -91,7 +104,7 @@ const FaceDetection = () => {
           ref={canvasRef}
           className="absolute top-0 left-0 rounded-xl"
         ></canvas>
-      </div>
+      </div>}
     </div>
   );
 };
