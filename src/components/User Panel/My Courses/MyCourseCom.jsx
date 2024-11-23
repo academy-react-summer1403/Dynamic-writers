@@ -6,6 +6,7 @@ import MyCourseTable from './MyCourseTable';
 import { getMyCourse } from '../../../core/services/api/Panel/MyCourse/getMyCourse';
 import { Button, Pagination, Select, SelectItem, Spinner } from '@nextui-org/react';
 import MyCourseFilterRes from './FilterRes/MyCourseFilterRes';
+import { ToastContainer } from 'react-toastify';
 
 const MyCourseCom = () => {
 
@@ -39,6 +40,7 @@ const MyCourseCom = () => {
     }, [])
     
     useEffect(() => {
+      console.log('first')
       getCourses()
     }, [reder])
    
@@ -51,6 +53,7 @@ const MyCourseCom = () => {
 
   return (
     <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
+      <ToastContainer/>
       <div className='md:hidden flex w-full h-full justify-between items-center'>
         <h2 className='text-[28px] font-bold'> دوره من </h2>
         <Button className='bg-blue-500 rounded-full text-white text-base font-semibold' onClick={() => setFilterClose(true)}> فیلتر </Button>

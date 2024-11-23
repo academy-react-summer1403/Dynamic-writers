@@ -10,26 +10,26 @@ import {
   import jMoment from 'moment-jalaali'
   import { MoneyAdd02Icon, ViewIcon } from "hugeicons-react";
   import { NavLink, } from "react-router-dom";
+  import toast, { Toaster } from 'react-hot-toast';
 import { getMyCourse } from "../../../core/services/api/Panel/MyCourse/getMyCourse";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { Spinner, useDisclosure } from "@nextui-org/react";
 import MyCourseModal from "./MyCourseModal";
 import GetPaymentById from "../../../core/services/api/Payment/GetPaymentById";
-import { ToastContainer,toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyPaymentModalForUser from './MyPaymentModalForUser';
 
-const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
+const MyCourseTable = ({ myCourse, isLoading }) => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [keyOpen, setkeyOpen] = useState(null)
   const [flag, setflag] = useState(false)
 
   const [openCourseId, setOpenCourseId] = useState(null)
   const [myCourses, setMyCourses] = useState([])
   const [payments, setPayments] = useState({});
-
+  const [render, setrender] = useState(false)
   const [statusLastPayment, setstatusLastPayment] = useState({});
+  const [activeModal, setActiveModal] = useState(null);
 
   const addCourse = () => {
     if(myCourse !== undefined) {
@@ -53,20 +53,24 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
     }
   }
   useEffect(() => {
+    console.log('opqwpeopedm')
     const fetchPayments = async () => {
       const paymentData = {};
       const laststatus = {};
       for (const item of myCourses) {
         const pay = await GetPaymentById(item.courseId);
+        pay.sort((a, b) => new Date(b.insertDate) - new Date(a.insertDate));
+        console.log(pay)
         let cost = 0;
         for (let pricePay in pay) {
           if(pay[pricePay].accept==true){
             cost += pay[pricePay].paid;
 
           }
-          if(pricePay==pay.length-1){
-            laststatus[item.courseId]=pay[pricePay].accept
-          }
+         
+        }
+        if (pay.length > 0) {
+          laststatus[item.courseId] = pay[0].accept;
         }
         paymentData[item.courseId] = cost;
         
@@ -78,17 +82,16 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
     if (myCourses.length > 0) {
       fetchPayments();
     }
-  }, [myCourses]);
+  }, [myCourses,render]);
   
-  const notifyError = () => toast.warn("آخرین فیش واریزی شما هنوز تایید نشده است",{position:"top-center",theme:"dark"});
+  const notifyError = () => toast.error("آخرین فیش واریزی شما هنوز تایید نشده است");
 
-  const [activeModal, setActiveModal] = useState(null);
 
-const Notif = (index) => {
-  if (statusLastPayment[myCourses[index].courseId] === false) {
-    notifyError();
+const Notif = (courseId) => {
+  if (statusLastPayment[courseId] === false) {
+    notifyError()
   } else {
-    setActiveModal(index); 
+    setActiveModal(courseId); 
     onOpen(true);
   }
 };
@@ -99,7 +102,7 @@ const closeModal = () => {
 };
   return (
     <div>
-    <ToastContainer/>
+      <Toaster/>
     <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
@@ -138,7 +141,7 @@ const closeModal = () => {
                 {flag==false && <Spinner className='py-[20px] px-[10px]' /> }
                   {item.paymentStatus}  
             </TableCell>
-            <TableCell> <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>             
+            <TableCell>  <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/>        
                 { openCourseId === item.courseId && <MyCourseModal
                     isOpen={true}
                     onOpen={() => handleOpenModal(item.courseId)}
@@ -159,10 +162,10 @@ const closeModal = () => {
 
             </TableCell>
             
-            <TableCell>{percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>Notif(index)}/> </NavLink> }
-             {activeModal === index &&
+            <TableCell>{percentage!=100 && flag!=false &&  <MoneyAdd02Icon className="size-4 cursor-pointer " color={`${statusLastPayment[item.courseId]==false?"red":"black"}`} onClick={()=>Notif(item.courseId)}/> }
+             {activeModal === item.courseId &&
               
-              <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
+              <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setrender} courseID={item.courseId} name={item.courseTitle}/>
 
             }
             
@@ -201,10 +204,10 @@ const closeModal = () => {
                         </div>
                     </TableCell>
                     <TableCell>
-                    {percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>Notif(index)}/> </NavLink> }
+                    {percentage!=100 && flag!=false && <MoneyAdd02Icon className="size-4 cursor-pointer" color={`${statusLastPayment[item.courseId]==false?"red":"black"}`} onClick={()=>Notif(item.courseId)}/>}
                       {activeModal === index &&
 
-                        <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
+                        <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setrender} courseID={item.courseId} name={item.courseTitle}/>
 
                       }
                       

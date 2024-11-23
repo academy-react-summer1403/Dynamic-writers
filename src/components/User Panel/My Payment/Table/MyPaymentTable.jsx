@@ -13,15 +13,12 @@ import {
 import { Pagination, Spinner, useDisclosure } from "@nextui-org/react";
 import MyPaymentModal from "../Modal/MyPaymentModal";
 
-import UploadImage from "../Modal/UploadImageForPayment";
 import { ToastContainer } from "react-toastify";
 
-const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
+const MyPaymentTable = ({ MyPayment,isLoading }) => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [keyOpen, setkeyOpen] = useState(null)
-  const {isOpen:isOpenTwo, onOpen:onOpenTwo, onOpenChange:onOpenChangeTwo} = useDisclosure();
 
 
   return (
@@ -45,7 +42,6 @@ const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
             <TableCell>
             <div className="flex gap-2 items-center"> 
               <NavLink to={``}> <ViewIcon onClick={() => {onOpen(true);setkeyOpen(index)}} className="size-4 cursor-pointer"/> </NavLink>   
-             {item.paymentInvoiceImage==null && <NavLink to={``}> <ImageUpload01Icon onClick={() => {setIsModalOpen(true);onOpenTwo(true);setkeyOpen(index)}} className="size-5 text-green-600 cursor-pointer"/></NavLink>}
             </div>
                 {onOpen && keyOpen==index  && <MyPaymentModal
                     isOpen={isOpen}
@@ -53,7 +49,6 @@ const MyPaymentTable = ({ MyPayment,isLoading,renderMainPage }) => {
                     courseId={item.courseId}
                     dataPaymentt={item}
                 /> }
-                { isModalOpen && keyOpen==index  && <UploadImage paymentId={item.paymentId} setrender={renderMainPage} image={item.paymentInvoiceImage} isOpen={isOpenTwo} setIsModalOpen={setIsModalOpen} onOpenChange={onOpenChangeTwo}/> }
 
             </TableCell>
           </TableRow>

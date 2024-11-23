@@ -17,10 +17,6 @@ const MyReserveCom = () => {
     useEffect(() => {
       getData()
     }, [])
-
-    useEffect(() => {
-      getData()
-    }, [render])
     
     const getData=async()=>{
       const data = await GetAllPayment()
@@ -39,7 +35,6 @@ const MyReserveCom = () => {
       <MyPaymentTable
         MyPayment={myPayment}
         isLoading={isLoading}
-        renderMainPage={setrender}
       />
     </div>
   )
