@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/react'
+import { Button, Tooltip } from '@nextui-org/react'
 import { Cancel01Icon, Delete01Icon, Login03Icon, Logout03Icon, SmartPhone01Icon } from 'hugeicons-react'
 import React from 'react'
 import { getItem, removeItem, setItem } from '../../../core/services/common/storage'
@@ -29,21 +29,28 @@ const MultiAcc = () => {
                 </div>
               </div>
               <div className='flex gap-2 items-center'>
-                {activeAccountId !== user.id && <Delete01Icon color='red' size={26} className='cursor-pointer' onClick={() => {
+                {activeAccountId !== user.id && <Tooltip color='danger' content=' حذف حساب ' className='capitalize'>
+                  <Delete01Icon color='red' size={26} className='cursor-pointer' onClick={() => {
                   const updatedItems = usersObj.filter(item => item.id !== user.id);
                   setItem('users', JSON.stringify(updatedItems))
                   navigate('/layoutPanel/dashboard')
-                }} />}
-                {activeAccountId === user.id ? <Logout03Icon color='red' className='cursor-pointer' onClick={() => {
+                }} />
+                </Tooltip>}
+                {activeAccountId === user.id ?
+                <Tooltip key={'danger'} color={'danger'} content={' خروج از حساب '} className="capitalize">
+                <Logout03Icon data-tip='خروج از حساب' color='red' className='cursor-pointer' onClick={() => {
                   removeItem('token')
                   removeItem('apiKey')
                   navigate('/login')
-                }} size={32} /> : <Login03Icon color='blue' className='cursor-pointer' onClick={() => {
+                }} size={32} />
+                </Tooltip> : <Tooltip key={'primary'} color={'primary'} content={' ورود به حساب '} className="capitalize">
+                <Login03Icon className='text-blue-500 dark:text-blue-300 cursor-pointer' onClick={() => {
                   setItem('token', user.token)
                   setItem('apiKey', user.apiKey)
                   setItem('userId', user.id)
                   navigate('/')
-                }} size={32} />}
+                }} size={32} />
+                </Tooltip>}
               </div>
             </li>
           })}

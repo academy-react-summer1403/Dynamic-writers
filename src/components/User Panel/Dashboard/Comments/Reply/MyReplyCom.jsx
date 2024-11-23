@@ -6,6 +6,7 @@ import AddReply from '../../../../Comment&Reply/AddReply'
 import { addLikeComment } from '../../../../../core/services/api/Comments/Like&DissLike/likeComment'
 import { addDissLikeComment } from '../../../../../core/services/api/Comments/Like&DissLike/disslikeComment'
 import { toast, ToastContainer } from 'react-toastify'
+import AddReplyCourse from './AddReplyCourse'
 const MyReplyCom = ({
     id,
     title,
@@ -21,6 +22,7 @@ const MyReplyCom = ({
     pictureAddress,
     currentUserLikeId,
     Oid,
+    getRepliesAll
 }) => {
 
 
@@ -111,8 +113,8 @@ const MyReplyCom = ({
                     <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px] dark:text-white'> {likeCounted} <ThumbsUpIcon className={`${like ? 'text-red-500' : 'text-black dark:text-white' } cursor-pointer`} onClick={() => {likeComment(), liking(), countingLike()}} /> </div>
                     <div className='flex gap-2 flex-row-reverse font-[500] text-[#2F2F2F] text-[16px] dark:text-white'> {dislikeCounted} <ThumbsDownIcon className={`${dislike ? 'text-red-500' : 'text-black dark:text-white'} cursor-pointer`} onClick={() => {dissLikeComment(), disliking(), countingDislike()}} /> </div>
                 </div>
-                {!checkAdd && <Button onClick={() => {setCheckAdd(true), console.log(checkAdd)}} className='bg-white w-fit text-blue-500 border rounded-full border-blue-500 text-base font-semibold dark:bg-slate-700 dark:border-none dark:text-white'> جواب دادن </Button>}
-                {checkAdd && <AddReply commentId={id} Oid={Oid} />}
+                {!checkAdd && <Button onClick={() => {setCheckAdd(true)}} className='bg-white w-fit text-blue-500 border rounded-full border-blue-500 text-base font-semibold dark:bg-slate-700 dark:border-none dark:text-white'> جواب دادن </Button>}
+                {checkAdd && <AddReplyCourse setCheckAdd={setCheckAdd} commentId={id} Oid={Oid} />}
             </div>
         </div>
         <ToastContainer />

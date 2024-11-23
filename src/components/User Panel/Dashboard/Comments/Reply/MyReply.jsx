@@ -24,10 +24,14 @@ const MyReply = ({ commentId, Oid }) => {
       const response = await getRepliesNew(commentId)
       setReply(response)
     }
-  
-    useEffect(() => {
+    
+    const getRepliesAll = () => {
       getReplies()
       repliesNew()
+    }
+
+    useEffect(() => {
+      getRepliesAll()
     }, [])
 
     return <>
@@ -48,6 +52,7 @@ const MyReply = ({ commentId, Oid }) => {
                 pictureAddress={reply.pictureAddress}
                 currentUserLikeId={reply.currentUserLikeId}
                 Oid={Oid}
+                getRepliesAll={getRepliesAll}
             />
             </li>
         })}

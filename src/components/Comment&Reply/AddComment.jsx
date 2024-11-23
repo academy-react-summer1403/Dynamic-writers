@@ -25,16 +25,9 @@ const AddComment = ({ Oid, setCheckAdd }) => {
 
       const response = await addCommentCourse(formData)
 
-      if(value.title.length < 10 || value.describe.length < 10){
-        ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
-      }
-
       if(response.success === true) {
-          // ToastSuccess(' عملبات با موفقیت ثبت شد ')
+          ToastSuccess(' عملبات با موفقیت ثبت شد ')
           setCheckAdd(false)
-      }
-      else{
-          ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
       }
     }
     else if(window.location.pathname.includes('NewDetail')) {

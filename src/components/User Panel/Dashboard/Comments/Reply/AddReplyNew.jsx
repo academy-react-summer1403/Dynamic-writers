@@ -29,14 +29,13 @@ const AddReplyNew = ({  commentId, Oid, setCheckAdd, getComments  }) => {
     
         const response = await addReplyNew(raw)
     
-        if(value.title.length < 10 || value.describe.length < 10){
-            notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
-        }
-    
         if(response.success === true) {
             notifySuccess(response.message)
             setCheckAdd(false)
             getComments()
+        }
+        else{
+          toast.error(' مشکلی پیش اومده است ')
         }
     
       }

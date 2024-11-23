@@ -93,7 +93,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
             <TableCell>
             <div className="flex gap-2 items-center"> 
               <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>   
-              <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.favoriteId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>           
+              {item.accept === false && <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.favoriteId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>}           
             </div>
                 { openCourseId === item.courseId && <MyReserveModal
                     isOpen={true}
