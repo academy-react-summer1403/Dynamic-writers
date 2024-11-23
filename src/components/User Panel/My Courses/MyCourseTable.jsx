@@ -82,12 +82,21 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
   
   const notifyError = () => toast.warn("آخرین فیش واریزی شما هنوز تایید نشده است",{position:"top-center",theme:"dark"});
 
-  const Notif=(index)=>{
-    
-      setkeyOpen(index)
-      setIsModalOpen(true);
-      onOpen(true)
+  const [activeModal, setActiveModal] = useState(null);
+
+const Notif = (index) => {
+  if (statusLastPayment[myCourses[index].courseId] === false) {
+    notifyError();
+  } else {
+    setActiveModal(index); 
+    onOpen(true);
   }
+};
+
+const closeModal = () => {
+  setActiveModal(null); 
+  onOpen(false);
+};
   return (
     <div>
     <ToastContainer/>
@@ -145,14 +154,15 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
                     lastUpdate={item.lastUpdate}
                     paymentStatus={item.paymentStatus}
                     teacherId={item.teacherId}
+                    percentage={percentage}
                 /> }
 
             </TableCell>
             
-            <TableCell>{percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>{statusLastPayment[item.courseId]==false?notifyError():Notif(index)}}/> </NavLink> }
-             {isModalOpen && keyOpen==index &&
-
-              <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={setIsModalOpen} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
+            <TableCell>{percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>Notif(index)}/> </NavLink> }
+             {activeModal === index &&
+              
+              <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
 
             }
             
@@ -172,6 +182,7 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
       </TableHeader>
         <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
             {myCourses.map((item, index) => {
+              console.log(index)
               let costThisCourse= payments[item.courseId]||0;
               let percentage=0
               if(costThisCourse!=0){
@@ -190,10 +201,10 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
                         </div>
                     </TableCell>
                     <TableCell>
-                    {percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>{statusLastPayment[item.courseId]==false?notifyError():Notif(index)}}/> </NavLink> }
-                      {isModalOpen && keyOpen==index &&
+                    {percentage!=100 && <NavLink to={``}> <MoneyAdd02Icon className="size-4 cursor-pointer" onClick={()=>Notif(index)}/> </NavLink> }
+                      {activeModal === index &&
 
-                        <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={setIsModalOpen} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
+                        <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setreder} courseID={item.courseId} name={item.courseTitle}/>
 
                       }
                       

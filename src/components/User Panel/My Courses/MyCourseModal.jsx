@@ -15,7 +15,9 @@ const MyCourseModal = ({
     onOpenChange,
     courseId,
     paymentStatus,
-    teacherId}) => {
+    teacherId,
+    percentage
+}) => {
   
     const [teacher, setTeacher] = useState([])
     const [course, setCourse] = useState([])
@@ -116,12 +118,13 @@ const MyCourseModal = ({
                     <h2 className='text-base text-[#787878]'> وضعیت پرداختی </h2>
                     <div className='flex justify-between w-full items-center'>
                         <div className='flex items-center w-fit whitespace-nowrap gap-2'>
-                        <CircularProgressbar className="size-12" value='70' text={70 + '%'} styles={buildStyles({
-                            textColor: `orange`,
-                            textSize: '25px',
-                            display: 'flex',
-                            pathColor: `orange`,
-                            trailColor: 'transparent'
+
+                        <CircularProgressbar className="size-12" value={`${percentage!=100? percentage.toFixed(0):"100"}`} text={`${percentage!=100? percentage.toFixed(0):"100"}`+"%"} styles={buildStyles({
+                        textColor: percentage >= 25 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
+                        textSize: '25px',
+                        display: 'flex',
+                        pathColor: percentage >= 25 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
+                        trailColor: 'transparent'
                         })} /> 
                         <span> {paymentStatus} </span>
                         </div>
