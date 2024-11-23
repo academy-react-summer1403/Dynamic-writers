@@ -168,9 +168,9 @@ const InformationUser = ({reload}) => {
                 value={profile.profileCompletionPercentage}
                 text={`${profile.profileCompletionPercentage}%`}
                 strokeWidth={5}
-                styles={buildStyles({textColor:`${profile.profileCompletionPercentage >= 80 ? "#57b4f3":"#FFC619"}`,textSize:"30px",pathColor:`${profile.profileCompletionPercentage >= 80 ? "#467ccd":"#FFC619"}`,trailColor:"#f0f0f0",TextAlignment:"Center" })}/>
+                styles={buildStyles({textColor:`${profile.profileCompletionPercentage >= 80 ? "blue":"orange"}`,textSize:"24px",pathColor:`${profile.profileCompletionPercentage >= 80 ? "blue":"orange"}`,trailColor:"#f0f0f0",TextAlignment:"Center" })}/>
             </div>
-            <span className={`${profile.profileCompletionPercentage >= 80 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px] whitespace-nowrap`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
+            <span className={`${profile.profileCompletionPercentage >= 80 ? "text-[#467ccd]":"text-[#FFC619]"} text-[14px] font-semibold whitespace-nowrap`}> اطلاعات حساب‌ کابری شما تکمیل {profile.profileCompletionPercentage==100 ? "است":"نیست"}</span>
           </div>
         </div>
         <ToastContainer/>

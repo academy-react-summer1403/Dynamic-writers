@@ -127,9 +127,9 @@ const Dashboard = () => {
           prevButton: 'text-white',
           nextButton: 'text-white',
           title: 'text-white',
-          base: 'bg-white',
-          cell: 'bg-white',
-          gridBody: 'bg-white',
+          base: 'bg-white dark:bg-slate-700',
+          cell: 'bg-white dark:bg-slate-700',
+          gridBody: 'bg-white dark:bg-slate-700',
         }} />
         </I18nProvider>
 
