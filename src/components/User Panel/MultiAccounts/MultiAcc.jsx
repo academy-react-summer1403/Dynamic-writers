@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/react'
+import { Button, Tooltip } from '@nextui-org/react'
 import { Cancel01Icon, Delete01Icon, Login03Icon, Logout03Icon, SmartPhone01Icon } from 'hugeicons-react'
 import React from 'react'
 import { getItem, removeItem, setItem } from '../../../core/services/common/storage'
@@ -34,16 +34,21 @@ const MultiAcc = () => {
                   setItem('users', JSON.stringify(updatedItems))
                   navigate('/layoutPanel/dashboard')
                 }} />}
-                {activeAccountId === user.id ? <Logout03Icon color='red' className='cursor-pointer' onClick={() => {
+                {activeAccountId === user.id ?
+                <Tooltip key={'danger'} color={'danger'} content={' خروج از حساب '} className="capitalize">
+                <Logout03Icon data-tip='خروج از حساب' color='red' className='cursor-pointer' onClick={() => {
                   removeItem('token')
                   removeItem('apiKey')
                   navigate('/login')
-                }} size={32} /> : <Login03Icon color='blue' className='cursor-pointer' onClick={() => {
+                }} size={32} />
+                </Tooltip> : <Tooltip key={'primary'} color={'primary'} content={' ورود به حساب '} className="capitalize">
+                <Login03Icon color='blue' className='cursor-pointer' onClick={() => {
                   setItem('token', user.token)
                   setItem('apiKey', user.apiKey)
                   setItem('userId', user.id)
                   navigate('/')
-                }} size={32} />}
+                }} size={32} />
+                </Tooltip>}
               </div>
             </li>
           })}

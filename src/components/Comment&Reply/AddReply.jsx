@@ -9,7 +9,7 @@ import { ToastError } from '../../core/services/common/Toast/ToastError'
 import { ToastSuccess } from '../../core/services/common/Toast/ToastSucces'
 import { ToastWarn } from '../../core/services/common/Toast/ToastWarn'
 
-const AddReply = ({ commentId, Oid, setCheckAdd }) => {
+const AddReply = ({ commentId, Oid, setCheckAdd, getRepliesAll }) => {
 
   const addReply = async (value) => {
 
@@ -21,15 +21,15 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
       formData.append('CommentId', commentId)
   
       const response = await addReplyComment(formData)
-      // console.log(response)
   
         if(value.title.length < 10 || value.describe.length < 10){
           ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
         }
   
         if(response.success == true) {
-            // ToastSuccess(' عملیات با موفقیت انجام شد ')
+            ToastSuccess(' عملیات با موفقیت انجام شد ')
             setCheckAdd(false)
+            getRepliesAll()
         }
         else{
             ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
@@ -47,13 +47,13 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
         if(value.title.length < 10 || value.describe.length < 10){
           ToastWarn(" تعداد کاراکتر های امکان از 10 تا 390 است ")
         }
-  
+
         if(response.success === true) {
             ToastSuccess(' عملیات با موفقیت انجام شد ')
             setCheckAdd(false)
         }
         else{
-            ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+          ToastError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
         }
     }
 

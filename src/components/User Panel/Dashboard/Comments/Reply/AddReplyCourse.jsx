@@ -28,12 +28,9 @@ const AddReplyCourse = ({  commentId, Oid, setCheckAdd, getComments  }) => {
         formData.append('CommentId', commentId)
 
         const response = await addReplyComment(formData)
+        console.log(response)
 
-        if(value.title.length < 10 || value.describe.length < 10){
-            notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
-        }
-        console.log("S")
-        if(response.success == true) {
+        if(response.success === true) {
             setCheckAdd(false)
             getComments()
         }
