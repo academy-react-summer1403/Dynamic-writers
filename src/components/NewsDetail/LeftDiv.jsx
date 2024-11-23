@@ -13,11 +13,6 @@ const LeftDiv = ({New}) => {
 
   const [comments, setComment] = useState([])
 
-  useEffect(() => {
-    getComments()
-    textCalc();
-  },[])
-
   const getComments = async () => {
     const params = {
       id: New.detailsNewsDto.id
@@ -26,6 +21,11 @@ const LeftDiv = ({New}) => {
     const response2 = await getCommentsNew(params)
     setComment(response2)
   }
+
+  useEffect(() => {
+    getComments()
+    textCalc();
+  },[])
 
   function textCalc(){
     if (text.length > 0) {

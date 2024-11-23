@@ -28,7 +28,7 @@ const AddReply = ({ commentId, Oid, setCheckAdd }) => {
         }
   
         if(response.success == true) {
-            ToastSuccess(' عملیات با موفقیت انجام شد ')
+            // ToastSuccess(' عملیات با موفقیت انجام شد ')
             setCheckAdd(false)
         }
         else{

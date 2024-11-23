@@ -17,7 +17,8 @@ const MyCommentCourseCom = ({
   Oid,
   title,
   describe,
-  modal
+  modal,
+  getComments
 }) => {
 
 
@@ -62,7 +63,7 @@ const MyCommentCourseCom = ({
             </div>
         </div>
 
-        {checkAdd && <AddReplyCourse commentId={id} Oid={Oid} setCheckAdd={setCheckAdd} />}
+        {checkAdd && <AddReplyCourse getComments={getComments} commentId={id} Oid={Oid} setCheckAdd={setCheckAdd} />}
         
         {replyVisible && <MyReply commentId={id} Oid={Oid} />}
         <ToastContainer/>

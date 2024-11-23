@@ -30,8 +30,7 @@ const AddComment = ({ Oid, setCheckAdd }) => {
       }
 
       if(response.success === true) {
-        console.log(response)
-          ToastSuccess(' عملبات با موفقیت ثبت شد ')
+          // ToastSuccess(' عملبات با موفقیت ثبت شد ')
           setCheckAdd(false)
       }
       else{

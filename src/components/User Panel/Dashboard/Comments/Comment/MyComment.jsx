@@ -3,7 +3,7 @@ import MyCommentCom from './MyCommentCourseCom'
 import MyCommentNewCom from './MyCommentNewCom'
 import MyCommentCourseCom from './MyCommentCourseCom'
 
-const MyComment = ({  comments, commentsNew }) => {
+const MyComment = ({  comments, commentsNew, getComments }) => {
   return (
     <div className='w-full h-[300px] gap-10 justify-between flex p-6 iranSans' dir='rtl'>
        <div className='w-2/4 h-[750px] flex flex-col overflow-hidden gap-8 dark:bg-slate-700 dark:text-white'>
@@ -20,6 +20,7 @@ const MyComment = ({  comments, commentsNew }) => {
                 Oid={item.courseId}
                 title={item.title}
                 describe={item.describe}
+                getComments={getComments}
             />
         })}
         {comments[0] == undefined && <span className='mx-auto text-[18px] text-gray-400 font-semibold flex items-center'> نظری ثبت نشده است </span>}
@@ -39,6 +40,7 @@ const MyComment = ({  comments, commentsNew }) => {
                 Oid={item.newsId}
                 title={item.title}
                 describe={item.describe}
+                getComments={getComments}
             />
         })}
         {commentsNew[0] == undefined && <span className='mx-auto text-[18px] text-gray-400 font-semibold flex items-center'> نظری ثبت نشده است </span>}

@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { addReplyNew } from '../../../../../core/services/api/Comments/New/Add/AddReplyCommentNew'
 
-const AddReplyNew = ({  commentId, Oid, setCheckAdd  }) => {
+const AddReplyNew = ({  commentId, Oid, setCheckAdd, getComments  }) => {
 
     const notifySuccess = (message) => {
         toast.dismiss()
@@ -36,9 +36,7 @@ const AddReplyNew = ({  commentId, Oid, setCheckAdd  }) => {
         if(response.success === true) {
             notifySuccess(response.message)
             setCheckAdd(false)
-        }
-        else{
-            notifyError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+            getComments()
         }
     
       }
