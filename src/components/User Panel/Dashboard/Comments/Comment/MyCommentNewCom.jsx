@@ -17,7 +17,8 @@ const MyCommentNewCom = ({
   Oid,
   title,
   describe,
-  modal
+  modal,
+  getComments
 }) => {
 
 
@@ -61,7 +62,7 @@ const MyCommentNewCom = ({
                 {replyCount > 0 && <button onClick={() => setVisible()} className='whitespace-nowrap text-[14px] font-[500] underline flex gap-1 items-center'> مشاهده جواب‌ها ({replyCount}) {replyVisible ? <ArrowUp01Icon className='size-5' /> : <ArrowDown01Icon className='size-5' />} </button> }
             </div>
 
-            {checkAdd && <AddReplyNew commentId={id} Oid={Oid} setCheckAdd={setCheckAdd} />}
+            {checkAdd && <AddReplyNew getComments={getComments} commentId={id} Oid={Oid} setCheckAdd={setCheckAdd} />}
 
         </div>
         

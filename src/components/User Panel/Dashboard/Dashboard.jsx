@@ -71,10 +71,14 @@ const Dashboard = () => {
     setCommentsNew(response.myNewsCommetDtos)
   }
 
-  useEffect(() => {
-    getProfile()
+  const getComments = () => {
     getCommentsCourse()
     getCommentsNew()
+  }
+
+  useEffect(() => {
+    getComments()
+    getProfile() 
   }, [])
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -108,6 +112,7 @@ const Dashboard = () => {
           <MyComment
             comments={commentsCourse}
             commentsNew={commentsNew}
+            getComments={getComments}
           />
           <MyCommentModal
             isOpen={isOpen}

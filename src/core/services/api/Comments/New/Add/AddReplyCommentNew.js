@@ -6,7 +6,12 @@ export const addReplyNew = async (raw) => {
 
   return result
   
-  } catch (error) {
-    // console.log(error.message)
-  }
+  } catch(error){
+    if(error.response.data.ErrorMessage){
+       toast.error(error.response.data.ErrorMessage + '  ' + error.response.data.StatusCode)
+    }
+    else{
+       toast.error(' مشکلی پیش آمده است ')
+   }
+ }
 }

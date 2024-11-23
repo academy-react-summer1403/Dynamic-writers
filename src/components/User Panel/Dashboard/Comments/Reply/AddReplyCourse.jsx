@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { addReplyComment } from '../../../../../core/services/api/Comments/Add/AddReplyComment'
 
-const AddReplyCourse = ({  commentId, Oid, setCheckAdd  }) => {
+const AddReplyCourse = ({  commentId, Oid, setCheckAdd, getComments  }) => {
 
     const notifySuccess = (message) => {
         toast.dismiss()
@@ -32,13 +32,10 @@ const AddReplyCourse = ({  commentId, Oid, setCheckAdd  }) => {
         if(value.title.length < 10 || value.describe.length < 10){
             notifyError(" تعداد کاراکتر های امکان از 10 تا 390 است ")
         }
-
+        console.log("S")
         if(response.success == true) {
-            notifySuccess(response.message)
             setCheckAdd(false)
-        }
-        else{
-            notifyError( ' درخواست شما ثبت نشد مقادیر رو با دقت وارد کنید ' )
+            getComments()
         }
     }
 
