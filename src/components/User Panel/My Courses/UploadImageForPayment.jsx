@@ -16,15 +16,12 @@ const UploadImage = ({
   const [UploadImage, setUploadImage] = useState(null)
   const AddImage=async (image)=>{
     setUploadImage(image)
-    console.log(dataAPIForPayment.courseID)
     let massage=await Pay(dataAPIForPayment.courseID,dataAPIForPayment.price,dataAPIForPayment.time,dataAPIForPayment.numberInvoice,image)
-    console.log(massage)
     setreder(prev=>!prev)
     setIsModalOpen(false)
   }
   return (
     <Fragment>
-      {console.log(dataAPIForPayment.courseID)}
     <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top' size={'lg'}>
       <ModalContent >
         <ModalHeader className="flex flex-row-reverse items-center gap-1 justify-end">

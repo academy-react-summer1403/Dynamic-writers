@@ -53,14 +53,12 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
     }
   }
   useEffect(() => {
-    console.log('opqwpeopedm')
     const fetchPayments = async () => {
       const paymentData = {};
       const laststatus = {};
       for (const item of myCourses) {
         const pay = await GetPaymentById(item.courseId);
         pay.sort((a, b) => new Date(b.insertDate) - new Date(a.insertDate));
-        console.log(pay)
         let cost = 0;
         for (let pricePay in pay) {
           if(pay[pricePay].accept==true){
@@ -185,7 +183,6 @@ const closeModal = () => {
       </TableHeader>
         <TableBody emptyContent={"دوره ای برای نمایش وجود ندارد."}>
             {myCourses.map((item, index) => {
-              console.log(index)
               let costThisCourse= payments[item.courseId]||0;
               let percentage=0
               if(costThisCourse!=0){

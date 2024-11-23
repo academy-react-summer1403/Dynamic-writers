@@ -40,7 +40,6 @@ const MyCourseCom = () => {
     }, [])
     
     useEffect(() => {
-      console.log('first')
       getCourses()
     }, [reder])
    
