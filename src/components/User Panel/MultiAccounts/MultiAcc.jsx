@@ -29,11 +29,13 @@ const MultiAcc = () => {
                 </div>
               </div>
               <div className='flex gap-2 items-center'>
-                {activeAccountId !== user.id && <Delete01Icon color='red' size={26} className='cursor-pointer' onClick={() => {
+                {activeAccountId !== user.id && <Tooltip color='danger' content=' حذف حساب ' className='capitalize'>
+                  <Delete01Icon color='red' size={26} className='cursor-pointer' onClick={() => {
                   const updatedItems = usersObj.filter(item => item.id !== user.id);
                   setItem('users', JSON.stringify(updatedItems))
                   navigate('/layoutPanel/dashboard')
-                }} />}
+                }} />
+                </Tooltip>}
                 {activeAccountId === user.id ?
                 <Tooltip key={'danger'} color={'danger'} content={' خروج از حساب '} className="capitalize">
                 <Logout03Icon data-tip='خروج از حساب' color='red' className='cursor-pointer' onClick={() => {
@@ -42,7 +44,7 @@ const MultiAcc = () => {
                   navigate('/login')
                 }} size={32} />
                 </Tooltip> : <Tooltip key={'primary'} color={'primary'} content={' ورود به حساب '} className="capitalize">
-                <Login03Icon color='blue' className='cursor-pointer' onClick={() => {
+                <Login03Icon className='text-blue-500 dark:text-blue-300 cursor-pointer' onClick={() => {
                   setItem('token', user.token)
                   setItem('apiKey', user.apiKey)
                   setItem('userId', user.id)
