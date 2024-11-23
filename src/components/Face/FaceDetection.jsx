@@ -94,7 +94,7 @@ const FaceDetection = () => {
       {isRunning && <Button className="rounded-full bg-red-500 mx-auto text-white" onClick={stopVideo}>
             توقف
       </Button>}
-      {!isModelLoaded ? <p className="text-center text-gray-500">در حال بارگذاری مدل...</p> : <div className="my-2 rounded-full">
+      <div className="my-2 relative rounded-full">
         <video
           ref={videoRef}
           className={`block w-full ${isRunning ? 'h-full' : 'h-0'} rounded-xl relative`}
@@ -104,7 +104,7 @@ const FaceDetection = () => {
           ref={canvasRef}
           className="absolute top-0 left-0 rounded-xl"
         ></canvas>
-      </div>}
+      </div>
     </div>
   );
 };

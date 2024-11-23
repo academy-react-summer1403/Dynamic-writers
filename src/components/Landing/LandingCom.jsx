@@ -45,12 +45,12 @@ function LandingCom() {
         })}
       </div>
 
-      <div className='mx-auto text-center mt-20'> 
+      {/* <div className='mx-auto text-center mt-20'> 
         <h2 className='text-2xl iranSansBold'> میخوای خودت رو ببینی ؟ </h2>
         <span className='text-gray-400 iranSansBold text-base'> یک انسان بسیار زیبا این پایین منتظرته بزن رو دکمه و ببینش! </span>
-      </div>
+      </div> */}
 
-      <BoxSecond />
+      {/* <BoxSecond /> */}
 
       <div className='mx-auto text-center mt-20'> 
         <h2 className='text-2xl iranSansBold'> محبوب ترین دوره ها </h2>
