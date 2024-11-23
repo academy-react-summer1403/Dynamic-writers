@@ -117,12 +117,12 @@ const MyCourseTable = ({ myCourse, isLoading ,setreder}) => {
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
             <TableCell className="text-base font-semibold invisible md:visible"> {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span> </TableCell>
 
-            <TableCell className={`invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5 ${item.paymentStatus=="پرداخت نشده"?"text-red-500":"text-green-600"}`}>             
-                {flag!=false && <CircularProgressbar className="size-12" value={`${percentage!=100? percentage.toFixed(2):"100"}`} text={`${percentage!=100? percentage.toFixed(2):"100"}`+"%"} styles={buildStyles({
-                textColor: percentage >= 50 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
+            <TableCell className={`invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5 ${item.paymentStatus=="پرداخت نشده"?"text-red-500 dark:text-white":"dark:text-white text-green-600"}`}>             
+                {flag!=false && <CircularProgressbar className="size-12" value={`${percentage!=100? percentage.toFixed(0):"100"}`} text={`${percentage!=100? percentage.toFixed(0):"100"}`+"%"} styles={buildStyles({
+                textColor: percentage >= 25 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
                 textSize: '25px',
                 display: 'flex',
-                pathColor: percentage >= 50 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
+                pathColor: percentage >= 25 ? (percentage == 100 ? "#2E8B57" : "orange") : "red",
                 trailColor: 'transparent'
                 })} /> 
                 }
