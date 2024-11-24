@@ -19,16 +19,16 @@ const MyPaymentModalForUser = ({
     onOpenChange,
     maxNumber,
     setIsModalOpen,
-    
+    setreder
   }) => {   
     const {isOpen:isOpenTwo, onOpen:onOpenTwo, onOpenChange:onOpenChangeTwo} = useDisclosure();
-
+    const [dataAPIForPayment, setdataAPIForPayment] = useState({})
     const [OpenModalPic, setOpenModalPic] = useState(false)
     const onSubmit=async(el)=>{
-      // console.log(courseID,el.price,jMoment().locale('en').format('YYYY-MM-DD'),el.numberInvoice)
-      // await Pay(courseID,el.price,jMoment().locale('en').format('YYYY-MM-DD'),el.numberInvoice)
+      
+      setdataAPIForPayment({"courseID":courseID,"price":el.price,"time":jMoment().locale('en').format('YYYY-MM-DD'),"numberInvoice":el.numberInvoice})
       setOpenModalPic(true)
-      // setIsModalOpen(false)
+      onOpenTwo(true)
     }
     const generateRandom10DigitNumber = () => {
         return Math.floor(1000000000 + Math.random() * 9000000000); 
@@ -87,7 +87,7 @@ const MyPaymentModalForUser = ({
                             <Field name='numberInvoice' className="bg-[#e8e7e7] cursor-default dark:bg-slate-900 rounded-[16px] text-right placeholder-[#787878] font-[700] text-[14px] px-3  w-[100%] h-[48px]" readOnly/>
                         </div>
                         <button type='submit' className='bg-blue-500 px-7 py-2 rounded-xl font-bold text-white my-4'>پرداخت </button>
-                        {OpenModalPic && <UploadImage isOpen={isOpenTwo} setIsModalOpen={setIsModalOpen} onOpenChange={onOpenChangeTwo}/> }
+                        {OpenModalPic && <UploadImage isOpen={isOpenTwo} setIsModalOpen={setIsModalOpen} onOpenChange={setIsModalOpen} dataAPIForPayment={dataAPIForPayment} setreder={setreder}/> }
                     </Form>
                 </Formik>
                 

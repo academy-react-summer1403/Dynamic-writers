@@ -1,5 +1,6 @@
 import http from '../../interceptor'
-const Pay = async(CourseId,Paid,PeymentDate,PaymentInvoiceNumber) => {
+import UploadImagePayment from './UploadImagePayment';
+const Pay = async(CourseId,Paid,PeymentDate,PaymentInvoiceNumber,image) => {
     try{
 
         const formData=new FormData();
@@ -7,7 +8,8 @@ const Pay = async(CourseId,Paid,PeymentDate,PaymentInvoiceNumber) => {
         formData.append('Paid',Paid);
         formData.append('PeymentDate',PeymentDate);
         formData.append('PaymentInvoiceNumber',PaymentInvoiceNumber);
-        const response=await http.post('/CoursePayment/StudentAddPeyment',formData)
+        let response=await http.post('/CoursePayment/StudentAddPeyment',formData)
+        response=await UploadImagePayment(response.id,image)
         return response
     }catch(er){
         console.log(er)
