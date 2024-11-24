@@ -190,13 +190,13 @@ const closeModal = () => {
               }
 
                 return <TableRow key={index}>
-                    <TableCell onClick={() => handleOpenModal(item.courseId)}> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
+                    <TableCell className="cursor-pointer" onClick={() => handleOpenModal(item.courseId)}> <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} /> </TableCell>
                     <TableCell onClick={() => handleOpenModal(item.courseId)}>
                         <div className="flex flex-col gap-2">
                             <div className="max-w-40 font-bold text-xl h-6 truncate"> {item.courseTitle} </div>
                             <div className="flex flex-col justify-center gap-1">
                                 <div className="max-w-56 truncate text-[#787878]"> {item.fullName.replace('-', ' ')} </div> 
-                                <div className="max-w-32 truncate text-[#787878]"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div>
+                                <div className={`${item.paymentStatus === 'پرداخت نشده' ? 'bg-red-400' : 'bg-blue-500'} text-white rounded-full px-2 w-fit text-sm font-semibold`}> {item.paymentStatus} </div>
                             </div>
                         </div>
                     </TableCell>
