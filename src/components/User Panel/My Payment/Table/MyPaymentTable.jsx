@@ -32,7 +32,6 @@ const MyPaymentTable = ({ MyPayment,isLoading }) => {
         <TableColumn></TableColumn>
       </TableHeader>
       <TableBody emptyContent={"پرداخت ای برای نمایش وجود ندارد."} isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />}>
-
         {MyPayment.map((item, index) => {
           return <TableRow key={index} className="h-10">
             <TableCell className="hidden sm:block"> <img className={` sm:w-[104px] sm:h-[72px] rounded-[8px] ${item.paymentInvoiceImage? " ": "bg-[#D9D9D9]"}`} src={item.paymentInvoiceImage} /> </TableCell>

@@ -10,13 +10,12 @@ import {
   import jMoment from 'moment-jalaali'
   import { MoneyAdd02Icon, ViewIcon } from "hugeicons-react";
   import { NavLink, } from "react-router-dom";
-  import toast, { Toaster } from 'react-hot-toast';
 import { getMyCourse } from "../../../core/services/api/Panel/MyCourse/getMyCourse";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { Spinner, useDisclosure } from "@nextui-org/react";
 import MyCourseModal from "./MyCourseModal";
 import GetPaymentById from "../../../core/services/api/Payment/GetPaymentById";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyPaymentModalForUser from './MyPaymentModalForUser';
 
@@ -100,7 +99,7 @@ const closeModal = () => {
 };
   return (
     <div>
-      <Toaster/>
+    <ToastContainer />
     <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
