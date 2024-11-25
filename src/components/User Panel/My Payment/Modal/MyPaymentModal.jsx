@@ -38,7 +38,7 @@ const MyPaymentModal = ({
         setLoading(false)
     }
   return (
-    <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top' size={'lg'}>
+    <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top' size='lg'>
       <ModalContent className='h-[850px] w-[400px] sm:h-[1000px] sm:w-auto'>
       {Loading==true && <Spinner label="در حال بارگزاری..." className='py-[50px] px-[30px]' />   }
       {Loading==false &&
@@ -53,9 +53,9 @@ const MyPaymentModal = ({
 
         </ModalHeader>
 
-        <ModalBody>
+        <ModalBody className='w-[510px] '>
 
-                <div className='w-full h-[350px] bg-[#E8E8E8] rounded-[16px] relative sm:w-full sm:h-[400px]'>
+                <div className='w-full h-[350px] bg-[#E8E8E8] rounded-[16px] relative sm:h-[400px]'>
                     <img src={dataPaymentt.paymentInvoiceImage} className='w-full h-full rounded-[16px]' />
                 </div>
                 <div className='flex flex-col gap-4'>

@@ -23,7 +23,7 @@ const MyCourseCom = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const getCourses = async () => {
-  
+
       const response = await getMyCourse(query, rows, pageNumber, sortingCol , sortType)
       if(response) {
         setIsLoading(false)
@@ -55,14 +55,14 @@ const MyCourseCom = () => {
       <ToastContainer/>
       <div className='md:hidden flex w-full h-full justify-between items-center'>
         <h2 className='text-[28px] font-bold'> دوره من </h2>
-        <Button className='bg-blue-500 rounded-full text-white text-base font-semibold' onClick={() => setFilterClose(true)}> فیلتر </Button>
+        {/* <Button className='bg-blue-500 rounded-full text-white text-base font-semibold' onClick={() => setFilterClose(true)}> فیلتر </Button> */}
       </div>
-      {filterClose && <MyCourseFilterRes
+      {/* {filterClose && <MyCourseFilterRes
         setquery={setquery}
         filterClose={setFilterClose}
         setSortingCol={setSortingCol}
         setSortType={setSortType}
-      />}
+      />} */}
       <div className='md:flex flex-col w-full h-fit gap-10 hidden'>
         <h2 className='text-[28px] font-bold mt-8'> دوره من </h2>
         <div className='flex gap-6 w-full h-fit'>
@@ -84,7 +84,7 @@ const MyCourseCom = () => {
                 </Formik>
                 </div>
             </div>
-            <div className='flex flex-col gap-4 w-[289px]'>
+            {/* <div className='flex flex-col gap-4 w-[289px]'>
                 <div className='flex items-center gap-4'>
                     <Calendar02Icon />
                     <span className='text-base font-semibold'> ترتیب </span>
@@ -97,7 +97,7 @@ const MyCourseCom = () => {
                         <SelectItem onClick={() => {setSortType(''), setSortingCol('')}}> هیچ کدام </SelectItem>
                     </Select>
                 </div>
-            </div>
+            </div> */}
         </div>
       </div>
         {isLoading ? <div className='flex justify-center w-full items-center flex-col gap-1 my-[100px]'> <Spinner color='blue' /> در حال بارگزاری... </div> : <MyCourseTable
