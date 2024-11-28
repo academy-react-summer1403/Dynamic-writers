@@ -1,11 +1,9 @@
-import { Input } from '@nextui-org/input';
 import { Field, Formik, Form } from 'formik'
-import { Calendar02Icon, Search01Icon } from 'hugeicons-react'
+import { Search01Icon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
 import MyCourseTable from './MyCourseTable';
 import { getMyCourse } from '../../../core/services/api/Panel/MyCourse/getMyCourse';
-import { Button, Pagination, Select, SelectItem, Spinner } from '@nextui-org/react';
-import MyCourseFilterRes from './FilterRes/MyCourseFilterRes';
+import { Pagination, Spinner } from '@nextui-org/react';
 import { ToastContainer } from 'react-toastify';
 
 const MyCourseCom = () => {
@@ -18,13 +16,14 @@ const MyCourseCom = () => {
     const [sortingCol, setSortingCol] = useState('Active')
 
     const [totalCount, setTotalCount] = useState()
-    const [filterClose, setFilterClose] = useState(false)
     const [reder, setreder] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
     const getCourses = async () => {
 
+      setIsLoading(true)
       const response = await getMyCourse(query, rows, pageNumber, sortingCol , sortType)
+      
       if(response) {
         setIsLoading(false)
         setMyCourse(response.listOfMyCourses)
@@ -69,7 +68,7 @@ const MyCourseCom = () => {
             <div className='flex flex-col gap-4 w-[289px]'>
                 <div className='flex items-center gap-2'>
                     <Search01Icon />
-                    <span className='text-base font-semibold'> جست‌جو دوره </span>
+                    <span className='text-base font-semibold'> جست‌جو استاد </span>
                 </div>
                 <div className='relative flex flex-col gap-3'>
                 <Formik
