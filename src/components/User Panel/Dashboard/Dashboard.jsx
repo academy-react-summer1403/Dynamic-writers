@@ -24,7 +24,6 @@ const Dashboard = () => {
   const [commentsNew, setCommentsNew] = useState([])
 
   const [hello, setHello] = useState('')
-
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -45,8 +44,11 @@ const Dashboard = () => {
     if(hours >= 12) {
       setHello(' ظهر بخیر ')
     }
-    if(hours >= 15) {
+    if(hours >= 14) {
       setHello('بعد از ظهرت بخیر ')
+    }
+    if(hours >= 14) {
+      setHello(' چه غروب قشنگی ')
     }
     if(hours >= 19) {
       setHello(' شب بخیر ')

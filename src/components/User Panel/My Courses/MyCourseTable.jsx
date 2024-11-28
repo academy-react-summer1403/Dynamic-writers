@@ -159,7 +159,7 @@ const closeModal = () => {
 
             </TableCell>
             
-            <TableCell>{percentage!=100 && flag!=false &&  <MoneyAdd02Icon className="size-4 cursor-pointer " color={`${statusLastPayment[item.courseId]==false?"red":"black"}`} onClick={()=>Notif(item.courseId)}/> }
+            <TableCell>{percentage!=100 && flag!=false &&  <MoneyAdd02Icon className="size-4 cursor-pointer dark:text-white" color={`${statusLastPayment[item.courseId]==false?"red":"black"}`} onClick={()=>Notif(item.courseId)}/> }
              {activeModal === item.courseId &&
               
               <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setrender} courseID={item.courseId} name={item.courseTitle}/>
@@ -200,7 +200,7 @@ const closeModal = () => {
                         </div>
                     </TableCell>
                     <TableCell>
-                    {percentage!=100 && flag!=false && <MoneyAdd02Icon className="size-4 cursor-pointer" color={`${statusLastPayment[item.courseId]==false?"red":"black"}`} onClick={()=>Notif(item.courseId)}/>}
+                    {percentage!=100 && flag!=false && <MoneyAdd02Icon className="size-4 cursor-pointer dark:text-white" color={`${statusLastPayment[item.courseId]==false?"red":"black"}`} onClick={()=>Notif(item.courseId)}/>}
                       {activeModal === index &&
 
                         <MyPaymentModalForUser isOpen={isOpen} maxNumber={item.cost-costThisCourse} onOpenChange={onOpenChange} setIsModalOpen={closeModal} setreder={setrender} courseID={item.courseId} name={item.courseTitle}/>
