@@ -23,7 +23,7 @@ const MyCourseCom = () => {
 
       setIsLoading(true)
       const response = await getMyCourse(query, rows, pageNumber, sortingCol , sortType)
-      
+
       if(response) {
         setIsLoading(false)
         setMyCourse(response.listOfMyCourses)
