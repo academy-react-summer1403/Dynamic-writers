@@ -47,7 +47,7 @@ const Dashboard = () => {
     if(hours >= 14) {
       setHello('بعد از ظهرت بخیر ')
     }
-    if(hours >= 14) {
+    if(hours >= 17) {
       setHello(' چه غروب قشنگی ')
     }
     if(hours >= 19) {
