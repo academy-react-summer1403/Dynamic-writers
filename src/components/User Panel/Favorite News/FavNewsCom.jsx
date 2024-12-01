@@ -1,7 +1,6 @@
 import { Field, Formik, Form } from 'formik'
 import { Search01Icon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
-import { getFavCourse } from '../../../core/services/api/Panel/FavCourse/getFavoriteCourse';
 import FavNewsTable from './Table/FavNewsTable';
 import { getFavNews } from '../../../core/services/api/Panel/FavNews/getFavNews';
 

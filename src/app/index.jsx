@@ -42,6 +42,7 @@ import PanelScreen from '../screens/Panel/PanelScreen';
 import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import Multi from '../screens/User Panel/Multi';
+import MyJobs from '../screens/User Panel/MyJobs';
 
 function App() {
   const client = new QueryClient()
@@ -116,6 +117,10 @@ function App() {
         {
           path: 'myPayment',
           element: <MyPaymentRout />
+        },
+        {
+          path: 'myJobs',
+          element: <MyJobs />
         },        
         {
           path: 'favCourse',
