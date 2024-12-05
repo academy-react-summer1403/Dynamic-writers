@@ -58,7 +58,7 @@ const Course = () => {
         <RightDiv Course={Course} FlagModal={setIsFlag} open={onOpen}/>
         <LeftDiv Course={Course}/>
         </div>
-        <div className='w-[100%] px-3 lg:px-14'>
+        <div className='w-[100%] px-3 lg:px-14 hidden sm:block'>
           <div className='w-[100%] text-[48px] font-[800] text-right p-5'>دوره های دیگر</div>
           <Card classNames={{base: 'shadow-none'}} className='w-[100%] bg-transparent p-6 flex flex-row items-center justify-between gap-5 flex-wrap'>
           {allCourse.slice(0,4).map((value,index)=>{
