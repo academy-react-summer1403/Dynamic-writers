@@ -3,6 +3,7 @@ import { Delete02Icon, TimeSetting03Icon } from 'hugeicons-react'
 import React from 'react'
 
 const DeleteModal = ({isOpen, onOpen, onOpenChange, courseId, DeleteFav, Course, Reserve, New}) => {
+  
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement='center'>
         <ModalContent>

@@ -31,8 +31,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
   const itemsPerPage = 5;
 
   const DeleteRes = async (courseId) => {
-    const res = await GetCourseById(courseId)
-    const response = await DeleteReserveCourse(res.courseReseveId)
+    const response = await DeleteReserveCourse(courseId)
   
     if(response.success === true) {
       setTimeout(() => {
@@ -56,12 +55,12 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
     }
   }
 
-  const handleOpenModalDelete = (favoriteId) => {
-    if(openDelete === favoriteId) {
+  const handleOpenModalDelete = (reserveId) => {
+    if(openDelete === reserveId) {
         setOpenDelete(null)
     }
     else {
-        setOpenDelete(favoriteId)
+        setOpenDelete(reserveId)
     }
   }
 
@@ -93,7 +92,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
             <TableCell>
             <div className="flex gap-2 items-center"> 
               <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer"/> </NavLink>   
-              {item.accept === false && <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.favoriteId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>}           
+              {item.accept === false && <NavLink to={``}> <Cancel01Icon onClick={() => handleOpenModalDelete(item.reserveId)} className="size-5 text-red-500 cursor-pointer"/></NavLink>}           
             </div>
                 { openCourseId === item.courseId && <MyReserveModal
                     isOpen={true}
@@ -107,7 +106,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
                     reserverDate={item.reserverDate}
                     accept={item.accept}
                 /> }
-                { openDelete === item.favoriteId && <DeleteModal DeleteFav={DeleteRes} Reserve={true} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.favoriteId)} courseId={item.courseId} /> }
+                { openDelete === item.reserveId && <DeleteModal DeleteFav={DeleteRes} Reserve={true} isOpen={true} onOpenChange={handleOpenModalDelete} onOpen={() => handleOpenModalDelete(item.reserveId)} courseId={item.reserveId} /> }
 
             </TableCell>
           </TableRow>

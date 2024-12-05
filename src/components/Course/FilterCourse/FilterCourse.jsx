@@ -42,6 +42,13 @@ const FilterCourse = ({ updateParams }) => {
         setSearchParams(`${searchParams.toString()}`)
     }
 
+
+    const updateParamsQuery = (value) => {
+        searchParams.set('Query', value.Query)
+        searchParams.set('PageNumber', 1)
+        setSearchParams(`${searchParams.toString()}`)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const dates = dateInput.split(' - ');
@@ -119,7 +126,7 @@ const FilterCourse = ({ updateParams }) => {
 
     <Formik
         initialValues={{Query: ''}}
-        onSubmit={(value) => updateParams('Query', value.Query)}
+        onSubmit={(value) => updateParamsQuery(value)}
     >
            
         <Form>

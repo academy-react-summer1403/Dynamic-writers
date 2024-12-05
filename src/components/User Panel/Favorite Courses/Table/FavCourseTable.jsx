@@ -99,7 +99,7 @@ const FavCourseTable = ({ myCourse, isLoading }) => {
             <TableCell className="text-base font-bold truncate invisible md:visible"> <div className="max-w-40 h-10 truncate leading-8"> {item.courseTitle} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-56 h-10 truncate leading-8"> {item.typeName.replace('-', ' ')} </div> </TableCell>
             <TableCell className="invisible md:visible"> <div className="max-w-32 h-10 truncate leading-8"> {(jMoment(item.lastUpdate).locale('fa').format('jD jMMMM jYYYY'))} </div> </TableCell>
-            <TableCell className="invisible md:visible"> <span className={`${item.levelName === 'پیشرفته' ? 'bg-[#17C96433] text-[#17C964]' : 'text-[#F31260] bg-[#F3126033]'} px-2 rounded-full`}> {item.levelName} </span> </TableCell>
+            <TableCell className="invisible md:visible"> <span className={`bg-secondary-300 text-white text-sm font-bold py-0.5 px-2 rounded-full`}> {item.levelName} </span> </TableCell>
             <TableCell>
             <div className="flex gap-2 items-center"> 
               <NavLink to={``}> <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-5 cursor-pointer"/></NavLink>                         
