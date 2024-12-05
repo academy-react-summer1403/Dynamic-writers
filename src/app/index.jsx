@@ -43,6 +43,7 @@ import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import Multi from '../screens/User Panel/Multi';
 import MyJobs from '../screens/User Panel/MyJobs';
+import Schedule from '../components/User Panel/Schedule/Schedule';
 
 function App() {
   const client = new QueryClient()
@@ -113,6 +114,10 @@ function App() {
         {
           path: 'myReserve',
           element: <MyReserveRout />
+        },
+        {
+          path: 'schedule',
+          element: <Schedule />
         },
         {
           path: 'myPayment',
