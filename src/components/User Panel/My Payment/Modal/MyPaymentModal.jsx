@@ -1,17 +1,8 @@
-import { Button, Modal, ModalBody, ModalContent, ModalHeader,Spinner } from '@nextui-org/react'
-import { Calendar01Icon, StudentsIcon, ThumbsDownIcon, ThumbsUpIcon } from 'hugeicons-react'
+import { Modal, ModalBody, ModalContent, ModalHeader,Spinner } from '@nextui-org/react'
 import React, { useEffect, useState } from 'react'
-import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
-import { Link } from 'react-router-dom'
-import { getDetailIdTeacher } from '../../../../core/services/api/Teacher/getDetailTeacherWithId'
 import jMoment from 'jalali-moment'
-import CourseLike from '../../../../core/services/api/Course/CourseLike'
-import CourseDisLike from '../../../../core/services/api/Course/CourseDisLike'
 import { toast, ToastContainer } from 'react-toastify'
 import GetCourseById from '../../../../core/services/api/Course/GetCourseById'
-import GetPaymentById from '../../../../core/services/api/Payment/GetPaymentById'
-
-import Loading from './../../../../core/services/common/Loading/loading';
 
 const MyPaymentModal = ({ 
     courseId,
@@ -33,10 +24,11 @@ const MyPaymentModal = ({
     
     const getData=async()=>{
 
-        const data=await GetCourseById(courseId)
+        const data = await GetCourseById(courseId)
         setdata(data)
         setLoading(false)
     }
+
   return (
     <Modal dir='rtl' isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior='outside' placement='top' size='lg'>
       <ModalContent className='h-[850px] w-[400px] sm:h-[1000px] sm:w-auto'>
@@ -60,7 +52,7 @@ const MyPaymentModal = ({
                 </div>
                 <div className='flex flex-col gap-4'>
                     <h2 className='text-base text-[#787878]'> نام دوره </h2>
-                    <span className='text-[24px] font-bold'> {dataCourse.title} </span>
+                    <span className='text-[24px] font-bold'> {dataCourse?.title || 'دوره React'} </span>
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
                     <h2 className='text-base text-[#787878]'> نام گروه</h2>

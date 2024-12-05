@@ -144,7 +144,7 @@ const MyReserveTable = ({ myCourse, isLoading }) => {
             className="my-5 z-0"
             isCompact showControls
             total={Math.ceil(myCourse.length / itemsPerPage)}
-            initialPage={2}
+            initialPage={1}
             onChange={(page) => setCurrentPage(page)}
         />
     </div>
