@@ -28,7 +28,7 @@ const CoursesView1 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
           </div>
 
           <div className='flex-col flex items-end p-2 gap-2 overflow-hidden'>
-            <h2 className='text-xl font-semibold'> {title} </h2>
+            <h2 className='text-xl font-semibold' dir='rtl'> {title} </h2>
             <span className='text-sm font-semibold text-gray-500 h-10 overflow-hidden w-full' dir='rtl'> {describe} </span>
           </div>
           <div className='p-2 flex flex-col gap-4 text-base font-semibold'>

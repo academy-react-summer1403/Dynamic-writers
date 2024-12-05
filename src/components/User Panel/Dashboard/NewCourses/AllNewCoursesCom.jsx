@@ -1,4 +1,4 @@
-import { Button, Input, Pagination, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react'
+import { Button, Input, Pagination, Select, SelectItem, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, useDisclosure } from '@nextui-org/react'
 import { Calendar02Icon, Cancel01Icon, Money03Icon, Search01Icon, TeacherIcon, ViewIcon } from 'hugeicons-react'
 import React, { useEffect, useState } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
@@ -20,7 +20,6 @@ const AllNewCoursesCom = () => {
 
     const navigate = useNavigate()
 
-    const [filterRes, setFilterRes] = useState(false)
     const [courseTop, setCourseTops] = useState([])
     const [totalCount, setTotalCount] = useState()
     const [teachers, setTeachers] = useState([])
@@ -33,15 +32,9 @@ const AllNewCoursesCom = () => {
     const [teacher, setTeacher] = useState('')
     const [costUp, setCostUp] = useState(1000000000)
     const [costDown, setCostDown] = useState(0)
-    const [startDate, setStartDate] = useState('')
-    const [endDate, setEndDate] = useState('')
 
     const [dateInput, setDateInput] = useState('');
     const [convertedDates, setConvertedDates] = useState({ startDate: '', endDate: '' });
-
-    const closeFilter = () => {
-      setFilterRes(false)
-    }
     
     const handlePriceFrom = (value) => {
       setPriceFrom(value)
@@ -95,6 +88,8 @@ const AllNewCoursesCom = () => {
       getCourses()
     }, [pageNumber, rows, query, teacher, costDown, costUp, convertedDates])
 
+    const {isOpen, onOpen, onOpenChange} = useDisclosure()
+
   return (
     <div className='w-dvw h-full bg-white dark:text-white dark:bg-slate-900 rounded-2xl flex gap-4 flex-col p-6' dir='rtl'>
       <div className='flex justify-between w-full h-fit items-center my-2'>
@@ -102,11 +97,11 @@ const AllNewCoursesCom = () => {
        <Button onClick={() => navigate('/layoutPanel/dashboard')} className='bg-white dark:border-none dark:bg-red-500 dark:text-white border-red-500 border text-red-500 rounded-3xl text-base flex flex-row-reverse items-center'> بستن <Cancel01Icon className='size-5' /> </Button>
       </div>
 
-      <AllnewCoursesComFilter teachers={teachers} setquery={setquery} handleSubmit={handleSubmit} handleChange={handleChange} priceFrom={priceFrom} priceTo={priceTo} setTeacher={setTeacher} handlePriceFrom={handlePriceFrom} handlePriceTo={handlePriceTo} setCostDown={setCostDown} setCostUp={setCostUp}/>
+      <AllnewCoursesComFilter setPageNumber={setPageNumber} teachers={teachers} setquery={setquery} handleSubmit={handleSubmit} handleChange={handleChange} priceFrom={priceFrom} priceTo={priceTo} setTeacher={setTeacher} handlePriceFrom={handlePriceFrom} handlePriceTo={handlePriceTo} setCostDown={setCostDown} setCostUp={setCostUp}/>
 
-      <button onClick={() => setFilterRes(true)} className='rounded-full bg-blue-500 text-white w-20 h-10 py-2 px-6 text-base font-semibold md:hidden block'> فیلتر </button>
+      <button onClick={onOpen} className='rounded-full bg-blue-500 text-white w-20 h-10 py-2 px-6 text-base font-semibold md:hidden block'> فیلتر </button>
 
-      {filterRes && <AllNewCoursesComFilterRes teachers={teachers} setquery={setquery} setTeacher={setTeacher} handleSubmit={handleSubmit} handleChange={handleChange} closeFilter={closeFilter} />}
+      <AllNewCoursesComFilterRes isOpen={isOpen} onOpenChange={onOpenChange} teachers={teachers} setquery={setquery} setTeacher={setTeacher} handleSubmit={handleSubmit} handleChange={handleChange} />
 
       <Table className='md:block hidden' dir="rtl" aria-label="Example empty table">
       <TableHeader>

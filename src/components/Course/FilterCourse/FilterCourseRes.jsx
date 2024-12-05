@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Input, Select, Button, SelectItem, checkbox, Modal, ModalHeader, ModalContent, ModalBody } from '@nextui-org/react'
-import { Formik, Form, Field } from 'formik'
-import { Calendar02Icon, Cancel01Icon, CellsIcon, Layers01Icon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Select, SelectItem, Modal, ModalHeader, ModalContent, ModalBody } from '@nextui-org/react'
+import { Calendar02Icon, Cancel01Icon, CellsIcon, Layers01Icon, Money03Icon, TeacherIcon } from 'hugeicons-react'
+import { useSearchParams } from 'react-router-dom'
 import { getTeacherList } from '../../../core/services/api/teachers'
 import { getTechList } from '../../../core/services/api/tech'
 import { getCourseLevels } from '../../../core/services/api/courseLevel'
@@ -17,7 +16,6 @@ const FilterCourseRes = ({ updateParams, isOpen, onOpenChange }) => {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const navigate = useNavigate()
 
     const handlePriceFrom = (value) => {
         setPriceFrom(value)
@@ -63,8 +61,6 @@ const FilterCourseRes = ({ updateParams, isOpen, onOpenChange }) => {
         searchParams.set('SortType', value2)
         setSearchParams(searchParams)
     }
-
-    const [scrollPosition, setScrollPosition] = useState({x: window.pageXOffset, y: window.pageYOffset})
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton>
@@ -148,16 +144,6 @@ const FilterCourseRes = ({ updateParams, isOpen, onOpenChange }) => {
     defaultValue={0} min='0' max='1000000000' step='1000000' className='border-none cursor-pointer bg-gray-200 w-full h-2 rounded-full appearance-none thump rotate-180' />
     <input onChange={(e) => {handlePriceTo(e.target.value), updateParams('CostUp', e.target.value)}} type='range' 
     defaultValue={1000000000} min='0' max='1000000000' step='1000000' className='border-none cursor-pointer bg-gray-200 w-full h-2 rounded-full appearance-none thump rotate-180' />
-    </div>
-
-    <div className='flex flex-col'>
-        <div className='flex items-center flex-row-reverse gap-2'>
-            <Calendar02Icon />
-            <span className='text-sm font-semibold'> تاریخ برگزاری </span>
-        </div>
-        <div className='relative flex flex-col gap-3'>
-            <Input data-jdp placeholder='1403/5/20 - 1403/6/20' className='w-full my-2 rounded-xl' dir='ltr'></Input>
-        </div>
     </div>
 
     <div className='flex flex-col'>
