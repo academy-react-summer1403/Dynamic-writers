@@ -2,12 +2,9 @@ import { CodeCircleIcon } from 'hugeicons-react'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BoxFirst from './Boxes/BoxFirst'
-import { Button } from '@nextui-org/react'
-import BoxSecond from './Boxes/BoxSecond'
 import BoxThird from './Boxes/BoxThird'
 import BoxFourth from './Boxes/BoxFourth'
 import BoxFifth from './Boxes/BoxFifth'
-import { GetTeachersList } from '../../core/services/api/teachersTop'
 import { motion } from "framer-motion"
 
 function LandingCom() {
