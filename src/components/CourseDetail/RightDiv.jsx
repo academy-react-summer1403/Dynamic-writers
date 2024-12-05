@@ -36,7 +36,7 @@ const RightDiv = ({Course,FlagModal,open}) => {
         <div className={`${Course.courseStatusName=="درحال برگزاری" ? "bg-yellow-300 dark:bg-yellow-600" : Course.courseStatusName=="منقضی شده" ? "bg-red-400 dark:bg-red-600" : "bg-green-400 dark:bg-green-600"} py-1 flex flex-row items-center gap-2 justify-end pr-[7px]  w-[120px] rounded-[30px] text-white text-center text-[14px] font-[500] `}>{Course.courseStatusName}<div className={`${Course.courseStatusName=="درحال برگزاری" ? "bg-yellow-800" : Course.courseStatusName=="منقضی شده" ? "bg-red-800" : "bg-green-800"} rounded-[100%] w-[10px] h-[10px]`}></div></div>
         <div className='w-[100%] flex-row flex-wrap'>
            
-            <h1 className='text-[40px] dark:text-white font-[600] text-right flex flex-row items-center justify-end leading-[50.73px] text-[#272727] max-lg:text-[28px] max-sm:text-[36px] '> <span className=' flex flex-row text-right text-[16px] mb-3 items-center'>
+            <h1 className='text-[40px] dark:text-white font-[600] text-right flex flex-row items-center justify-end leading-[55.73px] text-[#272727] max-lg:text-[28px] max-sm:text-[36px] '> <span className=' flex flex-row text-right text-[16px] mb-3 items-center'>
                 (<StarIcon color='yellow' size={16}/>{Course.currentRate})
             </span><div className='max-w-[400px] truncate' dir='rtl'>{Course.title}</div></h1>
         </div>
