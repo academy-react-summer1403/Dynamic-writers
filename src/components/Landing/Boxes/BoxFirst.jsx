@@ -12,7 +12,7 @@ import { motion } from "framer-motion"
 
 function BoxFirst() {
   return (
-    <div className='flex my-12 justify-center flex-col gap-6 iranSans lg:flex-row w-full mx-auto'>
+    <div className='my-12 justify-center flex-col gap-6 iranSans lg:flex-row w-full mx-auto hidden min-[340px]:flex'>
       
       <motion.div whileInView={{scale: 1}} initial={{scale: 0}} className='border-3 rounded-xl grow h-64 flex flex-col dark:bg-slate-900 dark:text-white dark:border-none'>
         <div  className='flex flex-row-reverse justify-between h-2/12 items-center p-2'>

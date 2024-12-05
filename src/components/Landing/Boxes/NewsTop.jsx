@@ -25,8 +25,8 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
         </div>
         <div className='w-full flex px-3 justify-between items-center my-3'>
             <Button onClick={() => navigate('/NewDetail/' + id)} className='bg-blue-500 text-white rounded-full'> بیشتر بخوانید </Button>
-            <div className='flex gap-2'> {currentDissLikeCount} <ThumbsDownIcon /> </div>
-            <div className='flex gap-2'> {currentLikeCount} <ThumbsUpIcon /> </div>
+            <div className='sm:flex gap-2 hidden'> {currentDissLikeCount} <ThumbsDownIcon /> </div>
+            <div className='sm:flex gap-2 hidden'> {currentLikeCount} <ThumbsUpIcon /> </div>
         </div>
     </motion.div>
     </Skeleton>

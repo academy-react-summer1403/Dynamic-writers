@@ -29,10 +29,10 @@ const CoursesView1 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
               <div className='flex flex-row-reverse gap-3'> <Calendar02Icon className='text-slate-700'/> <div className='flex flex-row-reverse gap-1'> <span className='' dir='rtl'> {date} </span> <span className='text-gray-500'> (شروع) </span> </div> </div>
               <div className='flex flex-row-reverse gap-3'> <StudentIcon className='text-slate-700'/> <div className='flex flex-row-reverse gap-2'> <span className=''> {currentUserRateNumber} </span> <span className=''> دانشجو </span> </div> </div>
         </div>
-        <div className='w-full flex justify-around items-center'>
+        <div className='w-full flex sm:justify-around justify-end px-5 items-center'>
             <div className='flex gap-2 text-sm font-semibold items-center'>
-              <div className='flex gap-2 items-center text-gray-700 dark:text-white'> {dissLikeCount} <ThumbsDownIcon /> </div>
-              <div className='flex gap-2 items-center text-gray-700 dark:text-white'> {likeCount} <ThumbsUpIcon /> </div>
+              <div className=' sm:flex gap-2 hidden items-center text-gray-700 dark:text-white'> {dissLikeCount} <ThumbsDownIcon /> </div>
+              <div className=' sm:flex hidden gap-2 items-center text-gray-700 dark:text-white'> {likeCount} <ThumbsUpIcon /> </div>
             </div>
             <div className='text-blue-500 flex flex-row gap-1 items-end my-4 text-sm'> تومان  <span className='text-xl dark:text-white font-semibold text-black'> {cost} </span> </div>
         </div>
