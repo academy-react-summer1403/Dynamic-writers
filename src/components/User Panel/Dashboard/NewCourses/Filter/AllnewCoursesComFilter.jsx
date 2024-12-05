@@ -71,9 +71,9 @@ const AllnewCoursesComFilter = ({ teachers, setquery, setTeacher, handleChange, 
 
         <div className='flex'>
             <input onChange={(e) => {handlePriceFrom(e.target.value), setCostDown(e.target.value)}} type='range' 
-            defaultValue={0} min='0' max='100000000' step='100000' className='border-none cursor-pointer dark:bg-gray-600 bg-gray-200 h-2 rounded-full appearance-none thump' />
+            defaultValue={0} min='0' max='100000000' step='1000000' className='border-none cursor-pointer dark:bg-gray-600 bg-gray-200 h-2 rounded-full appearance-none thump' />
             <input onChange={(e) => {handlePriceTo(e.target.value), setCostUp(e.target.value)}} type='range' 
-            defaultValue={100000000} min='0' max='100000000' step='100000' className='border-none cursor-pointer dark:bg-gray-600 bg-gray-200  h-2 rounded-full appearance-none thump' />
+            defaultValue={100000000} min='0' max='100000000' step='1000000' className='border-none cursor-pointer dark:bg-gray-600 bg-gray-200  h-2 rounded-full appearance-none thump' />
         </div>
     </div>
 
