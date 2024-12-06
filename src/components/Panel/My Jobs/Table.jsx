@@ -57,7 +57,7 @@ const TableJob = ({ myJobs, isLoading, getMyJobs }) => {
 
   return (
     <div>
-      <Table classNames={{ wrapper: 'dark:bg-slate-700' }} className="hidden md:block" dir="rtl" aria-label="Example empty table">
+      <Table classNames={{ wrapper: 'dark:bg-slate-700 shadow-none' }} className="hidden md:block" dir="rtl" aria-label="Example empty table">
         <TableHeader>
           <TableColumn> نام شغل </TableColumn>
           <TableColumn> درباره شغل </TableColumn>
@@ -111,7 +111,6 @@ const TableJob = ({ myJobs, isLoading, getMyJobs }) => {
         </TableBody>
       </Table>
 
-      {/* نسخه موبایل */}
       <Table isLoading={isLoading} loadingContent={<Spinner label="در حال بارگزاری..." />} classNames={{ wrapper: 'dark:bg-slate-700' }} className="w-full md:hidden block" hideHeader>
         <TableHeader>
           <TableColumn> نام و عنوان </TableColumn>

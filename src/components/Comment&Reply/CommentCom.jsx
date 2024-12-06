@@ -11,7 +11,6 @@ import AddReply from './AddReply'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { addLikeCommentNew } from '../../core/services/api/Comments/New/Lile&DissLike/LikeCommentNew'
 import { ToastError } from '../../core/services/common/Toast/ToastError'
-import { ToastSuccess } from '../../core/services/common/Toast/ToastSucces'
 
 const CommentCom = ({ pictureAddress, title, describe, likeCount, disslikeCount, dissLikeCount, insertDate, author, acceptReplysCount, id, Oid, currentUserIsLike, currentUserIsDissLike, currentUserEmotion }) => {
 
