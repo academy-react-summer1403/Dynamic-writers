@@ -217,7 +217,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
                       return (
                           <TableRow key={index}>
                               <TableCell className="cursor-pointer" onClick={() => handleOpenModal(item.courseId)}>
-                                  <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px]" src={item.tumbImageAddress} />
+                                  <img className="min-w-[104px] w-[104px] min-h-[72px] h-[72px] rounded-[8px] bg-gray-300" src={item.tumbImageAddress} />
                               </TableCell>
                               <TableCell onClick={() => handleOpenModal(item.courseId)}>
                                   <div className="flex flex-col gap-2">

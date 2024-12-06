@@ -1,15 +1,17 @@
-import { BookBookmark01Icon, FileBookmarkIcon, Logout03Icon, Money02Icon, Money03Icon, UserSettings01Icon } from 'hugeicons-react'
+import { AssignmentsIcon, BookBookmark01Icon, FileBookmarkIcon, Logout03Icon, Money02Icon, Money03Icon, Time03Icon, UserSettings01Icon } from 'hugeicons-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { removeItem } from '../../common/storage'
 
 const MoreSitePanel = () => {
   return (
-    <div className='flex shadow-2xl flex-col gap-6 p-4 dark:bg-slate-600 dark:text-white bg-white rounded-2xl absolute bottom-20 left-0' dir='rtl' style={{width: '221px', height: '248px'}}>
+    <div className='flex shadow-2xl flex-col gap-6 p-4 dark:bg-slate-600 dark:text-white bg-white rounded-2xl absolute bottom-20 left-0 h-fit' dir='rtl' style={{width: '221px'}}>
       <Link to='/layoutPanel/favCourse' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> علاقه‌مندی دوره <BookBookmark01Icon /> </Link>
       <Link to='/layoutPanel/favNews' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> علاقه‌مندی مقاله <FileBookmarkIcon /> </Link>
       <Link to='/layoutPanel/myPayment' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> پرداخت ها <Money02Icon /> </Link>
       <Link to='/layoutPanel/multiAccounts' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> حساب های کاربری <UserSettings01Icon /> </Link>
+      <Link to='/layoutPanel/homeWorks' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> تکالیف <AssignmentsIcon /> </Link>
+      <Link to='/layoutPanel/schedule' className='w-full h-fit font-semibold text-base flex gap-4 justify-end flex-row-reverse'> زمان بندی <Time03Icon /> </Link>
       <Link to='/' onClick={() => removeItem('token')} className='w-full h-fit font-semibold text-base text-red-500 flex gap-4 justify-end flex-row-reverse'> خروج از حساب <Logout03Icon /> </Link>
     </div>
   )
