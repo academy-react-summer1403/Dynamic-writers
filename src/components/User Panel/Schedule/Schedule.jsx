@@ -107,7 +107,7 @@ const Schedule = () => {
               <CardBody className={`flex flex-col gap-4 `}>
                 <div className='text-right flex items-center gap-2'>
                   <IdIcon />
-                  <span>{sessionTitles[item.id] || 'عنوان کلاس'}</span>
+                  <span className='max-w-[200px]'>{sessionTitles[item.id] || 'عنوان کلاس'}</span>
                 </div>
                 <div className='text-right flex items-center gap-2'>
                   <StartUp01Icon />
