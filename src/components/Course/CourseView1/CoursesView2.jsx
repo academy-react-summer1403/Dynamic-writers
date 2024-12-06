@@ -17,7 +17,7 @@ const CoursesView2 = ({isLoaded ,levelName, id, title, describe, dissLikeCount, 
   
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-      <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.05 }} initial={{y: 1000, scale: 0.3}} animate={{y: 0}} onClick={() => callCourse()} className='lg:flex rounded-3xl cursor-pointer flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white w-full' style={{height: '288px'}}>
+      <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.02 }} initial={{y: 1000, scale: 0.3}} transition={{duration: 0.2}} animate={{y: 0}} onClick={() => callCourse()} className='lg:flex rounded-3xl cursor-pointer flex-row-reverse bg-gray-100 font-semibold hidden dark:bg-slate-900 dark:text-white w-full' style={{height: '288px'}}>
           <div className='w-5/12 h-full bg-red-300 rounded-3xl relative border dark:border-none'>
               <img className='w-full h-full rounded-3xl dark:border-none' src={tumbImageAddress} />
               <div className='absolute flex flex-row-reverse gap-3 top-0 right-0 p-2 text-sm font-semibold'>

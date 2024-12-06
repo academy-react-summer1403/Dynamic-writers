@@ -38,7 +38,7 @@ const CourseList = () => {
                 </div>
             </div>
 
-            <div className='flex-col item-center flex' style={scrollPos > 0 ? {display: 'none'} : {display: 'flex'}}>
+            <div className='flex-col item-center flex' style={scrollPos > 30 ? {opacity: 0} : {opacity: 1}}>
                 <span className='text-gray-500 text-base hidden md:inline'> لیست دوره ها </span>
                 <ArrowDown01Icon className='text-gray-500 mx-auto md:inline hidden' />
             </div>

@@ -51,7 +51,6 @@ const MyCourseCom = () => {
 
   return (
     <div className='w-full flex p-2 flex-col gap-3 rounded-2xl h-full' dir='rtl'>
-      <ToastContainer/>
       <div className='md:hidden flex w-full h-full justify-between items-center'>
         <h2 className='text-[28px] font-bold'> دوره من </h2>
       </div>
@@ -86,6 +85,7 @@ const MyCourseCom = () => {
         <div className='w-full flex justify-start'>
         <Pagination className='w-fit z-0' classNames={{wrapper: 'bg-white'}} dir='ltr' onChange={(e) => setPageNumber(e)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
+      <ToastContainer/>
     </div>
   )
 }

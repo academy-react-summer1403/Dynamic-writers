@@ -80,7 +80,7 @@ const FavNewsTable = ({ myNews, isLoading }) => {
 
   return (
     <div>
-    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'dark:bg-slate-700 shadow-none'}} className="hidden md:block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn> # </TableColumn>
         <TableColumn> عنوان </TableColumn>

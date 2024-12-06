@@ -8,7 +8,7 @@ const NewsItem = ({isLoaded ,id, title, miniDescribe, currentImageAddressTumb, c
   
   return (
     <Skeleton className='rounded-3xl' isLoaded={isLoaded}>
-      <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.05 }} initial={{y: 1000, scale: 0.3}} animate={{y: 0}} className='flex bg-gray-100 rounded-3xl h-72 cursor-pointer overflow-visible flex-row-reverse dark:text-white dark:bg-slate-900' style={{width: '985px'}}>
+      <motion.div whileInView={{scale: 1}} whileHover={{ scale: 1.02 }} initial={{y: 1000, scale: 0.3}} animate={{y: 0}} transition={{duration: 0.2}} className='flex bg-gray-100 rounded-3xl h-72 cursor-pointer overflow-visible flex-row-reverse dark:text-white dark:bg-slate-900' style={{width: '985px'}}>
         <div className='bg-red-300 h-full w-5/12 rounded-3xl relative'>
           <img src={currentImageAddressTumb} className='w-full h-full rounded-3xl' />
           <div className='h-fit w-fit absolute top-2 right-2 flex gap-2 flex-row-reverse'>

@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Button, Input, Select } from '@nextui-org/react'
 import { Cancel01Icon, CellsIcon, GridViewIcon, Layers01Icon, Layout3RowIcon, Money03Icon, Search01Icon, TeacherIcon } from 'hugeicons-react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { setItem } from '../../../core/services/common/storage'
 
 const SortView1 = ({ changeView }) => {
 
+  const [deleteFilter, setDeleteFilter] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
 
   const navigate = useNavigate()
@@ -14,6 +14,10 @@ const SortView1 = ({ changeView }) => {
     searchParams.set('SortingCol', value)
     searchParams.set('SortType', value2)
     setSearchParams(searchParams)
+  }
+
+  const handleDeleteFilter = (value) => {
+    setDeleteFilter(value)
   }
 
   return (
@@ -28,16 +32,16 @@ const SortView1 = ({ changeView }) => {
             <span className='text-gray-600 dark:text-gray-200'> ترتیب </span>
             <div className='flex gap-4 flex-row-reverse items-center'>
                 <input type='radio' name='sort' id='sort1' className='hidden inputSort'/>
-                <label onClick={() => {updateParams('LastUpdate', 'DESC')}} htmlFor='sort1' className='cursor-pointer text-sm border py-2 px-4 labelSort rounded-full'>  جدید ترین  </label>
+                <label onClick={() => {updateParams('LastUpdate', 'DESC'), handleDeleteFilter(true)}} htmlFor='sort1' className='cursor-pointer text-sm border-2 py-2 px-4 labelSort rounded-full'>  جدید ترین  </label>
                 <input type='radio' name='sort' id='sort2' className='hidden inputSort'/>
-                <label onClick={() => {updateParams('LastUpdate', 'ASC')}} htmlFor='sort2' className='cursor-pointer text-sm border py-2 px-4 rounded-full labelSort'>  قدیمی ترین  </label>
+                <label onClick={() => {updateParams('LastUpdate', 'ASC'), handleDeleteFilter(true)}} htmlFor='sort2' className='cursor-pointer text-sm border-2 py-2 px-4 rounded-full labelSort'>  قدیمی ترین  </label>
                 <input type='radio' name='sort' id='sort3' className='hidden inputSort'/>
-                <label onClick={() => {updateParams('Cost', 'ASC')}} htmlFor='sort3' className='cursor-pointer text-sm border py-2 px-4 rounded-full labelSort'> ارزان ترین </label>
-                <span className='border h-5 border-gray-400'> </span>
+                <label onClick={() => {updateParams('Cost', 'ASC'), handleDeleteFilter(true)}} htmlFor='sort3' className='cursor-pointer text-sm border-2 py-2 px-4 rounded-full labelSort'> ارزان ترین </label>
+                <span className={`border h-5 ${deleteFilter ? 'flex' : 'hidden'} border-gray-300`}></span>
                 <input type='radio' name='sort' id='sort4' className='hidden' />
-                <label onClick={() => {updateParams('', '')}} htmlFor='sort4' className='group hover:bg-red-500 hover:text-white border py-1.5 px-3 dark:bg-black border-red-500 text-red-500 rounded-full bg-white flex flex-row-reverse items-center gap-2 text-sm cursor-pointer'>
+                <label onClick={() => {updateParams('', ''), handleDeleteFilter(false)}} htmlFor='sort4' className={` ${deleteFilter ? 'flex' : 'hidden'} group items-center cursor-pointer hover:bg-red-500 hover:text-white border border-red-500 text-red-500 px-4 py-2 rounded-full flex gap-2 flex-row-reverse`}>
                   <Cancel01Icon className='size-4 group-hover:text-white' />
-                  حذف
+                  <span> حذف </span>
                 </label>
             </div>
 

@@ -98,7 +98,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
   return (
       <div>
           <ToastContainer />
-          <Table classNames={{ wrapper: 'dark:bg-slate-700' }} className="hidden md:block" dir="rtl" aria-label="Example empty table">
+          <Table classNames={{ wrapper: 'dark:bg-slate-700 shadow-none' }} className="hidden md:block" dir="rtl" aria-label="Example empty table">
               <TableHeader>
                   <TableColumn> # </TableColumn>
                   <TableColumn> نام دوره </TableColumn>
@@ -133,7 +133,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
                                   {(parseInt(item.cost).toLocaleString('en-US'))} <span className="text-sm"> تومان </span>
                               </TableCell>
 
-                              <TableCell onClick={() => console.log(item)} className={`invisible md:visible flex whitespace-nowrap gap-2 items-center justify-center py-5 ${item.paymentStatus === "پرداخت نشده" ? "text-red-500 dark:text-white" : "dark:text-white text-green-600"}`}>
+                              <TableCell className={`invisible md:visible flex whitespace-nowrap gap-2 items-center py-5 ${item.paymentStatus === "پرداخت نشده" ? "text-red-500 dark:text-white" : "dark:text-white text-green-600"}`}>
                                   {flag !== false && (
                                       <CircularProgressbar
                                           className="size-12"

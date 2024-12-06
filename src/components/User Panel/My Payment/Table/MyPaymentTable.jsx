@@ -23,7 +23,7 @@ const MyPaymentTable = ({ MyPayment,isLoading }) => {
 
   return (
     <div>
-    <Table classNames={{wrapper: 'dark:bg-slate-700'}} className="block" dir="rtl" aria-label="Example empty table">
+    <Table classNames={{wrapper: 'dark:bg-slate-700 shadow-none'}} className="block" dir="rtl" aria-label="Example empty table">
       <TableHeader>
         <TableColumn className="hidden sm:block"> # </TableColumn>
         <TableColumn> مبلغ پرداخت شده </TableColumn>
