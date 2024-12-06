@@ -44,7 +44,7 @@ const MyJobsCom = () => {
         <div className='flex flex-col w-full h-fit gap-10'>
         <div className='flex flex-col gap-6 w-full h-fit'>
             <div className='flex gap-4'>
-                <Button className='bg-blue-500 text-white text-sm font-bold h-[40px] rounded-lg' onClick={() => setShow(true)}> ساخت شغل </Button>
+                <Button className='bg-blue-500 md:mx-5 text-white text-sm font-bold h-[40px] rounded-lg' onClick={() => setShow(true)}> ساخت شغل </Button>
             </div>
         </div>
       </div>

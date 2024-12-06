@@ -147,7 +147,7 @@ const TableJob = ({ myJobs, isLoading, getMyJobs }) => {
         </TableBody>
       </Table>
 
-      <div className="w-full flex justify-start">
+      <div className="w-full flex justify-start md:mx-5">
         <Pagination
           dir="ltr"
           className="my-5 z-0"
