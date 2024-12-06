@@ -86,7 +86,7 @@ const ModalUpdate = ({ show, setShow, selectedItem, refetch }) => {
                 <h3 className='my-1 mt-3'>نام شغل</h3>
                 <Field
                   name='jobTitle'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='نام شغل را وارد کنید'
                 />
                 <ErrorMessage name='jobTitle' component="div" className="text-red-500 text-sm font-bold" />
@@ -94,7 +94,7 @@ const ModalUpdate = ({ show, setShow, selectedItem, refetch }) => {
                 <h3 className='my-1 mt-3'>درباره شغل</h3>
                 <Field
                   name='aboutJob'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='توضیحات شغل را وارد کنید'
                 />
                 <ErrorMessage name='aboutJob' component="div" className="text-red-500 text-sm font-bold" />
@@ -102,7 +102,7 @@ const ModalUpdate = ({ show, setShow, selectedItem, refetch }) => {
                 <h3 className='my-1 mt-3'>وب سایت شرکت</h3>
                 <Field
                   name='companyWebSite'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='وب سایت شرکت را وارد کنید'
                 />
                 <ErrorMessage name='companyWebSite' component="div" className="text-red-500 text-sm font-bold" />
@@ -110,7 +110,7 @@ const ModalUpdate = ({ show, setShow, selectedItem, refetch }) => {
                 <h3 className='my-1 mt-3'>لینک شرکت</h3>
                 <Field
                   name='companyLinkdin'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='لینک شرکت را وارد کنید'
                 />
                 <ErrorMessage name='companyLinkdin' component="div" className="text-red-500 text-sm font-bold" />
@@ -118,7 +118,7 @@ const ModalUpdate = ({ show, setShow, selectedItem, refetch }) => {
                 <h3 className='my-1 mt-3'>نام شرکت</h3>
                 <Field
                   name='companyName'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='نام شرکت را وارد کنید'
                 />
                 <ErrorMessage name='companyName' component="div" className="text-red-500 text-sm font-bold" />
@@ -126,7 +126,7 @@ const ModalUpdate = ({ show, setShow, selectedItem, refetch }) => {
                 <h3 className='my-1 mt-3'>وضعیت</h3>
                 <Select
                   name='status'
-                  classNames={{ trigger: 'bg-[#f4f4f4]' }}
+                  classNames={{ trigger: 'bg-[#f4f4f4] dark:bg-slate-700' }}
                   defaultSelectedKeys={[currentStatus.key]}
                 >
                   {works.map((work, index) => (

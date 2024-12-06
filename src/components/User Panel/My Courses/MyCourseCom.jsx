@@ -28,7 +28,7 @@ const MyCourseCom = () => {
         setIsLoading(false)
         setMyCourse(response.listOfMyCourses)
       }
-      setTotalCount(Number(response.totalCount / rows))
+      setTotalCount(parseInt(response.totalCount / rows))
 
       if(response.listOfMyCourses) {
         setIsLoading(false)
@@ -83,8 +83,8 @@ const MyCourseCom = () => {
             isLoading={isLoading}
             setreder={setreder}
         />}
-        <div className='w-full flex justify-center'>
-        <Pagination className='w-fit z-0 float-start' classNames={{wrapper: 'bg-white'}} dir='ltr' onChange={(e) => setPageNumber(e)} isCompact showControls total={totalCount} initialPage={1} />
+        <div className='w-full flex justify-start'>
+        <Pagination className='w-fit z-0' classNames={{wrapper: 'bg-white'}} dir='ltr' onChange={(e) => setPageNumber(e)} isCompact showControls total={totalCount} initialPage={1} />
         </div>
     </div>
   )

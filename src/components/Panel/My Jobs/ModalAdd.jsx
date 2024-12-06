@@ -81,7 +81,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <h3 className='my-1 mt-3'>نام شغل</h3>
                 <Field
                   name='jobTitle'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full dark:bg-slate-700 p-2 text-sm font-bold outline-none'
                   placeholder='نام شغل را وارد کنید'
                 />
                 <ErrorMessage name='jobTitle' component="div" className="text-red-500 text-sm font-bold" />
@@ -89,7 +89,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <h3 className='my-1 mt-3'>درباره شغل</h3>
                 <Field
                   name='aboutJob'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 dark:bg-slate-700 text-sm font-bold outline-none'
                   placeholder='توضیحات شغل را وارد کنید'
                 />
                 <ErrorMessage name='aboutJob' component="div" className="text-red-500 text-sm font-bold" />
@@ -97,7 +97,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <h3 className='my-1 mt-3'>وب سایت شرکت</h3>
                 <Field
                   name='companyWebSite'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 dark:bg-slate-700 text-sm font-bold outline-none'
                   placeholder='وب سایت شرکت را وارد کنید'
                 />
                 <ErrorMessage name='companyWebSite' component="div" className="text-red-500 text-sm font-bold" />
@@ -105,7 +105,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <h3 className='my-1 mt-3'>لینک شرکت</h3>
                 <Field
                   name='companyLinkdin'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='لینک شرکت را وارد کنید'
                 />
                 <ErrorMessage name='companyLinkdin' component="div" className="text-red-500 text-sm font-bold" />
@@ -113,7 +113,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <h3 className='my-1 mt-3'>نام شرکت</h3>
                 <Field
                   name='companyName'
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm dark:bg-slate-700 font-bold outline-none'
                   placeholder='نام شرکت را وارد کنید'
                 />
                 <ErrorMessage name='companyName' component="div" className="text-red-500 text-sm font-bold" />
@@ -122,7 +122,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <Select
                   name='status'
                   placeholder='انتخاب کنید'
-                  classNames={{ trigger: 'bg-[#f4f4f4]' }}
+                  classNames={{ trigger: 'bg-[#f4f4f4] dark:bg-slate-700' }}
                 >
                   {works.map((work, index) => (
                     <SelectItem key={index} value={work.value} onClick={() => setCurrentStatus(work.value)}>
@@ -136,7 +136,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <Field
                   type="date"
                   name="startDate"
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] dark:bg-slate-700 rounded-xl w-full p-2 text-sm font-bold outline-none'
                 />
                 <ErrorMessage name='startDate' component="div" className="text-red-500 text-sm font-bold" />
 
@@ -144,7 +144,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
                 <Field
                   type="date"
                   name="endDate"
-                  className='bg-[#f4f4f4] rounded-xl w-full p-2 text-sm font-bold outline-none'
+                  className='bg-[#f4f4f4] dark:bg-slate-700 rounded-xl w-full p-2 text-sm font-bold outline-none'
                 />
                 <ErrorMessage name='endDate' component="div" className="text-red-500 text-sm font-bold" />
 
