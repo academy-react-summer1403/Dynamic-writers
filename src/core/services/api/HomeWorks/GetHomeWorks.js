@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify'
 import http from '../.././interceptor'
 
-export const GetScheduleList = async (startDate, endDate, userId) => {
+export const GetHomeWorks = async () => {
    try{
-    const response = await http.get(`/Schedual/GetStudentScheduals?startDate=${startDate}&endDate=${endDate}&StudentId=${userId}`)
+    const response = await http.get(`/Session/StudentHomeworkList`)
     return response
 
    } catch(error){

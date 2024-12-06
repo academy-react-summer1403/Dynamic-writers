@@ -24,8 +24,6 @@ import MyReserveRout from '../screens/User Panel/MyReserveRout';
 import AllNewCourses from '../screens/User Panel/AllNewCourses';
 import MyPaymentRout from '../screens/User Panel/MyPaymentRout'
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
-import CourseReserve from '../components/CourseReserve/CourseReserve';
-import Panel from '../screens/Panel/PanelScreen';
 import InformationUser from '../components/Panel/InformationUser'
 import AddProfileImage from '../components/Panel/AddProfileImage'
 import AddAddress from '../components/Panel/AddAddress'
@@ -42,8 +40,9 @@ import PanelScreen from '../screens/Panel/PanelScreen';
 import ResetPass2 from '../screens/ResetPassword/ResetPassw2';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import Multi from '../screens/User Panel/Multi';
-import MyJobs from '../screens/User Panel/MyJobs';
 import Schedule from '../components/User Panel/Schedule/Schedule';
+import MyJobs from '../screens/User Panel/MyJobs';
+import HomeWorks from '../screens/User Panel/homeWorks';
 
 function App() {
   const client = new QueryClient()
@@ -120,13 +119,13 @@ function App() {
           element: <Schedule />
         },
         {
-          path: 'myPayment',
-          element: <MyPaymentRout />
+          path: 'homeWorks',
+          element: <HomeWorks />
         },
         {
-          path: 'myJobs',
-          element: <MyJobs />
-        },        
+          path: 'myPayment',
+          element: <MyPaymentRout />
+        },      
         {
           path: 'favCourse',
           element: <FavCourseRout />
@@ -144,6 +143,10 @@ function App() {
               element:<InformationUser reload={setreloadProf}/>,
               index:true
             },
+            {
+              path: 'MyJobs',
+              element: <MyJobs />
+            },  
             {
               path:"AddProfileImage",
               element:<AddProfileImage reload={setreloadProf}/>
