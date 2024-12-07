@@ -9,8 +9,8 @@ import { toast, ToastContainer } from 'react-toastify'
 const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
 
   const SignupSchema = yup.object().shape({
-    jobTitle: yup.string().required('نام شغل الزامی است'),
-    aboutJob: yup.string().required('توضیحات شغل الزامی است'),
+    jobTitle: yup.string().required('نام شغل الزامی است').min(10, 'باید این فیلد بیشتر از 10 حرف باشد'),
+    aboutJob: yup.string().required('توضیحات شغل الزامی است').min(10, 'باید این فیلد بیشتر از 10 حرف باشد'),
     companyWebSite: yup.string().url('لطفاً آدرس وب‌سایت معتبر وارد کنید').required('وب‌سایت شرکت الزامی است'),
     companyLinkdin: yup.string().url('لطفاً آدرس لینکدین معتبر وارد کنید').required('لینک لینکدین شرکت الزامی است'),
     companyName: yup.string().required('نام شرکت الزامی است'),
@@ -128,6 +128,7 @@ const ModalAdd = ({ show, setShow, myJobs, refetch }) => {
 
                   </div>
                 </div>
+                <ToastContainer />
 
                 <div className='flex gap-5'>
 

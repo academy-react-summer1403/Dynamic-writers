@@ -16,7 +16,7 @@ const NewsTop = ({isLoaded ,title, miniDescribe, currentLikeCount, currentDissLi
             <div className={`bg-blue-500 text-white rounded-xl px-2`}> {newsCatregoryName} </div>
         </div>
         <div className='flex-col flex h-3/6 items-end p-2 overflow-hidden'>
-            <h2 className='text-base font-semibold w-[200px] text-ellipsis' dir='rtl'> {title} </h2>
+            <h2 className='text-base font-semibold max-w-[200px] overflow-hidden text-ellipsis' dir='rtl'> {title} </h2>
             <div className='w-full my-1 max-h-fit overflow-hidden text-right'>
                 <span className='text-sm font-semibold text-gray-500 line-clamp-3 text-ellipsis' dir='rtl'> {miniDescribe} </span>
             </div>

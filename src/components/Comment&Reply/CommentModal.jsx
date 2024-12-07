@@ -17,7 +17,7 @@ const CommentModal = ({onOpen, isOpen, onOpenChange, Oid, title, comments }) => 
                 <ModalHeader className="flex justify-between flex-row-reverse items-center gap-1">
 
 
-                <h2 className='font-[700] text-[24px] flex flex-row-reverse w-full justify-end gap-1'> <h3 className='text-gray-500 text-[18px]'> ( دوره {title} ) </h3> نظرات </h2>
+                <h2 className='font-[700] text-[24px] flex flex-row-reverse w-full justify-end gap-1 whitespace-nowrap'> <h3 className='text-gray-500 text-[18px] max-w-[150px] overflow-hidden text-ellipsis'> ( دوره {title} ) </h3> نظرات </h2>
 
                 </ModalHeader>
               <ModalBody>

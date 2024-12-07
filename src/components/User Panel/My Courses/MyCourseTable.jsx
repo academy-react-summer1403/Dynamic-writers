@@ -153,8 +153,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
                               </TableCell>
                               <TableCell>
                                   <ViewIcon onClick={() => handleOpenModal(item.courseId)} className="size-4 cursor-pointer" />
-                                  {openCourseId === item.courseId && (
-                                      <MyCourseModal
+                                  {openCourseId === item.courseId && <MyCourseModal
                                           isOpen={true}
                                           onOpen={() => handleOpenModal(item.courseId)}
                                           onOpenChange={handleOpenModal}
@@ -171,7 +170,7 @@ const MyCourseTable = ({ myCourse, isLoading }) => {
                                           teacherId={item.teacherId}
                                           percentage={percentage}
                                       />
-                                  )}
+                                  }
                               </TableCell>
 
                               <TableCell>

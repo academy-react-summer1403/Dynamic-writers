@@ -8,6 +8,7 @@ export const AddJob = async (data) => {
 
    } catch(error){
       if(error.response.data.ErrorMessage){
+         console.log(error.response.data.ErrorMessage)
          toast.error(error.response.data.ErrorMessage)
       }
       else{

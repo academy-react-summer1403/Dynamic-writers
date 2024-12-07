@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify'
 import AddReply from '../../../../Comment&Reply/AddReply';
 import AddReplyNew from '../Reply/AddReplyNew';
+import GetProfileInfo from '../../../../../core/services/api/User/GetProfileInfo';
 
 const MyCommentNewCom = ({                
   courseTitle,
@@ -38,10 +39,24 @@ const MyCommentNewCom = ({
     }
   }
 
+  const [profile, setProfile] = useState(null)
+
+  const getProfile = async () => {
+    const response = await GetProfileInfo()
+  
+    if(response){
+        setProfile(response.currentPictureAddress)
+    }
+  }
+
+  useEffect(() => {
+    getProfile()
+  }, [])
+
   return (
     <ul className='w-full h-fit flex flex-col gap-4'>
         <div className='w-fit h-[48px] flex gap-2'>
-            <img className='size-12 min-w-12 min-h-12 rounded-full bg-[#5865F2]' />
+            <img src={profile} className='size-12 min-w-12 min-h-12 rounded-full bg-[#5865F2]' />
             <div className='flex flex-col justify-center gap-1'>
                 <h2 className='font-[600] text-[14px] text-right'> شما </h2>
                 <span className='font-[600] text-[12px] text-[#707070] text-right whitespace-nowrap dark:text-gray-300'> {jMoment(insertDat).locale('fa').format('jD jMMMM jYYYY')} </span>

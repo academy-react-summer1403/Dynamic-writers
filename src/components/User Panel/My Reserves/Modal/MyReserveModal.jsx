@@ -77,8 +77,8 @@ const MyReserveModal = ({
     }, [])
 
     useEffect(() => {
-        setDislike(course.currentUserDissLike == 1 ? true : false)
-        setLike(course.currentUserLike == 1 ? true : false)
+        setDislike(course?.currentUserDissLike == 1 ? true : false)
+        setLike(course?.currentUserLike == 1 ? true : false)
     }, [course])
     
         
@@ -101,7 +101,7 @@ const MyReserveModal = ({
         <ModalBody>
 
                 <div className='w-full h-[287px] bg-[#E8E8E8] rounded-[16px] relative'>
-                    <img src={course.imageAddress} className='w-full h-full rounded-[16px]' />
+                    <img src={course?.imageAddress} className='w-full h-full rounded-[16px]' />
                 </div>
                 <div className='w-full h-fit flex justify-between items-center'>
                     <Button className='bg-blue-500 text-white rounded-full'> <Link to={`/CourseDetail/${courseId}`}> صفحه دوره  </Link> </Button>
@@ -112,7 +112,7 @@ const MyReserveModal = ({
                 </div>
                 <div className='flex flex-col gap-4'>
                     <h2 className='text-base text-[#787878]'> نام دوره </h2>
-                    <span className='text-[24px] font-bold'> {course.title} </span>
+                    <span className='text-[24px] font-bold'> {course?.title} </span>
                 </div>
                 <div className='flex flex-col gap-4 my-5'>
                     <h2 className='text-base text-[#787878]'> وضعیت ثبت نام </h2>
@@ -122,25 +122,25 @@ const MyReserveModal = ({
                 </div>
                 <div className='flex flex-col gap-4 my-2'>
                     <h2 className='text-base text-[#787878]'> توضیح مختصر </h2>
-                    <span className='text-[16px] text-[#272727] h-[46px] overflow-hidden dark:text-white' dir='rtl'> {course.describe} </span>
+                    <span className='text-[16px] text-[#272727] h-[46px] overflow-hidden dark:text-white' dir='rtl'> {course?.describe} </span>
                 </div>
                 <div className='my-2'>
                     <div className='flex gap-2'>
                         <StudentsIcon />
                         <div className='flex gap-2'>
-                            <span>{course.currentRegistrants}</span>
+                            <span>{course?.currentRegistrants}</span>
                             /
-                            <span>{course.capacity}</span>
+                            <span>{course?.capacity}</span>
                             دانشجو
                         </div>
                     </div>
                 </div>
                 <div className='flex justify-between'>
                     <div className='flex flex-col gap-4 my-2'>
-                        <div className='flex gap-4'> <Calendar01Icon /> <span className='flex flex-row-reverse gap-1'> <span className='text-gray-400'> (شروع) </span> {jMoment(course.startTime).locale('fa').format('jD jMMMM jYYYY')} </span> </div>
-                        <div className='flex gap-4'> <Calendar01Icon /> <span className='flex flex-row-reverse gap-1'> <span className='text-gray-400'> (پایان) </span> {jMoment(course.endTime).locale('fa').format('jD jMMMM jYYYY')} </span> </div>
+                        <div className='flex gap-4'> <Calendar01Icon /> <span className='flex flex-row-reverse gap-1'> <span className='text-gray-400'> (شروع) </span> {jMoment(course?.startTime).locale('fa').format('jD jMMMM jYYYY')} </span> </div>
+                        <div className='flex gap-4'> <Calendar01Icon /> <span className='flex flex-row-reverse gap-1'> <span className='text-gray-400'> (پایان) </span> {jMoment(course?.endTime).locale('fa').format('jD jMMMM jYYYY')} </span> </div>
                     </div>
-                    <h2 className='text-2xl text-bold flex items-center gap-2'> {Number(course.cost).toLocaleString('en-US')} <span className='text-[#3772FF] text-base font-semibold'> تومان </span> </h2>
+                    <h2 className='text-2xl text-bold flex items-center gap-2'> {Number(course?.cost).toLocaleString('en-US')} <span className='text-[#3772FF] text-base font-semibold'> تومان </span> </h2>
                 </div>
 
         </ModalBody>
